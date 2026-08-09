@@ -1,23 +1,30 @@
 ---
 interface TagProps {
-  category: "all" | "UX/UI Design" | "Web Development" | "Project Design" ;
+  category: "all" | "UX/UI Design" | "Web Development" | "Project Design";
+  class?: string;
 }
 
-const { category } = Astro.props as TagProps;
+const {
+  category,
+  class: className = "",
+} = Astro.props as TagProps;
 
-const baseClasses = "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200";
+const categoryColors = {
+  "UX/UI Design": "bg-blue-100 text-blue-800",
+  "Web Development": "bg-green-100 text-green-800",
+  "Project Design": "bg-purple-100 text-purple-800",
+  all: "bg-gray-200 text-gray-800",
+};
 
-
+const colorClass = categoryColors[category];
 ---
 
-{
-  category === "all" ? (
-    <span class={`${baseClasses} bg-gray-light text-black`}>All</span>
-  ) : category === "UX/UI Design" ? (
-    <span class={`${baseClasses} bg-blue-light text-blue-dark`}>UX/UI Design</span>
-  ) : category === "Web Development" ? (
-    <span class={`${baseClasses} bg-green-light text-green-dark`}>Web Development</span>
-  ) : category === "Project Design" ? (
-    <span class={`${baseClasses} bg-purple-light text-purple-dark`}>Project Design</span>
-  ) : null
-}
+<span
+  class:list={[
+    "inline-flex items-center w-fit px-4 py-2 rounded-full text-sm font-medium",
+    colorClass,
+    className,
+  ]}
+>
+  {category}
+</span>

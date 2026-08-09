@@ -1,81 +1,241 @@
 ---
 import Button from "../../components/Button.astro";
-
 import ContentLayout from "../../layouts/ContentLayout.astro";
 
 import Image1 from "../../assets/hero/7van.png";
 import Image2 from "../../assets/hero/ippon.png";
-import Image3 from "../../assets/hero/bunny.png";
 import Image4 from "../../assets/hero/matchday.png";
 
 import Tag from "../../components/Tag.astro";
-
 import Filter from "../../components/Filter.astro";
-
 import ProjectCard from "../../components/ProjectCard.astro";
 
 const { title = "Projects — Joy" } = Astro.props;
 ---
 
-<ContentLayout title="Projects — Joy" active="projects">
-  <main class="flex flex-col gap-24 w-full  pt-4 bg-">
-    <section
-      id="selected-projects"
-      class="w-full flex flex-row gap-8 items-center justify-start"
+<ContentLayout title={title}>
+
+  <!-- ================================= -->
+  <!-- FEATURED PROJECT -->
+  <!-- ================================= -->
+
+  <section id="awarded-project" class="w-full">
+    <div
+      class="
+        max-w-6xl
+        mx-auto
+        px-6
+        py-16
+        md:py-20
+        grid
+        grid-cols-1
+        lg:grid-cols-2
+        items-center
+        gap-12
+        lg:gap-20
+      "
     >
-      <!-- Left side -->
-      <div class="flex flex-col gap-4 w-full max-w-[600px]">
-        <p class="bg-black text-white px-4 py-2 rounded-full">
-          ★ Award Project
-        </p>
-        <h1 class="text-4xl font-bold mt-4">7van Academy</h1>
+      <!-- LEFT -->
+      <div class="flex flex-col items-start gap-5">
         <Tag category="UX/UI Design" />
-        <p class="mt-4 text-lg text-gray-dark">
-          A responsive website for 7VAN, a Brazilian Jiu-Jitsu academy, designed
-          to attract new members and encourage sign-ups.
-        </p>
-        <Button href="/projects/7van" variant="primary" size="md" class="mt-4"
-          >View Project</Button
+
+        <h1 class="text-4xl md:text-5xl font-medium">
+          7VAN
+        </h1>
+
+        <p
+          class="
+            max-w-md
+            text-gray-dark
+            font-mono
+            text-sm
+            leading-relaxed
+          "
         >
+          A responsive website for 7VAN, a Brazilian Jiu-Jitsu academy,
+          designed to attract new members and encourage sign-ups.
+        </p>
+
+        <Button
+          href="/projects/7-van"
+          variant="primary"
+          size="md"
+        >
+          Explore my Projects
+        </Button>
       </div>
 
-      <!-- Right side -->
-      <div class="w-full">
-        <img src={Image1.src} alt="7van" class="w-full h-auto" />
+      <!-- RIGHT -->
+      <div
+        class="
+          w-full
+          flex
+          items-center
+          justify-center
+        "
+      >
+        <img
+          src={Image1.src}
+          alt="7VAN project"
+          class="
+            w-full
+            max-w-[560px]
+            h-auto
+            object-contain
+          "
+        />
       </div>
-    </section>
+    </div>
+  </section>
 
 
+  <!-- ================================= -->
+  <!-- PROJECTS INTRO -->
+  <!-- ================================= -->
 
-    
-    <section id="all-projects" class="w-full flex flex-col gap-8">
-      <div class="flex flex-col gap-4 w-full">
-        <span class= "text-black px-4 py-2 rounded-full w-fit">
-          Selected works
-        </span>
-        <h1 class="text-3xl font-bold">Projects</h1>
+  <section class="w-full">
+    <div
+      class="
+        max-w-6xl
+        mx-auto
+        px-6
+        py-14
+        md:py-16
+        grid
+        grid-cols-1
+        md:grid-cols-2
+        gap-8
+        md:gap-12
+        items-center
+        bg-brown
+      "
+    >
+      <h2
+        class="
+          text-4xl
+          md:text-5xl
+          font-normal
+        "
+      >
+        Projects
+      </h2>
+
+      <p
+        class="
+          max-w-md
+          text-gray-dark
+          font-mono
+          text-sm
+          leading-relaxed
+        "
+      >
+        A cross-disciplinary body of work spanning UI/UX design,
+        web development, and architectural project design — unified
+        by a commitment to clarity and craft.
+      </p>
+    </div>
+  </section>
 
 
-        <div class="w-full *:flex flex-col gap-4">
-          <p class="text-gray-dark">
-            A cross-disciplinary body of work spanning UI/UX design, web
-            development, and architectural project design — unified by a
-            commitment to clarity and craft.
-          </p>
+  <!-- ================================= -->
+  <!-- ALL PROJECTS -->
+  <!-- ================================= -->
+
+  <section id="all-projects" class="w-full">
+    <div
+      class="
+        max-w-6xl
+        mx-auto
+        px-6
+        py-14
+        md:py-16
+        flex
+        flex-col
+        gap-10
+      "
+    >
+
+      <!-- ================================= -->
+      <!-- FILTER ROW -->
+      <!-- ================================= -->
+
+      <div
+        class="
+          flex
+          flex-col
+          md:flex-row
+          md:items-center
+          md:justify-between
+          gap-5
+        "
+      >
+        <!-- LEFT FILTER -->
+        <Filter selectedCategory="all" />
+
+        <!-- RIGHT CONTROLS -->
+        <div class="flex items-center gap-3">
+
+          <!-- Grid Icon -->
+          <button
+            type="button"
+            aria-label="Grid view"
+            class="
+              grid
+              grid-cols-2
+              gap-[3px]
+              w-7
+              h-7
+              p-1
+            "
+          >
+            <span class="bg-black"></span>
+            <span class="bg-black"></span>
+            <span class="bg-black"></span>
+            <span class="bg-black"></span>
+          </button>
+
+          <!-- Sort -->
+          <button
+            type="button"
+            class="
+              rounded-full
+              bg-[#1F1F1F]
+              text-white
+              px-5
+              py-2.5
+              text-sm
+              font-medium
+              transition
+              hover:opacity-80
+            "
+          >
+            Sort by Date
+          </button>
         </div>
       </div>
-    
-      <Filter
-        selectedCategory="all"
-        onCategoryChange={() => {}}
-      />
-      
-      <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 w-full">
+
+
+      <!-- ================================= -->
+      <!-- PROJECT CARD GRID -->
+      <!-- ================================= -->
+
+      <div
+        class="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          gap-x-6
+          gap-y-8
+          items-stretch
+          w-full
+        "
+      >
         <ProjectCard
           title="7Van"
-          description="A modern e-commerce platform for a fashion brand."
+          description="A responsive website for a Brazilian Jiu-Jitsu academy, designed to attract new members and encourage sign-ups."
           imageSrc={Image1.src}
-          imageAlt="7van"
+          imageAlt="7VAN"
           category="UX/UI Design"
           projectLink="/projects/7-van"
         />
@@ -90,15 +250,6 @@ const { title = "Projects — Joy" } = Astro.props;
         />
 
         <ProjectCard
-          title="Bunny World"
-          description="A mobile app for a pet care service."
-          imageSrc={Image3.src}
-          imageAlt="Bunny"
-          category="UX/UI Design"
-          projectLink="/projects/bunny-world"
-        />
-
-        <ProjectCard
           title="Match Day"
           description="A sports analytics platform for football enthusiasts."
           imageSrc={Image4.src}
@@ -107,6 +258,12 @@ const { title = "Projects — Joy" } = Astro.props;
           projectLink="/projects/match-day"
         />
       </div>
-    </section>
-  </main>
+
+    </div>
+  </section>
+  <section id="about-me" class="w-full">
+    
+    
+  </section>
+
 </ContentLayout>

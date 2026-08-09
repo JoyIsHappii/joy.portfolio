@@ -1,43 +1,77 @@
-# Astro Starter Kit: Minimal
+# Joy's Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Welcome to my portfolio! 👋
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This portfolio showcases my work across UX/UI design, web development, and project design, but it is also a project of its own.
 
-## 🚀 Project Structure
+I wanted to create more than a place to display case studies. This project is also a space where I can experiment, learn, and enjoy the process of designing and developing.
 
-Inside of your Astro project, you'll see the following folders and files:
+You may find different styles, interactions, and ideas throughout the website as I explore what I can do. As I continue learning, I plan to refine these experiments and bring them together into a more cohesive and harmonious experience.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+---
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🏠 How the Homepage Works
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The homepage is designed as an **interactive room** rather than a traditional landing page.
 
-Any static assets, like images, can be placed in the `public/` directory.
+Different objects in the room are clickable and lead to different parts of the portfolio. Small animations and interactions provide hints and encourage visitors to explore.
 
-## 🧞 Commands
+I wanted navigation to feel playful and become part of the portfolio experience itself.
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## ✨ About the Portfolio
 
-## 👀 Want to learn more?
+My background is in design, and I am also developing my front-end development skills. This portfolio gives me a place to bring those interests together.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+I use this project to explore:
+
+- UI/UX design
+- Responsive web design
+- Front-end development
+- Interaction and animation
+- Page transitions
+- Component-based design
+- Visual storytelling
+
+Rather than limiting the website to one idea, I use it as a playground to experiment and learn through building.
+
+---
+
+## 🛠 Built With
+
+### Astro
+Used to build reusable pages, layouts, and components while keeping the website lightweight.
+
+### Tailwind CSS
+Used for styling, responsive layouts, typography, hover states, and animations.
+
+### JavaScript / TypeScript
+Used for interactive elements, animations, and navigation behavior.
+
+### Astro View Transitions
+Used to experiment with page transitions and make navigation feel like part of the experience.
+
+---
+
+## 🎨 Design Philosophy
+
+The goal of this portfolio is not only to say:
+
+> "Here is the work I have done."
+
+But also:
+
+> "Here is what I am learning, what I am curious about, and what I enjoy creating."
+
+I want to give myself room to experiment and learn without expecting every idea to be perfect. Over time, I will use what I learn to make the portfolio more consistent and harmonious.
+
+---
+
+## 🚧 Always a Work in Progress
+
+This portfolio will continue to evolve as I do.
+
+As I learn new design and development techniques, I will continue experimenting, improving interactions, and refining the overall experience.
+
+So if something changes the next time you visit, that's probably intentional. :)
