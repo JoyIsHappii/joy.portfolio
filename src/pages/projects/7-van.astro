@@ -1,0 +1,128 @@
+---
+import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
+
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import Tag from "../../components/Tag.astro";
+import Button from "../../components/Button.astro";
+
+import HeroImage from "../../assets/hero/7van.png";
+
+import Sidebar from "../../components/ProjectSideBar.astro";
+
+import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
+import ProjectOverview from "../../components/ProjectOverview.astro";
+
+const title = "7VAN Academy";
+const category = "UX/UI Design";
+
+const description =
+  "A responsive website for 7VAN, a Brazilian Jiu-Jitsu academy, designed to attract new members and encourage sign-ups.";
+---
+
+<ProjectDetailLayout title={`${title} — Joy`}>
+
+  <!-- =========================================
+       BREADCRUMB
+  ========================================== -->
+  <Breadcrumb
+    items={[
+      {
+        label: "Projects",
+        href: "/projects",
+      },
+      {
+        label: "7VAN Academy",
+        href: "/projects/7van",
+      },
+    ]}
+  />
+
+
+  <!-- =========================================
+       HERO
+  ========================================== -->
+  <ProjectDetailHero
+    title={title}
+    description={description}
+    imageSrc={HeroImage.src}
+    imageAlt="7VAN Academy"
+    category={category}
+    projectLink="https://www.7van.com.br/"
+  />
+
+  <!-- =========================================
+       PROJECT OVERVIEW
+  ========================================== -->
+  <ProjectOverview
+    duration="3 months"
+    role="UX/UI Designer, Lead UX Designer"
+    responsibilities={[
+      "Conducted user research and analysis to inform design decisions.",
+      "Created wireframes, prototypes, and high-fidelity designs for the website.",
+      "Collaborated with developers to ensure the successful implementation of the design.",
+    ]}
+    challenges={[
+      "Designing a responsive website that effectively communicates the brand's identity and values.",
+      "Ensuring a seamless user experience across different devices and screen sizes.",
+    ]}
+    solutions={[
+      "Conducted user research to understand the target audience and their needs.",
+      "Created a responsive design that adapts to different screen sizes and devices.",
+      "Implemented a clean and modern design that reflects the brand's identity and values.",
+    ]}
+  />
+
+  <section class="grid grid-cols-12"
+    data-aos="fade-up"
+    data-aos-duration="2000"
+    data-aos-delay="200"
+  >
+    <div class="col-span-4">
+  <Sidebar/>
+    </div>
+
+
+    <div  class="col-span-8">
+
+
+      <div id="emphasize" class="p-4 flex flex-col gap-2">
+      <h2 class="text-2xl font-semibold mb-4">Project Details</h2>
+      <p class="text-gray-dark">
+        The 7VAN Academy website is a responsive platform designed to attract new members and encourage sign-ups. The website features a clean and modern design that reflects the brand's identity and values. The user experience is seamless across different devices and screen sizes, ensuring that users can easily navigate the site and find the information they need.
+      </p>
+      <p class="text-gray-dark mt-4">
+        The project was completed in 3 months, with a focus on user research, wireframing, prototyping, and high-fidelity design. The design was implemented in collaboration with developers to ensure a successful launch of the website.
+      </p>
+    </div>
+
+         <div id="ideate" class="p-4 flex flex-col gap-2">
+      <h2 class="text-2xl font-semibold mb-4">Ideate</h2>
+      <p class="text-gray-dark">
+        The 7VAN Academy website is a responsive platform designed to attract new members and encourage sign-ups. The website features a clean and modern design that reflects the brand's identity and values. The user experience is seamless across different devices and screen sizes, ensuring that users can easily navigate the site and find the information they need.
+      </p>
+      <p class="text-gray-dark mt-4">
+        The project was completed in 3 months, with a focus on user research, wireframing, prototyping, and high-fidelity design. The design was implemented in collaboration with developers to ensure a successful launch of the website.
+      </p>
+    </div>
+
+
+
+
+    <div id="test" class="col-span-8">
+      <h2 class="text-2xl font-semibold mb-4">Test</h2>
+      <p class="text-gray-dark">
+        The 7VAN Academy website is a responsive platform designed to attract new members and encourage sign-ups. The website features a clean and modern design that reflects the brand's identity and values. The user experience is seamless across different devices and screen sizes, ensuring that users can easily navigate the site and find the information they need.
+      </p>
+      <p class="text-gray-dark mt-4">
+        The project was completed in 3 months, with a focus on user research, wireframing, prototyping, and high-fidelity design. The design was implemented in collaboration with developers to ensure a successful launch of the website.
+      </p>
+    </div>
+    </div>
+
+
+  </section>
+
+
+
+
+</ProjectDetailLayout>

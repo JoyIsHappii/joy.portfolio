@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@theme {
+  --color-green-dark: #9da855;
+  --color-green-light: #dfe2c9;
+
+  --color-brown-dark: #5c3932;
+  --color-brown-medium: #e9dcc9;
+  --color-brown-light: #876a5a;
+
+  --color-black: #1e1e1e;
+  --color-white: #fdf8f3;
+
+  --color-gray-medium: #717171;
+
+  --color-accent-yellow: #ff9a00; /*20% opacity*/
+  --color-accent-red: #ff7262; /*20% opacity*/
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--color-black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Baskervville", Georgia, serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-black);
+}
+
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 36px;
+}
+h3 {
+  font-size: 28px;
+}
+h4 {
+  font-size: 24px;
+}
+h5 {
+  font-size: 20px;
+}
+h6 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Opt-in monospace, e.g. the homepage terminal screen — no longer a blanket
+   override on every <p>/<span> in the site. */
+.font-terminal {
+  font-family: "Cutive Mono", monospace;
+}
+
+.room-background {
+  background-image: url("../assets/room-elements/background.svg");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+.main-bg {
+  background-image: url("../assets/bg.svg");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  position: absolute;
+  opacity: 0.8;
+}
+
+.bg-brown {
+  background-color: rgba(135, 106, 90, 0.3);
+  width: 100vw;
+  height: 100vh;
+}
+
+.shifting-backgrounds {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: -8;
+  overflow: hidden;
+}
+.shifting-backgrounds img {
+  max-width: 100%;
+  overflow: hidden;
+
+  position: relative;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  max-height: 100%;
+  /* opacity: 0; */
+  /* transition: all 3.0s ease-in-out; */
+}
+.imgAnimation {
+  /* opacity: 1; */
+  animation-fill-mode: forwards;
+  animation: mymove 4s infinite ease-in-out;
+  animation-delay: 0s;
+}
+
+.fade {
+  opacity: 1;
+}
+
+@keyframes mymove {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.hide {
+  animation: hide 0.5s;
+  animation-fill-mode: both;
+}
+@keyframes hide {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+.show {
+  animation: show 0.5s;
+  animation-fill-mode: both;
+}
+@keyframes show {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  /* width: 100vw; */
+  display: flex;
+  white-space: nowrap;
+}
+
+.slide-skills {
+  display: flex;
+  flex-direction: row;
+  width: max-content; /* Force container to fit all icons side by side */
+  animation: slide 20s linear infinite; /* Keeps moving forward infinitely */
+}
+
+.slide-skills:hover {
+  animation-play-state: paused; /* Optional: pauses marquee when hovered */
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Moves by -50% (exactly 1 full set of icons) */
+    transform: translateX(-50%);
+  }
+}
+
+
+/* @view-transition {
+  navigation: auto;
+} */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+  mix-blend-mode: normal; /* CRITICAL: Prevents default opacity crossfade fighting your keyframes */
+}
+
+/* ::view-transition-old(root) {
+  animation-name: slideOut;
+} */
+
+/* ::view-transition-new(root) {
+  animation-name: slideIn;
+} */
+
+/* Keyframes */
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}

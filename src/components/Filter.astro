@@ -1,0 +1,81 @@
+---
+type Category = "all" | "UX/UI Design" | "Web Development" | "Project Design";
+
+interface FilterProps {
+  selectedCategory: Category;
+  onCategoryChange: (category: Category) => void;
+}
+
+const { selectedCategory, onCategoryChange } =
+  Astro.props as FilterProps;
+
+
+---
+<aside
+  class="
+    flex
+    flex-col
+    gap-2
+    w-full
+    max-w-[300px]
+    p-4
+    rounded-lg
+    bg-white/20
+    shadow-md
+    transition-shadow
+    duration-300
+    hover:shadow-lg
+  "
+>
+  <h2 class="text-lg font-semibold">Filter by Category</h2>
+  <ul class="flex flex-col gap-2">
+    <li>
+      <button
+        class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          selectedCategory === "all"
+            ? "bg-gray-light text-black"
+            : "bg-white/20 text-black hover:bg-gray-light"
+        }`}
+        onClick={() => onCategoryChange("all")}
+      >
+        All
+      </button>
+    </li>
+    <li>
+      <button
+        class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          selectedCategory === "UX/UI Design"
+            ? "bg-blue-light text-blue-dark"
+            : "bg-white/20 text-black hover:bg-blue-light"       
+    }    `}
+        onClick={() => onCategoryChange("UX/UI Design")}
+      >
+        UX/UI Design
+      </button>
+    </li>
+    <li>
+      <button
+        class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          selectedCategory === "Web Development"
+            ? "bg-green-light text-green-dark"
+            : "bg-white/20 text-black hover:bg-green-light"
+        }`}
+        onClick={() => onCategoryChange("Web Development")}
+      >
+        Web Development
+      </button>
+    </li>
+    <li>
+      <button
+        class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          selectedCategory === "Project Design"
+            ? "bg-purple-light text-purple-dark"
+            : "bg-white/20 text-black hover:bg-purple-light"
+        }`}
+        onClick={() => onCategoryChange("Project Design")}
+      >
+        Project Design
+      </button>
+    </li>
+  </ul>
+</aside>

@@ -1,0 +1,68 @@
+---
+// 2. Import Skill SVGs
+import Ai from "../assets/skills/ai.svg";
+import Figma from "../assets/skills/figma.svg";
+import Html from "../assets/skills/html.svg";
+import Css from "../assets/skills/css.svg";
+import Js from "../assets/skills/js.svg";
+import AstroIcon from "../assets/skills/astro.svg";
+import Tailwind from "../assets/skills/tailwind.svg";
+import Canva from "../assets/skills/canva.svg";
+import GitHub from "../assets/skills/github.svg";
+import PSD from "../assets/skills/psd.svg";
+import SCSS from "../assets/skills/scss.svg";
+
+interface Props {
+  class?: string;
+}
+const { class: className = "-mt-[100px]" } = Astro.props as Props;
+
+const icons = [
+  Ai,
+  Figma,
+  Html,
+  Css,
+  Js,
+  AstroIcon,
+  Tailwind,
+  Canva,
+  GitHub,
+  PSD,
+  SCSS,
+];
+---
+
+<!-- Skills Section (Marquee) -->
+<section class={`marquee-container w-full overflow-hidden py-6 ${className}`}>
+  <div class="slide-skills flex flex-row w-max">
+    {/* Set 1 */}
+    <div class="flex flex-row gap-8 items-center pr-8 shrink-0">
+      {icons.map((Icon) => <Icon class="h-12 aspect-square shrink-0" />)}
+    </div>
+
+    {/* Set 2 (Identical duplicate for infinite loop) */}
+    <div class="flex flex-row gap-8 items-center pr-8 shrink-0">
+      {icons.map((Icon) => <Icon class="h-12 aspect-square shrink-0" />)}
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  // 3. Marquee Animation
+  const marquee = document.querySelector(".marquee-container");
+  const slide = document.querySelector(".slide-skills");
+
+  let progress = 0;
+  let speed = 0.5; // Adjust the speed of the marquee
+
+  function animateMarquee() {
+    progress -= speed;
+    if (progress <= -slide.offsetWidth / 2) {
+      progress = 0; // Reset progress to create an infinite loop
+    }
+    slide.style.transform = `translateX(${progress}px)`;
+    requestAnimationFrame(animateMarquee);
+  }
+
+  animateMarquee();
+</script>

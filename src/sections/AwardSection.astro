@@ -1,0 +1,31 @@
+---
+import Button from "../components/Button.astro";
+import AwardImage from "../assets/award-image.svg";
+---
+
+<!-- Award Project Section -->
+<section
+  class="flex flex-col lg:flex-row items-center 
+  justify-center gap-12 px-6 w-full
+  bg-brown"
+>
+  <!-- Award Image Container -->
+  <div
+    class="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] flex items-center justify-center order-2 lg:order-1"
+  >
+    <!-- Use <img> with AwardImage.src instead of <Image /> -->
+    <img src={AwardImage.src} alt="Award Project" class="w-full h-full object-contain" />
+  </div>
+
+  <div class="flex flex-col max-w-[420px] gap-4 order-1 lg:order-2">
+    <span class="text-xs font-semibold uppercase tracking-widest text-gray-medium">Award Project</span>
+    <h2>7VAN Academy</h2>
+    <span class="w-fit bg-black text-white text-sm px-4 py-1 rounded-full">UX/UI Design</span>
+    <p class="text-lg text-gray-600">
+      A community platform built to empower connections and protect
+      lives — designed end-to-end from brand identity to a booking flow
+      members actually enjoy using.
+    </p>
+    <Button variant="primary" href="/projects/7van" class="w-fit mt-2">Explore →</Button>
+  </div>
+</section>

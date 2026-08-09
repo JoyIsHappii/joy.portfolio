@@ -1,0 +1,59 @@
+---
+import Subtract from "../assets/hero/subtract.svg";
+
+import { Image } from "astro:assets";
+import Button from "../components/Button.astro";
+
+// 1. Import hero images
+import HeroImage1 from "../assets/hero/hero01.svg";
+import HeroImage2 from "../assets/hero/hero02.svg";
+import HeroImage3 from "../assets/hero/hero03.svg";
+import HeroImage4 from "../assets/hero/hero04.svg";
+
+// const heroImages = [HeroImage1, HeroImage2, HeroImage3, HeroImage4];
+---
+
+<!-- Hero Section: laptop frame with content inside the screen cutout -->
+<section class="w-full flex justify-center mt-4 px-6">
+  <div class="relative w-full max-w-[860px]" style="aspect-ratio: 901 / 574;">
+    <Subtract class="absolute inset-0 w-full h-full" />
+
+    <!-- content sits exactly inside the screen cutout of Subtract.svg -->
+    <div
+      class="absolute flex flex-row items-center justify-between gap-4"
+      style="left: 18%; top: 7%; width: 74.6%; height: 66.2%;"
+    >
+      <div class="flex flex-col gap-3 max-w-[46%]">
+        <h2 data-aos="fade-down" data-aos-duration="2000" data-aos-delay="100">
+          Hello world<br />
+          This is Joy!
+        </h2>
+        <p data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
+          A designer who has a passion for creating engaging and user-friendly
+          digital experiences.
+        </p>
+        <tr></tr>
+        <p data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
+          Scroll down to explore more
+        </p>
+      </div>
+
+      <!-- Hero Slideshow Container -->
+      <div
+        class="relative flex-1 h-full"
+        style="right: 5%; top: 7%; width: 74.6%; height: 66.2%;"
+      >
+        <HeroImage1
+          data-aos="fade-left"
+          data-aos-duration="2000"
+          data-aos-delay="800"
+          data-aos-anchor-placement="fade-out-transparent"
+          class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 z-10"
+        />
+        <!-- <HeroImage2 data-aos="fade-left" data-aos-duration="2000" data-aos-delay="2000" data-aos-anchor-placement="fade-out" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0" />
+            <HeroImage3 data-aos="fade-left" data-aos-duration="2000" data-aos-delay="2000" data-aos-anchor-placement="fade-out" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0" />
+            <HeroImage4 data-aos="fade-left" data-aos-duration="2000" data-aos-delay="2000" data-aos-anchor-placement="fade-out" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0" /> -->
+      </div>
+    </div>
+  </div>
+</section>

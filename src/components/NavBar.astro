@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  active?: "home" | "projects" | "about";
+}
+
+const { active } = Astro.props as Props;
+
+const navItems = [
+  { name: "Home", href: "/", key: "home" },
+  { name: "Projects", href: "/projects", key: "projects" },
+  { name: "About Me", href: "/about", key: "about" },
+];
+---
+
+<nav class="w-full px-8 md:px-16 py-6 flex items-center bg-transparent relative z-40">
+  <ul class="flex gap-10">
+    {
+      navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class={`text-black text-base tracking-wide pb-1 border-b-2 transition-colors ${
+              active === item.key
+                ? "border-black font-semibold"
+                : "border-transparent hover:border-black/40"
+            }`}
+          >
+            {item.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

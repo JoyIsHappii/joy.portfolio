@@ -1,0 +1,41 @@
+---
+import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+
+
+
+interface Props {
+  title?: string;
+}
+const { title = "Project — Joy" } = Astro.props as Props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=Cutive+Mono&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-white">
+    <!--
+      Unlike MainLayout (which centers the desk/room scenes), project detail
+      pages are long-form and should always start at the top-left and flow
+      downward naturally — no flex centering here.
+    -->
+    <div class="w-full min-h-screen flex flex-col items-stretch">
+      <NavBar active="projects" />
+      <div class="w-full flex-1">
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,217 @@
+---
+import "../styles/global.css";
+
+import Monitor from "../assets/room-elements/monitor.svg";
+import Camera from "../assets/room-elements/camera.svg";
+import Trophy from "../assets/room-elements/trophy.svg";
+import Backpack from "../assets/room-elements/backpack.svg";
+import Portrait from "../assets/room-elements/portrait.svg";
+import Table from "../assets/room-elements/table.svg";
+import Plane from "../assets/room-elements/plane.svg";
+
+import Radio from "../components/Radio.astro";
+
+import Layout from "../layouts/MainLayout.astro";
+---
+
+<Layout title="Portfolio" active="home">
+
+  <!-- VIDEO TRANSITION -->
+  <div
+    id="project-transition"
+    class="fixed inset-0 z-[99999] hidden"
+  >
+    <video
+      id="project-transition-video"
+      class="w-full h-full object-cover"
+      muted
+      playsinline
+      preload="auto"
+    >
+      <source
+        src="/videos/page-transition.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+
+
+  <!-- YOUR ROOM -->
+  <div class="relative w-[1280px] h-[721px]">
+    <Radio class="absolute left-[0px] top-[0px] w-[1280px] z-0" />
+
+    <!-- Table -->
+    <Table
+      class="absolute left-[116px] top-[570px] w-[1100px] z-0"
+    />
+
+
+    <!-- Plane -->
+    <a
+      href="https://www.linkedin.com/in/joykosol/" target="_blank" rel="noopener noreferrer"
+      class=" absolute left-[100px] top-[100px] w-[200px] z-20 hover:scale-105 transition-transform duration-300"
+    >
+      <Plane class="w-full" />
+      
+    </a>
+
+
+    <!-- BACKPACK → PROJECTS -->
+    <a
+      href="/projects"
+      class=" absolute left-[146px] top-[210px] w-[334px] z-20 hover:scale-105 transition-transform duration-300"
+    >
+      <Backpack class="w-full" />
+    </a>
+
+
+    <!-- MONITOR → PROJECTS -->
+    <a
+      href="/projects"
+      data-home-project-transition
+      data-aos="fade-down"
+      data-aos-duration="2000"
+      data-aos-delay="200"
+      class="absolute left-[397px] top-[190px] w-[485px] z-20 hover:scale-105 transition-transform duration-300"
+    >
+      <Monitor class="w-full" />
+
+      <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none "
+      >
+        <div
+          class="text-white text-center pointer-events-auto flex flex-col items-center justify-center"
+        >
+          <span class="text-lg font-normal"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          data-aos-delay="1000"
+          >
+            Hello 👋 Welcome to my workspace 🎄
+  </span>
+  <span class="text-lg font-normal mt-4"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          data-aos-delay="1500"
+          >
+            "Everything here has a story to tell. "
+          </span>
+
+          <span class="text-lg font-normal mt-4"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          data-aos-delay="2000"
+          >
+            Enjoy exploring <br /> or click here to start!.
+            <span class="terminal-cursor"> ▮</span>
+          </span>
+        </div>
+      </div>
+    </a>
+
+
+    <!-- Camera -->
+    <a
+      href="https://www.instagram.com/joy.is.happii/"
+      class="absolute left-[800px] top-[510px] w-[161px] z-30 hover:scale-105 transition-transform duration-300"
+    >
+      <Camera class="w-full" />
+    </a>
+
+
+    <!-- Trophy -->
+    <a
+      href="/projects"
+      class="absolute left-[908px] top-[295px] w-[197px] z-10 hover:scale-105 transition-transform duration-300"
+
+    >
+      <Trophy class="w-full" />
+    </a>
+
+
+    <!-- Portrait -->
+    <a
+      href="/about"
+      class="absolute left-[901px] top-[67px] w-[196px] z-30 hover:scale-105 transition-transform duration-300"
+    >
+      <Portrait class="w-full" />
+    </a>
+
+  </div>
+
+</Layout>
+
+
+<script>
+  import { navigate } from "astro:transitions/client";
+
+  function setupProjectTransition() {
+    const links = document.querySelectorAll<HTMLAnchorElement>(
+      "[data-home-project-transition]"
+    );
+
+    const overlay = document.getElementById("project-transition");
+
+    const video = document.getElementById(
+      "project-transition-video"
+    ) as HTMLVideoElement | null;
+
+    if (!links.length || !overlay || !video) {
+      console.log("Transition elements not found");
+      return;
+    }
+
+    links.forEach((link) => {
+      // Don't attach twice
+      if (link.dataset.transitionInitialized === "true") {
+        return;
+      }
+
+      link.dataset.transitionInitialized = "true";
+
+      link.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        console.log("Project transition started");
+
+        const href = link.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        // Show overlay
+        overlay.classList.remove("hidden");
+
+        // Reset video
+        video.currentTime = 0;
+
+        try {
+  // Play video
+  await video.play();
+
+  console.log("Video playing");
+
+  setTimeout(() => {
+    video.pause();
+    navigate(href);
+  }, 5000);
+
+}  catch (error) {
+          console.error("Video failed:", error);
+
+          // Fallback if browser blocks video
+          navigate(href);
+        }
+      });
+    });
+  }
+
+  // Run when homepage first loads
+  document.addEventListener("astro:page-load", () => {
+    setupProjectTransition();
+  });
+
+  // Also run immediately
+  setupProjectTransition();
+</script>

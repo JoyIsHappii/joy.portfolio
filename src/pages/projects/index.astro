@@ -1,0 +1,112 @@
+---
+import Button from "../../components/Button.astro";
+
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+import Image1 from "../../assets/hero/7van.png";
+import Image2 from "../../assets/hero/ippon.png";
+import Image3 from "../../assets/hero/bunny.png";
+import Image4 from "../../assets/hero/matchday.png";
+
+import Tag from "../../components/Tag.astro";
+
+import Filter from "../../components/Filter.astro";
+
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const { title = "Projects — Joy" } = Astro.props;
+---
+
+<ContentLayout title="Projects — Joy" active="projects">
+  <main class="flex flex-col gap-24 w-full  pt-4 bg-">
+    <section
+      id="selected-projects"
+      class="w-full flex flex-row gap-8 items-center justify-start"
+    >
+      <!-- Left side -->
+      <div class="flex flex-col gap-4 w-full max-w-[600px]">
+        <p class="bg-black text-white px-4 py-2 rounded-full">
+          ★ Award Project
+        </p>
+        <h1 class="text-4xl font-bold mt-4">7van Academy</h1>
+        <Tag category="UX/UI Design" />
+        <p class="mt-4 text-lg text-gray-dark">
+          A responsive website for 7VAN, a Brazilian Jiu-Jitsu academy, designed
+          to attract new members and encourage sign-ups.
+        </p>
+        <Button href="/projects/7van" variant="primary" size="md" class="mt-4"
+          >View Project</Button
+        >
+      </div>
+
+      <!-- Right side -->
+      <div class="w-full">
+        <img src={Image1.src} alt="7van" class="w-full h-auto" />
+      </div>
+    </section>
+
+
+
+    
+    <section id="all-projects" class="w-full flex flex-col gap-8">
+      <div class="flex flex-col gap-4 w-full">
+        <span class= "text-black px-4 py-2 rounded-full w-fit">
+          Selected works
+        </span>
+        <h1 class="text-3xl font-bold">Projects</h1>
+
+
+        <div class="w-full *:flex flex-col gap-4">
+          <p class="text-gray-dark">
+            A cross-disciplinary body of work spanning UI/UX design, web
+            development, and architectural project design — unified by a
+            commitment to clarity and craft.
+          </p>
+        </div>
+      </div>
+    
+      <Filter
+        selectedCategory="all"
+        onCategoryChange={() => {}}
+      />
+      
+      <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 w-full">
+        <ProjectCard
+          title="7Van"
+          description="A modern e-commerce platform for a fashion brand."
+          imageSrc={Image1.src}
+          imageAlt="7van"
+          category="UX/UI Design"
+          projectLink="/projects/7-van"
+        />
+
+        <ProjectCard
+          title="Ippon App"
+          description="A social media application for karate practitioners, featuring karate-focused content and community."
+          imageSrc={Image2.src}
+          imageAlt="Ippon"
+          category="UX/UI Design"
+          projectLink="/projects/ippon"
+        />
+
+        <ProjectCard
+          title="Bunny World"
+          description="A mobile app for a pet care service."
+          imageSrc={Image3.src}
+          imageAlt="Bunny"
+          category="UX/UI Design"
+          projectLink="/projects/bunny-world"
+        />
+
+        <ProjectCard
+          title="Match Day"
+          description="A sports analytics platform for football enthusiasts."
+          imageSrc={Image4.src}
+          imageAlt="Match Day"
+          category="Web Development"
+          projectLink="/projects/match-day"
+        />
+      </div>
+    </section>
+  </main>
+</ContentLayout>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  active?: "empathize" | "define" | "ideate" | "prototype" | "test";
+}
+
+const { active } = Astro.props as Props;
+
+const navItems = [
+  { name: "Empathize", href: "#empathize", key: "empathize" },
+  { name: "Define", href: "#define", key: "define" },
+  { name: "Ideate", href: "#ideate", key: "ideate" },
+  { name: "Prototype", href: "#prototype", key: "prototype" },
+  { name: "Test", href: "#test", key: "test" },
+];
+
+---
+
+<aside class="w-full md:w-64 flex-shrink-0 bg-gray-light rounded-lg p-4">
+    <h1 class="text-xl font-semibold">Project Steps</h1>
+  <ul class="flex flex-col gap-2">
+    {navItems.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          class={`text-black text-sm tracking-wide pb-1 border-b-2 transition-colors ${
+            active === item.key
+              ? "border-black font-semibold"
+              : "border-transparent hover:border-black/40"
+          }`}
+        >
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</aside>

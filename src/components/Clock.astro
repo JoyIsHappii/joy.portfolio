@@ -1,0 +1,51 @@
+---
+---
+
+<div class="container">
+      <div class="clock">
+        <label style="--i: 1"><span>I</span></label>
+        <label style="--i: 2"><span>II</span></label>
+        <label style="--i: 3"><span>III</span></label>
+        <label style="--i: 4"><span>IV</span></label>
+        <label style="--i: 5"><span>V</span></label>
+        <label style="--i: 6"><span>VI</span></label>
+        <label style="--i: 7"><span>VII</span></label>
+        <label style="--i: 8"><span>VIII</span></label>
+        <label style="--i: 9"><span>IX</span></label>
+        <label style="--i: 10"><span>X</span></label>
+        <label style="--i: 11"><span>XI</span></label>
+        <label style="--i: 12"><span>XII</span></label>
+        <div class="indicator">
+          <span class="hand hour"></span>
+          <span class="hand minute"></span>
+          <span class="hand second"></span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        const hourHand = document.querySelector(".hand.hour");
+        const minuteHand = document.querySelector(".hand.minute");
+        const secondHand = document.querySelector(".hand.second");
+        const body = document.body;
+    
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+    
+            const hourRotation = (hours % 12) * 30 + minutes * 0.5; // 30 degrees per hour + 0.5 degrees per minute
+            const minuteRotation = minutes * 6; // 6 degrees per minute
+            const secondRotation = seconds * 6; // 6 degrees per second
+    
+            hourHand.style.transform = `rotate(${hourRotation}deg)`;
+            minuteHand.style.transform = `rotate(${minuteRotation}deg)`;
+            secondHand.style.transform = `rotate(${secondRotation}deg)`;
+        }
+    
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call to set the clock immediately
+
+
+    </script>

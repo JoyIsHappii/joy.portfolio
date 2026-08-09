@@ -1,0 +1,105 @@
+---
+import Tag from "../components/Tag.astro";
+import Button from "../components/Button.astro";
+
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  category: "all" | "UX/UI Design" | "Web Development" | "Project Design";
+  projectLink: string;
+}
+
+const {
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+  category,
+  projectLink
+} = Astro.props as ProjectCardProps;
+---
+
+<article
+  class="
+  rounded-xl
+  overflow-hidden
+  bg-white/20
+  shadow-md
+  transition-shadow
+  duration-300
+  hover:shadow-lg
+  group
+  w-full
+  border border-2 border-primary
+
+
+"
+>
+  <!-- TOP CONTENT -->
+  <div class="flex flex-col">
+
+    <!-- IMAGE -->
+    <a
+      href={projectLink}
+      class="block w-full overflow-hidden bg-black"
+    >
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        class="
+          w-full
+          h-[230px]
+          object-contain
+          transition-transform
+          duration-500
+          group-hover:scale-[1.02]
+        
+        "
+      />
+    </a>
+
+    <div class="p-4 flex flex-col">
+
+    <!-- TITLE -->
+    <h3
+      class="
+        mt-4
+        text-[34px]
+        leading-none
+        font-normal
+        tracking-tight
+        text-black
+        
+      "
+    >
+      {title}
+    </h3>
+
+    <!-- CATEGORY -->
+   <Tag category={category} class="mt-2" />
+
+    <!-- DESCRIPTION -->
+    <p
+      class="
+        mt-4
+        max-w-[290px]
+
+        text-[15px]
+        leading-[1.2]
+        tracking-[0.08em]
+
+        font-mono
+        text-[#333333]
+      "
+    >
+      {description}
+    </p>
+
+  </div>
+
+
+ <Button href={projectLink} variant="primary" size="md" class="mt-4">View Project</Button>
+ </div>
+</article>

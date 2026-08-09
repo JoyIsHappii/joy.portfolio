@@ -1,0 +1,106 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import Skills from "../../sections/Skills.astro";
+import Portrait from "../../assets/room-elements/portrait.svg";
+import AwardImage from "../../assets/award-image.svg";
+
+const experience = [
+  {
+    heading: "5 years of",
+    role: "Project Designer",
+  },
+  {
+    heading: "4 years of",
+    role: "Architect & Graphic Designer",
+  },
+  {
+    heading: "1-year",
+    role: "Web & Graphic Design",
+  },
+];
+
+const loremParagraph =
+  "Potter ipsum wand elf parchment wingardium. Broomstick the brass holyhead galleons quaffle come 9¾ fairy. Newt three chance marauder's fritters. Lived wheels locket unicorn cores catherine again.";
+
+const chapters = [
+  "Chapter 1: Design Begins",
+  "Chapter 2: Project Management",
+  "Chapter 3: Into UI/UX Design",
+  "Chapter 4: Web Development",
+  "Chapter Final: What's next!?!",
+];
+---
+
+<ContentLayout title="About Me — Joy" active="about">
+  <main class="w-full flex flex-col gap-16 pb-24">
+    <!-- Experience -->
+    <section class="w-full max-w-6xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-14 pt-4">
+      {
+        experience.map((item) => (
+          <div class="flex flex-col gap-6">
+            <div class="w-40 h-40 rounded-full bg-black/10" />
+            <h3 class="!leading-tight">
+              {item.heading}
+              <br />
+              {item.role}
+            </h3>
+            <p class="text-gray-medium">{loremParagraph}</p>
+          </div>
+        ))
+      }
+    </section>
+
+    <Skills class="mt-4" />
+
+    <!-- About Me -->
+    <section class="w-full bg-brown-light/20 py-16">
+      <div class="max-w-6xl mx-auto px-6 md:px-8 flex flex-col md:flex-row items-center gap-14">
+        <div class="w-[280px] h-[280px] rounded-full overflow-hidden shrink-0 bg-brown-light/20">
+          <Portrait class="w-full h-full object-cover" />
+        </div>
+        <div class="flex flex-col gap-5 max-w-xl">
+          <h2>About Me</h2>
+          <p class="text-gray-medium">
+            After completing my Bachelor's and Master's degrees in
+            Architecture, I worked as a project designer for five years and
+            also took on freelance design work. During that time, I began
+            exploring digital product design, which sparked my interest in
+            UI/UX.
+          </p>
+          <p class="text-gray-medium">
+            This passion led me to move to Canada, where I completed a
+            UI/UX Design Co-op Diploma. I am currently studying Web
+            Development to expand my technical skills and create more
+            effective, user-friendly digital experiences.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapters -->
+    <section class="w-full max-w-6xl mx-auto px-6 md:px-8 flex flex-col lg:flex-row items-center gap-14">
+      <div class="flex-1 w-full flex flex-col">
+        {
+          chapters.map((chapter) => (
+            <div class="flex items-center justify-between border-b border-black/20 py-5">
+              <h5 class="!text-2xl">{chapter}</h5>
+              <button
+                type="button"
+                aria-label={`Play ${chapter}`}
+                class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shrink-0"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 1L12 7L2 13V1Z" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="flex-1 w-full max-w-md">
+        <img src={AwardImage.src} alt="7VAN project preview" class="w-full h-auto" />
+      </div>
+    </section>
+  </main>
+</ContentLayout>

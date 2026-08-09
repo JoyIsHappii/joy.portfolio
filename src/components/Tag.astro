@@ -1,0 +1,23 @@
+---
+interface TagProps {
+  category: "all" | "UX/UI Design" | "Web Development" | "Project Design" ;
+}
+
+const { category } = Astro.props as TagProps;
+
+const baseClasses = "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200";
+
+
+---
+
+{
+  category === "all" ? (
+    <span class={`${baseClasses} bg-gray-light text-black`}>All</span>
+  ) : category === "UX/UI Design" ? (
+    <span class={`${baseClasses} bg-blue-light text-blue-dark`}>UX/UI Design</span>
+  ) : category === "Web Development" ? (
+    <span class={`${baseClasses} bg-green-light text-green-dark`}>Web Development</span>
+  ) : category === "Project Design" ? (
+    <span class={`${baseClasses} bg-purple-light text-purple-dark`}>Project Design</span>
+  ) : null
+}
