@@ -1,0 +1,18 @@
+---
+import Button from "../components/Button.astro";
+import PortraitImage from "../assets/room-elements/portrait.svg";
+---
+
+<!-- About Me Section -->
+<section
+  class="bg-black/70 w-full rounded-[40px] flex flex-col items-center justify-center gap-4 py-12 px-4 md:px-0"
+>
+  <img
+    src={PortraitImage.src}
+    alt="Portrait"
+    class="w-full max-w-[120px] h-auto object-contain"
+  />  
+  <Button href="/about" variant="primary" size="md" class="mt-4"
+    >About Me →</Button
+  >
+</section>

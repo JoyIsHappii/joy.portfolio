@@ -1,270 +1,199 @@
 ---
-import Button from "../../components/Button.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
-
-import Image1 from "../../assets/hero/7van.png";
-import Image2 from "../../assets/hero/ippon.png";
-import Image4 from "../../assets/hero/matchday.png";
-
-import Tag from "../../components/Tag.astro";
 import Filter from "../../components/Filter.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
+
+import Image7Van from "../../assets/hero/7van-cover.svg";
+import ImageIppon from "../../assets/hero/ippon-cover.svg";
+import ImageGrounds from "../../assets/hero/grounds-cover.svg";
+import ImageBunny from "../../assets/hero/bunny-cover.svg";
+import ImageIcu from "../../assets/hero/icu-cover.svg";
+import ImageMatchDay from "../../assets/hero/matchday-cover.svg";
+
+import AwardSection from "../../sections/AwardSection.astro";
+import AboutFooter from "../../sections/AboutFooter.astro";
+
+import Portrait from "../../assets/room-elements/portrait.svg";
+
+import Backpack from "../../assets/room-elements/backpack.svg";
+import Camera from "../../assets/room-elements/camera.svg";
+
+import Button from "../../components/Button.astro";
+
+import HeroImage from "../../assets/hero/ippon.png";
 
 const { title = "Projects — Joy" } = Astro.props;
 ---
 
-<ContentLayout title={title}>
-
-  <!-- ================================= -->
-  <!-- FEATURED PROJECT -->
-  <!-- ================================= -->
-
-  <section id="awarded-project" class="w-full">
+<ContentLayout title={title} active="projects">
+  <main>
     <div
-      class="
-        max-w-6xl
-        mx-auto
-        px-6
-        py-16
-        md:py-20
-        grid
-        grid-cols-1
-        lg:grid-cols-2
-        items-center
-        gap-12
-        lg:gap-20
-      "
+      class="flex flex-row w-full max-w-[1280px]
+       gap-4 items-start justify-start py-8 px-4 md:px-0"
     >
-      <!-- LEFT -->
-      <div class="flex flex-col items-start gap-5">
-        <span class="bg-black text-white px-3 py-1 text-lg font-medium rounded-sm">Awarded Project</span>
-        
-        <h1 class="text-4xl md:text-5xl font-medium">
-          7VAN
-        </h1>
-        <Tag category="UX/UI Design" />
-
+      <div
+        id="hero"
+        class="w-full w-full flex flex-col
+         items-start justify-start gap-8 py-8 px-2 md:px-4"
+      >
         <p
-          class="
-            max-w-md
-            text-gray-dark
-            font-mono
-            text-sm
-            leading-relaxed
-          "
+          class="text-lg
+        font-normal
+        text-white
+        bg-black
+        px-4
+        py-2
+        rounded-lg"
+          data-aos="fade-down"
+          data-aos-duration="2000"
+          data-aos-delay="0"
         >
-          A responsive website for 7VAN, a Brazilian Jiu-Jitsu academy,
-          designed to attract new members and encourage sign-ups.
+          🎒 Take a look inside my backpack!
         </p>
 
-        <Button
-          href="/projects/7-van"
-          variant="primary"
-          size="md"
+        <blockquote
+          class="text-xl italic font-semibold tracking-tight text-heading"
         >
-          Explore my Projects
-        </Button>
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl
+        leading-none
+        font-normal
+        tracking-tight
+        text-black
+        ibm-plex-serif-medium-italic"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-delay="1000"
+          >
+            "Packed with ideas, experiments, and stories."
+          </h1>
+        </blockquote>
+        <span
+        class="flex flex-row gap-4"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        data-aos-delay="1500">
+          <Button
+            variant="primary"
+            href="/projects/#projects-header"
+            class="w-fit mt-2"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-delay="1500"
+            >Explore my projects </Button
+          >
+             <Button
+            variant="subtle"
+            href="/projects/#award-section"
+            class="w-fit mt-2"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-delay="1500"
+            >View Awarded Projects </Button
+          >
+        </span>
       </div>
-
-      <!-- RIGHT -->
       <div
-        class="
-          w-full
-          flex
-          items-center
-          justify-center
-        "
+        class="flex flex-col w-full
+      md:flex-row items-center
+      justify-center gap-4"
+        data-aos="fade-left"
+        data-aos-duration="1500"
+        data-aos-delay="1000"
       >
-        <img
-          src={Image1.src}
-          alt="7VAN project"
-          class="
-            w-full
-            max-w-[560px]
-            h-auto
-            object-contain
-          "
-        />
+        <img src={HeroImage.src} alt="Hero Image" class="w-full" />
       </div>
     </div>
-  </section>
-
-
-  <!-- ================================= -->
-  <!-- PROJECTS INTRO -->
-  <!-- ================================= -->
-
-  <section class="w-full">
+    <div id="award-section" class="w-full flex justify-center">
+      <AwardSection />
+      </div>
     <div
-      class="
-        max-w-6xl
-        mx-auto
-        px-6
-        py-14
-        md:py-16
-        grid
-        grid-cols-1
-        md:grid-cols-2
-        gap-8
-        md:gap-12
-        items-center
-        bg-brown
-      "
+    id="projects-header"
+      class="w-full flex flex-row justify-between 
+      items-center gap-4 py-8 px-4 md:px-0"
     >
       <h2
-        class="
-          text-4xl
-          md:text-5xl
-          font-normal
-        "
+        class="text-4xl md:text-5xl lg:text-6xl
+        font-normal
+        tracking-tight
+        text-black
+        w-full"
       >
-        Projects
+        All Projects
       </h2>
-
-      <p
-        class="
-          max-w-md
-          text-gray-dark
-          font-mono
-          text-sm
-          leading-relaxed
-        "
-      >
-        A cross-disciplinary body of work spanning UI/UX design,
-        web development, and architectural project design — unified
-        by a commitment to clarity and craft.
-      </p>
+      <Filter />
     </div>
-  </section>
-
-
-  <!-- ================================= -->
-  <!-- ALL PROJECTS -->
-  <!-- ================================= -->
-
-  <section id="all-projects" class="w-full">
     <div
-      class="
-        max-w-6xl
-        mx-auto
-        px-6
-        py-14
-        md:py-16
-        flex
-        flex-col
-        gap-10
-      "
+      id="projects"
+      class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4  px-4 md:px-0"
     >
+      <ProjectCard
+        title="7Van"
+        description="Developed a responsive website for a Brazilian Jiu-Jitsu academy, to encourage membership applications."
+        imageSrc={Image7Van.src}
+        imageAlt="7Van App"
+        category="UX/UI Design"
+        projectLink="/projects/7van"
+      />
+      <ProjectCard
+        title="Ippon"
+        description="A social media application for karate practitioners, to contain content and community about karate."
+        imageSrc={ImageIppon.src}
+        imageAlt="Ippon App"
+        category="UX/UI Design"
+        projectLink="/projects/ippon"
+      />
+                <ProjectCard
+        title="Bunny World"
+        description="Created an educational tool for children with learning disabilities."
+        imageSrc={ImageBunny.src}
+        imageAlt="Bunny World App"
+        category="UX/UI Design"
+        projectLink="/projects/bunny-world"
+      />
 
-      <!-- ================================= -->
-      <!-- FILTER ROW -->
-      <!-- ================================= -->
-
-      <div
-        class="
-          flex
-          flex-col
-          md:flex-row
-          md:items-center
-          md:justify-between
-          gap-5
-        "
-      >
-        <!-- LEFT FILTER -->
-        <Filter selectedCategory="all" />
-
-        <!-- RIGHT CONTROLS -->
-        <div class="flex items-center gap-3">
-
-          <!-- Grid Icon -->
-          <button
-            type="button"
-            aria-label="Grid view"
-            class="
-              grid
-              grid-cols-2
-              gap-[3px]
-              w-7
-              h-7
-              p-1
-            "
-          >
-            <span class="bg-black"></span>
-            <span class="bg-black"></span>
-            <span class="bg-black"></span>
-            <span class="bg-black"></span>
-          </button>
-
-          <!-- Sort -->
-          <button
-            type="button"
-            class="
-              rounded-full
-              bg-[#1F1F1F]
-              text-white
-              px-5
-              py-2.5
-              text-sm
-              font-medium
-              transition
-              hover:opacity-80
-            "
-          >
-            Sort by Date
-          </button>
-        </div>
-      </div>
-
-
-      <!-- ================================= -->
-      <!-- PROJECT CARD GRID -->
-      <!-- ================================= -->
-
-      <div
-        class="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-3
-          gap-x-6
-          gap-y-8
-          items-stretch
-          w-full
-        "
-      >
-        <ProjectCard
-          title="7Van"
-          description="A responsive website for a Brazilian Jiu-Jitsu academy, designed to attract new members and encourage sign-ups."
-          imageSrc={Image1.src}
-          imageAlt="7VAN"
-          category="UX/UI Design"
-          projectLink="/projects/7-van"
-        />
-
-        <ProjectCard
-          title="Ippon App"
-          description="A social media application for karate practitioners, featuring karate-focused content and community."
-          imageSrc={Image2.src}
-          imageAlt="Ippon"
-          category="UX/UI Design"
-          projectLink="/projects/ippon"
-        />
-
-        <ProjectCard
-          title="Match Day"
-          description="A sports analytics platform for football enthusiasts."
-          imageSrc={Image4.src}
-          imageAlt="Match Day"
-          category="Web Development"
-          projectLink="/projects/match-day"
-        />
-      </div>
-
+      <ProjectCard
+        title="Grounds"
+        description="A platform that connects coffee enthusiasts with local coffee shops and roasters."
+        imageSrc={ImageGrounds.src}
+        imageAlt="Grounds App"
+        category="Web Development"
+        projectLink="https://grounds-cafe.netlify.app"
+      />
+         <ProjectCard
+        title="Match Day"
+        description="A native chat application for football fans to connect and discuss matches in real-time."
+        imageSrc={ImageMatchDay.src}
+        imageAlt="Match Day App"
+        category="Web Development"
+        projectLink=""
+      />
+            <ProjectCard
+        title="Negative Pressure Monitor"
+        description="Designed a negative-pressure room monitoring system to improve COVID-19 safety.
+"
+        imageSrc={ImageIcu.src}
+        imageAlt="Negative Pressure Monitor"
+        category="Project Design"
+        projectLink="https://grounds-cafe.netlify.app"
+      />
+  
+  
     </div>
-  </section>
-  <section id="about-me" class="w-full">
+    <div class="w-full flex justify-center py-12">
+      <AboutFooter />
+    </div>
+    <footer
+      class="w-full flex flex-col items-center justify-center gap-4 py-8 px-4 md:px-0"
+    >
+      <p
+        class="text-sm md:text-lg lg:text-xl
+        font-normal
+        text-black"
+      >
+        © 2024 JoyisHappii. All rights reserved.
+      </p>
+    </footer>
 
-    
-  </section>
-
+  </main>
 </ContentLayout>

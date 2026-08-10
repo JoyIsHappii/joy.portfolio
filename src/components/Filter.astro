@@ -1,161 +1,61 @@
 ---
-type Category =
-  | "all"
-  | "UX/UI Design"
-  | "Web Development"
-  | "Project Design";
+type Category = "all" | "UX/UI Design" | "Web Development" | "Project Design";
 
-interface FilterProps {
-  selectedCategory?: Category;
-}
-
+interface FilterProps { selectedCategory?: Category; }
 const { selectedCategory = "all" } = Astro.props as FilterProps;
 
-const categories: Category[] = [
-  "all",
-  "UX/UI Design",
-  "Web Development",
-  "Project Design",
+const categories: { value: Category; label: string }[] = [
+{value: "all", label: "All"},
+{value: "UX/UI Design", label: "UX/UI Design"},
+{value: "Web Development", label: "Web Development"},
+{value: "Project Design", label: "Project Design"},
 ];
-
-const categoryColors: Record<Category, string> = {
-  "UX/UI Design": "bg-blue-100 text-blue-800",
-  "Web Development": "bg-green-100 text-green-800",
-  "Project Design": "bg-purple-100 text-purple-800",
-  all: "bg-gray-200 text-gray-800",
+const categoryClasses: Record<Category, string> = {
+  all: "bg-gray-200 text-gray-800 rounded-full px-4 py-2 hover:bg-gray-300 hover:text-gray-900",
+  "UX/UI Design": "bg-blue-100 text-blue-800 rounded-full px-4 py-2 hover:bg-blue-200 hover:text-blue-900",
+  "Web Development": "bg-green-100 text-green-800 rounded-full px-4 py-2 hover:bg-green-200 hover:text-green-900",
+  "Project Design": "bg-purple-100 text-purple-800 rounded-full px-4 py-2 hover:bg-purple-200 hover:text-purple-900",
 };
-
-const inactiveClasses =
-  "bg-white text-gray-600 hover:bg-gray-100";
-
-const baseClasses =
-  "inline-flex items-center w-fit px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer";
 ---
 
 <div
-  class="flex flex-row flex-wrap gap-2"
   data-project-filter
   data-selected-category={selectedCategory}
+  class="w-full flex flex-row items-center justify-center gap-4 flex-wrap"
 >
-  {
-    categories.map((category) => {
-      const isSelected = selectedCategory === category;
-
-      return (
-        <button
-          type="button"
-          data-filter-category={category}
-          aria-pressed={isSelected}
-          data-active-classes={categoryColors[category]}
-          class:list={[
-            baseClasses,
-            isSelected
-              ? categoryColors[category]
-              : inactiveClasses,
-          ]}
-        >
-          {category === "all" ? "All" : category}
-        </button>
-      );
-    })
-  }
+  {categories.map((category) => (
+    <button
+      type="button"
+      data-filter-category={category.value}
+      aria-pressed={category.value === selectedCategory}
+      class={`${categoryClasses[category.value]}`}
+    >
+      {category.label}
+    </button>
+  ))}
 </div>
 
 <script>
   function setupProjectFilter() {
-    const filterRoot =
-      document.querySelector<HTMLElement>("[data-project-filter]");
+    const filterRoot = document.querySelector<HTMLElement>("[data-project-filter]");
+    if (!filterRoot || filterRoot.dataset.ready === "true") return;
+    filterRoot.dataset.ready = "true";
 
-    if (!filterRoot) return;
+    const buttons = Array.from(filterRoot.querySelectorAll<HTMLButtonElement>("[data-filter-category]"));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-project-card]"));
 
-    const buttons = Array.from(
-      filterRoot.querySelectorAll<HTMLButtonElement>(
-        "[data-filter-category]"
-      )
-    );
-
-    const cards = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        "[data-project-card]"
-      )
-    );
-
-    const colorClasses = [
-      "bg-blue-100",
-      "text-blue-800",
-      "bg-green-100",
-      "text-green-800",
-      "bg-purple-100",
-      "text-purple-800",
-      "bg-gray-200",
-      "text-gray-800",
-    ];
-
-    const setActiveCategory = (category: string) => {
-      buttons.forEach((button) => {
-        const isActive =
-          button.dataset.filterCategory === category;
-
-        button.setAttribute(
-          "aria-pressed",
-          String(isActive)
-        );
-
-        // Remove all possible category colors
-        button.classList.remove(...colorClasses);
-
-        if (isActive) {
-          const activeClasses =
-            button.dataset.activeClasses?.split(" ") ?? [];
-
-          button.classList.remove(
-            "bg-white",
-            "text-gray-600",
-            "hover:bg-gray-100"
-          );
-
-          button.classList.add(...activeClasses);
-        } else {
-          button.classList.add(
-            "bg-white",
-            "text-gray-600",
-            "hover:bg-gray-100"
-          );
-        }
-      });
-
+    const selectCategory = (category: string) => {
+      buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.filterCategory === category)));
       cards.forEach((card) => {
-        const cardCategory =
-          card.dataset.category;
-
-        const shouldShow =
-          category === "all" ||
-          cardCategory === category;
-
-        card.classList.toggle(
-          "hidden",
-          !shouldShow
-        );
+        const show = category === "all" || card.dataset.category === category;
+        card.hidden = !show;
       });
     };
 
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        setActiveCategory(
-          button.dataset.filterCategory ?? "all"
-        );
-      });
-    });
-
-    setActiveCategory(
-      filterRoot.dataset.selectedCategory ?? "all"
-    );
+    buttons.forEach((button) => button.addEventListener("click", () => selectCategory(button.dataset.filterCategory ?? "all")));
+    selectCategory(filterRoot.dataset.selectedCategory ?? "all");
   }
 
   setupProjectFilter();
-
-  document.addEventListener(
-    "astro:page-load",
-    setupProjectFilter
-  );
+  document.addEventListener("astro:page-load", setupProjectFilter);
 </script>

@@ -22,10 +22,7 @@ const {
 } = Astro.props as Props;
 
 const sizes: Record<string, string> = {
-  // default — used across content pages (cards, CTAs, footers)
   md: "px-6 py-2.5 text-base shadow-sm",
-  // reserved for the illustrated homepage desk scene, where the chunkier
-  // 3D-bevel button matches the room's tactile, hand-drawn objects
   lg: "px-8 py-3 text-xl shadow-[0_4px_8px_rgba(0,0,0,0.4),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-2px_4px_rgba(0,0,0,0.5)]",
 };
 
@@ -35,7 +32,7 @@ const base =
 const variants: Record<string, string> = {
   primary: "bg-brown-dark text-white hover:bg-black",
   neutral: "bg-white text-black border border-black/15 hover:bg-black/5",
-  subtle: "bg-transparent text-black hover:bg-black/5",
+  subtle: "bg-transparent text-brown-dark border-2 border-brown-dark hover:bg-black/5 backdrop-blur-[6px]",
   disabled: "bg-gray-medium/20 text-gray-medium border border-gray-medium/20",
   danger: "bg-red-500 text-white hover:bg-red-700",
 };

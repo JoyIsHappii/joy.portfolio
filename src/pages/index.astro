@@ -10,9 +10,9 @@ import Table from "../assets/room-elements/table.svg";
 import Plane from "../assets/room-elements/plane.svg";
 
 import Radio from "../components/Radio.astro";
-
 import Layout from "../layouts/MainLayout.astro";
 ---
+
 
 <Layout title="Portfolio" active="home">
 
@@ -49,7 +49,7 @@ import Layout from "../layouts/MainLayout.astro";
     <!-- Plane -->
     <a
       href="https://www.linkedin.com/in/joykosol/" target="_blank" rel="noopener noreferrer"
-      class=" absolute left-[100px] top-[100px] w-[200px] z-20 hover:scale-105 transition-transform duration-300"
+      class=" absolute left-[100px] top-[100px] w-[200px] z-20 desk-item"
     >
       <Plane class="w-full" />
       
@@ -59,61 +59,99 @@ import Layout from "../layouts/MainLayout.astro";
     <!-- BACKPACK → PROJECTS -->
     <a
       href="/projects"
-      class=" absolute left-[146px] top-[210px] w-[334px] z-20 hover:scale-105 transition-transform duration-300"
+      class=" absolute left-[146px] top-[210px] w-[334px] z-20 desk-item"
     >
-      <Backpack class="w-full" />
+      <Backpack class="w-full hover-label" />
     </a>
 
 
     <!-- MONITOR → PROJECTS -->
-    <a
-      href="/projects"
-      data-home-project-transition
-      data-aos="fade-down"
-      data-aos-duration="2000"
-      data-aos-delay="200"
-      class="absolute left-[397px] top-[190px] w-[485px] z-20 hover:scale-105 transition-transform duration-300"
+<!-- MONITOR / WORKSPACE GUIDE -->
+<div
+  class="absolute left-[397px] top-[190px] w-[485px] z-20"
+>
+  <Monitor class="w-full" />
+
+  <div
+    class="absolute inset-0 flex items-start justify-center w-[80%] h-[80%] m-auto"
+  >
+    <!-- First message -->
+    <div
+      id="first-message"
+      class="flex flex-col items-start justify-center pt-10 px-10 gap-4 text-start text-white"
     >
-      <Monitor class="w-full" />
-
-      <div
-        class="absolute inset-0 flex items-center justify-center pointer-events-none "
+      <p
+        class="text-lg font-normal"
+        data-aos="zoom-in-up"
+        data-aos-duration="2000"
       >
-        <div
-          class="text-white text-center pointer-events-auto flex flex-col items-center justify-center"
-        >
-          <span class="text-lg font-normal"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-          data-aos-delay="1000"
-          >
-            Hello 👋 Welcome to my workspace 🎄
-  </span>
-  <span class="text-lg font-normal mt-4"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-          data-aos-delay="1500"
-          >
-            "Everything here has a story to tell. "
-          </span>
+        Hello 👋 Welcome to my workspace 🎄
+      </p>
+        <p
+        class="text-lg font-normal"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        data-aos-delay="1000"
+      >
+        Everything here tells a story about me, my work, and my hobbies.
+      </p>
+            <p
+        class="text-lg font-normal"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        data-aos-delay="1500"
+      >
+        Click on the items to explore and learn more about me!
+      </p>
 
-          <span class="text-lg font-normal mt-4"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-          data-aos-delay="2000"
-          >
-            Enjoy exploring <br /> or click here to start!.
-            <span class="terminal-cursor"> ▮</span>
-          </span>
-        </div>
-      </div>
-    </a>
+      <button
+        id="open-help"
+        type="button"
+        class="cursor-pointer mt-4 underline underline-offset-4 transition hover:text-[#E9DCC9]"
+        aria-controls="second-message"
+        aria-expanded="false"
+        data-aos="zoom-in"
+        data-aos-duration="2000"
+        data-aos-delay="2500"
+      >
+        Hint?
+      </button>
+    </div>
+
+    <!-- Help message -->
+    <div
+      id="second-message"
+      class="flex flex-col items-start justify-center pt-10 px-10 text-start text-white"
+      hidden
+    >
+      <p class="mb-3 text-base">
+        Here’s how to explore:
+      </p>
+
+      <ul class="space-y-2 text-sm text-left">
+        <li>🎒 Backpack — View my projects</li>
+        <li>⭐ Trophy — View my awarded project</li>
+        <li>📷 Camera — See my hobbies</li>
+        <li>🖼️ Portrait — Learn more about me</li>
+        <li>✈️ Plane — Connect with me on LinkedIn</li>
+      </ul>
+
+      <button
+        id="close-help"
+        type="button"
+        class="cursor-pointer mt-4 underline underline-offset-4 transition hover:text-[#E9DCC9]"
+      >
+        ← Go back
+      </button>
+    </div>
+  </div>
+</div>
 
 
     <!-- Camera -->
     <a
       href="https://www.instagram.com/joy.is.happii/"
-      class="absolute left-[800px] top-[510px] w-[161px] z-30 hover:scale-105 transition-transform duration-300"
+      class="absolute left-[800px] top-[510px] w-[161px] z-30 desk-item"
     >
       <Camera class="w-full" />
     </a>
@@ -121,9 +159,9 @@ import Layout from "../layouts/MainLayout.astro";
 
     <!-- Trophy -->
     <a
-      href="/projects"
-      class="absolute left-[908px] top-[295px] w-[197px] z-10 hover:scale-105 transition-transform duration-300"
-
+      href="/projects/7-van"
+      class="absolute left-[908px] top-[295px] w-[197px] z-10 desk-item"
+      id="trophy-link"
     >
       <Trophy class="w-full" />
     </a>
@@ -132,7 +170,7 @@ import Layout from "../layouts/MainLayout.astro";
     <!-- Portrait -->
     <a
       href="/about"
-      class="absolute left-[901px] top-[67px] w-[196px] z-30 hover:scale-105 transition-transform duration-300"
+      class="absolute left-[901px] top-[67px] w-[196px] z-30 desk-item"
     >
       <Portrait class="w-full" />
     </a>
@@ -143,75 +181,77 @@ import Layout from "../layouts/MainLayout.astro";
 
 
 <script>
-  import { navigate } from "astro:transitions/client";
+  function setupMonitorHelp() {
+    const firstMessage =
+      document.querySelector<HTMLElement>("#first-message");
 
-  function setupProjectTransition() {
-    const links = document.querySelectorAll<HTMLAnchorElement>(
-      "[data-home-project-transition]"
-    );
+    const secondMessage =
+      document.querySelector<HTMLElement>("#second-message");
 
-    const overlay = document.getElementById("project-transition");
+    const openButton =
+      document.querySelector<HTMLButtonElement>("#open-help");
 
-    const video = document.getElementById(
-      "project-transition-video"
-    ) as HTMLVideoElement | null;
+    const closeButton =
+      document.querySelector<HTMLButtonElement>("#close-help");
 
-    if (!links.length || !overlay || !video) {
-      console.log("Transition elements not found");
+    if (
+      !firstMessage ||
+      !secondMessage ||
+      !openButton ||
+      !closeButton
+    ) {
       return;
     }
 
-    links.forEach((link) => {
-      // Don't attach twice
-      if (link.dataset.transitionInitialized === "true") {
-        return;
-      }
+    // Prevent duplicate listeners after Astro page transitions.
+    if (openButton.dataset.initialized === "true") {
+      return;
+    }
 
-      link.dataset.transitionInitialized = "true";
+    openButton.dataset.initialized = "true";
 
-      link.addEventListener("click", async (event) => {
-        event.preventDefault();
+    function showHelp() {
+      firstMessage.hidden = true;
+      secondMessage.hidden = false;
 
-        console.log("Project transition started");
+      openButton.setAttribute("aria-expanded", "true");
 
-        const href = link.getAttribute("href");
+      // Move keyboard focus to the back button.
+      closeButton.focus();
+    }
 
-        if (!href) {
-          return;
-        }
+    function hideHelp() {
+      secondMessage.hidden = true;
+      firstMessage.hidden = false;
 
-        // Show overlay
-        overlay.classList.remove("hidden");
+      openButton.setAttribute("aria-expanded", "false");
 
-        // Reset video
-        video.currentTime = 0;
+      // Return keyboard focus to the help button.
+      openButton.focus();
+    }
 
-        try {
-  // Play video
-  await video.play();
-
-  console.log("Video playing");
-
-  setTimeout(() => {
-    video.pause();
-    navigate(href);
-  }, 5000);
-
-}  catch (error) {
-          console.error("Video failed:", error);
-
-          // Fallback if browser blocks video
-          navigate(href);
-        }
-      });
-    });
+    openButton.addEventListener("click", showHelp);
+    closeButton.addEventListener("click", hideHelp);
   }
 
-  // Run when homepage first loads
-  document.addEventListener("astro:page-load", () => {
-    setupProjectTransition();
-  });
+  setupMonitorHelp();
 
-  // Also run immediately
-  setupProjectTransition();
+  // Required when using Astro ClientRouter/view transitions.
+  document.addEventListener(
+    "astro:page-load",
+    setupMonitorHelp
+  );
 </script>
+
+<style>
+  .desk-item {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: bottom center;
+    cursor: pointer;
+  }
+
+  .desk-item:hover {
+    transform: scale(1.10);
+    shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>

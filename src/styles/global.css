@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+
 @theme {
-  --color-green-dark: #9da855;
+  --color-green-dark: #80846B;
   --color-green-light: #dfe2c9;
+
+  --color-cream: #F5EFE3;
 
   --color-brown-dark: #5c3932;
   --color-brown-medium: #e9dcc9;
@@ -19,9 +25,10 @@
 }
 
 body {
-  font-family: "Inter", system-ui, sans-serif;
-  color: var(--color-black);
-}
+ font-family: "Quicksand", sans-serif;
+ 
+ font-weight: 400;
+  line-height: 1.5;}
 
 h1,
 h2,
@@ -29,41 +36,104 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Baskervville", Georgia, serif;
-  font-weight: 700;
+font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+  font-style: normal;
   line-height: 1.2;
-  color: var(--color-black);
 }
 
-h1 {
-  font-size: 48px;
+.ibm-plex-serif-thin {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 100;
+  font-style: normal;
 }
-h2 {
-  font-size: 36px;
+
+.ibm-plex-serif-extralight {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 200;
+  font-style: normal;
 }
-h3 {
-  font-size: 28px;
+
+.ibm-plex-serif-light {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 300;
+  font-style: normal;
 }
-h4 {
-  font-size: 24px;
+
+.ibm-plex-serif-regular {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+  font-style: normal;
 }
-h5 {
-  font-size: 20px;
+
+.ibm-plex-serif-medium {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 500;
+  font-style: normal;
 }
-h6 {
-  font-size: 18px;
+
+.ibm-plex-serif-semibold {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 600;
+  font-style: normal;
 }
+
+.ibm-plex-serif-bold {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ibm-plex-serif-thin-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.ibm-plex-serif-extralight-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.ibm-plex-serif-light-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ibm-plex-serif-regular-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ibm-plex-serif-medium-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ibm-plex-serif-semibold-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.ibm-plex-serif-bold-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
 
 p {
+ font-family: "Quicksand", sans-serif;
+   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
 }
 
-/* Opt-in monospace, e.g. the homepage terminal screen — no longer a blanket
-   override on every <p>/<span> in the site. */
-.font-terminal {
-  font-family: "Cutive Mono", monospace;
-}
 
 .room-background {
   background-image: url("../assets/room-elements/background.svg");
@@ -77,12 +147,13 @@ p {
 
 .main-bg {
   background-image: url("../assets/bg.svg");
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+
   background-size: cover;
-  background-position: top;
+  background-position: center top;
   background-repeat: no-repeat;
-  position: absolute;
+  background-attachment: fixed;
 }
 
 .bg-brown {

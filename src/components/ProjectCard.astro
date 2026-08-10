@@ -19,6 +19,14 @@ const {
   category,
   projectLink,
 } = Astro.props as ProjectCardProps;
+
+
+const bgColors = {
+  "UX/UI Design": "bg-blue-100",
+  "Web Development": "bg-green-100",
+  "Project Design": "bg-purple-100",
+  all: "bg-gray-200",
+};
 ---
 
 <article
@@ -27,14 +35,25 @@ const {
   class="
     w-full
     rounded-[22px]
-    bg-[#E6E9D0]/65
-    backdrop-blur-[24px]
     border
-    border-white/40
     overflow-hidden
     flex
     flex-col
     justify-between
+    hover:scale-[1.02]
+    transition-transform
+    duration-300
+    ease-in-out
+    bg-transparent
+   border-white/60
+    backdrop-blur-[6px]
+    shadow-lg
+    shadow-black/20
+    group
+
+    hover:bg-black/80
+    hover:border-black/20
+
   "
 >
   <!-- IMAGE -->
@@ -42,7 +61,7 @@ const {
     <img
       src={imageSrc}
       alt={imageAlt}
-      class="w-full h-[220px] object-cover"
+      class="w-full h-full object-cover"
     />
   </a>
 
@@ -50,12 +69,13 @@ const {
   <div class="p-4 flex flex-col">
     <h3
       class="
-        mt-4
         text-[34px]
         leading-none
         font-normal
         tracking-tight
         text-black
+        hover:text-white
+        group-hover:text-white
       "
     >
       {title}
@@ -71,14 +91,15 @@ const {
         leading-[1.2]
         tracking-[0.08em]
         font-mono
-        text-[#333333]
+        text-black
+        group-hover:text-white
       "
     >
       {description}
     </p>
   </div>
 
-  <div class="p-4 pt-0">
+  <div class="p-4 pt-0 group-hover:bg-black/80">
     <Button
       href={projectLink}
       variant="primary"
