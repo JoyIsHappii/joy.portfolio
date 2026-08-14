@@ -2,7 +2,7 @@
 import "../styles/global.css";
 
 interface Props {
-  variant?: "primary" | "neutral" | "subtle" | "disabled" | "danger";
+  variant?: "primary" | "secondary" | "disabled" | "danger";
   size?: "md" | "lg";
   type?: "button" | "submit" | "reset";
   href?: string;
@@ -30,11 +30,17 @@ const base =
   "inline-flex items-center justify-center gap-1 rounded-full font-medium tracking-wide transition-all duration-200";
 
 const variants: Record<string, string> = {
-  primary: "bg-brown-dark text-white hover:bg-black",
-  neutral: "bg-white text-black border border-black/15 hover:bg-black/5",
-  subtle: "bg-transparent text-brown-dark border-2 border-brown-dark hover:bg-black/5 backdrop-blur-[6px]",
-  disabled: "bg-gray-medium/20 text-gray-medium border border-gray-medium/20",
-  danger: "bg-red-500 text-white hover:bg-red-700",
+  primary:
+    "border border-white/20 bg-brown-dark text-white hover:border-brown-dark hover:bg-black dark:border-white dark:bg-white dark:text-black dark:hover:border-brown-dark dark:hover:bg-brown-dark dark:hover:text-white",
+
+  secondary:
+    "border border-brown-dark/20 bg-cream/70 text-brown-dark hover:border-black hover:bg-cream hover:text-black dark:border-white/30 dark:bg-black dark:text-white dark:hover:border-brown-dark dark:hover:bg-brown-dark/30",
+
+  disabled:
+    "cursor-not-allowed border border-black/10 bg-black/5 text-black/30 dark:border-white/10 dark:bg-white/10 dark:text-white/30",
+
+  danger:
+    "border border-brown-dark bg-brown-dark text-white hover:border-black hover:bg-black dark:hover:border-white dark:hover:bg-white dark:hover:text-black",
 };
 
 const disabledStyle = "pointer-events-none opacity-60";

@@ -12,14 +12,9 @@ import Sidebar from "../../components/ProjectSideBar.astro";
 import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
 
-const title = "7VAN Academy";
-const category = "UX/UI Design";
-
-const description =
-  "A responsive website for 7VAN, a Brazilian Jiu-Jitsu academy, designed to attract new members and encourage sign-ups.";
 ---
 
-<ProjectDetailLayout title={`${title} — Joy`}>
+<ProjectDetailLayout title={`projects — 7VAN`} active="projects">
 
   <!-- =========================================
        BREADCRUMB
@@ -31,7 +26,7 @@ const description =
         href: "/projects",
       },
       {
-        label: "7VAN Academy",
+        label: "7VAN",
         href: "/projects/7van",
       },
     ]}
@@ -42,12 +37,13 @@ const description =
        HERO
   ========================================== -->
   <ProjectDetailHero
-    title={title}
-    description={description}
+    title="7VAN"
+    description=  "A responsive website for 7VAN, a Brazilian Jiu-Jitsu academy, designed to attract new members and encourage sign-ups.";
+
     imageSrc={HeroImage.src}
     imageAlt="7VAN Academy"
-    category={category}
-    projectLink="https://www.7van.com.br/"
+    category="UX/UI Design"
+    projectLink="/projects/7van"
   />
 
   <!-- =========================================
@@ -62,8 +58,7 @@ const description =
       "Collaborated with developers to ensure the successful implementation of the design.",
     ]}
     challenges={[
-      "Designing a responsive website that effectively communicates the brand's identity and values.",
-      "Ensuring a seamless user experience across different devices and screen sizes.",
+      "Create an engaging website that welcomes newcomers to Brazilian Jiu Jitsu, providing essential information to encourage membership at 7VAN and support the community's growth."
     ]}
     solutions={[
       "Conducted user research to understand the target audience and their needs.",
