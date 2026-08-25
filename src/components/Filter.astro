@@ -1,61 +1,340 @@
 ---
-type Category = "all" | "UX/UI Design" | "Web Development" | "Project Design";
+type Category =
+  | "all"
+  | "UX Design"
+  | "UI Design"
+  | "Web Development"
+  | "Project Design";
 
-interface FilterProps { selectedCategory?: Category; }
-const { selectedCategory = "all" } = Astro.props as FilterProps;
+interface FilterProps {
+  selectedCategory?: Category;
+}
 
-const categories: { value: Category; label: string }[] = [
-{value: "all", label: "All"},
-{value: "UX/UI Design", label: "UX/UI Design"},
-{value: "Web Development", label: "Web Development"},
-{value: "Project Design", label: "Project Design"},
+const {
+  selectedCategory = "all",
+} = Astro.props as FilterProps;
+
+const categories: {
+  value: Category;
+  label: string;
+}[] = [
+  {
+    value: "all",
+    label: "All",
+  },
+  {
+    value: "UX Design",
+    label: "UX Design",
+  },
+  {
+    value: "UI Design",
+    label: "UI Design",
+  },
+  {
+    value: "Web Development",
+    label: "Web Development",
+  },
+  {
+    value: "Project Design",
+    label: "Project Design",
+  },
 ];
+
+const baseClasses = `
+  group
+  relative
+  flex
+  w-full
+  items-center
+  gap-3
+  border
+  border-brown-dark
+  bg-transparent
+  px-4
+  py-2
+  text-left
+  text-brown-dark
+  transition-all
+  duration-200
+  ease-in-out
+
+  before:block
+  before:h-2.5
+  before:w-2.5
+  before:shrink-0
+  before:rounded-full
+  before:content-['']
+  before:transition-colors
+  before:duration-200
+
+  hover:bg-black
+  hover:text-white
+  hover:before:bg-white
+
+  aria-pressed:border-2
+  aria-pressed:border-brown-light
+  aria-pressed:bg-brown-light
+  aria-pressed:font-semibold
+  aria-pressed:text-white
+  aria-pressed:before:bg-white
+`;
+
 const categoryClasses: Record<Category, string> = {
-  all: "bg-gray-200 text-gray-800 rounded-full px-4 py-2 hover:bg-gray-300 hover:text-gray-900",
-  "UX/UI Design": "bg-blue-100 text-blue-800 rounded-full px-4 py-2 hover:bg-blue-200 hover:text-blue-900",
-  "Web Development": "bg-green-100 text-green-800 rounded-full px-4 py-2 hover:bg-green-200 hover:text-green-900",
-  "Project Design": "bg-purple-100 text-purple-800 rounded-full px-4 py-2 hover:bg-purple-200 hover:text-purple-900",
+  all: `
+    before:bg-gray-500
+  `,
+
+  "UX Design": `
+    before:bg-blue-500
+  `,
+
+  "UI Design": `
+    before:bg-yellow-500
+  `,
+
+  "Web Development": `
+    before:bg-green-500
+  `,
+
+  "Project Design": `
+    before:bg-purple-500
+  `,
 };
 ---
 
+<!-- Project Filter -->
 <div
   data-project-filter
   data-selected-category={selectedCategory}
-  class="w-full flex flex-row items-center justify-center gap-4 flex-wrap"
+  class="
+    flex
+    w-full
+    flex-col
+    items-start
+    gap-2
+  "
 >
-  {categories.map((category) => (
-    <button
-      type="button"
-      data-filter-category={category.value}
-      aria-pressed={category.value === selectedCategory}
-      class={`${categoryClasses[category.value]}`}
-    >
-      {category.label}
-    </button>
-  ))}
+  {
+    categories.map((category) => (
+      <button
+        type="button"
+        data-filter-category={category.value}
+        aria-pressed={category.value === selectedCategory}
+        class:list={[
+          baseClasses,
+          categoryClasses[category.value],
+        ]}
+      >
+        <span>{category.label}</span>
+
+        <!-- Project count -->
+        <span
+          data-project-count
+          aria-label={`Number of ${category.label} projects`}
+          class="
+            ml-auto
+            inline-flex
+            h-6
+            min-w-6
+            items-center
+            justify-center
+            rounded-full
+            bg-brown-dark/10
+            px-1.5
+            text-xs
+            font-semibold
+            text-current
+            transition-colors
+            duration-200
+            group-hover:bg-white/20
+            group-aria-[pressed=true]:bg-white/20
+          "
+        >
+          0
+        </span>
+      </button>
+    ))
+  }
 </div>
 
 <script>
   function setupProjectFilter() {
-    const filterRoot = document.querySelector<HTMLElement>("[data-project-filter]");
-    if (!filterRoot || filterRoot.dataset.ready === "true") return;
+    const filterRoot = document.querySelector<HTMLElement>(
+      "[data-project-filter]",
+    );
+
+    if (!filterRoot || filterRoot.dataset.ready === "true") {
+      return;
+    }
+
     filterRoot.dataset.ready = "true";
 
-    const buttons = Array.from(filterRoot.querySelectorAll<HTMLButtonElement>("[data-filter-category]"));
-    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-project-card]"));
+    const buttons = Array.from(
+      filterRoot.querySelectorAll<HTMLButtonElement>(
+        "[data-filter-category]",
+      ),
+    );
 
-    const selectCategory = (category: string) => {
-      buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.filterCategory === category)));
-      cards.forEach((card) => {
-        const show = category === "all" || card.dataset.category === category;
-        card.hidden = !show;
+    /*
+     * Get all regular project cards.
+     * Anything inside the Award section is excluded.
+     */
+    const projectItems = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        "[data-project-item]",
+      ),
+    ).filter(
+      (projectItem) =>
+        !projectItem.closest("[data-award-section]"),
+    );
+
+    const awardSection =
+      document.querySelector<HTMLElement>(
+        "[data-award-section]",
+      );
+
+    const sevenVanContainer =
+      document.querySelector<HTMLElement>(
+        "[data-sevenvan-card]",
+      );
+
+    /*
+     * Return the categories assigned to a project.
+     */
+    function getProjectCategories(
+      projectItem: HTMLElement,
+    ): string[] {
+      return (projectItem.dataset.category ?? "")
+        .split(",")
+        .map((category) => category.trim())
+        .filter(Boolean);
+    }
+
+    /*
+     * Count all projects in each category.
+     * The Award section is not included.
+     * The hidden 7VAN card is included.
+     */
+    function updateProjectCounts() {
+      buttons.forEach((button) => {
+        const category =
+          button.dataset.filterCategory ?? "all";
+
+        const projectCount =
+          category === "all"
+            ? projectItems.length
+            : projectItems.filter((projectItem) =>
+                getProjectCategories(projectItem).includes(
+                  category,
+                ),
+              ).length;
+
+        const countElement =
+          button.querySelector<HTMLElement>(
+            "[data-project-count]",
+          );
+
+        if (countElement) {
+          countElement.textContent =
+            String(projectCount);
+        }
       });
-    };
+    }
 
-    buttons.forEach((button) => button.addEventListener("click", () => selectCategory(button.dataset.filterCategory ?? "all")));
-    selectCategory(filterRoot.dataset.selectedCategory ?? "all");
+    /*
+     * Select a category and filter the projects.
+     */
+    function selectCategory(
+      selectedCategory: string,
+    ) {
+      const isAllSelected =
+        selectedCategory === "all";
+
+      // Update the selected filter button
+      buttons.forEach((button) => {
+        const isSelected =
+          button.dataset.filterCategory ===
+          selectedCategory;
+
+        button.setAttribute(
+          "aria-pressed",
+          String(isSelected),
+        );
+      });
+
+      // Filter all regular project cards
+      projectItems.forEach((projectItem) => {
+        const projectCategories =
+          getProjectCategories(projectItem);
+
+        const shouldShow =
+          isAllSelected ||
+          projectCategories.includes(
+            selectedCategory,
+          );
+
+        projectItem.hidden = !shouldShow;
+      });
+
+      /*
+       * Show the Award section only when
+       * the "All" filter is selected.
+       */
+      if (awardSection) {
+        awardSection.hidden = !isAllSelected;
+      }
+
+      /*
+       * Hide the 7VAN card when "All" is selected.
+       * Show it when UX Design or UI Design is selected.
+       */
+      if (sevenVanContainer) {
+        const sevenVanProject =
+          sevenVanContainer.querySelector<HTMLElement>(
+            "[data-project-item]",
+          );
+
+        const sevenVanCategories = sevenVanProject
+          ? getProjectCategories(sevenVanProject)
+          : [];
+
+        const shouldShowSevenVan =
+          !isAllSelected &&
+          sevenVanCategories.includes(
+            selectedCategory,
+          );
+
+        sevenVanContainer.hidden =
+          !shouldShowSevenVan;
+      }
+
+      filterRoot.dataset.selectedCategory =
+        selectedCategory;
+    }
+
+    // Add filter button click events
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const category =
+          button.dataset.filterCategory ?? "all";
+
+        selectCategory(category);
+      });
+    });
+
+    // Display project counts
+    updateProjectCounts();
+
+    // Apply the initial selected category
+    selectCategory(
+      filterRoot.dataset.selectedCategory ?? "all",
+    );
   }
 
   setupProjectFilter();
-  document.addEventListener("astro:page-load", setupProjectFilter);
+
+  document.addEventListener(
+    "astro:page-load",
+    setupProjectFilter,
+  );
 </script>

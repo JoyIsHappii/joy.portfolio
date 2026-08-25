@@ -9,7 +9,7 @@ interface Props {
   title?: string;
   active?: "home" | "projects" | "about";
 }
-const { title = "Joy — Portfolio", active } = Astro.props as Props;
+const { title = "Joy's Portfolio", active } = Astro.props as Props;
 ---
 
 <html lang="en">
@@ -29,7 +29,7 @@ const { title = "Joy — Portfolio", active } = Astro.props as Props;
 
     <title>{title}</title>
   </head>
-  <body class="main-bg min-h-screen flex flex-col items-center justify-center px-20">
+  <body class="bg-white min-h-screen flex flex-col items-center justify-center px-20">
     <div class="w-full min-h-screen flex flex-col items-stretch">
      
       <NavBar active={active} />

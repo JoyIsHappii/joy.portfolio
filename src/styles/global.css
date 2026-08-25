@@ -2,20 +2,23 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 @theme {
   --color-green-dark: #80846B;
   --color-green-light: #dfe2c9;
 
   --color-cream: #F5EFE3;
+  --color-ivory: #fffdfc;
 
-  --color-brown-dark: #5c3932;
+  --color-pink: #D97986;
+  
+  --color-brown-dark: #5C3932;
   --color-brown-medium: #e9dcc9;
   --color-brown-light: #876a5a;
 
   --color-black: #1e1e1e;
-  --color-white: #fdf8f3;
+  --color-white: #fffdfc;
 
   --color-gray-medium: #717171;
 
@@ -27,8 +30,11 @@
 body {
  font-family: "Quicksand", sans-serif;
  
- font-weight: 400;
-  line-height: 1.5;}
+ font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-gray-medium);
+
+}
 
 h1,
 h2,
@@ -36,13 +42,14 @@ h3,
 h4,
 h5,
 h6 {
-font-family: "IBM Plex Serif", serif;
-  font-weight: 400;
-  font-style: normal;
+ font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-style: bold;
   line-height: 1.2;
+  color: var(--color-brown-dark);
 }
 
-.ibm-plex-serif-thin {
+/* .ibm-plex-serif-thin {
   font-family: "IBM Plex Serif", serif;
   font-weight: 100;
   font-style: normal;
@@ -124,15 +131,21 @@ font-family: "IBM Plex Serif", serif;
   font-family: "IBM Plex Serif", serif;
   font-weight: 700;
   font-style: italic;
-}
+} */
 
 
 p {
- font-family: "Quicksand", sans-serif;
+  font-family: "Quicksand", sans-serif;
    font-weight: 300;
   font-size: 16px;
   line-height: 1.6;
+
+  b {
+    font-weight: 500;
+  }
 }
+
+
 
 
 .room-background {
@@ -148,7 +161,7 @@ p {
 .main-bg {
   background-image: url("../assets/bg.svg");
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 
   background-size: cover;
   background-position: center top;
@@ -156,7 +169,7 @@ p {
   background-attachment: fixed;
 }
 
-.bg-brown {
+.brown-bg {
   background-color: rgba(135, 106, 90, 0.3);
 }
 
@@ -298,3 +311,5 @@ p {
     transform: translateY(-100%);
   }
 }
+
+

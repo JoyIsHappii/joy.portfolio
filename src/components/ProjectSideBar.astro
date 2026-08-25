@@ -1,36 +1,217 @@
 ---
-interface Props {
-  active?: "empathize" | "define" | "ideate" | "prototype" | "test";
-}
-
-const { active } = Astro.props as Props;
-
 const navItems = [
-  { name: "Empathize", href: "#empathize", key: "empathize" },
-  { name: "Define", href: "#define", key: "define" },
-  { name: "Ideate", href: "#ideate", key: "ideate" },
-  { name: "Prototype", href: "#prototype", key: "prototype" },
-  { name: "Test", href: "#test", key: "test" },
+
+  {
+    name: "01 Empathize",
+    href: "#empathize",
+  },
+  {
+    name: "02 Define",
+    href: "#define",
+  },
+  {
+    name: "03 Ideate",
+    href: "#ideate",
+  },
+  {
+    name: "04 Prototype",
+    href: "#prototype",
+  },
+  {
+    name: "05 Test",
+    href: "#test",
+  },
+  {
+    name: "06 Final design",
+    href: "#final-design",
+  },
 ];
 
+const linkClasses = `
+  group
+  relative
+  flex
+  w-full
+  items-center
+  gap-3
+  border-b
+  border-brown-light/20
+  bg-transparent
+  px-4
+  py-4
+  text-left
+  text-brown-dark
+  transition-all
+  duration-200
+  ease-in-out
+
+  
+
+  hover:bg-black
+  hover:text-white
+
+  aria-[current=location]:border-2
+  aria-[current=location]:border-brown-light
+  aria-[current=location]:bg-brown-light
+  aria-[current=location]:font-semibold
+  aria-[current=location]:text-white
+`;
 ---
 
-<aside class="w-full md:w-64 flex-shrink-0 bg-gray-light rounded-lg p-4">
-    <h1 class="text-xl font-semibold">Project Steps</h1>
-  <ul class="flex flex-col gap-2">
-    {navItems.map((item) => (
-      <li>
-        <a
-          href={item.href}
-          class={`text-black text-sm tracking-wide pb-1 border-b-2 transition-colors ${
-            active === item.key
-              ? "border-black font-semibold"
-              : "border-transparent hover:border-black/40"
-          }`}
-        >
-          {item.name}
-        </a>
-      </li>
-    ))}
-  </ul>
+<aside
+  data-case-study-navigation
+  class="
+    sticky
+    top-30
+    flex
+    w-full
+    flex-col
+  "
+>
+  <h3
+    class="
+      mb-4
+      text-lg
+      font-semibold
+      uppercase
+      tracking-[0.18em]
+      text-green-dark
+    "
+  >
+    Design Process
+</h3>
+
+  <nav aria-label="Case study sections">
+    <ul class="flex flex-col gap-0">
+      {
+        navItems.map((item, index) => (
+          <li>
+          <a
+  href={item.href}
+  data-case-study-link
+  data-section-id={item.href.replace("#", "")}
+  aria-current={index === 0 ? "location" : undefined}
+  class={linkClasses}
+>
+
+  <span class="text-left">
+    {item.name}
+  </span>
+</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </aside>
+
+<script>
+  function setupCaseStudyNavigation() {
+    const navigation =
+      document.querySelector<HTMLElement>(
+        "[data-case-study-navigation]",
+      );
+
+    if (
+      !navigation ||
+      navigation.dataset.ready === "true"
+    ) {
+      return;
+    }
+
+    navigation.dataset.ready = "true";
+
+    const links = Array.from(
+      navigation.querySelectorAll<HTMLAnchorElement>(
+        "[data-case-study-link]",
+      ),
+    );
+
+    const sections = links
+      .map((link) => {
+        const sectionId = link.dataset.sectionId;
+
+        if (!sectionId) {
+          return null;
+        }
+
+        return document.getElementById(sectionId);
+      })
+      .filter(
+        (section): section is HTMLElement =>
+          section !== null,
+      );
+
+    function selectSection(sectionId: string) {
+      links.forEach((link) => {
+        const isActive =
+          link.dataset.sectionId === sectionId;
+
+        if (isActive) {
+          link.setAttribute(
+            "aria-current",
+            "location",
+          );
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    // Immediately update the active item when clicked
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        const sectionId = link.dataset.sectionId;
+
+        if (sectionId) {
+          selectSection(sectionId);
+        }
+      });
+    });
+
+    // Update the active item while scrolling
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (first, second) =>
+              second.intersectionRatio -
+              first.intersectionRatio,
+          );
+
+        const activeSection =
+          visibleSections[0]?.target;
+
+        if (activeSection instanceof HTMLElement) {
+          selectSection(activeSection.id);
+        }
+      },
+      {
+        rootMargin: "-20% 0px -65% 0px",
+        threshold: [0, 0.1, 0.25, 0.5],
+      },
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Select the section from the URL when loading
+    const hash = window.location.hash.replace("#", "");
+
+    if (
+      hash &&
+      sections.some((section) => section.id === hash)
+    ) {
+      selectSection(hash);
+    }
+  }
+
+  setupCaseStudyNavigation();
+
+  document.addEventListener(
+    "astro:page-load",
+    setupCaseStudyNavigation,
+  );
+</script>

@@ -1,6 +1,12 @@
 ---
+export type ProjectCategory =
+  | "UX Design"
+  | "UI Design"
+  | "Web Development"
+  | "Project Design";
+
 interface TagProps {
-  category: "all" | "UX/UI Design" | "Web Development" | "Project Design";
+  category: ProjectCategory;
   class?: string;
 }
 
@@ -9,11 +15,11 @@ const {
   class: className = "",
 } = Astro.props as TagProps;
 
-const categoryColors = {
-  "UX/UI Design": "bg-blue-100 text-blue-800",
+const categoryColors: Record<ProjectCategory, string> = {
+  "UX Design": "bg-blue-100 text-blue-800",
+  "UI Design": "bg-yellow-100 text-yellow-800",
   "Web Development": "bg-green-100 text-green-800",
   "Project Design": "bg-purple-100 text-purple-800",
-  all: "bg-gray-200 text-gray-800",
 };
 
 const colorClass = categoryColors[category];
@@ -21,7 +27,7 @@ const colorClass = categoryColors[category];
 
 <span
   class:list={[
-    "inline-flex items-center w-fit px-4 py-2 rounded-full text-sm font-medium",
+    "inline-flex w-fit items-center rounded-lg px-2 py-2 text-xs font-medium",
     colorClass,
     className,
   ]}

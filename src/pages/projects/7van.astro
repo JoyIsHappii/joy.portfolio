@@ -1,123 +1,820 @@
 ---
 import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
-
 import Breadcrumb from "../../components/Breadcrumb.astro";
-import Tag from "../../components/Tag.astro";
 import Button from "../../components/Button.astro";
-
-import HeroImage from "../../assets/hero/7van.png";
-
+import HeroImage from "../../assets/hero/7van-cover.svg";
 import Sidebar from "../../components/ProjectSideBar.astro";
-
 import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
+import PersonaImage1 from "../../assets/7van/persona1.jpg";
+import PersonaImage2 from "../../assets/7van/persona2.jpg";
+import PollImage1 from "../../assets/7van/poll1.jpg";
+import PollImage2 from "../../assets/7van/poll2.jpg";
+import SitemapImage from "../../assets/7van/sitemap.png";
+import InquiryWireframe from "../../assets/7van/w-inquiry.png";
+import AdultWireframe from "../../assets/7van/w-mem1.png";
+import ChildWireframe1 from "../../assets/7van/w-1.png";
+import ChildWireframe2 from "../../assets/7van/w-2.png";
+import ChildWireframe3 from "../../assets/7van/w-3.png";
+import ChildWireframe4 from "../../assets/7van/w-4.png";
+import MoodBoardImage from "../../assets/7van/moodboard.png";
+import BrandingImage1 from "../../assets/7van/id-1.png";
+import BrandingImage2 from "../../assets/7van/id-2.png";
+import BrandingImage3 from "../../assets/7van/id-3.png";
+import BrandingImage4 from "../../assets/7van/id-4.png";
+import TestingImage from "../../assets/7van/testing.png";
 
+import FinalImage1 from "../../assets/7van/final/01.png";
+import FinalImage2 from "../../assets/7van/final/02.png";
+import FinalImage3 from "../../assets/7van/final/03.png";
+import FinalImage4 from "../../assets/7van/final/04.png";
+import FinalImage5 from "../../assets/7van/final/05.png";
+import FinalImage6 from "../../assets/7van/final/06.png";
+import FinalImage7 from "../../assets/7van/final/07.png";
+import FinalImage8 from "../../assets/7van/final/08.png";
+import FinalImage9 from "../../assets/7van/final/09.png";
+import FinalImage10 from "../../assets/7van/final/10.png";
+
+const surveyGoals = [
+  "Understand which content users prioritize",
+  "Measure users' familiarity with Brazilian Jiu-Jitsu",
+  "Identify useful patterns on competitor websites",
+  "Discover the main concerns of newcomers",
+];
+
+const insights = [
+  {
+    number: "01",
+    title: "Programs first",
+    description:
+      "Users wanted to understand available programs before exploring secondary content.",
+  },
+  {
+    number: "02",
+    title: "Price and safety",
+    description:
+      "Pricing, safety, and the benefits of training were important decision-making information.",
+  },
+  {
+    number: "03",
+    title: "Beginner guidance",
+    description:
+      "Newcomers needed clearer introductory information and reassurance before contacting the academy.",
+  },
+  {
+    number: "04",
+    title: "Friendly clarity",
+    description:
+      "Users preferred clear information, easy navigation, a clean layout, and a modern but welcoming visual style.",
+  },
+];
+
+const testFindings = [
+  {
+    problem: "The Kids Program tab did not look clickable.",
+    solution:
+      "Added a clear hover state and strengthened the interactive styling in the UI kit.",
+  },
+  {
+    problem:
+      "Users struggled to locate trial-class information at the bottom of the page.",
+    solution:
+      "Reordered the content so the trial-class section appears after pricing, matching user expectations.",
+  },
+  {
+    problem: "The cart icon was less familiar than expected.",
+    solution:
+      "Replaced it with a shopping-bag icon that users recognized more quickly.",
+  },
+];
 ---
 
-<ProjectDetailLayout title={`projects — 7VAN`} active="projects">
+<ProjectDetailLayout title="7VAN Case Study — Joy" active="projects">
+  <main class="w-full">
+    <div class="py-5 sm:py-7">
+      <Breadcrumb
+        items={[
+          { label: "Projects", href: "/projects" },
+          { label: "7VAN", href: "/projects/7van" },
+        ]}
+      />
+    </div>
 
-  <!-- =========================================
-       BREADCRUMB
-  ========================================== -->
-  <Breadcrumb
-    items={[
-      {
-        label: "Projects",
-        href: "/projects",
-      },
-      {
-        label: "7VAN",
-        href: "/projects/7van",
-      },
-    ]}
-  />
+    <ProjectDetailHero
+      eyebrow="Award-winning case study"
+      title="7VAN"
+      description="A responsive website for a Brazilian Jiu-Jitsu academy in Vancouver, designed to welcome beginners, build trust, and encourage membership and trial-class applications."
+      imageSrc={HeroImage.src}
+      imageAlt="7VAN Academy website displayed on desktop and mobile devices"
+      categories={["UX Design", "UI Design"]}
+      role="UX/UI Designer · Lead UX Designer  · Team project"
+    />
 
+    <div id="overview" class="scroll-mt-8">
+      <ProjectOverview
+        duration="4 weeks"
+        role="UX/UI Designer · Lead UX Designer"
+        responsibilities={[
+          "User research and personas",
+          "Information architecture and wireframes",
+          "Visual design, responsive prototypes, and usability testing",
+        ]}
+        challenges={[
+          "Welcome people who are new to Brazilian Jiu-Jitsu",
+          "Explain programs, pricing, benefits, and safety clearly",
+          "Support a manual membership and trial-class process",
+        ]}
+        solutions={[
+          "Beginner-friendly content hierarchy",
+          "Dedicated inquiry and membership forms",
+          "Responsive desktop and mobile experiences",
+        ]}
+      />
+    </div>
 
-  <!-- =========================================
-       HERO
-  ========================================== -->
-  <ProjectDetailHero
-    title="7VAN"
-    description=  "A responsive website for 7VAN, a Brazilian Jiu-Jitsu academy, designed to attract new members and encourage sign-ups.";
+    <section
+      class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16"
+    >
+      <div class="hidden lg:block"><Sidebar /></div>
 
-    imageSrc={HeroImage.src}
-    imageAlt="7VAN Academy"
-    category="UX/UI Design"
-    projectLink="/projects/7van"
-  />
+      <div class="min-w-0 space-y-20 sm:space-y-28">
+        <!-- EMPATHIZE -->
+        <section id="empathize" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p
+              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+            >
+              01 · Empathize
+            </p>
+            <h2 class="mt-4 text-4xl sm:text-6xl text-brown-dark">
+              Understanding prospective students and parents
+            </h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+              We began by learning what information people need before choosing
+              a Brazilian Jiu-Jitsu academy and what might make a beginner
+              hesitate to join.
+            </p>
+          </header>
 
-  <!-- =========================================
-       PROJECT OVERVIEW
-  ========================================== -->
-  <ProjectOverview
-    duration="3 months"
-    role="UX/UI Designer, Lead UX Designer"
-    responsibilities={[
-      "Conducted user research and analysis to inform design decisions.",
-      "Created wireframes, prototypes, and high-fidelity designs for the website.",
-      "Collaborated with developers to ensure the successful implementation of the design.",
-    ]}
-    challenges={[
-      "Create an engaging website that welcomes newcomers to Brazilian Jiu Jitsu, providing essential information to encourage membership at 7VAN and support the community's growth."
-    ]}
-    solutions={[
-      "Conducted user research to understand the target audience and their needs.",
-      "Created a responsive design that adapts to different screen sizes and devices.",
-      "Implemented a clean and modern design that reflects the brand's identity and values.",
-    ]}
-  />
+          <div class="mt-10 grid gap-4 md:grid-cols-2">
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+              <span class="text-sm font-semibold text-rose"
+                >Primary audience</span
+              >
+              <h3 class="mt-4 text-2xl">Adults aged 18–30</h3>
+              <p class="mt-3">
+                People who are new to Brazilian Jiu-Jitsu and need help
+                understanding the programs, benefits, safety, pricing, and
+                academy culture.
+              </p>
+              <img
+                src={PersonaImage1.src}
+                alt="User persona for Alex Thompson, a beginner interested in Brazilian Jiu-Jitsu"
+                class="h-auto w-full"
+              />
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+              <span class="text-sm font-semibold text-brown-dark"
+                >Secondary audience</span
+              >
+              <h3 class="mt-4 text-2xl">Parents of children aged 6–12</h3>
+              <p class="mt-3">
+                Parents comparing martial-arts programs and looking for safety,
+                age-appropriate classes, trustworthy instructors, and a
+                supportive community.
+              </p>
+              <img
+                src={PersonaImage2.src}
+                alt="User persona for Olivia Wilson, a parent researching martial-arts programs"
+                class="h-auto w-full"
+              />
+            </article>
+          </div>
 
-  <section class="grid grid-cols-12"
-    data-aos="fade-up"
-    data-aos-duration="2000"
-    data-aos-delay="200"
+          <div
+            class="mt-14 grid gap-10 border-t border-brown-dark/15 pt-10 md:grid-cols-[0.75fr_1.25fr]"
+          >
+            <div>
+              <p
+                class="text-sm font-semibold uppercase tracking-[0.18em] text-rose"
+              >
+                User survey
+              </p>
+              <strong class="mt-4 block text-7xl text-brown-dark">28</strong>
+              <p class="mt-2">
+                responses from people in Vancouver with different levels of
+                martial-arts familiarity.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-3xl">What we wanted to learn</h3>
+              <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+                {
+                  surveyGoals.map((goal, index) => (
+                    <li class="flex gap-3 border border-brown-dark/15 bg-ivory p-4 text-sm ">
+                      <>
+                        <span class="font-semibold text-green-dark">
+                          0{index + 1}
+                        </span>
+                        <span>{goal}</span>
+                      </>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+
+          <!-- <div class="mt-8 grid gap-4 md:grid-cols-2">
+            <figure class="border border-brown-dark/15 bg-ivory p-4">
+              <img
+                src={PollImage1.src}
+                alt="Bar chart showing users prioritize benefits and safety, visible prices, and beginner information"
+                class="h-auto w-full"
+              />
+              <figcaption class="mt-3 text-sm ">
+                Content priorities from the survey
+              </figcaption>
+            </figure>
+            <figure class="border border-brown-dark/15 bg-ivory p-4">
+              <img
+                src={PollImage2.src}
+                alt="Pie chart showing users prefer clear information, friendly design, clean layout, and modern styling"
+                class="h-auto w-full"
+              />
+              <figcaption class="mt-3 text-sm ">
+                Preferred visual and usability qualities
+              </figcaption>
+            </figure>
+          </div> -->
+        </section>
+
+        <!-- DEFINE -->
+        <section
+          id="define"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            02 · Define
+          </p>
+          <div class="mt-5 grid gap-10 md:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <h2 class="text-4xl sm:text-6xl">
+                Turning research into a focused problem
+              </h2>
+              <blockquote
+                class="mt-8 border-l-2 border-rose pl-5 text-xl font-semibold leading-relaxed text-brown-dark"
+              >
+                “How might we create an engaging website that welcomes
+                newcomers, provides essential information, and supports the
+                growth of the 7VAN community?”
+              </blockquote>
+            </div>
+            <div>
+              <h3 class="text-2xl">Key findings</h3>
+              <div
+                class="mt-5 grid gap-px overflow-hidden border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-2"
+              >
+                {
+                  insights.map((insight) => (
+                    <article class="bg-ivory p-6">
+                      <span class="text-xs font-semibold text-rose">
+                        {insight.number}
+                      </span>
+                      <h4 class="mt-4 text-xl">{insight.title}</h4>
+                      <p class="mt-3 text-sm ">{insight.description}</p>
+                    </article>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 bg-brown-dark px-6 py-9 text-white sm:px-10">
+            <p
+              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light"
+            >
+              Design criteria
+            </p>
+            <div class="mt-5 grid gap-5 sm:grid-cols-3">
+              <div>
+                <strong class="text-xl">Clear</strong><p
+                  class="mt-2 text-sm text-white/70"
+                >
+                  Make programs, prices, benefits, and safety easy to find.
+                </p>
+              </div>
+              <div>
+                <strong class="text-xl">Welcoming</strong><p
+                  class="mt-2 text-sm text-white/70"
+                >
+                  Reduce anxiety for beginners and communicate community.
+                </p>
+              </div>
+              <div>
+                <strong class="text-xl">Actionable</strong><p
+                  class="mt-2 text-sm text-white/70"
+                >
+                  Keep trial-class and membership actions visible.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- IDEATE -->
+        <section
+          id="ideate"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <header class="max-w-4xl">
+            <p
+              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+            >
+              03 · Ideate
+            </p>
+            <h2 class="mt-4 text-4xl sm:text-6xl">
+              Structuring a simple path from interest to application
+            </h2>
+          </header>
+
+          <div class="mt-10 grid gap-8 md:grid-cols-2">
+            <div>
+              <h3 class="text-3xl">Information architecture</h3>
+              <p class="mt-5">
+                The website encourages membership applications through a
+                prominent header action. Benefits and safety information appears
+                on the homepage and program pages, while trial-class information
+                is repeated where it supports a decision.
+              </p>
+              <p class="mt-4">
+                Because the academy has one instructor and manually coordinates
+                trial classes, the Contact page became a critical part of the
+                experience.
+              </p>
+            </div>
+            <div class="border border-brown-dark/15 bg-brown-medium p-6">
+              <div
+                class="grid grid-cols-2 gap-3 text-center text-sm sm:grid-cols-3"
+              >
+                {
+                  [
+                    "Home",
+                    "About",
+                    "Programs",
+                    "Shop",
+                    "Contact",
+                    "Membership",
+                  ].map((page) => (
+                    <div class="border border-brown-dark/15 bg-ivory px-3 py-4 font-semibold text-brown-dark">
+                      {page}
+                    </div>
+                  ))
+                }
+              </div>
+              <div
+                class="mx-auto mt-5 w-fit rounded-full bg-brown-dark px-5 py-2 text-sm font-semibold text-white"
+              >
+                Apply for membership
+              </div>
+            </div>
+          </div>
+
+          <figure class="mt-8 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+            <img
+              src={SitemapImage.src}
+              alt="7VAN website sitemap showing the complete page hierarchy"
+              class="h-auto w-full"
+            />
+            <figcaption class="mt-4 text-sm">
+              The sitemap connects programs, membership options, shop pages, and
+              contact flows around the primary application journey.
+            </figcaption>
+          </figure>
+
+          <div class="mt-14">
+            <h3 class="text-3xl">Wireframe solutions</h3>
+            <p>
+              To encourage trial-class and membership applications, we created
+              three dedicated flows: a general inquiry form, an adult membership
+              application, and a child membership application.
+            </p>
+            <div class="mt-6 grid gap-4 lg:grid-cols-3">
+              <article class="border border-brown-dark/15 bg-ivory p-6">
+                <span class="text-sm font-semibold text-rose">01</span><h4
+                  class="mt-4 text-2xl"
+                >
+                  Inquiry form
+                </h4>
+                <p class="mt-4 text-sm">
+                  Supports general inquiries and trial-class requests. Users
+                  select a topic, provide details, write a message, and receive
+                  a submission-status message.
+                </p>
+              </article>
+              <article class="border border-brown-dark/15 bg-ivory p-6">
+                <span class="text-sm font-semibold text-rose">02</span><h4
+                  class="mt-4 text-2xl"
+                >
+                  Adult membership
+                </h4>
+                <p class="mt-4 text-sm">
+                  Adults enter their information and select a membership plan
+                  that matches their needs.
+                </p>
+              </article>
+              <article class="border border-brown-dark/15 bg-ivory p-6">
+                <span class="text-sm font-semibold text-brown-dark">03</span><h4
+                  class="mt-4 text-2xl"
+                >
+                  Child membership
+                </h4>
+                <p class="mt-4 text-sm">
+                  Parents provide the child's details together with parent or
+                  guardian information and a selected plan.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- <div class="mt-8 grid gap-5 lg:grid-cols-2">
+            <figure class="border border-brown-dark/15 bg-brown-medium p-4 sm:p-6">
+              <img src={InquiryWireframe.src} alt="Long-form wireframe for the 7VAN inquiry and trial-class request page" class="mx-auto h-auto w-full max-w-xl" />
+              <figcaption class="mt-4 text-sm ">Inquiry and trial-class request flow</figcaption>
+            </figure>
+            <figure class="border border-brown-dark/15 bg-green-light/50 p-4 sm:p-6">
+              <img src={AdultWireframe.src} alt="Wireframe for the adult membership application" class="mx-auto h-auto w-full max-w-sm" />
+              <figcaption class="mt-4 text-sm ">Adult membership application</figcaption>
+            </figure>
+          </div>
+
+          <div class="mt-5 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+            <div class="mb-5"><h4 class="text-2xl">Child membership flow</h4><p class="mt-2 text-sm ">A multi-step flow that collects the child's information, parent or guardian details, and membership selection.</p></div>
+            <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {[ChildWireframe1, ChildWireframe2, ChildWireframe3, ChildWireframe4].map((image, index) => (
+                <figure class="bg-brown-medium/50 p-2"><img src={image.src} alt={`Child membership wireframe step ${index + 1}`} class="h-auto w-full" /><figcaption class="mt-2 text-center text-xs ">Step {index + 1}</figcaption></figure>
+              ))}
+            </div>
+          </div> -->
+
+          <div
+            class="mt-14 grid gap-8 border-t border-brown-dark/15 pt-10 md:grid-cols-[1fr_1fr]"
+          >
+            <div>
+              <h3 class="text-3xl">Visual direction</h3>
+              <p class="mt-5">
+                The mood board uses smiling families, children, and community
+                moments to communicate friendliness and belonging. Bold
+                typography and clean compositions add modernity and discipline.
+              </p>
+              <p class="mt-4">
+                Auburn, khaki, onyx, and white create an active but safe
+                atmosphere while retaining warmth and kindness.
+              </p>
+              <p class="mt-4">
+                The mood board balances discipline and athleticism with family,
+                warmth, and community.
+              </p>
+            </div>
+
+            <figure class="mt-8 border border-brown-dark/15 bg-ivory">
+              <img
+                src={MoodBoardImage.src}
+                alt="7VAN mood board featuring families, children, martial arts, and the warm brand palette"
+                class="h-auto w-full"
+              />
+              <!-- <figcaption class="mt-4 text-sm ">
+                The mood board balances discipline and athleticism with family,
+                warmth, and community.
+              </figcaption> -->
+            </figure>
+          </div>
+
+          <div class="mt-5 grid gap-4 md:grid-cols-4">
+            {
+              [
+                BrandingImage1,
+                BrandingImage2,
+                BrandingImage3,
+                BrandingImage4,
+              ].map((image, index) => (
+                <figure class="border border-brown-dark/15 bg-ivory p-3">
+                  <img
+                    src={image.src}
+                    alt={`7VAN visual identity exploration ${index + 1}`}
+                    class="h-auto w-full"
+                  />
+                </figure>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- PROTOTYPE -->
+        <section
+          id="prototype"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            04 · Prototype
+          </p>
+          <div class="mt-5 grid gap-8 md:grid-cols-[0.8fr_1.2fr]">
+            <h2 class="text-4xl sm:text-6xl">
+              Testing the complete experience at two sizes
+            </h2>
+            <p class="text-lg leading-relaxed">
+              High-fidelity prototypes demonstrate the complete journey on
+              desktop and mobile. Place your exported MP4 files in the paths
+              shown below and the videos will play directly in this section.
+            </p>
+          </div>
+
+<div class="mt-10 grid items-stretch gap-6 lg:grid-cols-2">
+  <!-- Desktop prototype -->
+  <article
+    class="
+      flex
+      h-full
+      flex-col
+      border
+      border-brown-dark/15
+      bg-ivory
+      p-4
+      sm:p-6
+    "
   >
-    <div class="col-span-4">
-  <Sidebar/>
+    <div class="pb-4">
+      <p
+        class="
+          text-xs
+          font-semibold
+          uppercase
+          tracking-[0.16em]
+          text-green-dark
+        "
+      >
+        Desktop
+      </p>
+
+      <h3 class="mt-1 text-2xl">
+        Desktop prototype
+      </h3>
     </div>
 
-
-    <div  class="col-span-8">
-
-
-      <div id="emphasize" class="p-4 flex flex-col gap-2">
-      <h2 class="text-2xl font-semibold mb-4">Project Details</h2>
-      <p class="text-gray-dark">
-        The 7VAN Academy website is a responsive platform designed to attract new members and encourage sign-ups. The website features a clean and modern design that reflects the brand's identity and values. The user experience is seamless across different devices and screen sizes, ensuring that users can easily navigate the site and find the information they need.
-      </p>
-      <p class="text-gray-dark mt-4">
-        The project was completed in 3 months, with a focus on user research, wireframing, prototyping, and high-fidelity design. The design was implemented in collaboration with developers to ensure a successful launch of the website.
-      </p>
+    <!-- Responsive 16:9 desktop video -->
+    <div
+      class="
+        relative
+        aspect-video
+        w-full
+        overflow-hidden
+        gap-4
+      "
+    >
+      <iframe
+        src="https://www.youtube.com/embed/gVi8iyojs3U?si=AqOzp-4xeS2i8IzS"
+        title="7VAN desktop prototype"
+        class="absolute inset-0 h-full w-full border-0"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share
+        "
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
     </div>
 
-         <div id="ideate" class="p-4 flex flex-col gap-2">
-      <h2 class="text-2xl font-semibold mb-4">Ideate</h2>
-      <p class="text-gray-dark">
-        The 7VAN Academy website is a responsive platform designed to attract new members and encourage sign-ups. The website features a clean and modern design that reflects the brand's identity and values. The user experience is seamless across different devices and screen sizes, ensuring that users can easily navigate the site and find the information they need.
+    <Button
+      href="https://www.figma.com/proto/Kx6Ed6jEZP36SnrSQaXylS/7VAN-BJJ-Website?page-id=414%3A2&node-id=417-2430&viewport=60%2C327%2C0.03&t=o7P2RdLTGc6vJ882-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=417%3A2430"
+      target="_blank"
+      class="mt-4 w-full pt-4"
+      variant="primary"
+      size="lg"
+    >
+      View Desktop Prototype
+    </Button>
+  </article>
+
+  <!-- Mobile prototype -->
+  <article
+    class="
+      flex
+      h-full
+      flex-col
+      border
+      border-brown-dark/15
+      bg-ivory
+      p-4
+      sm:p-6
+    "
+  >
+    <div class="pb-4">
+      <p
+        class="
+          text-xs
+          font-semibold
+          uppercase
+          tracking-[0.16em]
+          text-green-dark
+        "
+      >
+        Mobile
       </p>
-      <p class="text-gray-dark mt-4">
-        The project was completed in 3 months, with a focus on user research, wireframing, prototyping, and high-fidelity design. The design was implemented in collaboration with developers to ensure a successful launch of the website.
-      </p>
+
+      <h3 class="mt-1 text-2xl">
+        Mobile prototype
+      </h3>
     </div>
 
-
-
-
-    <div id="test" class="col-span-8">
-      <h2 class="text-2xl font-semibold mb-4">Test</h2>
-      <p class="text-gray-dark">
-        The 7VAN Academy website is a responsive platform designed to attract new members and encourage sign-ups. The website features a clean and modern design that reflects the brand's identity and values. The user experience is seamless across different devices and screen sizes, ensuring that users can easily navigate the site and find the information they need.
-      </p>
-      <p class="text-gray-dark mt-4">
-        The project was completed in 3 months, with a focus on user research, wireframing, prototyping, and high-fidelity design. The design was implemented in collaboration with developers to ensure a successful launch of the website.
-      </p>
+    <!-- Same height as the desktop video -->
+    <div
+      class="
+        flex
+        aspect-video
+        w-full
+        items-center
+        justify-center
+        overflow-hidden
+        gap-4
+        
+      "
+    >
+      <iframe
+        src="https://www.youtube.com/embed/VuY9BlGq3SI?si=dInExpJlifpSoXkp"
+        title="7VAN mobile prototype"
+        class="
+          h-full
+          w-auto
+          max-w-full
+          aspect-[9/16]
+          border-0
+        "
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share
+        "
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
     </div>
-    </div>
 
+    <Button
+      href="https://www.figma.com/proto/Kx6Ed6jEZP36SnrSQaXylS/7VAN-BJJ-Website?page-id=672%3A6016&node-id=672-6017&viewport=601%2C342%2C0.08&t=BTOvvUoyXJCfUZ0F-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=672%3A6017"
+      target="_blank"
+      class="mt-4 w-full pt-4"
+      variant="primary"
+      size="lg"
+    >
+      View Mobile Prototype
+    </Button>
+  </article>
+</div>
+        </section>
 
-  </section>
+        <!-- TEST -->
+        <section
+          id="test"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            05 · Test
+          </p>
+          <div class="mt-5 grid gap-10 md:grid-cols-[0.75fr_1.25fr]">
+            <div>
+              <strong class="text-8xl text-brown-dark">7</strong>
+              <h2 class="mt-3 text-4xl sm:text-5xl">
+                users completed seven tasks
+              </h2>
 
+              <p class="mt-6">
+                Five participants also joined follow-up interviews. The group
+                included prospective adult students and parents of children aged
+                5–10.
+              </p>
+            </div>
+            <div class="space-y-4">
+              {
+                testFindings.map((finding, index) => (
+                  <article class="grid gap-4 border border-brown-dark/15 bg-ivory p-6 sm:grid-cols-[48px_1fr]">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-full bg-green-light text-sm font-semibold text-brown-dark">
+                      0{index + 1}
+                    </span>
+                    <div>
+                      <>
+                        <h3 class="text-xl">Problem</h3>
+                        <p class="mt-2 text-sm ">{finding.problem}</p>
+                        <h4 class="mt-5 font-semibold text-green-dark">
+                          Design change
+                        </h4>
+                        <p class="mt-2 text-sm ">{finding.solution}</p>
+                      </>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
 
+          <!-- <figure
+            class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory p-4 sm:p-6"
+          >
+            <img
+              src={TestingImage.src}
+              alt="7VAN usability-testing results matrix across seven participant tasks"
+              class="h-auto w-full"
+            />
+            <figcaption class="mt-4 text-sm ">
+              The task matrix helped the team compare where participants
+              succeeded, hesitated, or required support.
+            </figcaption>
+          </figure> -->
+        </section>
 
+        <!-- FINAL DESIGN -->
+        <section
+          id="final-design"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+            <div>
+              <p
+                class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+              >
+                06 · Final design
+              </p><h2 class="mt-4 text-4xl sm:text-6xl">
+                The complete responsive website
+              </h2>
+            </div>
+            <p class="text-lg leading-relaxed">
+              The final system includes the homepage, About page, adult and
+              kids' programs, shop, contact flows, trial-class requests, and
+              separate adult and child membership applications.
+            </p>
+          </div>
 
+       <div class="mt-5 grid gap-4 md:grid-cols-5">
+            {
+              [
+                FinalImage1,
+                FinalImage2,
+                FinalImage3,
+                FinalImage4,
+                FinalImage5,
+                FinalImage6,
+                FinalImage7,
+                FinalImage8,
+                FinalImage9,
+                FinalImage10,
+              ].map((image, index) => (
+                <figure class="">
+                  <img
+                    src={image.src}
+                    alt={`7VAN visual identity exploration ${index + 1}`}
+                    class="h-auto w-full"
+                  />
+                </figure>
+              ))
+            }
+          </div>
+
+          <div
+            class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center"
+          >
+            <div>
+              <p
+                class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light"
+              >
+                Outcome
+              </p><h3 class="mt-3 text-3xl !text-white">
+                Best UI/UX Project Award
+              </h3><p class="mt-3 max-w-2xl text-white/70">
+                Selected by the client and industry professionals.
+              </p>
+            </div>
+            <a
+              href="/projects"
+              class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white"
+              >Explore more projects →</a
+            >
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
 </ProjectDetailLayout>

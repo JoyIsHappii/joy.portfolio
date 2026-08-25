@@ -8,39 +8,35 @@ interface ProjectOverviewProps {
 }
 
 const { duration, role, responsibilities, challenges, solutions } = Astro.props as ProjectOverviewProps;
-
-
+const groups = [
+  { number: "01", title: "Responsibilities", items: responsibilities },
+  { number: "02", title: "Challenge", items: challenges },
+  { number: "03", title: "Solution", items: solutions },
+];
 ---
-<div class="grid grid-cols-12"
-  data-aos="fade-up"
-  data-aos-duration="2000"
-  data-aos-delay="200"
->
-<h2 class="text-2xl font-semibold mb-4 col-span-12">Project Overview</h2>
-  <div class="col-span-4">
-    <p><strong>Duration:</strong> {duration}</p>
-    <p><strong>Role:</strong> {role}</p>
-    <p><strong>Responsibilities:</strong></p>
-    <ul class="list-disc list-inside">
-      {responsibilities.map((item) => (
-        <li>{item}</li>
+
+<section class="border-y border-brown-dark/15 py-12 sm:py-16">
+  <div class="grid gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-3">
+      <!-- <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">At a glance</p> -->
+      <h2 class="mt-3 text-4xl sm:text-5xl text-brown-dark ">Project overview</h2>
+      <dl class="mt-8 space-y-5 text-sm">
+        <div><dt class="font-semibold text-brown-dark">Duration</dt><dd class="mt-1 ">{duration}</dd></div>
+        <div><dt class="font-semibold text-brown-dark">My role</dt><dd class="mt-1 ">{role}</dd></div>
+      </dl>
+    </div>
+    <div class="grid gap-4 md:grid-cols-3 lg:col-span-9">
+      {groups.map((group) => (
+        <article class="border border-brown-dark/15 bg-white p-6">
+          <span class="text-sm font-semibold text-pink">{group.number}</span>
+          <h3 class="mt-5 text-xl text-brown-dark">{group.title}</h3>
+          <ul class="mt-4 space-y-3 text-sm leading-relaxed ">
+            {group.items.map((item) => (
+              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span><span>{item}</span></li>
+            ))}
+          </ul>
+        </article>
       ))}
-    </ul>
+    </div>
   </div>
-  <div class="col-span-4">
-    <p><strong>Challenges:</strong></p>
-    <ul class="list-disc list-inside">
-      {challenges.map((item) => (
-        <li>{item}</li>
-      ))}
-    </ul>
-  </div>
-  <div class="col-span-4">
-    <p><strong>Solutions:</strong></p>
-    <ul class="list-disc list-inside">
-      {solutions.map((item) => (
-        <li>{item}</li>
-      ))}
-    </ul>
-  </div>
-</div>
+</section>

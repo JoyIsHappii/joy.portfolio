@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Plane from "../assets/room-elements/plane.svg";
+import Joy from "../assets/joy.png";
 
 interface Props {
   active?: "home" | "projects" | "about";
@@ -14,18 +16,45 @@ const navItems = [
 ];
 ---
 
-<nav class="w-full px-8 md:px-16 py-6 flex items-center bg-transparent relative z-40">
-  <ul class="flex gap-10">
+<nav
+  class="
+    sticky
+    top-0
+    z-50
+    flex
+    w-full
+    flex-row
+    items-center
+    justify-between
+    border-b
+    border-brown-dark/10
+    bg-white
+
+    py-5
+    backdrop-blur-md
+    md:py-6
+  "
+>
+  <ul class="flex gap-5 sm:gap-8 md:gap-10">
     {
       navItems.map((item) => (
         <li>
           <a
             href={item.href}
-            class={`text-black text-base tracking-wide pb-1 border-b-2 transition-colors ${
+            class:list={[
+              `
+                border-b-2
+                pb-1
+                text-sm
+                tracking-wide
+                text-brown-dark
+                transition-colors
+                sm:text-base
+              `,
               active === item.key
-                ? "border-black font-semibold"
-                : "border-transparent hover:border-black/40"
-            }`}
+                ? "border-brown-dark font-semibold"
+                : "border-transparent hover:border-brown-dark/40",
+            ]}
           >
             {item.name}
           </a>
@@ -33,4 +62,42 @@ const navItems = [
       ))
     }
   </ul>
+
+  <div class="flex flex-row items-center gap-2">
+    <a
+      href="mailto:chayaninkosol@gmail.com"
+      class="
+        flex
+        flex-row
+        items-center
+        gap-2
+        rounded-full
+        bg-brown-dark
+        px-4
+        py-2
+        text-sm
+        font-semibold
+        tracking-wide
+        text-white
+        transition-all
+        ease-in-out
+        hover:bg-black
+      "
+    >
+      Say hi
+
+      <Plane class="h-6 w-6 sm:h-8 sm:w-8" />
+    </a>
+
+    <img
+      src={Joy.src}
+      alt="Joy"
+      class="
+        h-12
+        w-12
+        rounded-full
+        object-cover
+      "
+    />
+  </div>
 </nav>

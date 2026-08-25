@@ -2,67 +2,122 @@
 import Button from "../components/Button.astro";
 import AwardImage from "../assets/award-image.svg";
 import Tag from "../components/Tag.astro";
+
+type ProjectCategory =
+  "UX Design" | "UI Design" | "Web Development" | "Project Design";
+
+const categories: ProjectCategory[] = ["UX Design", "UI Design"];
 ---
 
 <!-- Award Project Section -->
 <section
-  class="flex flex-col lg:flex-row items-center max-w-[1280px]
-  justify-center gap-12 md:px-12 w-full
-  bg-black/70 backdrop-blur-[4px] border
-   border-brown-dark/40 rounded-[40px] py-12 lg:py-16"
+  data-project-item
+  data-category={categories.join(",")}
+  class="group
+    flex
+    w-full
+    flex-col
+    items-center
+    justify-center
+    gap-12
+    border
+    border-brown-dark/20
+    bg-transparent
+    px-4
+    py-4
+    backdrop-blur-[4px]
+    transition-all
+    duration-300
+    ease-in-out
+    hover:scale-[1.02]
+    hover:border-brown-dark/20
+hover:bg-brown-medium/50 md:px-12
+    lg:flex-row
+    lg:py-8"
 >
-  <div class="w-full flex items-center justify-center order-2 lg:order-1">
+  <!-- Award Image -->
+  <div
+    class="order-2
+      flex
+      w-full
+      items-center
+      justify-center
+      lg:order-1"
+  >
     <img
       src={AwardImage.src}
-      alt="Award Project"
-      class="w-full h-full object-contain"
+      alt="7VAN Best UI/UX Project Award"
+      class="h-full
+        w-full
+        object-contain
+        transition-transform
+        duration-300
+        ease-in-out
+        group-hover:scale-[1.03]"
     />
   </div>
 
-  <div class="w-full flex flex-col gap-4 order-1 lg:order-2">
-    <p
-      class="text-sm md:text-lg lg:text-xl
-        font-normal
-        text-white
-        bg-black
-        px-4
-        py-2
-        rounded-lg
-        w-fit"
-    >
-      ⭐ Awarded-Winning Project
-    </p>
-
-    <h1
-      class="text-4xl md:text-5xl lg:text-6xl
+  <!-- Award Content -->
+  <div
+    class="order-1
+      flex
+      w-full
+      flex-col
+      gap-4
+      lg:order-2"
+  >
+    <h2
+      class="w-full
+        text-start
+        text-2xl
         font-normal
         tracking-tight
-        text-white
-        ibm-plex-serif-medium-italic
-        text-start
-        w-full"
+        text-brown-dark
+        transition-colors
+        duration-300
+        ease-in-out
+        md:text-4xl
+        lg:text-5xl"
     >
       Best UI/UX Project Award
-    </h1>
-    <!-- <Tag category="UX/UI Design" class="mt-2" /> -->
+    </h2>
 
-    <p class="text-lg text-white font-normal">
-      <b>7VAN</b> is a website created for the client, the owner of a Brazilian Jiu-Jitsu academy
-      in Vancouver. 
-      <br>
-      The project received the <b>Best UI/UX Project Award</b>,
-      selected by the client and industry professionals.
+    <!-- Categories -->
+    <div class="flex flex-wrap gap-2">
+      {categories.map((category) => <Tag category={category} />)}
+    </div>
+
+    <!-- Description -->
+    <p
+      class="text-lg
+        font-normal
+        text-brown-dark
+        transition-colors
+        duration-300
+        ease-in-out"
+    >
+      <b>7VAN</b> is a website created for the owner of a Brazilian Jiu-Jitsu academy
+      in Vancouver.
+
+      <br />
+
+      The project received the <b>Best UI/UX Project Award</b>, selected by the
+      client and industry professionals.
     </p>
 
-    <div class="flex flex-row gap-4">
-      <Button variant="primary" href="/projects/7van" class="w-fit mt-2 "
-        >Explore</Button
-      >
+    <!-- Buttons -->
+    <div class="flex flex-row flex-wrap gap-4">
+      <Button variant="primary" href="/projects/7van" class="mt-2 w-fit">
+        Explore 7VAN
+      </Button>
+
       <Button
         variant="secondary"
         href="https://www.linkedin.com/in/joykosol/overlay/Honor/1611570364/treasury/?profileId=ACoAADSR_EYB15BA-sikDGbsuVcKbwE3hPBNMYc"
-        class="w-fit mt-2">View certificate</Button
+        class="mt-2 w-fit"
       >
+        View Certificate
+      </Button>
     </div>
   </div>
 </section>

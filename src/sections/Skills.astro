@@ -1,5 +1,5 @@
 ---
-// 2. Import Skill SVGs
+// Import skill icons
 import Ai from "../assets/skills/ai.svg";
 import Figma from "../assets/skills/figma.svg";
 import Html from "../assets/skills/html.svg";
@@ -15,54 +15,140 @@ import SCSS from "../assets/skills/scss.svg";
 interface Props {
   class?: string;
 }
-const { class: className = "-mt-[100px]" } = Astro.props as Props;
+
+const {
+  class: className = "",
+} = Astro.props as Props;
 
 const icons = [
-  Ai,
-  Figma,
-  Html,
-  Css,
-  Js,
-  AstroIcon,
-  Tailwind,
-  Canva,
-  GitHub,
-  PSD,
-  SCSS,
+  { icon: Ai, name: "Adobe Illustrator" },
+  { icon: Figma, name: "Figma" },
+  { icon: Html, name: "HTML" },
+  { icon: Css, name: "CSS" },
+  { icon: Js, name: "JavaScript" },
+  { icon: AstroIcon, name: "Astro" },
+  { icon: Tailwind, name: "Tailwind CSS" },
+  { icon: Canva, name: "Canva" },
+  { icon: GitHub, name: "GitHub" },
+  { icon: PSD, name: "Adobe Photoshop" },
+  { icon: SCSS, name: "SCSS" },
 ];
 ---
 
-<!-- Skills Section (Marquee) -->
-<section class={`marquee-container w-full overflow-hidden py-6 ${className}`}>
-  <div class="slide-skills flex flex-row w-max">
-    {/* Set 1 */}
-    <div class="flex flex-row gap-8 items-center pr-8 shrink-0">
-      {icons.map((Icon) => <Icon class="h-12 aspect-square shrink-0" />)}
+<!-- Skills marquee -->
+<section
+  aria-label="Design and development skills"
+  class:list={[
+    `
+      marquee-container
+      w-full
+      overflow-hidden
+      py-6
+    `,
+    className,
+  ]}
+>
+  <div class="slide-skills flex w-max">
+    <!-- First set -->
+    <div
+      class="
+        flex
+        shrink-0
+        items-center
+        gap-8
+        pr-8
+      "
+    >
+      {
+        icons.map(({ icon: Icon, name }) => (
+          <div
+            class="
+              flex
+              h-14
+              w-14
+              shrink-0
+              items-center
+              justify-center
+            "
+            title={name}
+          >
+            <Icon
+              aria-label={name}
+              class="
+                h-11
+                w-11
+                object-contain
+              "
+            />
+          </div>
+        ))
+      }
     </div>
 
-    {/* Set 2 (Identical duplicate for infinite loop) */}
-    <div class="flex flex-row gap-8 items-center pr-8 shrink-0">
-      {icons.map((Icon) => <Icon class="h-12 aspect-square shrink-0" />)}
+    <!-- Duplicate set for the infinite loop -->
+    <div
+      aria-hidden="true"
+      class="
+        flex
+        shrink-0
+        items-center
+        gap-8
+        pr-8
+      "
+    >
+      {
+        icons.map(({ icon: Icon }) => (
+          <div
+            class="
+              flex
+              h-14
+              w-14
+              shrink-0
+              items-center
+              justify-center
+            "
+          >
+            <Icon
+              class="
+                h-11
+                w-11
+                object-contain
+              "
+            />
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
 
-<script type="module">
-  // 3. Marquee Animation
-  const marquee = document.querySelector(".marquee-container");
-  const slide = document.querySelector(".slide-skills");
-
-  let progress = 0;
-  let speed = 0.5; // Adjust the speed of the marquee
-
-  function animateMarquee() {
-    progress -= speed;
-    if (progress <= -slide.offsetWidth / 2) {
-      progress = 0; // Reset progress to create an infinite loop
-    }
-    slide.style.transform = `translateX(${progress}px)`;
-    requestAnimationFrame(animateMarquee);
+<style>
+  .slide-skills {
+    animation: skills-marquee 24s linear infinite;
+    will-change: transform;
   }
 
-  animateMarquee();
-</script>
+  .marquee-container:hover .slide-skills {
+    animation-play-state: paused;
+  }
+
+  @keyframes skills-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide-skills {
+      animation: none;
+    }
+
+    .marquee-container {
+      overflow-x: auto;
+    }
+  }
+</style>

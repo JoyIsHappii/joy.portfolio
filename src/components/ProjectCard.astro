@@ -2,12 +2,18 @@
 import Tag from "../components/Tag.astro";
 import Button from "../components/Button.astro";
 
+type ProjectCategory =
+  | "UX Design"
+  | "UI Design"
+  | "Web Development"
+  | "Project Design";
+
 interface ProjectCardProps {
   title: string;
   description: string;
   imageSrc: string;
   imageAlt: string;
-  category: "all" | "UX/UI Design" | "Web Development" | "Project Design";
+  categories?: ProjectCategory[];
   projectLink: string;
 }
 
@@ -16,90 +22,100 @@ const {
   description,
   imageSrc,
   imageAlt,
-  category,
+  categories = [],
   projectLink,
 } = Astro.props as ProjectCardProps;
-
-
-const bgColors = {
-  "UX/UI Design": "bg-blue-100",
-  "Web Development": "bg-green-100",
-  "Project Design": "bg-purple-100",
-  all: "bg-gray-200",
-};
 ---
 
 <article
-  data-project-card
-  data-category={category}
+  data-project-item
+  data-category={categories.join(",")}
   class="
-    w-full
-    rounded-[22px]
-    border
-    overflow-hidden
+    group
     flex
+    w-full
+    h-full
     flex-col
     justify-between
-    hover:scale-[1.02]
-    transition-transform
+    overflow-hidden
+    border
+    border-brown-dark/20
+    bg-transparent
+    backdrop-blur-[6px]
+    transition-all
     duration-300
     ease-in-out
-    bg-transparent
-   border-white/60
-    backdrop-blur-[6px]
-    shadow-lg
-    shadow-black/20
-    group
-
-    hover:bg-black/80
-    hover:border-black/20
-
+    hover:scale-[1.02]
+    hover:border-brown-dark/20
+    hover:bg-brown-medium/50
   "
 >
-  <!-- IMAGE -->
   <a href={projectLink} class="block overflow-hidden">
     <img
       src={imageSrc}
       alt={imageAlt}
-      class="w-full h-full object-cover bg-black/20 group-hover:scale-[1.05] transition-transform duration-300 ease-in-out"
+      class="
+        h-full
+        w-full
+        object-cover
+        transition-transform
+        duration-300
+        ease-in-out
+        group-hover:scale-[1.05]
+      "
     />
   </a>
 
-  <!-- CONTENT -->
-  <div class="p-4 flex flex-col">
+  <div class="flex flex-col p-4">
     <h3
       class="
+        text-left
         text-[34px]
-        leading-none
         font-normal
+        leading-none
         tracking-tight
-        text-black
-        hover:text-white
-        group-hover:text-white
+        text-brown-dark
+        transition-colors
+        duration-300
       "
     >
       {title}
     </h3>
 
-    <Tag category={category} class="mt-2" />
+    <div class="mt-2 flex flex-wrap gap-2">
+      {
+        categories.map((category) => (
+          <Tag category={category} />
+        ))
+      }
+    </div>
 
     <p
       class="
         mt-4
-        max-w-72.5
+        font-mono
         text-[15px]
         leading-[1.2]
         tracking-[0.08em]
-        font-mono
-        text-black
-        group-hover:text-white
+        transition-colors
+        duration-300
       "
     >
       {description}
     </p>
   </div>
 
-  <div class="p-4 pt-0 group-hover:bg-black/80 bg-black/10 transition-colors duration-300 ease-in-out">
+  <div
+    class="
+      bg-black/10
+      p-4
+      pt-0
+      transition-colors
+      duration-300
+      ease-in-out
+      group-hover:bg-transparent
+    "
+  >
     <Button
       href={projectLink}
       variant="primary"
