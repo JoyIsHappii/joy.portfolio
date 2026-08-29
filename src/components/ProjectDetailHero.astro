@@ -11,7 +11,9 @@ interface ProjectDetailHeroProps {
   imageSrc: string;
   imageAlt: string;
   categories: ProjectCategory[];
-  projectLink?: string;
+  desktopLink?: string;
+  mobileLink?: string;
+  prototypeLink?: string;
   class?: string;
   role?: string;
 }
@@ -23,7 +25,9 @@ const {
   imageSrc,
   imageAlt,
   categories,
-  projectLink,
+  desktopLink,
+  mobileLink,
+  prototypeLink,
   role,
   class: className = "",
 } = Astro.props as ProjectDetailHeroProps;
@@ -70,6 +74,13 @@ const {
     >
       {eyebrow}
     </p>
+       <div class="mt-6 flex flex-wrap gap-2">
+      {
+        categories.map((category) => (
+          <Tag category={category} />
+        ))
+      }
+    </div>
 
     <h1
       class="
@@ -95,9 +106,14 @@ const {
             text-sm
             font-semibold
             text-brown-dark
+            bg-green-light/50
+            px-3
+            py-1
+            rounded-lg
+            sm:text-base
           "
         >
-          {role}
+         <b>{role}</b>
         </p>
       )
     }
@@ -115,26 +131,43 @@ const {
       {description}
     </p>
 
-    <div class="mt-6 flex flex-wrap gap-2">
-      {
-        categories.map((category) => (
-          <Tag category={category} />
-        ))
-      }
-    </div>
+ <div class="mt-5 flex flex-row flex-wrap gap-4">
 
-    {
-      projectLink && (
+  {desktopLink && (
         <Button
-          href={projectLink}
+          href={desktopLink}
           variant="primary"
           size="md"
           class="mt-7"
         >
-          View Project ↗
+          Desktop prototype
         </Button>
       )
-    }
+      }
+
+      {mobileLink && (
+        <Button
+          href={mobileLink}
+          variant="secondary"
+          size="md"
+          class="mt-7"
+        >
+          Mobile prototype
+        </Button>
+      )
+      }
+      {prototypeLink && (
+        <Button
+          href={prototypeLink}
+          variant="primary"
+          size="md"
+          class="mt-7"
+        >
+          View prototype
+        </Button>
+      )
+      }
+      </div>
   </div>
 
   <!-- Project image -->

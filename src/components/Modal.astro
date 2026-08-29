@@ -1,0 +1,99 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  id: string;
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  contactEmail?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  description,
+  imageSrc,
+  imageAlt = "",
+  contactEmail,
+} = Astro.props as Props;
+---
+
+<dialog
+  id={id}
+  data-modal
+  aria-labelledby={`${id}-title`}
+  class="m-auto max-h-[90vh] w-[min(92vw,760px)] overflow-y-auto border border-green-dark/20 bg-ivory p-0 text-brown-dark shadow-2xl backdrop:bg-black/50 duration-200 backdrop:backdrop-blur-sm"
+>
+  <div class="relative p-6 sm:p-8">
+    <!-- <button
+      type="button"
+      data-modal-close
+      aria-label="Close modal"
+      class="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full border border-brown-dark/20 bg-ivory text-2xl leading-none text-brown-dark transition hover:bg-brown-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown-dark"
+    >
+      <span aria-hidden="true">×</span>
+    </button> -->
+
+    {imageSrc && (
+      <div class="mb-6 flex max-h-[62vh] items-center justify-center overflow-hidden bg-cream p-3 sm:p-5">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class="h-auto max-h-[56vh] w-auto max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    )}
+
+    {eyebrow && (
+      <p class="pr-12 text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">{eyebrow}</p>
+    )}
+    <h2 id={`${id}-title`} class="mt-2 pr-12 text-3xl sm:text-4xl">{title}</h2>
+    {description && (
+      <p class="mt-4 max-w-2xl leading-relaxed text-brown-dark/75">{description}</p>
+    )}
+
+    {contactEmail && (
+      <div class="mt-6 flex flex-wrap gap-3">
+        <Button href={`mailto:${contactEmail}`} variant="primary">Email Me</Button>
+        <button type="button" data-modal-close class="inline-flex items-center justify-center rounded-full border border-brown-dark/20 bg-[#FEF7F4]/70 px-6 py-2.5 font-medium text-brown-dark transition hover:border-black hover:bg-white">
+          Close
+        </button>
+      </div>
+    )}
+  </div>
+</dialog>
+
+<script>
+  const initializeModals = () => {
+    document.querySelectorAll<HTMLElement>("[data-modal-open]").forEach((trigger) => {
+      if (trigger.dataset.modalReady === "true") return;
+      trigger.dataset.modalReady = "true";
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        const modalId = trigger.dataset.modalOpen;
+        const modal = modalId ? document.getElementById(modalId) : null;
+        if (modal instanceof HTMLDialogElement && !modal.open) modal.showModal();
+      });
+    });
+
+    document.querySelectorAll<HTMLDialogElement>("dialog[data-modal]").forEach((modal) => {
+      if (modal.dataset.modalReady === "true") return;
+      modal.dataset.modalReady = "true";
+      modal.querySelectorAll<HTMLElement>("[data-modal-close]").forEach((button) => {
+        button.addEventListener("click", () => modal.close());
+      });
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) modal.close();
+      });
+    });
+  };
+
+  initializeModals();
+  document.addEventListener("astro:page-load", initializeModals);
+</script>

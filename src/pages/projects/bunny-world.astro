@@ -1,0 +1,1382 @@
+---
+import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import Sidebar from "../../components/ProjectSideBar.astro";
+import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
+import ProjectOverview from "../../components/ProjectOverview.astro";
+
+import TestResultsImage from "../../assets/bunny-world/evidence/test-results.png";
+import TestCharacterPhoto from "../../assets/bunny-world/evidence/test-character-photo.png";
+import TestHistoryPhoto from "../../assets/bunny-world/evidence/test-history-photo.png";
+import TestSkillsPhoto from "../../assets/bunny-world/evidence/test-skills-photo.png";
+
+import TargetUsersImage from "../../assets/bunny-world/user.png";
+import TabletApproachImage from "../../assets/bunny-world/approach.png";
+
+import TestSetupFlow from "../../assets/bunny-world/evidence/test-setup-flow.gif";
+import TestHistoryBefore from "../../assets/bunny-world/evidence/test-history-before.gif";
+import TestProgressAfter from "../../assets/bunny-world/evidence/test-progress-after.gif";
+import TestKidSection from "../../assets/bunny-world/evidence/test-kid-section.png";
+import TestParentSection from "../../assets/bunny-world/evidence/test-parent-section.png";
+
+// import ResearchImage from "../../assets/bunny-world/user.png";
+import CrazyEightImage from "../../assets/bunny-world/crazy8.png";
+import StoryboardImage from "../../assets/bunny-world/storyboard.png";
+import WireframesImage from "../../assets/bunny-world/wireframe.png";
+// import TestSummaryImage from "../../assets/bunny-world/evidence/test-summary.webp";
+import TestParentImage from "../../assets/bunny-world/evidence/test-parent-section.webp";
+import TestHistoryImage from "../../assets/bunny-world/evidence/test-history.webp";
+import FinalScreensImage from "../../assets/hero/bunny-cover.svg";
+
+const learningNeeds = [
+  "Reading",
+  "Writing",
+  "Mathematics",
+  "Language",
+  "Socialization",
+  "Daily skills",
+];
+
+const primaryTasks = [
+  {
+    number: "01",
+    title: "Discover the child’s current needs",
+    description:
+      "Parents complete an introductory assessment so the app can recommend suitable learning activities.",
+  },
+  {
+    number: "02",
+    title: "Complete the day’s lesson",
+    description:
+      "Children follow a short story and complete a focused activity designed to build confidence without competition.",
+  },
+  {
+    number: "03",
+    title: "Review learning progress",
+    description:
+      "Children and parents can review recent activities and progress across individual learning skills.",
+  },
+];
+
+const testFindings = [
+  {
+    number: "01",
+    title: "Separate the parent and child experiences",
+    problem:
+      "Children tried to create the account, complete the assessment, and set the schedule themselves, even though these steps required accurate information from a parent.",
+    learning:
+      "The original flow did not make ownership clear. Parents did not realize when they were expected to participate, while children assumed every screen was intended for them.",
+    change:
+      "Added clear introduction screens for the Parent Section and Kid Section before each audience begins its part of the journey.",
+    image: TestParentImage,
+    imageAlt:
+      "Bunny World usability finding showing new Parent Section and Kid Section introduction screens",
+  },
+  {
+    number: "02",
+    title: "Replace the history dropdown with visible options",
+    problem:
+      "One of four participants could not complete the weekly-history task because the dropdown control was unfamiliar.",
+    learning:
+      "A hidden list required the child to understand a conventional interface pattern before they could change the progress period.",
+    change:
+      "Replaced the dropdown with visible buttons for Today, This Week, and This Month, making every option immediately discoverable.",
+    image: TestHistoryImage,
+    imageAlt:
+      "Bunny World usability finding showing the progress-history dropdown replaced by visible period buttons",
+  },
+];
+---
+
+<ProjectDetailLayout title="Bunny World Case Study — Joy" active="projects">
+  <main class="w-full">
+    <div class="py-5 sm:py-7">
+      <Breadcrumb
+        items={[
+          { label: "Projects", href: "/projects" },
+          { label: "Bunny World", href: "/projects/bunny-world" },
+        ]}
+      />
+    </div>
+
+    <ProjectDetailHero
+      eyebrow="Design sprint case study"
+      title="Bunny World"
+      description="A supportive iPad learning app that helps children aged 6–12 practise essential skills through short lessons, friendly characters, and non-competitive progress tracking."
+      imageSrc={FinalScreensImage.src}
+      imageAlt="Bunny World educational iPad application screens"
+      categories={["UX/UI Design"]}
+      role="UX/UI Designer · Team project"
+      prototypeLink="https://www.figma.com/proto/ja7q2DRAKzivELpNYsCPmD/Bunny-World?node-id=145-2708&p=f&viewport=186%2C329%2C0.07&t=ebXMRWqBNd0K0RE9-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=145%3A2708&page-id=68%3A6102"
+    />
+
+    <div id="overview" class="scroll-mt-8">
+      <ProjectOverview
+        duration="5-day design sprint"
+        role="UX/UI Designer · Team of 4"
+        responsibilities={[
+          "Desk research and problem definition",
+          "Crazy 8 sketches, storyboard, and wireframes",
+          "Interactive prototype and usability testing",
+        ]}
+        challenges={[
+          "Support children with different learning difficulties",
+          "Help children concentrate without adding competitive pressure",
+          "Create a journey shared appropriately between parents and children",
+        ]}
+        solutions={[
+          "A parent-led setup and introductory assessment",
+          "Story-based daily activities with customizable characters",
+          "Simple progress views organized by learning skill",
+        ]}
+      />
+    </div>
+
+    <section
+      class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16"
+    >
+      <div class="hidden lg:block"><Sidebar /></div>
+
+      <div class="min-w-0 space-y-20 sm:space-y-28">
+        <!-- EMPATHIZE -->
+        <section id="empathize" class="scroll-mt-8">
+          <!-- Section introduction -->
+          <header class="max-w-4xl">
+            <p
+              class="text-sm
+        font-semibold
+        uppercase
+        tracking-[0.18em]
+        text-green-dark"
+            >
+              01 · Empathize
+            </p>
+
+            <h2
+              class="mt-4
+        text-4xl
+        text-brown-dark
+        sm:text-5xl
+        lg:text-6xl"
+            >
+              Designing a calmer way to learn
+            </h2>
+
+            <p
+              class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75"
+            >
+              We explored the challenges experienced by children with learning
+              disabilities. These difficulties can affect reading, writing,
+              mathematics, communication, social interaction, and non-verbal
+              skills.
+            </p>
+
+            <p class="mt-4 max-w-3xl leading-relaxed text-brown-dark/75">
+              Educational activities should help children concentrate, build
+              confidence, and learn without unnecessary pressure. Therefore, the
+              experience uses encouragement and personal progress instead of
+              competition as its primary motivation.
+            </p>
+          </header>
+
+          <!-- Learning challenges -->
+          <div class="mt-12">
+            <div class="flex items-end justify-between gap-6">
+              <div>
+                <p
+                  class="text-xs
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-green-dark"
+                >
+                  Research focus
+                </p>
+
+                <h3 class="mt-2 text-3xl text-brown-dark">
+                  Areas where children may need support
+                </h3>
+              </div>
+            </div>
+
+            <div
+              class="mt-6 grid gap-px overflow-hidden bg-brown-dark/15 sm:grid-cols-3"
+            >
+              {
+                learningNeeds.map((need, index) => (
+                  <article class="flex items-center gap-5 bg-ivory p-6 sm:p-8">
+                    <span
+                      class="
+                flex
+                h-11
+                w-11
+                shrink-0
+                items-center
+                justify-center
+                rounded-full
+                bg-green-light
+                text-sm
+                font-semibold
+                text-green-dark
+              "
+                    >
+                      0{index + 1}
+                    </span>
+
+                    <h4 class="text-xl text-brown-dark">{need}</h4>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Research image -->
+          <!-- <figure
+    class="
+      mt-8
+      overflow-hidden
+      border
+      border-brown-dark/15
+      bg-ivory
+      p-4
+      sm:p-6
+    "
+  >
+    <img
+      src={ResearchImage.src}
+      alt="Bunny World research covering learning challenges and supportive learning methods"
+      class="h-auto w-full"
+      loading="lazy"
+    />
+
+    <figcaption
+      class="
+        mt-4
+        max-w-3xl
+        text-sm
+        leading-relaxed
+        text-brown-dark/65
+      "
+    >
+      Desk research helped the team understand common learning challenges
+      and identify ways digital activities could support different forms of
+      interaction.
+    </figcaption>
+  </figure> -->
+
+          <!-- Multimodal learning -->
+          <div class="mt-14">
+            <p
+              class="text-xs
+        font-semibold
+        uppercase
+        tracking-[0.18em]
+        text-green-dark"
+            >
+              Learning support
+            </p>
+
+            <h3 class="mt-2 max-w-2xl text-3xl text-brown-dark">
+              Supporting different ways of interacting
+            </h3>
+
+            <p class="mt-4 max-w-3xl leading-relaxed text-brown-dark/75">
+              Instead of limiting each child to one fixed learning style, Bunny
+              World combines visual, auditory, and interactive guidance
+              throughout its activities.
+            </p>
+
+            <div class="mt-7 grid gap-5 md:grid-cols-3">
+              <!-- Visual -->
+              <article
+                class="flex
+          h-full
+          flex-col
+          border
+          border-brown-dark/15
+          bg-ivory
+          p-6
+          sm:p-8"
+              >
+                <span
+                  class="flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            bg-yellow-100
+            text-xl"
+                  aria-hidden="true"
+                >
+                  👁️
+                </span>
+
+                <p
+                  class="mt-6
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.16em]
+            text-green-dark"
+                >
+                  Visual support
+                </p>
+
+                <h4 class="mt-2 text-2xl text-brown-dark">See and read</h4>
+
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">
+                  Use illustrations, written prompts, clear colours, and visual
+                  demonstrations to explain each activity.
+                </p>
+              </article>
+
+              <!-- Auditory -->
+              <article
+                class="flex
+          h-full
+          flex-col
+          border
+          border-brown-dark/15
+          bg-ivory
+          p-6
+          sm:p-8"
+              >
+                <span
+                  class="flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            bg-blue-100
+            text-xl"
+                  aria-hidden="true"
+                >
+                  🔊
+                </span>
+
+                <p
+                  class="mt-6
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.16em]
+            text-green-dark"
+                >
+                  Auditory support
+                </p>
+
+                <h4 class="mt-2 text-2xl text-brown-dark">
+                  Listen and respond
+                </h4>
+
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">
+                  Combine spoken instructions, narration, and sound feedback
+                  with the visual activity.
+                </p>
+              </article>
+
+              <!-- Interactive -->
+              <article
+                class="flex
+          h-full
+          flex-col
+          border
+          border-brown-dark/15
+          bg-ivory
+          p-6
+          sm:p-8"
+              >
+                <span
+                  class="flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            bg-green-light
+            text-xl"
+                  aria-hidden="true"
+                >
+                  👆
+                </span>
+
+                <p
+                  class="mt-6
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.16em]
+            text-green-dark"
+                >
+                  Interactive support
+                </p>
+
+                <h4 class="mt-2 text-2xl text-brown-dark">Do and interact</h4>
+
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">
+                  Encourage children to learn by touching, selecting, arranging,
+                  and directly interacting with each activity.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Target user and platform approach -->
+          <div class="mt-14 grid gap-6 lg:grid-cols-2">
+            <!-- Target users -->
+            <article
+              class="grid
+        overflow-hidden
+        border
+        border-brown-dark/15
+        bg-ivory"
+            >
+              <div class="aspect-[4/3] overflow-hidden bg-cream">
+                <img
+                  src={TargetUsersImage.src}
+                  alt="Children aged 6 to 12 using a learning activity"
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="p-6 sm:p-8">
+                <p
+                  class="text-xs
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-green-dark"
+                >
+                  Target users
+                </p>
+
+                <h3 class="mt-3 text-3xl text-brown-dark">
+                  Children aged 6–12
+                </h3>
+
+                <p class="mt-4 leading-relaxed text-brown-dark/75">
+                  Bunny World is designed for children who may need additional
+                  support with reading, writing, mathematics, language, social
+                  interaction, or daily skills.
+                </p>
+              </div>
+            </article>
+
+            <!-- Platform approach -->
+            <article
+              class="grid
+        overflow-hidden
+        border
+        border-brown-dark/15
+        bg-ivory"
+            >
+              <div class="aspect-[4/3] overflow-hidden bg-cream">
+                <img
+                  src={TabletApproachImage.src}
+                  alt="Child interacting with an educational activity on a tablet"
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="p-6 sm:p-8">
+                <p
+                  class="text-xs
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-green-dark"
+                >
+                  Platform approach
+                </p>
+
+                <h3 class="mt-3 text-3xl text-brown-dark">Designed for iPad</h3>
+
+                <p class="mt-4 leading-relaxed text-brown-dark/75">
+                  Research into comparable educational tools supported an
+                  iPad-first approach. A larger touch interface provides more
+                  space for clear instructions, accessible controls, and
+                  hands-on interaction.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- DEFINE -->
+        <section
+          id="define"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            02 · Define
+          </p>
+          <h2 class="mt-4 max-w-4xl text-4xl sm:text-6xl">
+            Three journeys shaped the experience
+          </h2>
+          <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+            We focused the sprint on setup, daily learning, and progress. These
+            journeys support both the parent who provides information and the
+            child who returns to learn.
+          </p>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-3">
+            {
+              primaryTasks.map((task) => (
+                <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                  <span class="text-sm font-semibold text-green-dark">
+                    {task.number}
+                  </span>
+                  <h3 class="mt-4 text-2xl">{task.title}</h3>
+                  <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">
+                    {task.description}
+                  </p>
+                </article>
+              ))
+            }
+          </div>
+
+          <div
+            class="mt-10 border-l-4 border-green-dark bg-green-light/40 p-6 sm:p-8"
+          >
+            <p
+              class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark"
+            >
+              Problem statement
+            </p>
+            <p class="mt-3 text-xl leading-relaxed sm:text-2xl">
+              How might we help children practise essential skills in a way that
+              feels calm, encouraging, and appropriate to their needs—while
+              giving parents enough guidance to support the journey?
+            </p>
+          </div>
+        </section>
+
+        <!-- IDEATE -->
+        <section
+          id="ideate"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            03 · Ideate
+          </p>
+          <h2 class="mt-4 text-4xl sm:text-6xl">
+            From quick ideas to one shared story
+          </h2>
+          <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+            Each team member sketched eight ideas in eight minutes using Crazy
+            8s. We compared the strongest concepts, then created a storyboard
+            that connected parent setup, character selection, daily lessons,
+            activity history, and progress tracking.
+          </p>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-2">
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <figcaption class="mt-4 text-md font-semibold">
+                Crazy 8 concept sketches
+              </figcaption>
+              <img
+                src={CrazyEightImage.src}
+                alt="Bunny World Crazy 8 sketches exploring assessment, lessons, and progress"
+                class="h-auto w-full"
+                loading="lazy"
+              />
+            </figure>
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <figcaption class="mt-4 text-md font-semibold">
+                End-to-end storyboard
+              </figcaption>
+              <img
+                src={StoryboardImage.src}
+                alt="Bunny World storyboard from account setup to learning progress"
+                class="h-auto w-full"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </section>
+
+        <!-- PROTOTYPE -->
+        <section
+          id="prototype"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            04 · Prototype
+          </p>
+          <h2 class="mt-4 text-4xl sm:text-6xl">
+            A parent-guided setup and child-friendly world
+          </h2>
+          <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+            The wireframes begin with account creation and an introductory
+            assessment completed by a parent. The child can then choose a bunny,
+            enter a story-led lesson, complete a daily activity, and review
+            progress by learning skill.
+          </p>
+
+          <figure class="mt-10 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+            <img
+              src={WireframesImage.src}
+              alt="Bunny World wireframe flow and key low-fidelity iPad screens"
+              class="h-auto w-full"
+              loading="lazy"
+            />
+            <figcaption class="mt-4 text-sm leading-relaxed text-brown-dark/75">
+              The prototype connected the complete experience so it could be
+              tested as a realistic sequence rather than as isolated screens.
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- TEST -->
+        <section
+          id="test"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <!-- Introduction -->
+          <header class="max-w-4xl">
+            <p
+              class="text-sm
+        font-semibold
+        uppercase
+        tracking-[0.18em]
+        text-green-dark"
+            >
+              05 · Test
+            </p>
+
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-5xl">
+              Testing the experience with children
+            </h2>
+
+            <p
+              class="mt-5 max-w-3xl text-lg leading-relaxed text-brown-dark/75"
+            >
+              Four children aged 6–12 tested the prototype through four key
+              tasks. After each task, we observed their behaviour and asked what
+              felt clear, confusing, or enjoyable.
+            </p>
+          </header>
+
+          <!-- Test overview -->
+          <div class="">
+            <div
+              class="mt-10
+    grid
+    overflow-hidden
+    border
+    border-brown-dark/15
+    bg-ivory
+    lg:grid-cols-2
+    lg:items-stretch"
+            >
+              <!-- Testing information -->
+              <div class="flex flex-col justify-between p-6 sm:p-8">
+                <div>
+                  <p
+                    class="text-xs
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-dark"
+                  >
+                    Testing overview
+                  </p>
+
+                  <h3 class="mt-3 max-w-lg text-3xl text-brown-dark">
+                    Four participants completed four tasks
+                  </h3>
+
+                  <p class="mt-4 max-w-xl leading-relaxed text-brown-dark/70">
+                    Because recruiting children with diagnosed learning
+                    disabilities was difficult, the prototype was evaluated with
+                    children from the same age group as the intended users.
+                  </p>
+                </div>
+
+                <div
+                  class="mt-7
+        grid
+        max-w-lg
+        grid-cols-3
+        gap-px
+        overflow-hidden
+        border
+        border-brown-dark/15
+        bg-brown-dark/15"
+                >
+                  <div class="bg-cream p-3 text-center sm:p-4">
+                    <strong class="text-2xl text-brown-dark sm:text-3xl">
+                      4
+                    </strong>
+                    <p class="mt-1 text-xs text-brown-dark/60">Children</p>
+                  </div>
+
+                  <div class="bg-cream p-3 text-center sm:p-4">
+                    <strong class="text-2xl text-brown-dark sm:text-3xl">
+                      4
+                    </strong>
+                    <p class="mt-1 text-xs text-brown-dark/60">Tasks</p>
+                  </div>
+
+                  <div class="bg-cream p-3 text-center sm:p-4">
+                    <strong class="text-2xl text-brown-dark sm:text-3xl">
+                      2
+                    </strong>
+                    <p class="mt-1 text-xs text-brown-dark/60">Issues</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Compact testing photos -->
+              <div
+                class="grid
+      grid-cols-3
+      gap-2
+      border-t
+      border-brown-dark/15
+      p-3
+      sm:p-4
+      lg:border-l
+      lg:border-t-0"
+              >
+                <figure class="overflow-hidden bg-cream">
+                  <img
+                    src={TestCharacterPhoto.src}
+                    alt="Child testing character selection"
+                    class="h-full
+          min-h-[150px]
+          w-full
+          object-cover
+          lg:min-h-0"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <figure class="overflow-hidden bg-cream">
+                  <img
+                    src={TestHistoryPhoto.src}
+                    alt="Child testing history and calendar"
+                    class="h-full
+          min-h-[150px]
+          w-full
+          object-cover
+          lg:min-h-0"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <figure class="overflow-hidden bg-cream">
+                  <img
+                    src={TestSkillsPhoto.src}
+                    alt="Child testing skill selection"
+                    class="h-full
+          min-h-[150px]
+          w-full
+          object-cover
+          lg:min-h-0"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+            </div>
+
+            <!-- Testing photos -->
+            <!-- <div
+    class="
+      grid
+      gap-px
+      border-t
+      border-brown-dark/15
+      bg-brown-dark/15
+      sm:grid-cols-2
+      lg:border-l
+      lg:border-t-0
+    "
+  > -->
+            <!-- Character testing -->
+            <!-- <figure class="overflow-hidden bg-cream">
+      <img
+        src={TestCharacterPhoto.src}
+        alt="Child testing the Bunny World character-selection screen"
+        class="
+          aspect-[4/3]
+          h-full
+          w-full
+          object-cover
+        "
+        loading="lazy"
+      />
+    </figure> -->
+
+            <!-- History testing -->
+            <!-- <figure class="overflow-hidden bg-cream">
+      <img
+        src={TestHistoryPhoto.src}
+        alt="Child testing the Bunny World history and calendar screen"
+        class="
+          aspect-[4/3]
+          h-full
+          w-full
+          object-cover
+        "
+        loading="lazy"
+      />
+    </figure> -->
+
+            <!-- Skills testing -->
+            <!-- <figure class="overflow-hidden bg-cream sm:col-span-2">
+      <img
+        src={TestSkillsPhoto.src}
+        alt="Child testing the Bunny World skill-selection screen"
+        class="
+          aspect-[2/1]
+          h-full
+          w-full
+          object-cover
+          object-center
+        "
+        loading="lazy"
+      />
+    </figure> -->
+            <!-- </div> -->
+          </div>
+
+          <!-- Test results -->
+          <figure
+            class="mt-6
+      overflow-hidden
+      border
+      border-brown-dark/15
+      bg-ivory
+      p-4
+      sm:p-6"
+          >
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p
+                  class="text-xs
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-green-dark"
+                >
+                  Task results
+                </p>
+
+                <h3 class="mt-2 text-2xl text-brown-dark">
+                  Where participants experienced difficulty
+                </h3>
+              </div>
+
+              <div class="flex flex-wrap gap-4 text-xs text-brown-dark/65">
+                <span>✅ Completed</span>
+                <span>❌ Could not complete</span>
+                <span>☑️ Completed differently</span>
+              </div>
+            </div>
+
+            <img
+              src={TestResultsImage.src}
+              alt="Bunny World usability-testing results for four participants"
+              class="mt-5 h-auto w-full"
+              loading="lazy"
+            />
+
+            <figcaption class="mt-4 text-sm leading-relaxed text-brown-dark/65">
+              All participants completed the lesson and character-selection
+              tasks. Difficulties appeared during the parent-led setup and
+              weekly-history tasks.
+            </figcaption>
+          </figure>
+
+          <!-- Findings heading -->
+          <div class="mt-14">
+            <p
+              class="text-xs
+        font-semibold
+        uppercase
+        tracking-[0.18em]
+        text-green-dark"
+            >
+              Key findings
+            </p>
+
+            <h3 class="mt-2 text-3xl text-brown-dark sm:text-4xl">
+              What we learned and changed
+            </h3>
+          </div>
+
+          <!-- Finding 01 -->
+          <article
+            class="mt-7
+      overflow-hidden
+      border
+      border-brown-dark/15
+      bg-ivory"
+          >
+            <div class="grid lg:grid-cols-2">
+              <!-- Finding text -->
+              <div class="p-6 sm:p-8">
+                <p
+                  class="text-xs
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-green-dark"
+                >
+                  Finding 01
+                </p>
+
+                <h3 class="mt-3 text-2xl text-brown-dark sm:text-3xl">
+                  Parent and child responsibilities were unclear
+                </h3>
+
+                <div class="mt-6 space-y-5">
+                  <div>
+                    <h4 class="font-semibold text-brown-dark">What happened</h4>
+
+                    <p class="mt-1 text-sm leading-relaxed text-brown-dark/70">
+                      Children attempted to create the account, complete the
+                      assessment, and set the schedule themselves, even though
+                      these steps required accurate information from a parent.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-brown-dark">
+                      What we learned
+                    </h4>
+
+                    <p class="mt-1 text-sm leading-relaxed text-brown-dark/70">
+                      The original flow did not explain when a parent should
+                      take control and when the child’s experience should begin.
+                    </p>
+                  </div>
+
+                  <div class="border-l-4 border-green-dark pl-4">
+                    <h4 class="font-semibold text-green-dark">Design change</h4>
+
+                    <p class="mt-1 text-sm leading-relaxed text-brown-dark/70">
+                      We added clear Parent Section and Kid Section
+                      introductions before each person begins their part of the
+                      journey.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Original flow -->
+              <figure
+                class="flex
+          flex-col
+          justify-center
+          border-t
+          border-brown-dark/15
+          bg-cream
+          p-4
+          sm:p-6
+          lg:border-l
+          lg:border-t-0"
+              >
+                <span
+                  class="mb-3
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.14em]
+            text-rose"
+                >
+                  Before
+                </span>
+
+                <img
+                  src={TestSetupFlow.src}
+                  alt="Original Bunny World setup flow"
+                  class="h-auto w-full object-contain"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+
+            <!-- Finding 01 improvements -->
+            <div
+              class="grid
+        gap-px
+        border-t
+        border-brown-dark/15
+        bg-brown-dark/15
+        sm:grid-cols-2"
+            >
+              <figure class="bg-cream p-4 sm:p-5">
+                <span
+                  class="mb-3
+            block
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.14em]
+            text-green-dark"
+                >
+                  After · Parent section
+                </span>
+
+                <img
+                  src={TestParentSection.src}
+                  alt="Improved Bunny World Parent Section introduction"
+                  class="h-auto w-full"
+                  loading="lazy"
+                />
+              </figure>
+
+              <figure class="bg-cream p-4 sm:p-5">
+                <span
+                  class="mb-3
+            block
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.14em]
+            text-green-dark"
+                >
+                  After · Kid section
+                </span>
+
+                <img
+                  src={TestKidSection.src}
+                  alt="Improved Bunny World Kid Section introduction"
+                  class="h-auto w-full"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </article>
+
+          <!-- Finding 02 -->
+          <article
+            class="mt-6
+      overflow-hidden
+      border
+      border-brown-dark/15
+      bg-ivory"
+          >
+            <!-- Finding text -->
+            <div class="grid gap-6 p-6 sm:p-8 lg:grid-cols-[0.7fr_1.3fr]">
+              <div>
+                <p
+                  class="text-xs
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-green-dark"
+                >
+                  Finding 02
+                </p>
+
+                <h3 class="mt-3 text-2xl text-brown-dark sm:text-3xl">
+                  The history dropdown was difficult to discover
+                </h3>
+              </div>
+
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <h4 class="font-semibold text-brown-dark">What happened</h4>
+
+                  <p class="mt-1 text-sm leading-relaxed text-brown-dark/70">
+                    One participant could not review the week because the
+                    dropdown used to change the history period was unfamiliar.
+                  </p>
+                </div>
+
+                <div class="border-l-4 border-green-dark pl-4">
+                  <h4 class="font-semibold text-green-dark">Design change</h4>
+
+                  <p class="mt-1 text-sm leading-relaxed text-brown-dark/70">
+                    The dropdown was replaced with visible Today, This Week, and
+                    This Month buttons.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Finding 02 before and after -->
+            <div
+              class="grid
+        gap-px
+        border-t
+        border-brown-dark/15
+        bg-brown-dark/15
+        md:grid-cols-2"
+            >
+              <figure class="flex flex-col justify-center bg-cream p-4 sm:p-5">
+                <span
+                  class="mb-3
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.14em]
+            text-rose"
+                >
+                  Before
+                </span>
+
+                <img
+                  src={TestHistoryBefore.src}
+                  alt="Original Bunny World history screen using a dropdown"
+                  class="h-auto w-full"
+                  loading="lazy"
+                />
+              </figure>
+
+              <!-- <figure class="flex flex-col justify-center bg-cream p-4 sm:p-5">
+        <span
+          class="
+            mb-3
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.14em]
+            text-brown-dark/60
+          "
+        >
+          Testing evidence
+        </span>
+
+        <img
+          src={TestHistoryPhoto.src}
+          alt="Child interacting with the original history dropdown"
+          class="aspect-[4/3] w-full object-cover"
+          loading="lazy"
+        />
+      </figure> -->
+
+              <figure class="flex flex-col justify-center bg-cream p-4 sm:p-5">
+                <span
+                  class="mb-3
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.14em]
+            text-green-dark"
+                >
+                  After
+                </span>
+
+                <img
+                  src={TestProgressAfter.src}
+                  alt="Improved progress screen using visible period buttons"
+                  class="h-auto w-full"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </article>
+
+          <!-- Character feedback -->
+          <aside
+            class="mt-6
+      grid
+      overflow-hidden
+      border
+      border-brown-dark/15
+      bg-green-light/30
+      md:grid-cols-[0.65fr_1.35fr]"
+          >
+            <img
+              src={TestCharacterPhoto.src}
+              alt="Child reviewing Bunny World character choices"
+              class="h-full max-h-[300px] w-full object-cover"
+              loading="lazy"
+            />
+
+            <div class="p-6 sm:p-8">
+              <p
+                class="text-xs
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-dark"
+              >
+                Additional feedback
+              </p>
+
+              <h3 class="mt-3 text-2xl text-brown-dark sm:text-3xl">
+                Children wanted more character choices
+              </h3>
+
+              <p class="mt-3 max-w-2xl leading-relaxed text-brown-dark/70">
+                Character design received the most preference-based feedback.
+                Participants wanted more appealing options and greater variety,
+                so children were involved when reviewing the revised bunny
+                characters.
+              </p>
+            </div>
+          </aside>
+        </section>
+
+        <!-- FINAL DESIGN -->
+        <section
+          id="final-design"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <!-- Introduction -->
+          <div
+            class="grid
+      gap-8
+      md:grid-cols-[0.85fr_1.15fr]
+      md:items-end"
+          >
+            <div>
+              <p
+                class="text-sm
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-dark"
+              >
+                06 · Final design
+              </p>
+
+              <h2 class="mt-4 text-4xl sm:text-6xl">
+                Learning through a friendly story world
+              </h2>
+            </div>
+
+            <p class="text-lg leading-relaxed text-brown-dark/75">
+              The final iPad experience combines parent setup, child profiles,
+              bunny customization, recommended lessons, map-based learning,
+              daily activities, and skill-based progress in one consistent
+              world.
+            </p>
+          </div>
+
+          <!-- Interactive prototype -->
+          <div class="mt-10">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p
+                  class="text-xs
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-green-dark"
+                >
+                  Interactive prototype
+                </p>
+
+                <h3 class="mt-2 text-2xl text-brown-dark sm:text-3xl">
+                  Explore the Bunny World experience
+                </h3>
+              </div>
+
+              <a
+                href="https://www.figma.com/proto/ja7q2DRAKzivELpNYsCPmD/Bunny-World?node-id=145-2708&p=f&viewport=186%2C329%2C0.07&scaling=scale-down&content-scaling=fixed&starting-point-node-id=145%3A2708&page-id=68%3A6102"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="border-b
+          border-brown-dark
+          pb-1
+          text-sm
+          font-semibold
+          text-brown-dark
+          transition-colors
+          hover:border-green-dark
+          hover:text-green-dark"
+              >
+                Open in Figma ↗
+              </a>
+            </div>
+
+            <div
+              class="mt-5
+        border
+        border-brown-dark/15
+        bg-ivory
+        p-3
+        sm:p-4"
+            >
+              <div
+                class="relative
+          aspect-video
+          w-full
+          overflow-hidden
+          bg-cream"
+              >
+                <iframe
+                  src="https://embed.figma.com/proto/ja7q2DRAKzivELpNYsCPmD/Bunny-World?node-id=145-2708&p=f&viewport=186%2C329%2C0.07&scaling=scale-down&content-scaling=fixed&starting-point-node-id=145%3A2708&page-id=68%3A6102&embed-host=share"
+                  title="Bunny World interactive Figma prototype"
+                  class="absolute inset-0 h-full w-full border-0"
+                  loading="lazy"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+
+       
+
+          <!-- Outcome -->
+          <div
+            class="mt-10
+      flex
+      flex-col
+      items-start
+      justify-between
+      gap-7
+      bg-brown-dark
+      px-6
+      py-10
+      text-white
+      sm:px-10
+      md:flex-row
+      md:items-center"
+          >
+            <div>
+              <p
+                class="text-sm
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-light"
+              >
+                Outcome
+              </p>
+
+              <h3 class="mt-3 text-3xl !text-white">
+                A clearer experience for both parent and child
+              </h3>
+
+              <p class="mt-3 max-w-2xl text-white/70">
+                Testing clarified who should complete setup and made progress
+                controls easier for children to understand. The result balances
+                structured learning with playful choice and encouragement.
+              </p>
+            </div>
+
+            <a
+              href="/projects"
+              class="inline-flex
+        shrink-0
+        border-b
+        border-white
+        pb-1
+        font-semibold
+        text-white"
+            >
+              Explore more projects →
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</ProjectDetailLayout
+>

@@ -1,10 +1,12 @@
 ---
 import Button from "../components/Button.astro";
 import AwardImage from "../assets/award-image.svg";
+import CertificateImage from "../assets/certificate.jpeg";
 import Tag from "../components/Tag.astro";
+import Modal from "../components/Modal.astro";
 
 type ProjectCategory =
-  "UX Design" | "UI Design" | "Web Development" | "Project Design";
+  "UX Design" | "UI Design" | "Web Development" | "Project Management";
 
 const categories: ProjectCategory[] = ["UX Design", "UI Design"];
 ---
@@ -54,6 +56,8 @@ hover:bg-brown-medium/50 md:px-12
         duration-300
         ease-in-out
         group-hover:scale-[1.03]"
+      loading="lazy"
+      decoding="async"
     />
   </div>
 
@@ -111,13 +115,24 @@ hover:bg-brown-medium/50 md:px-12
         Explore 7VAN
       </Button>
 
-      <Button
-        variant="secondary"
-        href="https://www.linkedin.com/in/joykosol/overlay/Honor/1611570364/treasury/?profileId=ACoAADSR_EYB15BA-sikDGbsuVcKbwE3hPBNMYc"
-        class="mt-2 w-fit"
+      <button
+        type="button"
+        data-modal-open="certificate-modal"
+        aria-haspopup="dialog"
+        aria-controls="certificate-modal"
+        class="mt-2 inline-flex w-fit items-center justify-center rounded-full border border-brown-dark/20 bg-[#FEF7F4]/70 px-6 py-2.5 font-medium text-brown-dark transition hover:border-black hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown-dark"
       >
         View Certificate
-      </Button>
+      </button>
     </div>
   </div>
 </section>
+
+<Modal
+  id="certificate-modal"
+  eyebrow="Award certificate"
+  title="Best UI/UX Project Award"
+  description="The 7VAN project was selected by the client and industry professionals."
+  imageSrc={CertificateImage.src}
+  imageAlt="Certificate for the 7VAN Best UI/UX Project Award"
+/>

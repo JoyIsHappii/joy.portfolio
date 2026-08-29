@@ -1,10 +1,9 @@
 ---
 type Category =
   | "all"
-  | "UX Design"
-  | "UI Design"
+  | "UX/UI Design"
   | "Web Development"
-  | "Project Design";
+  | "Project Management";
 
 interface FilterProps {
   selectedCategory?: Category;
@@ -23,20 +22,16 @@ const categories: {
     label: "All",
   },
   {
-    value: "UX Design",
-    label: "UX Design",
-  },
-  {
-    value: "UI Design",
-    label: "UI Design",
+    value: "UX/UI Design",
+    label: "UX/UI Design",
   },
   {
     value: "Web Development",
     label: "Web Development",
   },
   {
-    value: "Project Design",
-    label: "Project Design",
+    value: "Project Management",
+    label: "Project Management",
   },
 ];
 
@@ -84,19 +79,15 @@ const categoryClasses: Record<Category, string> = {
     before:bg-gray-500
   `,
 
-  "UX Design": `
+  "UX/UI Design": `
     before:bg-blue-500
-  `,
-
-  "UI Design": `
-    before:bg-yellow-500
   `,
 
   "Web Development": `
     before:bg-green-500
   `,
 
-  "Project Design": `
+  "Project Management": `
     before:bg-purple-500
   `,
 };

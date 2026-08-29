@@ -1,0 +1,611 @@
+---
+import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import HeroImage from "../../assets/hero/ippon-cover.svg";
+import Sidebar from "../../components/ProjectSideBar.astro";
+import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
+import ProjectOverview from "../../components/ProjectOverview.astro";
+import Button from "../../components/Button.astro";
+
+// Temporary visual evidence cropped from the original case study.
+// The written content below is native HTML, so these can be replaced one by
+// one with higher-resolution exports later without changing the layout.
+import KarateOrganizationsImage from "../../assets/ippon/wkf.png";
+import UserBehaviourChart from "../../assets/ippon/motivation.png";
+import PainPointsChart from "../../assets/ippon/painpoints.png";
+import ContentPriorityTable from "../../assets/ippon/userneeds.png";
+import AffinityMapImage from "../../assets/ippon/affinity.png";
+import PersonaImage from "../../assets/ippon/persona.png";
+import CompetitorMapImage from "../../assets/ippon/competiter.png";
+import SitemapImage from "../../assets/ippon/sitemap.jpg";
+import VideoFlowImage from "../../assets/ippon/task1.png";
+import CommunityFlowImage from "../../assets/ippon/task2.png";
+import DojoFlowImage from "../../assets/ippon/task3.png";
+import EventFlowImage from "../../assets/ippon/task4.png";
+import UploadFlowImage from "../../assets/ippon/task5.png";
+import UIKitImage from "../../assets/ippon/ui-kit.png";
+import PrototypeMockupsImage from "../../assets/ippon/mockup.png";
+import TestSummaryImage from "../../assets/ippon/test-summary.png";
+import TestSearchImage from "../../assets/ippon/test1.png";
+import TestCommunityImage from "../../assets/ippon/test2.png";
+import TestCalendarImage from "../../assets/ippon/test4.png";
+import FinalVideoImage from "../../assets/ippon/mockup.png";
+import FinalCommunityImage from "../../assets/ippon/mockup.png";
+import FinalDojoImage from "../../assets/ippon/evidence/final-dojo.webp";
+import FinalEventUploadImage from "../../assets/ippon/evidence/final-event-upload.webp";
+
+const researchGoals = [
+  "Understand how karate practitioners currently use social media",
+  "Identify the content they find most valuable",
+  "Discover pain points across existing platforms",
+  "Learn which features could support training and community",
+];
+
+const insights = [
+  {
+    number: "01",
+    title: "Learning comes first",
+    description:
+      "Practitioners primarily use social media to learn and improve their karate skills.",
+  },
+  {
+    number: "02",
+    title: "Information is fragmented",
+    description:
+      "Users encounter outdated posts, mixed information, spam, and unrelated content on general platforms.",
+  },
+  {
+    number: "03",
+    title: "Video is essential",
+    description:
+      "Video and story content ranked highest, followed by communities, events, and news feeds.",
+  },
+  {
+    number: "04",
+    title: "Users want to receive",
+    description:
+      "Participants preferred discovering useful information over regularly creating their own posts.",
+  },
+];
+
+const coreFlows = [
+  {
+    number: "01",
+    title: "Watch videos and comment",
+    description:
+      "Browse followed and saved videos, then search using filters such as karate style, duration, trend, and date.",
+  },
+  {
+    number: "02",
+    title: "Join a community",
+    description:
+      "Read community updates and discover groups by name, member count, and language for a global audience.",
+  },
+  {
+    number: "03",
+    title: "Find a dojo",
+    description:
+      "Locate karate schools and review the information needed to choose a suitable place to practise.",
+  },
+  {
+    number: "04",
+    title: "Find and save events",
+    description:
+      "Search events by category, karate style, and date, then save selected events to a personal calendar.",
+  },
+  {
+    number: "05",
+    title: "Upload videos for feedback",
+    description:
+      "Share a kata video, choose who can review it, request professional feedback, and control its privacy.",
+  },
+];
+
+const flowImages = [
+  VideoFlowImage,
+  CommunityFlowImage,
+  DojoFlowImage,
+  EventFlowImage,
+  UploadFlowImage,
+];
+
+const testFindings = [
+  {
+    number: "01",
+    title: "Simplify search and filtering",
+    problem:
+      "Three of five users tapped the search icon instead of the filter icon while looking for content.",
+    observation:
+      "The two similar actions made users pause because they were unsure which icon would help them find the content they wanted.",
+    solution:
+      "Removed the separate filter icon and made search the single, familiar entry point for search and filtering.",
+    image: TestSearchImage,
+    imageAlt:
+      "Search usability-test screens showing the original filter control and the simplified search design",
+  },
+  {
+    number: "02",
+    title: "Use clearer community language",
+    problem:
+      "One participant misunderstood the word “Club” and confused it with a dojo.",
+    observation:
+      "For karate practitioners, “club” can describe a physical training school, so the label did not clearly communicate a social discussion space.",
+    solution:
+      "Changed the navigation label from “Club” to “Community” to communicate its purpose more clearly.",
+    image: TestCommunityImage,
+    imageAlt:
+      "Community usability-test screens showing the navigation label changed from Club to Community",
+  },
+  {
+    number: "03",
+    title: "Make the calendar action recognizable",
+    problem:
+      "One participant looked for a calendar symbol before reading the event button label.",
+    observation:
+      "Although the text label was present, the action was not immediately recognizable while the participant scanned the event details.",
+    solution:
+      "Added a calendar icon to the “Add to calendar” action to improve recognition.",
+    image: TestCalendarImage,
+    imageAlt:
+      "Event usability-test screens showing the Add to calendar action before and after adding a calendar icon",
+  },
+];
+---
+
+<ProjectDetailLayout title="Ippon Case Study — Joy" active="projects">
+  <main class="w-full">
+    <div class="py-5 sm:py-7">
+      <Breadcrumb
+        items={[
+          { label: "Projects", href: "/projects" },
+          { label: "Ippon", href: "/projects/ippon" },
+        ]}
+      />
+    </div>
+
+    <ProjectDetailHero
+      eyebrow="Selected case study"
+      title="Ippon"
+      description="A social media application that brings karate videos, communities, dojos, events, and professional feedback into one focused experience for practitioners."
+      imageSrc={HeroImage.src}
+      imageAlt="Ippon karate social media application displayed on mobile devices"
+      categories={["UX/UI Design"]}
+      role="UX/UI Designer · Individual project"
+      prototypeLink="https://www.figma.com/proto/aKjQYawVfpIEmDu6Sz0a3d/Social-Media?node-id=1055-14985&p=f&viewport=422%2C446%2C0.08&t=BGDJEGJoyoU1hKZe-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1055%3A14985&page-id=1055%3A14965"
+    />
+
+    <div id="overview" class="scroll-mt-8">
+      <ProjectOverview
+        duration="3 weeks"
+        role="UX/UI Designer · Individual project"
+        responsibilities={[
+          "Desk research, survey, persona, and competitor analysis",
+          "Sitemap, user flows, and wireframes",
+          "Visual system, interactive prototype, and usability testing",
+        ]}
+        challenges={[
+          "Help practitioners find relevant karate content without general social-media clutter",
+          "Connect people across karate styles, communities, dojos, and events",
+          "Support learning through videos and feedback from experienced practitioners",
+        ]}
+        solutions={[
+          "A video-first home experience",
+          "Dedicated community, dojo, and event discovery",
+          "Video uploads with feedback requests and privacy controls",
+        ]}
+      />
+    </div>
+
+    <section
+      class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16"
+    >
+      <div class="hidden lg:block"><Sidebar /></div>
+
+      <div class="min-w-0 space-y-20 sm:space-y-28">
+        <!-- EMPATHIZE -->
+        <section id="empathize" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              01 · Empathize
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Understanding how karate practitioners learn and connect
+            </h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+              I began with desk research into karate culture and terminology,
+              followed by a survey of practitioners to understand their social
+              media behaviour, frustrations, and preferred content.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-2">
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+              <span class="text-sm font-semibold text-rose">Context</span>
+              <h3 class="mt-4 text-2xl">A worldwide martial-art community</h3>
+              <p class="mt-3">
+                Karate originated in Japan and is practised worldwide across
+                approximately 198 member countries. Major styles include
+                Goju-ryu, Shotokan, Wado-ryu, and Shito-ryu, each with distinct
+                techniques and events organized under the WKF.
+              </p>
+              <img
+                src={KarateOrganizationsImage.src}
+                alt="World Karate Federation and four major karate-style organizations"
+                class="mt-6 h-auto w-full"
+              />
+            </article>
+
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+              <span class="text-sm font-semibold text-brown-dark">Language</span>
+              <h3 class="mt-4 text-2xl">Terms shaped the product</h3>
+              <p class="mt-3">
+                “Ippon” is a winning point awarded for a well-executed
+                technique. A “dojo” is a martial-arts training space, “kata” is
+                a sequence of movements, and “sensei” means instructor.
+              </p>
+            </article>
+          </div>
+
+          <div class="mt-14 grid gap-10 border-t border-brown-dark/15 pt-10 md:grid-cols-[0.75fr_1.25fr]">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-rose">
+                User survey
+              </p>
+              <strong class="mt-4 block text-7xl text-brown-dark">12</strong>
+              <p class="mt-2">
+                responses from karate practitioners about how they find,
+                consume, and share karate-related content.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-3xl">What I wanted to learn</h3>
+              <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+                {researchGoals.map((goal, index) => (
+                  <li class="flex gap-3 border border-brown-dark/15 bg-ivory p-4 text-sm">
+                    <span class="font-semibold text-green-dark">0{index + 1}</span>
+                    <span>{goal}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-2">
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img src={UserBehaviourChart.src} alt="Survey chart showing why practitioners use social media for karate" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm">
+                Learning and improvement was the strongest motivation, followed by networking and community.
+              </figcaption>
+            </figure>
+
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img src={PainPointsChart.src} alt="Survey chart showing social platforms used for karate content" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm">
+                YouTube and Facebook were common sources, but participants reported outdated, mixed, and irrelevant information.
+              </figcaption>
+            </figure>
+
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img src={ContentPriorityTable.src} alt="Content priority scores from the Ippon survey" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm">
+                Video ranked first, followed by community, events, and the news feed.
+              </figcaption>
+            </figure>
+
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img src={AffinityMapImage.src} alt="Affinity map grouping event, video, comment, news, and dojo needs" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm">
+                Open responses revealed an additional need: discovering dojos, instructors, and training schedules.
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="mt-14 grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
+            <article class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-rose">User persona</p>
+              <h3 class="mt-3 text-3xl">Joseph Homma</h3>
+              <p class="mt-4">
+                Joseph is a 34-year-old software engineer in Vancouver who has practised Shotokan karate for ten years. He uses social media to find updated information, learn through videos, follow communities, and continue improving after relocating.
+              </p>
+              <p class="mt-4 text-sm">
+                His main frustrations are unverified or outdated information, practising without confidence that his form is correct, and difficulty finding local events and communities.
+              </p>
+              <img src={PersonaImage.src} alt="Ippon persona for Joseph Homma" class="mt-6 h-auto w-full" />
+            </article>
+
+            <article class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">Competitors</p>
+              <h3 class="mt-3 text-3xl">Facebook and YouTube</h3>
+              <p class="mt-4 text-sm">
+                Facebook supports communities and posting but can feel crowded and unfocused. YouTube makes video discovery and subscriptions easy but offers weaker relationships between practitioners. Ippon combines focused video discovery with a dedicated karate community.
+              </p>
+              <img src={CompetitorMapImage.src} alt="Feature analysis comparing Facebook and YouTube" class="mt-6 h-auto w-full" />
+            </article>
+          </div>
+        </section>
+
+        <!-- DEFINE -->
+        <section id="define" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+            02 · Define
+          </p>
+
+          <div class="mt-5 grid gap-10 md:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <h2 class="text-4xl sm:text-6xl">
+                Turning scattered content into a focused karate platform
+              </h2>
+              <blockquote class="mt-8 border-l-2 border-rose pl-5 text-xl font-semibold leading-relaxed text-brown-dark">
+                “How might I help karate practitioners find useful content,
+                improve their skills, and stay connected without the clutter of
+                general social media?”
+              </blockquote>
+            </div>
+
+            <div>
+              <h3 class="text-2xl">Key findings</h3>
+              <div class="mt-5 grid gap-px overflow-hidden border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-2">
+                {insights.map((insight) => (
+                  <article class="bg-ivory p-6">
+                    <span class="text-xs font-semibold text-rose">{insight.number}</span>
+                    <h4 class="mt-4 text-xl">{insight.title}</h4>
+                    <p class="mt-3 text-sm">{insight.description}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 bg-brown-dark px-6 py-9 text-white sm:px-10">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">
+              Product priorities
+            </p>
+            <div class="mt-5 grid gap-5 sm:grid-cols-3">
+              <div>
+                <strong class="text-xl">Relevant</strong>
+                <p class="mt-2 text-sm text-white/70">
+                  Keep karate content focused, current, and easy to discover.
+                </p>
+              </div>
+              <div>
+                <strong class="text-xl">Educational</strong>
+                <p class="mt-2 text-sm text-white/70">
+                  Prioritize videos and feedback that support skill development.
+                </p>
+              </div>
+              <div>
+                <strong class="text-xl">Connected</strong>
+                <p class="mt-2 text-sm text-white/70">
+                  Bring practitioners, communities, dojos, and events together.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- IDEATE -->
+        <section id="ideate" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              03 · Ideate
+            </p>
+            <h2 class="mt-4 text-4xl sm:text-6xl">
+              Designing around five meaningful practitioner journeys
+            </h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+              Survey results made video the primary experience. Community,
+              dojo, events, publishing, and profile features support it in the
+              information architecture.
+            </p>
+          </header>
+
+          <figure class="mt-10 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+            <img
+              src={SitemapImage.src}
+              alt="Ippon sitemap showing video, community, dojo, event, posting, and profile areas"
+              class="h-auto w-full"
+            />
+            <figcaption class="mt-4 text-sm">
+              Video is positioned as the homepage because it was the strongest
+              content need identified in the survey.
+            </figcaption>
+          </figure>
+
+          <div class="mt-14">
+            <h3 class="text-3xl">Core user flows</h3>
+            <div class="mt-6 grid gap-4 md:grid-cols-2">
+              {coreFlows.map((flow, index) => (
+                <article class="border border-brown-dark/15 bg-ivory p-6">
+                  <span class="text-sm font-semibold text-rose">{flow.number}</span>
+                  <h4 class="mt-4 text-2xl">{flow.title}</h4>
+                  <p class="mt-4 text-sm">{flow.description}</p>
+                  <img
+                    src={flowImages[index].src}
+                    alt={`User flow and wireframe for ${flow.title.toLowerCase()}`}
+                    class="mt-6 h-auto w-full"
+                  />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <!-- PROTOTYPE -->
+        <section id="prototype" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+            04 · Prototype
+          </p>
+
+          <div class="mt-5 grid gap-8 flex-col">
+            <h2 class="text-4xl sm:text-6xl">
+              A dark interface inspired by international karate
+            </h2>
+            <p class="text-lg leading-relaxed">
+              The visual system uses Nunito for approachable readability and a
+              black, charcoal, white, and red palette informed by international
+              karate federation identities. Reusable controls and content cards
+              keep video, community, dojo, and event experiences consistent.
+            </p>
+          </div>
+
+          <div class="mt-10 w-full">
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img src={UIKitImage.src} alt="Ippon Nunito typography and red, black, grey, and white colour system" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm">
+                The style guide uses Nunito and a high-contrast palette inspired by karate federation identities.
+              </figcaption>
+            </figure>
+
+            <!-- <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img src={PrototypeMockupsImage.src} alt="High-fidelity Ippon video and search prototype screens" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm">
+                High-fidelity screens demonstrate video discovery, search filters, playback, and comments.
+              </figcaption>
+            </figure> -->
+          </div>
+          <Button variant="primary" size="lg" href="https://www.figma.com/proto/aKjQYawVfpIEmDu6Sz0a3d/Social-Media?node-id=1055-14985&p=f&viewport=422%2C446%2C0.08&t=dZ6SsNWBB7YY5l18-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1055%3A14985&page-id=1055%3A14965" class="mt-10 w-full">
+            View prototype
+          </Button>
+        </section>
+
+        <!-- TEST -->
+        <section id="test" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+            05 · Test
+          </p>
+
+          <div class="mt-5 grid gap-10 md:grid-cols-[0.75fr_1.25fr] md:items-start">
+            <div>
+              <strong class="text-8xl text-brown-dark">5</strong>
+              <h2 class="mt-3 text-4xl sm:text-5xl">
+                users tested the primary journeys
+              </h2>
+            >
+              <p class="mt-6">
+                Participants included karate practitioners and people who did
+                not practise karate, all familiar with social media. Everyone
+                completed the tasks, although several interactions required
+                refinement.
+              </p>
+            </div>
+
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img
+                src={TestSummaryImage.src}
+                alt="Usability test task-result matrix for five participants"
+                class="h-auto w-full"
+              />
+              <figcaption class="mt-4 text-sm leading-relaxed text-brown-dark/75">
+                All five participants completed the tested journeys. The test
+                revealed three moments of hesitation that informed the next
+                design iteration.
+              </figcaption>
+              <Button variant="primary" size="md" 
+              href="https://https://www.figma.com/proto/aKjQYawVfpIEmDu6Sz0a3d/Social-Media?node-id=925-10779&p=f&viewport=396%2C212%2C0.03&t=Cx9YWaEviEhckcXg-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=925%3A10776&page-id=41%3A2741" class="mt-6 w-full">
+                View Test Prototype
+              </Button>
+            </figure>
+          </div>
+
+          <div class="mt-12 space-y-6">
+            {testFindings.map((finding) => (
+              <article class="grid overflow-hidden border border-brown-dark/15 bg-ivory lg:grid-cols-[0.9fr_1.1fr]">
+                <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
+                    Finding {finding.number}
+                  </p>
+                  <h3 class="mt-3 text-2xl sm:text-3xl">{finding.title}</h3>
+
+                  <div class="mt-6 space-y-5 text-sm leading-relaxed sm:text-base">
+                    <div>
+                      <h4 class="font-semibold text-brown-dark">What happened</h4>
+                      <p class="mt-1 text-brown-dark/75">{finding.problem}</p>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-brown-dark">What we learned</h4>
+                      <p class="mt-1 text-brown-dark/75">{finding.observation}</p>
+                    </div>
+                    <div class="border-l-4 border-green-dark pl-4">
+                      <h4 class="font-semibold text-green-dark">Design change</h4>
+                      <p class="mt-1 text-brown-dark/75">{finding.solution}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <figure class="flex items-center bg-cream p-4 sm:p-6">
+                  <img
+                    src={finding.image.src}
+                    alt={finding.imageAlt}
+                    class="h-auto w-full object-contain"
+                    loading="lazy"
+                  />
+                </figure>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <!-- FINAL DESIGN -->
+        <section id="final-design" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                06 · Final design
+              </p>
+              <h2 class="mt-4 text-4xl sm:text-6xl">
+                One focused world for karate
+              </h2>
+            </div>
+            <p class="text-lg leading-relaxed">
+              The final mobile application brings together video discovery,
+              comments, communities, dojo information, events, saved schedules,
+              content creation, and feedback from experienced practitioners.
+            </p>
+          </div>
+
+          <div class="mt-10 grid w-full">
+            <figure class="border border-brown-dark/15 bg-ivory p-4">
+              <img src={FinalVideoImage.src} alt="Final Ippon video feed, filters, playback, and comment screens" class="h-auto w-full" />
+              <!-- <figcaption class="mt-4 text-sm font-semibold">Video discovery, playback, and comments</figcaption> -->
+            </figure>
+            <!-- <figure class="border border-brown-dark/15 bg-ivory p-4">
+              <img src={FinalCommunityImage.src} alt="Final Ippon community feed, search, list, details, and joined-community screens" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm font-semibold">Community discovery and participation</figcaption>
+            </figure>
+            <figure class="border border-brown-dark/15 bg-ivory p-4">
+              <img src={FinalDojoImage.src} alt="Final Ippon dojo search, map, list, and dojo-detail screens" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm font-semibold">Dojo search and school information</figcaption>
+            </figure>
+            <figure class="border border-brown-dark/15 bg-ivory p-4">
+              <img src={FinalEventUploadImage.src} alt="Final Ippon event and video-upload screens" class="h-auto w-full" />
+              <figcaption class="mt-4 text-sm font-semibold">Events, calendars, publishing, and feedback</figcaption>
+            </figure> -->
+          </div>
+
+          <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">
+                Outcome
+              </p>
+              <h3 class="mt-3 text-3xl !text-white">
+                A clearer and more relevant karate experience
+              </h3>
+              <p class="mt-3 max-w-2xl text-white/70">
+                Usability testing confirmed that users could complete the key
+                journeys and helped simplify search, community terminology, and
+                event actions before the final design.
+              </p>
+            </div>
+            <a
+              href="/projects"
+              class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white"
+            >
+              Explore more projects →
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</ProjectDetailLayout>

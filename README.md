@@ -2,7 +2,7 @@
 
 Welcome to my portfolio! 👋
 
-This portfolio showcases my work across UX/UI design, web development, and project design, but it is also a project of its own.
+This portfolio showcases my work across UX/UI design, web development, and Project Management, but it is also a project of its own.
 
 I wanted to create more than a place to display case studies. This project is also a space where I can experiment, learn, and enjoy the process of designing and developing.
 

@@ -1,82 +1,141 @@
 ---
-import Button from "../../components/Button.astro";
 import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
+import Sidebar from "../../components/ProjectSideBar.astro";
 import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
-import Sidebar from "../../components/ProjectSideBar.astro";
 
-import Cover from "../../assets/ciccc-lms/cover.svg";
-import Introduction from "../../assets/ciccc-lms/introduction.svg";
-import Problem from "../../assets/ciccc-lms/problem.svg";
-import UserAccess from "../../assets/ciccc-lms/user-access.svg";
-import ResearchNavigation from "../../assets/ciccc-lms/research-navigation.svg";
-import ResearchCommunication from "../../assets/ciccc-lms/research-communication.svg";
-import ResearchInformation from "../../assets/ciccc-lms/research-information.svg";
-import CoreSolutions from "../../assets/ciccc-lms/core-solutions.svg";
-import DashboardCustomization from "../../assets/ciccc-lms/dashboard-customization.svg";
-import DashboardValue from "../../assets/ciccc-lms/dashboard-value.svg";
-import Notification from "../../assets/ciccc-lms/notification.svg";
-import NotificationValue from "../../assets/ciccc-lms/notification-value.svg";
-import DataVisualization1 from "../../assets/ciccc-lms/data-visualization-1.svg";
-import DataVisualization2 from "../../assets/ciccc-lms/data-visualization-2.svg";
-import DataValue from "../../assets/ciccc-lms/data-value.svg";
-import UserFeedback from "../../assets/ciccc-lms/Result v2.svg";
-import Conclusion from "../../assets/ciccc-lms/conclusion.svg";
-import NextSteps from "../../assets/ciccc-lms/next-steps.svg";
 
-// const userGroups = [
-//   { title: "Students", tasks: ["See grades", "See invoices", "See schedules"] },
-//   { title: "Instructors", tasks: ["Record attendance", "Enter grades", "Access live classes"] },
-//   { title: "Program managers", tasks: ["Track student activity", "Review attendance", "Review grades"] },
-// ];
+import CoverImage from "../../assets/ciccc-lms/evidence/cover.svg";
+import UserAccessImage from "../../assets/ciccc-lms/evidence/user-access.svg";
+import NavigationResearchImage from "../../assets/ciccc-lms/evidence/research-navigation.svg";
+import CommunicationResearchImage from "../../assets/ciccc-lms/evidence/research-communication.svg";
+import InformationResearchImage from "../../assets/ciccc-lms/evidence/research-information.svg";
+import ProblemImage from "../../assets/ciccc-lms/evidence/problem.svg";
+import CoreSolutionsImage from "../../assets/ciccc-lms/evidence/core-solutions.svg";
+import DashboardImage from "../../assets/ciccc-lms/evidence/dashboard-customization.svg";
+import NotificationsImage from "../../assets/ciccc-lms/evidence/notifications.svg";
+import AttendanceImage from "../../assets/ciccc-lms/evidence/attendance-data.svg";
+import CoursesImage from "../../assets/ciccc-lms/evidence/courses-grades.svg";
+import ReportsImage from "../../assets/ciccc-lms/evidence/reports.svg";
+import UserFeedbackImage from "../../assets/ciccc-lms/evidence/user-feedback.svg";
+import ConclusionImage from "../../assets/ciccc-lms/evidence/conclusion.svg";
 
-const painPoints = [
+const userGroups = [
+  {
+    title: "Students",
+    needs: ["See grades", "Review invoices", "Check schedules"],
+  },
+  {
+    title: "Instructors",
+    needs: ["Record attendance", "Manage grades", "Access live classes"],
+  },
+  {
+    title: "Program managers",
+    needs: ["Track student activity", "Review attendance", "Monitor grades"],
+  },
+];
+
+const researchFindings = [
   {
     number: "01",
     title: "Complicated navigation",
-    description:
-      "Students and instructors needed too many steps to reach the pages they used most.",
+    summary:
+      "Students and instructors struggled to find frequently used pages and felt that common tasks required too many steps.",
+    evidence:
+      "Students described feeling lost during their first use, while an instructor said it was hard to find what they needed.",
+    image: NavigationResearchImage,
+    imageAlt:
+      "Survey and interview findings about complicated navigation in the existing CICCC platform",
   },
   {
     number: "02",
     title: "Lack of communication",
-    description:
-      "Managers reported that users did not receive clear notifications when information was updated.",
+    summary:
+      "Important platform changes were easy to miss because the system did not provide clear notifications.",
+    evidence:
+      "A program manager specifically identified the lack of update notifications as a weakness in the current platform.",
+    image: CommunicationResearchImage,
+    imageAlt:
+      "Program-manager interview finding about the lack of update notifications",
   },
   {
     number: "03",
     title: "Unnecessary information",
-    description:
-      "Students saw dashboard content that was not relevant to their immediate academic tasks.",
+    summary:
+      "The dashboard presented too much information, including content that was not relevant to a user’s immediate goals.",
+    evidence:
+      "Students questioned why payment details and other unrelated information appeared prominently on their dashboards.",
+    image: InformationResearchImage,
+    imageAlt:
+      "Student survey and interview findings about unnecessary dashboard information",
   },
 ];
 
-const solutionValues = [
+const solutionPillars = [
   {
-    title: "Dashboard customization",
-    items: [
-      "Friendly and customizable dashboard",
-      "Easy access to class activities and daily routines",
-      "A more pleasant experience",
-    ],
+    number: "01",
+    title: "Customizable dashboard",
+    problem:
+      "A single fixed dashboard forced every audience to process the same information, even when their priorities were different.",
+    decision:
+      "Let users organize their dashboard around courses, assignments, grades, attendance, fees, and other relevant routines.",
+    value:
+      "A friendlier dashboard creates direct access to daily activities and reduces unnecessary searching.",
+    image: DashboardImage,
+    imageAlt:
+      "CICCC LMS customizable dashboard with academic activities, calendar, grades, attendance, co-op, and fees",
   },
   {
-    title: "Notifications",
-    items: [
-      "Straightforward communication",
-      "Better visibility for system notices",
-      "Improved task review and follow-up",
-    ],
+    number: "02",
+    title: "Centralized notifications",
+    problem:
+      "Users lacked a reliable way to notice updates, review outstanding tasks, and follow changes across classes.",
+    decision:
+      "Create a notification centre for course updates, attendance status, grade status, documents, and program activity.",
+    value:
+      "Straightforward communication improves system awareness, task review, and follow-up.",
+    image: NotificationsImage,
+    imageAlt:
+      "CICCC LMS notification centre and manager dashboard for student and class updates",
   },
   {
-    title: "Data visualization",
-    items: [
-      "Smart charts and reports",
-      "Improved management",
-      "Less time spent in the platform",
-      "Better decisions",
-    ],
+    number: "03",
+    title: "Useful data visualization",
+    problem:
+      "Attendance, grades, enrolment, and administrative information required too much time to interpret and manage.",
+    decision:
+      "Use calendars, status summaries, charts, tables, and reports to make academic information easier to scan.",
+    value:
+      "Clear visual summaries support faster management and better decisions across the platform.",
+    image: ReportsImage,
+    imageAlt:
+      "CICCC LMS reporting dashboard with charts, statements, tables, and student information",
+  },
+];
+
+const feedback = [
+  {
+    quote:
+      "Easy and simple. Very clean aesthetic. I liked it, and it was intuitive.",
+    person: "Manuel Aguirre",
+    context: "Web Development student",
+  },
+  {
+    quote:
+      "It is simple with a friendly design. It’s easy to take a look at my grades and attendance.",
+    person: "Aika Ueno",
+    context: "Digital Marketing student",
+  },
+  {
+    quote: "Easy, simple, and intuitive. I liked the very clean aesthetic.",
+    person: "Alana Martins",
+    context: "User feedback participant",
+  },
+  {
+    quote: "It’s easy to take a look at my grades and attendance.",
+    person: "Daniel Rosales",
+    context: "UI/UX Design student",
   },
 ];
 ---
@@ -93,387 +152,635 @@ const solutionValues = [
     </div>
 
     <ProjectDetailHero
-      eyebrow="Learning experience redesign"
+      eyebrow="Learning platform redesign"
       title="CICCC LMS"
-      description="A redesigned Learning Management System for Cornerstone International Community College of Canada, created to simplify navigation, improve communication, and help students, instructors, and program managers complete their work more efficiently."
-      imageSrc={Cover.src}
-      imageAlt="CICCC Learning Management System project cover"
-      categories={["UX Design", "UI Design"]}
-      role="UX Leader · UX/UI Designer · Team project"
+      description="A redesigned Learning Management System that simplifies navigation, improves communication, and helps students, instructors, and program managers reach important academic information faster."
+      imageSrc={CoverImage.src}
+      imageAlt="CICCC Learning Management System dashboard and interface screens"
+      categories={["UX/UI Design"]}
+      role="UX Leader · Team project"
     />
 
-    <div id="context" class="scroll-mt-24">
+    <div id="overview" class="scroll-mt-8">
       <ProjectOverview
-        duration="4 weeks"
-        role="UX Leader · UX/UI Designer"
+        duration="Team project"
+        role="UX Leader"
         responsibilities={[
-          "User research and interview synthesis",
-          "Problem definition and solution planning",
-          "Dashboard interface design and prototyping",
+          "User surveys and stakeholder interviews",
+          "Problem definition and information prioritization",
+          "Dashboard, notification, and data-visualization concepts",
         ]}
         challenges={[
-          "Complex navigation and task completion",
-          "Poor visibility of updates",
-          "Too much unnecessary dashboard information",
+          "Simplify complex navigation and frequent academic tasks",
+          "Improve communication between students, instructors, and managers",
+          "Reduce irrelevant information without hiding essential data",
         ]}
         solutions={[
-          "Simplified access from the dashboard",
-          "Notifications and data visualization",
-          "Customizable information for each user group",
+          "Role-relevant, customizable dashboards",
+          "A centralized notification system",
+          "Clear academic charts, calendars, and reports",
         ]}
       />
     </div>
 
     <section
-      class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-16"
+      class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16"
     >
       <div class="hidden lg:block"><Sidebar /></div>
 
       <div class="min-w-0 space-y-20 sm:space-y-28">
-        <section
-          class="grid gap-8 border-b border-brown-dark/15 pb-12 flex-col"
-        >
-          <div>
-            <p
-              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-            >
-              Project purpose
-            </p>
-            <header class="max-w-4xl">
-              <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
-                A better everyday experience for CICCC users
-              </h2>
-            </header>
-            <!-- <p class="mt-6 text-lg leading-relaxed">The team proposed a new LMS for CICCC Tech Campus, one of the college’s most culturally diverse campuses. The goal was to make common academic tasks clearer and less frustrating.</p> -->
-          </div>
-          <img
-            src={Introduction.src}
-            alt="Introduction to the CICCC LMS redesign project"
-            class="h-auto w-full border border-brown-dark/15"
-          />
-        </section>
-
-        <section id="empathize" class="scroll-mt-24">
+        <!-- EMPATHIZE -->
+        <section id="empathize" class="scroll-mt-8">
           <header class="max-w-4xl">
             <p
               class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
             >
-              02 · Empathize
+              01 · Empathize
             </p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
-              Three user groups, three different priorities
+              Different roles, different priorities
             </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed">
-              Students, instructors, and program managers use the same platform
-              for different purposes. Understanding their daily tasks helped the
-              team decide what each dashboard should prioritize.
+              The existing platform served students, instructors, and program
+              managers, but each group used it for different reasons. We first
+              identified their most important activities, then gathered survey
+              and interview feedback about navigation, communication, and the
+              information shown on the dashboard.
             </p>
           </header>
 
-          <!-- <div class="mt-10 grid gap-px overflow-hidden border border-brown-dark/15 bg-brown-dark/15 md:grid-cols-3">
-            {userGroups.map((group) => (
-              <article class="bg-white p-6 sm:p-8">
-                <h3 class="text-2xl text-brown-dark">{group.title}</h3>
-                <ul class="mt-5 space-y-3 text-sm">{group.tasks.map((task) => (<li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span><span>{task}</span></li>))}</ul>
-              </article>
-            ))}
-          </div> -->
-          <img
-            src={UserAccess.src}
-            alt="User access purposes for students, instructors, and program managers"
-            class="mt-8 h-auto w-full border border-brown-dark/15"
-          />
-
-          <h2 class="mt-8 text-4xl text-brown-dark sm:text-6xl">
-            Pain points were identified through research and interviews
-          </h2>
-          <div class="mt-14 grid gap-4 md:grid-cols-3">
+          <div class="mt-10 grid gap-5 md:grid-cols-3">
             {
-              painPoints.map((item) => (
-                <article class="border border-brown-dark/15 bg-ivory p-6">
-                  <>
-                    <span class="text-xs font-semibold text-rose">
-                      {item.number}
-                    </span>
-                    <h3 class="mt-4 text-2xl text-brown-dark">{item.title}</h3>
-                    <p class="mt-4 text-sm leading-relaxed text-brown-dark/75">
-                      {item.description}
-                    </p>
-                  </>
+              userGroups.map((group, index) => (
+                <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                  <span class="text-sm font-semibold text-green-dark">
+                    0{index + 1}
+                  </span>
+                  <h3 class="mt-4 text-2xl">{group.title}</h3>
+                  <ul class="mt-4 space-y-2 text-sm text-brown-dark/75">
+                    {group.needs.map((need) => (
+                      <li>• {need}</li>
+                    ))}
+                  </ul>
                 </article>
               ))
             }
           </div>
 
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <figure class="mt-10 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
             <img
-              src={ResearchNavigation.src}
-              alt="Research findings about complicated LMS navigation"
-              class="h-auto w-full border border-brown-dark/15"
+              src={UserAccessImage.src}
+              alt="Priority LMS activities for students, instructors, and program managers"
+              class="h-auto w-full"
             />
-            <img
-              src={ResearchCommunication.src}
-              alt="Research findings about missing LMS notifications"
-              class="h-auto w-full border border-brown-dark/15"
-            />
-            <img
-              src={ResearchInformation.src}
-              alt="Research findings about unnecessary LMS information"
-              class="h-auto w-full border border-brown-dark/15"
-            />
-          </div>
-        </section>
+            <figcaption class="mt-4 text-sm leading-relaxed text-brown-dark/75">
+              Mapping each role’s priorities provided a foundation for deciding
+              which information should be prominent and which could be removed.
+            </figcaption>
+          </figure>
 
-        <section
-          id="define"
-          class="scroll-mt-24 border-t border-brown-dark/15 pt-12"
-        >
-          <div class="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:items-start">
-            <div>
-              <p
-                class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-              >
-                03 · Define
-              </p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
-                The problem was friction, not missing features
-              </h2>
-            </div>
-            <div>
-              <p class="text-lg leading-relaxed">
-                CICCC students, instructors, and managers faced difficulty with
-                complex navigation and task completion. This reduced efficiency,
-                created frustration, and affected student performance,
-                instructor productivity, and administrative management.
-              </p>
-              <blockquote
-                class="mt-8 border-l-2 border-rose pl-5 text-xl font-semibold leading-relaxed text-brown-dark"
-              >
-                How might we simplify the LMS around each user’s most important
-                tasks while keeping communication and progress visible?
-              </blockquote>
-            </div>
-          </div>
-          <img
-            src={Problem.src}
-            alt="CICCC LMS problem statement showing overlapping user pain points"
-            class="mt-10 h-auto w-full border border-brown-dark/15"
-          />
-        </section>
-
-        <section
-          id="ideate"
-          class="scroll-mt-24 border-t border-brown-dark/15 pt-12"
-        >
-          <header class="max-w-4xl">
-            <p
-              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-            >
-              04 · Ideate
-            </p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
-              Four connected core solutions
-            </h2><p class="mt-6 max-w-3xl text-lg leading-relaxed">
-              The concept combines dashboard customization, simplified
-              navigation, notifications, and data visualization. Together, they
-              reduce noise while giving every user faster access to relevant
-              information.
-            </p>
-          </header>
-          <div class="mt-10 grid gap-4 sm:grid-cols-2">
+          <div class="mt-12 space-y-6">
             {
-              [
-                "Dashboard customization",
-                "Simplified navigation",
-                "Notifications",
-                "Data visualization",
-              ].map((item, index) => (
-                <div class="border border-brown-dark/15 bg-white p-6">
-                  <>
-                    <span class="text-xs font-semibold text-rose">
-                      0{index + 1}
-                    </span>
-                    <h3 class="mt-4 text-2xl text-brown-dark">{item}</h3>
-                  </>
-                </div>
+              researchFindings.map((finding) => (
+                <article class="grid overflow-hidden border border-brown-dark/15 bg-ivory lg:grid-cols-[0.9fr_1.1fr]">
+                  <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
+                      Research finding {finding.number}
+                    </p>
+                    <h3 class="mt-3 text-2xl sm:text-3xl">{finding.title}</h3>
+                    <div class="mt-6 space-y-5 text-sm leading-relaxed sm:text-base">
+                      <div>
+                        <h4 class="font-semibold text-brown-dark">
+                          What users experienced
+                        </h4>
+                        <p class="mt-1 text-brown-dark/75">{finding.summary}</p>
+                      </div>
+                      <div class="border-l-4 border-green-dark pl-4">
+                        <h4 class="font-semibold text-green-dark">
+                          Research evidence
+                        </h4>
+                        <p class="mt-1 text-brown-dark/75">
+                          {finding.evidence}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <figure class="flex items-center bg-cream p-4 sm:p-6">
+                    <img
+                      src={finding.image.src}
+                      alt={finding.imageAlt}
+                      class="h-auto w-full object-contain"
+                      loading="lazy"
+                    />
+                  </figure>
+                </article>
               ))
             }
           </div>
-          <img
-            src={CoreSolutions.src}
-            alt="Four core solutions for the redesigned CICCC LMS"
-            class="mt-8 h-auto w-full border border-brown-dark/15"
-          />
         </section>
 
+        <!-- DEFINE -->
+        <section
+          id="define"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            02 · Define
+          </p>
+          <h2 class="mt-4 max-w-4xl text-4xl sm:text-6xl">
+            The platform made common academic work harder than necessary
+          </h2>
+          <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+            CICCC students, instructors, and managers faced complex navigation
+            and time-consuming task completion. Unnecessary information and weak
+            communication increased frustration and affected student
+            performance, instructor productivity, and administrative management.
+          </p>
+
+          <div
+            class="mt-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-center"
+          >
+            <div
+              class="border-l-4 border-green-dark bg-green-light/40 p-6 sm:p-8"
+            >
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark"
+              >
+                Problem statement
+              </p>
+              <p class="mt-3 text-xl leading-relaxed sm:text-2xl">
+                How might we simplify the CICCC LMS so every role can reach
+                relevant information, understand updates, and complete routine
+                academic tasks with fewer steps?
+              </p>
+            </div>
+            <figure class="border border-brown-dark/15 bg-ivory p-4">
+              <img
+                src={ProblemImage.src}
+                alt="CICCC LMS problem statement and overlapping user pain points"
+                class="h-auto w-full"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </section>
+
+        <!-- IDEATE -->
+        <section
+          id="ideate"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            03 · Ideate
+          </p>
+          <h2 class="mt-4 text-4xl sm:text-6xl">
+            Three connected solution pillars
+          </h2>
+          <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+            The solution aligned each core pain point with one system-level
+            improvement: customized information for students, clear
+            notifications for instructors, and data visualization for program
+            managers—all supported by simplified navigation.
+          </p>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-3">
+            {
+              solutionPillars.map((solution) => (
+                <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                  <span class="text-sm font-semibold text-green-dark">
+                    {solution.number}
+                  </span>
+                  <h3 class="mt-4 text-2xl">{solution.title}</h3>
+                  <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">
+                    {solution.value}
+                  </p>
+                </article>
+              ))
+            }
+          </div>
+
+          <figure class="mt-10 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+            <img
+              src={CoreSolutionsImage.src}
+              alt="Core CICCC LMS solutions mapped across students, instructors, and managers"
+              class="h-auto w-full"
+              loading="lazy"
+            />
+          </figure>
+        </section>
+
+        <!-- PROTOTYPE -->
         <section
           id="prototype"
-          class="scroll-mt-24 border-t border-brown-dark/15 pt-12"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <header class="max-w-4xl">
-            <p
-              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-            >
-              05 · Prototype
-            </p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
-              Based on research and user feedback, the team created a dashboard
-              that adapts to each user’s work
-            </h2><p class="mt-6 max-w-3xl text-lg leading-relaxed">
-              The redesigned interface makes common actions available from the
-              dashboard and uses clear visual feedback to support communication,
-              task review, and academic decisions.
-            </p>
-          </header>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            04 · Prototype
+          </p>
+          <h2 class="mt-4 text-4xl sm:text-6xl">
+            Turning the strategy into daily workflows
+          </h2>
 
-          <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-6">
-            <Button
-              variant="primary"
-              size="lg"
-              target="_blank"
-              href="https://www.figma.com/proto/KhZTQkjd8SPhKDvAddvhal/UI-UX-Final-Project?node-id=1034-49540&p=f&viewport=247%2C-160%2C0.04&t=ETwJYEjePl6Z9TAb-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1034%3A49540&page-id=1034%3A48139"
-              >View Prototype for Students</Button
-            >
-            <Button
-              variant="primary"
-              size="lg"
-              target="_blank"
-              href="https://www.figma.com/proto/KhZTQkjd8SPhKDvAddvhal/UI-UX-Final-Project?node-id=1034-37695&p=f&viewport=287%2C22%2C0.03&t=RoLWyHSbW0CucSBY-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1034%3A37695&page-id=1034%3A35724"
-              >View Prototype for Instructors</Button
-            >
-            <Button
-              variant="primary"
-              size="lg"
-              target="_blank"
-              href="https://www.figma.com/proto/KhZTQkjd8SPhKDvAddvhal/UI-UX-Final-Project?node-id=1034-58712&p=f&viewport=187%2C-307%2C0.03&t=lMEHNEdYVVDay3Xa-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1034%3A58712&page-id=1034%3A58623"
-              >View Prototype for Admins</Button
-            >
+          <div class="mt-12 space-y-6">
+            {
+              solutionPillars.map((solution) => (
+                <article class="grid overflow-hidden border border-brown-dark/15 bg-ivory lg:grid-cols-[0.85fr_1.15fr]">
+                  <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
+                      Solution {solution.number}
+                    </p>
+                    <h3 class="mt-3 text-2xl sm:text-3xl">{solution.title}</h3>
+                    <div class="mt-6 space-y-5 text-sm leading-relaxed sm:text-base">
+                      <div>
+                        <h4 class="font-semibold text-brown-dark">
+                          Problem addressed
+                        </h4>
+                        <p class="mt-1 text-brown-dark/75">
+                          {solution.problem}
+                        </p>
+                      </div>
+                      <div class="border-l-4 border-green-dark pl-4">
+                        <h4 class="font-semibold text-green-dark">
+                          Design decision
+                        </h4>
+                        <p class="mt-1 text-brown-dark/75">
+                          {solution.decision}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <figure class="flex items-center bg-cream p-4 sm:p-6">
+                    <img
+                      src={solution.image.src}
+                      alt={solution.imageAlt}
+                      class="h-auto w-full object-contain"
+                      loading="lazy"
+                    />
+                  </figure>
+                </article>
+              ))
+            }
           </div>
-          <!-- <div class="mt-10 space-y-14">
-            
-            <article><h3 class="text-3xl text-brown-dark">Dashboard customization</h3><ul class="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm">{solutionValues[0].items.map((item) => (<li>• {item}</li>))}</ul><div class="mt-6 grid gap-4 md:grid-cols-2"><img src={DashboardCustomization.src} alt="Customizable CICCC LMS dashboard interface" class="h-auto w-full" /><img src={DashboardValue.src} alt="CICCC LMS dashboard customization value" class="h-auto w-full" /></div></article>
-            <article><h3 class="text-3xl text-brown-dark">Notifications</h3><ul class="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm">{solutionValues[1].items.map((item) => (<li>• {item}</li>))}</ul><div class="mt-6 grid gap-4 md:grid-cols-2"><img src={Notification.src} alt="CICCC LMS notification interface" class="h-auto w-full" /><img src={NotificationValue.src} alt="CICCC LMS notification value" class="h-auto w-full" /></div></article>
-            <article><h3 class="text-3xl text-brown-dark">Data visualization</h3><ul class="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm">{solutionValues[2].items.map((item) => (<li>• {item}</li>))}</ul><div class="mt-6 grid gap-4 md:grid-cols-2"><img src={DataVisualization1.src} alt="Attendance and academic report visualization" class="h-auto w-full" /><img src={DataVisualization2.src} alt="Course and grade visualization" class="h-auto w-full" /><img src={DataValue.src} alt="Value of data visualization in the LMS" class="h-auto w-full md:col-span-2" /></div></article>
-          </div> -->
+
+          <div class="mt-8 grid gap-5 md:grid-cols-2">
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img
+                src={AttendanceImage.src}
+                alt="CICCC LMS attendance calendars and attendance report"
+                class="h-auto w-full"
+                loading="lazy"
+              />
+              <figcaption class="mt-4 text-sm font-semibold">
+                Attendance overview and reporting
+              </figcaption>
+            </figure>
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img
+                src={CoursesImage.src}
+                alt="CICCC LMS course, enrolment, grade, and student-detail screens"
+                class="h-auto w-full"
+                loading="lazy"
+              />
+              <figcaption class="mt-4 text-sm font-semibold">
+                Courses, grades, and student details
+              </figcaption>
+            </figure>
+          </div>
         </section>
 
+        <!-- TEST -->
         <section
           id="test"
-          class="scroll-mt-24 border-t border-brown-dark/15 pt-12"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <div>
-            <p
-              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-            >
-              06 · Test
-            </p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
-              Users described the experience as clear and intuitive
-            </h2>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
+          >
+            05 · Test
+          </p>
+          <div
+            class="mt-5 grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-start"
+          >
+            <div>
+              <strong class="text-8xl text-brown-dark">4</strong>
+              <h2 class="mt-3 text-4xl sm:text-5xl">
+                users shared feedback on the redesign
+              </h2>
+              <p class="mt-6">
+                Students and other participants responded positively to the
+                cleaner interface, simpler navigation, and easier access to
+                grades and attendance.
+              </p>
+            </div>
+            <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+              <img
+                src={UserFeedbackImage.src}
+                alt="Four user quotations about the CICCC LMS redesign"
+                class="h-auto w-full"
+                loading="lazy"
+              />
+            </figure>
           </div>
-          <!-- <div class="grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
-            <div class="space-y-5 text-lg leading-relaxed"><blockquote>“Easy and simple. Very clean aesthetic. I liked it and it was intuitive.”</blockquote><blockquote>“It is simple with a friendly design. Especially, it’s easy to take a look at my grades and attendance.”</blockquote><blockquote>“It’s easy to take a look at my grades and attendance.”</blockquote></div>
-          </div> -->
-          <img
-            src={UserFeedback.src}
-            alt="Positive feedback from CICCC LMS users"
-            class="mt-10 h-auto w-full border border-brown-dark/15"
-          />
-          <img
-            src={Conclusion.src}
-            alt="CICCC LMS conclusion connecting pain points to solutions"
-            class="mt-8 h-auto w-full border border-brown-dark/15"
-          />
+
+          <div class="mt-10 grid gap-5 md:grid-cols-2">
+            {
+              feedback.map((item, index) => (
+                <blockquote class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                  <span class="text-sm font-semibold text-green-dark">
+                    0{index + 1}
+                  </span>
+                  <p class="mt-4 text-xl leading-relaxed">“{item.quote}”</p>
+                  <footer class="mt-5 text-sm text-brown-dark/65">
+                    <>
+                      <strong class="text-brown-dark">{item.person}</strong>
+                      <br />
+                    </>
+                    {item.context}
+                  </footer>
+                </blockquote>
+              ))
+            }
+          </div>
+
+          <div
+            class="mt-10 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center"
+          >
+            <div
+              class="border-l-4 border-green-dark bg-green-light/30 p-6 sm:p-8"
+            >
+              <h3 class="text-2xl">What the feedback validated</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/75">
+                Participants consistently described the redesign as simple,
+                intuitive, clean, and friendly. They also confirmed that grades
+                and attendance were easier to review—directly supporting the
+                project’s navigation and information-priority goals.
+              </p>
+            </div>
+            <figure class="border border-brown-dark/15 bg-ivory p-4">
+              <img
+                src={ConclusionImage.src}
+                alt="CICCC LMS pain points, solutions, and positive user feedback summary"
+                class="h-auto w-full"
+                loading="lazy"
+              />
+            </figure>
+          </div>
         </section>
 
+        <!-- OUTCOME -->
         <section
           id="final-design"
-          class="scroll-mt-24 border-t border-brown-dark/15 pt-12"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <header class="max-w-4xl">
-            <p
-              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-            >
-              06 · Final Design
-            </p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
-              A more helpful platform with a clear path forward
-            </h2><p class="mt-6 max-w-3xl text-lg leading-relaxed">
-              Feedback from students and instructors indicated that the new
-              concept addressed the original problems and created a more helpful
-              learning platform.
-            </p>
-          </header>
+          <!-- Introduction -->
+          <div
+            class="grid
+      gap-8
+      md:grid-cols-[0.85fr_1.15fr]
+      md:items-end"
+          >
+            <div>
+              <p
+                class="text-sm
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-dark"
+              >
+                06 · Final Design
+              </p>
 
-          <div class="mt-10 space-y-14">
-            <article>
-              <h3 class="text-3xl text-brown-dark">
-                Dashboard customization
-              </h3><ul class="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm">
-                {solutionValues[0].items.map((item) => <li>• {item}</li>)}
-              </ul><div class="mt-6 flex-col flex gap-4">
-                <img
-                  src={DashboardCustomization.src}
-                  alt="Customizable CICCC LMS dashboard interface"
-                  class="h-auto w-full"
-                /><img
-                  src={DashboardValue.src}
-                  alt="CICCC LMS dashboard customization value"
-                  class="h-auto w-full"
-                />
-              </div>
-            </article>
-            <article>
-              <h3 class="text-3xl text-brown-dark">Notifications</h3><ul
-                class="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm"
+              <h2 class="mt-4 text-4xl sm:text-6xl">
+                A clearer academic experience for every role
+              </h2>
+            </div>
+
+            <p class="text-lg leading-relaxed text-brown-dark/75">
+              The proposed LMS reduces navigation effort, prioritizes relevant
+              information, improves communication, and turns complex academic
+              data into useful dashboards and reports.
+            </p>
+          </div>
+
+          <!-- Role-based prototypes -->
+          <div class="mt-12">
+            <div class="max-w-3xl">
+              <p
+                class="text-xs
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-dark"
               >
-                {solutionValues[1].items.map((item) => <li>• {item}</li>)}
-              </ul><div class="mt-6 flex-col flex gap-4">
-                <img
-                  src={Notification.src}
-                  alt="CICCC LMS notification interface"
-                  class="h-auto w-full"
-                /><img
-                  src={NotificationValue.src}
-                  alt="CICCC LMS notification value"
-                  class="h-auto w-full"
-                />
-              </div>
-            </article>
-            <article>
-              <h3 class="text-3xl text-brown-dark">Data visualization</h3><ul
-                class="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm"
+                Interactive prototypes
+              </p>
+
+              <h3 class="mt-2 text-3xl text-brown-dark">
+                Explore the experience for each user role
+              </h3>
+
+              <p class="mt-3 leading-relaxed text-brown-dark/70">
+                Each prototype prioritizes the information and daily activities
+                most relevant to students, instructors, and program managers.
+              </p>
+            </div>
+
+            <div class="mt-7 grid gap-5 lg:grid-cols-3">
+              <!-- Student prototype -->
+              <article
+                class="flex
+          flex-col
+          border
+          border-brown-dark/15
+          bg-ivory
+          p-4"
               >
-                {solutionValues[2].items.map((item) => <li>• {item}</li>)}
-              </ul><div class="mt-6 flex-col flex gap-4">
-                <img
-                  src={DataVisualization1.src}
-                  alt="Attendance and academic report visualization"
-                  class="h-auto w-full"
-                /><img
-                  src={DataVisualization2.src}
-                  alt="Course and grade visualization"
-                  class="h-auto w-full"
-                /><img
-                  src={DataValue.src}
-                  alt="Value of data visualization in the LMS"
-                  class="h-auto w-full"
-                />
-              </div>
-            </article>
+                <div class="mb-4">
+                  <p
+                    class="text-xs
+              font-semibold
+              uppercase
+              tracking-[0.16em]
+              text-green-dark"
+                  >
+                    Role 01
+                  </p>
+
+                  <h4 class="mt-1 text-2xl text-brown-dark">Student</h4>
+
+                  <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">
+                    Review courses, assignments, schedules, attendance, and
+                    grades.
+                  </p>
+                </div>
+
+                <div
+                  class="relative
+            mt-auto
+            aspect-[4/3]
+            w-full
+            overflow-hidden
+            bg-cream"
+                >
+                  <iframe
+                    src="https://embed.figma.com/proto/KhZTQkjd8SPhKDvAddvhal/UI-UX-Final-Project?node-id=1034-49540&p=f&viewport=247%2C-160%2C0.04&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1034%3A49540&page-id=1034%3A48139&embed-host=share"
+                    title="CICCC LMS student prototype"
+                    class="absolute inset-0 h-full w-full border-0"
+                    loading="lazy"
+                    allowfullscreen></iframe>
+                </div>
+              </article>
+
+              <!-- Instructor prototype -->
+              <article
+                class="flex
+          flex-col
+          border
+          border-brown-dark/15
+          bg-ivory
+          p-4"
+              >
+                <div class="mb-4">
+                  <p
+                    class="text-xs
+              font-semibold
+              uppercase
+              tracking-[0.16em]
+              text-green-dark"
+                  >
+                    Role 02
+                  </p>
+
+                  <h4 class="mt-1 text-2xl text-brown-dark">Instructor</h4>
+
+                  <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">
+                    Manage classes, attendance, grades, materials, and student
+                    activity.
+                  </p>
+                </div>
+
+                <div
+                  class="relative
+            mt-auto
+            aspect-[4/3]
+            w-full
+            overflow-hidden
+            bg-cream"
+                >
+                  <iframe
+                    src="https://embed.figma.com/proto/KhZTQkjd8SPhKDvAddvhal/UI-UX-Final-Project?node-id=1034-37695&p=f&viewport=287%2C22%2C0.03&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1034%3A37695&page-id=1034%3A35724&embed-host=share"
+                    title="CICCC LMS instructor prototype"
+                    class="absolute inset-0 h-full w-full border-0"
+                    loading="lazy"
+                    allowfullscreen></iframe>
+                </div>
+              </article>
+
+              <!-- Program manager prototype -->
+              <article
+                class="flex
+          flex-col
+          border
+          border-brown-dark/15
+          bg-ivory
+          p-4"
+              >
+                <div class="mb-4">
+                  <p
+                    class="text-xs
+              font-semibold
+              uppercase
+              tracking-[0.16em]
+              text-green-dark"
+                  >
+                    Role 03
+                  </p>
+
+                  <h4 class="mt-1 text-2xl text-brown-dark">Program manager</h4>
+
+                  <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">
+                    Monitor student activity, attendance, academic progress, and
+                    reports.
+                  </p>
+                </div>
+
+                <div
+                  class="relative
+            mt-auto
+            aspect-[4/3]
+            w-full
+            overflow-hidden
+            bg-cream"
+                >
+                  <iframe
+                    src="https://embed.figma.com/proto/KhZTQkjd8SPhKDvAddvhal/UI-UX-Final-Project?node-id=1034-58712&p=f&viewport=187%2C-307%2C0.03&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1034%3A58712&page-id=1034%3A58623&embed-host=share"
+                    title="CICCC LMS program manager prototype"
+                    class="absolute inset-0 h-full w-full border-0"
+                    loading="lazy"
+                    allowfullscreen></iframe>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Next steps -->
+          <div
+            class="mt-10
+      flex
+      flex-col
+      items-start
+      justify-between
+      gap-7
+      bg-brown-dark
+      px-6
+      py-10
+      text-white
+      sm:px-10
+      md:flex-row
+      md:items-center"
+          >
+            <div>
+              <p
+                class="text-sm
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-light"
+              >
+                Next steps
+              </p>
+
+              <h3 class="mt-3 text-3xl !text-white">
+                Test, measure, and expand
+              </h3>
+
+              <p class="mt-3 max-w-2xl text-white/70">
+                Future work includes beta and A/B testing, collecting user
+                feedback and metrics, refining the product, planning for a wider
+                audience, and prioritizing future features.
+              </p>
+            </div>
+
+            <a
+              href="/projects"
+              class="inline-flex
+        shrink-0
+        border-b
+        border-white
+        pb-1
+        font-semibold
+        text-white"
+            >
+              Explore more projects →
+            </a>
           </div>
         </section>
-
-        <!-- <section id="outcome" class="scroll-mt-24 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
-              07 · Outcome</p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A more helpful platform with a clear path forward</h2><p class="mt-6 max-w-3xl text-lg leading-relaxed">Feedback from students and instructors indicated that the new concept addressed the original problems and created a more helpful learning platform.</p></header>
-          <div class="mt-10 overflow-hidden border border-brown-dark/15">
-            {[
-              ["Complicated flow", "Simplified flow with dashboard access"],
-              ["Weak task tracking and communication", "Notifications and data visualization"],
-              ["Unnecessary information", "Dashboard customization"],
-            ].map((row) => (<div class="grid gap-2 border-b border-brown-dark/15 p-5 last:border-b-0 sm:grid-cols-2"><strong class="text-brown-dark">{row[0]}</strong><span>{row[1]}</span></div>))}
-          </div>
-          <img src={Conclusion.src} alt="CICCC LMS conclusion connecting pain points to solutions" class="mt-8 h-auto w-full border border-brown-dark/15" />
-
-          <div class="mt-14 grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:items-center"><div><h3 class="text-4xl text-brown-dark">What’s next</h3><p class="mt-4">Validate the concept and continue improving it with real usage data.</p></div><img src={NextSteps.src} alt="Next steps for the CICCC LMS project" class="h-auto w-full border border-brown-dark/15" /></div>
-        </section> -->
       </div>
     </section>
   </main>

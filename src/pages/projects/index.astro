@@ -5,19 +5,21 @@ import ProjectCard from "../../components/ProjectCard.astro";
 
 import Image7Van from "../../assets/hero/7van-cover.svg";
 import ImageIppon from "../../assets/hero/ippon-cover.svg";
-import ImageGrounds from "../../assets/hero/grounds-cover.svg";
+import ImageGrounds from "../../assets/hero/grounds-cover.webp";
 import ImageBunny from "../../assets/hero/bunny-cover.svg";
 import ImageIcu from "../../assets/hero/icu-cover.svg";
-import ImageMatchDay from "../../assets/hero/matchday-cover.svg";
-import ImageCiccc from "../../assets/hero/ciccc-cover.svg";
+import ImagePawfectDay from "../../assets/hero/pawfect-cover.webp";
+import ImageCiccc from "../../assets/hero/ciccc-cover.webp";
 
 import AwardSection from "../../sections/AwardSection.astro";
 
 import Button from "../../components/Button.astro";
 import PortraitImage from "../../assets/room-elements/portrait.svg";
 
+import Modal from "../../components/Modal.astro";
+
 type ProjectCategory =
-  "UX Design" | "UI Design" | "Web Development" | "Project Design";
+  "UX/UI Design" | "Web Development" | "Project Management";
 
 interface Project {
   title: string;
@@ -25,7 +27,8 @@ interface Project {
   imageSrc: string;
   imageAlt: string;
   categories: ProjectCategory[];
-  projectLink: string;
+  projectLink?: string;
+  modalId?: string;
 }
 
 const { title = "Joy's Projects" } = Astro.props;
@@ -37,7 +40,7 @@ const projects: Project[] = [
       "A social media application for karate practitioners, containing content and a community focused on karate.",
     imageSrc: ImageIppon.src,
     imageAlt: "Ippon App",
-    categories: ["UX Design", "UI Design"],
+    categories: ["UX/UI Design"],
     projectLink: "/projects/ippon",
   },
   {
@@ -46,7 +49,7 @@ const projects: Project[] = [
       "Redesigned the Learning Management System for the tech campus at Cornerstone International Community College of Canada (CICCC).",
     imageSrc: ImageCiccc.src,
     imageAlt: "CICCC LMS",
-    categories: ["UX Design", "UI Design"],
+    categories: ["UX/UI Design"],
     projectLink: "/projects/ciccc-lms",
   },
   {
@@ -55,7 +58,7 @@ const projects: Project[] = [
       "Created an educational tool for children with learning disabilities.",
     imageSrc: ImageBunny.src,
     imageAlt: "Bunny World App",
-    categories: ["UX Design", "UI Design"],
+    categories: ["UX/UI Design"],
     projectLink: "/projects/bunny-world",
   },
   {
@@ -64,27 +67,27 @@ const projects: Project[] = [
       "A responsive Unsplash landing page replica built with Next.js, featuring reusable components, smooth navigation, and email subscription.",
     imageSrc: ImageGrounds.src,
     imageAlt: "Grounds Cafe App",
-    categories: ["Web Development"],
+    categories: ["UX/UI Design", "Web Development"],
     projectLink: "https://grounds-cafe.netlify.app",
   },
-  {
-    title: "Match Day",
-    description:
-      "A native chat application for football fans to connect and discuss matches in real time.",
-    imageSrc: ImageMatchDay.src,
-    imageAlt: "Match Day App",
-    categories: ["UI Design", "Web Development"],
-    projectLink: "",
-  },
-  {
-    title: "Negative Pressure Monitor",
-    description:
-      "Designed a negative-pressure room monitoring system to improve COVID-19 safety.",
-    imageSrc: ImageIcu.src,
-    imageAlt: "Negative Pressure Monitor",
-    categories: ["Project Design"],
-    projectLink: "",
-  },
+{
+  title: "Pawfect Day",
+  description:
+    "A responsive full-stack pet grooming application that connects online customer bookings with a staff management dashboard.",
+  imageSrc: ImagePawfectDay.src,
+  imageAlt: "Pawfect Day pet grooming booking application",
+  categories: [ "UX/UI Design", "Web Development"],
+  projectLink: "https://pawfect-day-seven.vercel.app",
+},
+{
+  title: "Negative Pressure Monitor",
+  description:
+    "Designed a negative-pressure room monitoring system to improve COVID-19 safety.",
+  imageSrc: ImageIcu.src,
+  imageAlt: "Negative Pressure Monitor",
+  categories: ["Project Management"],
+  modalId: "contact-project-modal",
+},
 ];
 ---
 
@@ -160,7 +163,7 @@ const projects: Project[] = [
             description="Developed a responsive website for a Brazilian Jiu-Jitsu academy to encourage membership applications."
             imageSrc={Image7Van.src}
             imageAlt="7VAN Brazilian Jiu-Jitsu academy website"
-            categories={["UX Design", "UI Design"]}
+            categories={["UX/UI Design"]}
             projectLink="/projects/7van"
           />
         </div>
@@ -174,6 +177,7 @@ const projects: Project[] = [
               imageAlt={project.imageAlt}
               categories={project.categories}
               projectLink={project.projectLink}
+              modalId={project.modalId}
             />
           ))
         }
@@ -204,4 +208,12 @@ const projects: Project[] = [
 
     </div>
   </main>
+
+  <Modal
+    id="contact-project-modal"
+    eyebrow="Private project"
+    title="Please contact me for more information"
+    description="Some project details cannot be shared publicly. Email me and I’ll be happy to discuss my role, process, and outcomes."
+    contactEmail="chayaninkosol@gmail.com"
+  />
 </ContentLayout>
