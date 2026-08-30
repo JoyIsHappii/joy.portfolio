@@ -1,0 +1,417 @@
+---
+import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
+import ProjectOverview from "../../components/ProjectOverview.astro";
+
+import HeroImage from "../../assets/hero/grounds-cover.svg";
+import HomepageImage from "../../assets/grounds/evidence/homepage.webp";
+import MenuImage from "../../assets/grounds/evidence/menu.webp";
+import FavoritesImage from "../../assets/grounds/evidence/favorites.webp";
+import CartImage from "../../assets/grounds/evidence/cart.webp";
+
+const navItems = [
+  { number: "01", label: "Project brief", href: "#brief" },
+  { number: "02", label: "Architecture", href: "#architecture" },
+  { number: "03", label: "Menu system", href: "#menu" },
+  { number: "04", label: "Shared state", href: "#state" },
+  { number: "05", label: "Interface", href: "#interface" },
+  { number: "06", label: "Outcome", href: "#outcome" },
+];
+
+const routes = [
+  { path: "/", title: "Home", text: "Landing page with hero content and four featured products." },
+  { path: "/items", title: "Menu", text: "All 47 products with category filters and client-side pagination." },
+  { path: "/items/:id", title: "Item detail", text: "Dynamic product details, quantity control, favorites, and add-to-cart." },
+  { path: "/cart", title: "Cart", text: "Quantity editing, removal, subtotal, GST, total, and checkout entry." },
+  { path: "/checkout", title: "Checkout", text: "A focused order-confirmation state with a path back to the menu." },
+  { path: "/favorites", title: "Favorites", text: "A separate collection built from the shared favorites state." },
+  { path: "*", title: "Not found", text: "A catch-all route for unknown URLs." },
+];
+
+const menuSteps = [
+  {
+    number: "01",
+    title: "Load",
+    text: "Fetch products.json when the menu mounts and store the returned product array in component state.",
+  },
+  {
+    number: "02",
+    title: "Categorize",
+    text: "Map product names and descriptions into useful menu categories with a reusable matching utility.",
+  },
+  {
+    number: "03",
+    title: "Filter",
+    text: "Update the displayed collection from the selected category and reset pagination to page one.",
+  },
+  {
+    number: "04",
+    title: "Paginate",
+    text: "Slice the filtered array into eight-item pages and expose previous, next, and numbered controls.",
+  },
+];
+
+const sharedFeatures = [
+  {
+    title: "CartContext",
+    text: "Keeps cart items and add, remove, quantity-update, and clear actions available to every route inside the provider.",
+  },
+  {
+    title: "LikeContext",
+    text: "Stores favorite product IDs in a Set and provides reusable toggle and lookup functions.",
+  },
+  {
+    title: "SidebarCart",
+    text: "Consumes shared cart state to show quantities, a live item badge, subtotal, and a direct path to the cart page.",
+  },
+];
+
+const reusablePieces = [
+  "Header and shared route navigation",
+  "ProductCard and CartCard",
+  "Button and ButtonIcon variants",
+  "CategoryFilter and Pagination",
+  "LikeToggle and SidebarCart",
+  "Shared Product types and category utility",
+];
+---
+
+<ProjectDetailLayout title="Grounds Café Case Study — Joy" active="projects">
+  <main class="w-full">
+    <div class="py-5 sm:py-7">
+      <Breadcrumb
+        items={[
+          { label: "Projects", href: "/projects/" },
+          { label: "Grounds Café", href: "/projects/grounds/" },
+        ]}
+      />
+    </div>
+
+    <ProjectDetailHero
+      eyebrow="React development case study"
+      title="Grounds Café"
+      description="A frontend café-ordering application that turns a 47-item JSON dataset into a browsable menu, product details, favorites, and a connected shopping-cart experience."
+      imageSrc={HeroImage.src}
+      imageAlt="Grounds Café ordering application shown across product screens"
+      categories={["Web Development"]}
+      role="Frontend Developer"
+      websiteLink="https://grounds-cafe.netlify.app"
+    />
+
+    <div id="overview" class="scroll-mt-8">
+      <ProjectOverview
+        duration="5 days · Individual project"
+        role="Frontend Developer"
+        responsibilities={[
+          "Plan and build the application architecture with Vite, React, and TypeScript",
+          "Create reusable components, route-based pages, and responsive layouts",
+          "Implement product loading, filtering, pagination, favorites, and cart behavior",
+        ]}
+        challenges={[
+          "Turn one shared JSON dataset into several connected shopping experiences",
+          "Keep cart and favorite actions available across unrelated routes",
+          "Maintain clear navigation and reusable UI while supporting seven route states",
+        ]}
+        solutions={[
+          "React Router for page structure and dynamic item URLs",
+          "Context providers for shared cart and favorites state",
+          "Focused components and utilities for products, filtering, and pagination",
+        ]}
+      />
+    </div>
+
+    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[220px_1fr] lg:gap-16">
+      <aside class="hidden lg:block">
+        <div class="sticky top-28">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
+            Development process
+          </p>
+          <nav aria-label="Grounds Café case-study sections" class="mt-5">
+            <ol class="border-t border-brown-dark/15">
+              {navItems.map((item, index) => (
+                <li>
+                  <a
+                    href={item.href}
+                    data-grounds-nav
+                    data-section={item.href.slice(1)}
+                    aria-current={index === 0 ? "location" : undefined}
+                    class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
+                  >
+                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">
+                      {item.number}
+                    </span>
+                    <span>{item.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="min-w-0 space-y-20 sm:space-y-28">
+        <!-- PROJECT BRIEF -->
+        <section id="brief" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              01 · Project brief
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Building a complete ordering flow from static product data
+            </h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The assignment was to create a frontend-only café application
+              from a provided JSON file. The result needed to demonstrate core
+              React skills through data loading, reusable components, routing,
+              shared state, pagination, and a checkout journey.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3">
+            <article class="bg-ivory p-6 sm:p-8">
+              <strong class="text-5xl text-brown-dark">47</strong>
+              <h3 class="mt-3 text-xl">Menu items</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Loaded from one shared products.json file.</p>
+            </article>
+            <article class="bg-ivory p-6 sm:p-8">
+              <strong class="text-5xl text-brown-dark">7</strong>
+              <h3 class="mt-3 text-xl">Route states</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Connected through a shared application shell.</p>
+            </article>
+            <article class="bg-ivory p-6 sm:p-8">
+              <strong class="text-5xl text-brown-dark">2</strong>
+              <h3 class="mt-3 text-xl">Context providers</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Cart and favorite state shared across pages.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ARCHITECTURE -->
+        <section id="architecture" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <div class="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
+            <div class="md:max-w-[calc(50%-1rem)]">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                02 · Architecture
+              </p>
+              <h2 class="mt-4 text-4xl sm:text-6xl">Routes shaped around customer tasks</h2>
+            </div>
+            <p class="text-lg leading-relaxed text-brown-dark/75">
+              React Router separates discovery, decision-making, saved items,
+              and checkout into clear pages while the Header keeps movement
+              between them consistent without full-page reloads.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {routes.map((route) => (
+              <article class="border border-brown-dark/15 bg-ivory p-5 sm:p-6">
+                <code class="text-sm font-semibold text-green-dark">{route.path}</code>
+                <h3 class="mt-3 text-2xl">{route.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">{route.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <!-- MENU -->
+        <section id="menu" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+            03 · Menu system
+          </p>
+          <div class="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
+            <h2 class="text-4xl sm:text-6xl">From JSON to a usable 47-item menu</h2>
+            <p class="text-lg leading-relaxed text-brown-dark/75">
+              The menu fetches the product file inside useEffect, stores the
+              result in state, categorizes each product, and derives only the
+              items needed for the active category and page.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-2 xl:grid-cols-4">
+            {menuSteps.map((step) => (
+              <article class="bg-ivory p-6">
+                <span class="text-sm font-semibold text-green-dark">{step.number}</span>
+                <h3 class="mt-4 text-2xl">{step.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">{step.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <figure class="mt-8 border border-brown-dark/15 bg-ivory p-3 sm:p-5">
+            <img
+              src={MenuImage.src}
+              alt="Grounds Café full menu with category filters, product cards, and pagination"
+              class="h-auto w-full"
+              loading="lazy"
+            />
+            <figcaption class="mt-4 text-sm text-brown-dark/65">
+              Eight products are shown per page, with category selection resetting the menu to page one.
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SHARED STATE -->
+        <section id="state" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                04 · Shared state
+              </p>
+              <h2 class="mt-4 text-4xl sm:text-6xl">One source of truth across the app</h2>
+            </div>
+            <p class="self-end text-lg leading-relaxed text-brown-dark/75">
+              CartProvider and LikeProvider wrap the router, allowing the menu,
+              item details, sidebar, favorites, and cart page to consume the
+              same state without passing data through every component.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-3">
+            {sharedFeatures.map((feature) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                <h3 class="text-2xl">{feature.title}</h3>
+                <p class="mt-4 text-sm leading-relaxed text-brown-dark/70">{feature.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="mt-8 grid gap-6 md:grid-cols-2">
+            <figure class="border border-brown-dark/15 bg-ivory p-3 sm:p-5">
+              <img src={FavoritesImage.src} alt="Grounds Café favorites page" class="h-auto w-full" loading="lazy" />
+              <figcaption class="mt-4 text-sm font-semibold">Favorites collection</figcaption>
+            </figure>
+            <figure class="border border-brown-dark/15 bg-ivory p-3 sm:p-5">
+              <img src={CartImage.src} alt="Grounds Café cart showing quantity, subtotal, GST, and total" class="h-auto w-full" loading="lazy" />
+              <figcaption class="mt-4 text-sm font-semibold">Cart summary and checkout entry</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- INTERFACE -->
+        <section id="interface" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                05 · Interface
+              </p>
+              <h2 class="mt-4 text-4xl sm:text-6xl">Reusable pieces, one visual language</h2>
+            </div>
+            <p class="text-lg leading-relaxed text-brown-dark/75">
+              Warm espresso surfaces, cream typography, and caramel actions
+              create a consistent café identity. Reusable components keep cards,
+              controls, and feedback predictable throughout the application.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+            <div class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+              <h3 class="text-2xl">Component system</h3>
+              <ul class="mt-6 space-y-4 text-sm leading-relaxed text-brown-dark/75">
+                {reusablePieces.map((item) => (
+                  <li class="flex gap-3">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <figure class="border border-brown-dark/15 bg-ivory p-3 sm:p-5">
+              <img src={HomepageImage.src} alt="Grounds Café homepage with featured product cards" class="h-auto w-full" loading="lazy" />
+              <figcaption class="mt-4 text-sm text-brown-dark/65">
+                The homepage reuses the same ProductCard behavior as the complete menu.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- OUTCOME -->
+        <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                06 · Outcome
+              </p>
+              <h2 class="mt-4 text-4xl sm:text-6xl">A connected React storefront</h2>
+            </div>
+            <p class="text-lg leading-relaxed text-brown-dark/75">
+              Grounds transforms a static data file into a complete frontend
+              journey: customers can explore products, narrow the menu, open
+              item details, save favorites, manage quantities, review pricing,
+              and move into checkout.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3">
+            <article class="bg-ivory p-6 sm:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Data</p>
+              <h3 class="mt-3 text-2xl">Dynamic product views</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">One dataset supports featured products, menu cards, details, and favorites.</p>
+            </article>
+            <article class="bg-ivory p-6 sm:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">State</p>
+              <h3 class="mt-3 text-2xl">Connected interactions</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Context keeps cart and favorite actions consistent during the app session.</p>
+            </article>
+            <article class="bg-ivory p-6 sm:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Delivery</p>
+              <h3 class="mt-3 text-2xl">Public deployment</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">The finished Vite application is deployed and publicly accessible on Netlify.</p>
+            </article>
+          </div>
+
+          <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Built with</p>
+              <h3 class="mt-3 text-3xl !text-white">React · TypeScript · Vite · React Router · Tailwind CSS</h3>
+              <p class="mt-3 max-w-2xl text-white/70">
+                An individual final project focused on practical component architecture, routing, data transformation, and shared application state.
+              </p>
+            </div>
+            <a
+              href="https://grounds-cafe.netlify.app"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white"
+            >
+              Visit live website →
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</ProjectDetailLayout>
+
+<script>
+  const setupGroundsNavigation = () => {
+    const links = Array.from(document.querySelectorAll<HTMLElement>("[data-grounds-nav]"));
+    const sections = links
+      .map((link) => document.getElementById(link.dataset.section ?? ""))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    if (!links.length || !sections.length) return;
+
+    const updateCurrentSection = () => {
+      const marker = window.scrollY + window.innerHeight * 0.32;
+      let current = sections[0].id;
+
+      sections.forEach((section) => {
+        if (section.offsetTop <= marker) current = section.id;
+      });
+
+      links.forEach((link) => {
+        if (link.dataset.section === current) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    updateCurrentSection();
+    window.addEventListener("scroll", updateCurrentSection, { passive: true });
+  };
+
+  document.addEventListener("astro:page-load", setupGroundsNavigation);
+</script>

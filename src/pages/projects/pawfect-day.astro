@@ -1,0 +1,997 @@
+---
+import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
+import ProjectOverview from "../../components/ProjectOverview.astro";
+import Button from "../../components/Button.astro";
+
+import HeroImage from "../../assets/hero/pawfect-cover.svg";
+import WorkflowImage from "../../assets/pawfect-day/evidence/workflow.webp";
+import ArchitectureImage from "../../assets/pawfect-day/evidence/information-architecture.webp";
+
+import HomeDesktopImage from "../../assets/pawfect-day/pawfect-home-desktop.png";
+import ServicesDesktopImage from "../../assets/pawfect-day/pawfect-services-desktop.png";
+import HomeMobileImage from "../../assets/pawfect-day/pawfect-home-mobile.png";
+import ServicesMobileImage from "../../assets/pawfect-day/pawfect-services-mobile.png";
+
+const navItems = [
+  { number: "01", label: "Project brief", href: "#brief" },
+  { number: "02", label: "Planning", href: "#planning" },
+  { number: "03", label: "Team delivery", href: "#delivery" },
+  { number: "04", label: "Design & build", href: "#design-build" },
+  { number: "05", label: "Quality assurance", href: "#quality" },
+  { number: "06", label: "Outcome", href: "#outcome" },
+];
+
+const customerFeatures = [
+  "Browse grooming services",
+  "Complete a guided booking form",
+  "Select a preferred date and time",
+  "Review details and receive confirmation",
+];
+
+const staffFeatures = [
+  "Sign in through protected staff routes",
+  "Search and filter bookings",
+  "View and edit booking details",
+  "Delete bookings and update their status",
+];
+
+const milestones = [
+  {
+    number: "01",
+    title: "Define the product",
+    text: "Confirm the customer journey, staff workflow, shared information architecture, and required features.",
+  },
+  {
+    number: "02",
+    title: "Assign ownership",
+    text: "Divide the system into six clear work areas and give each teammate a route or technical responsibility.",
+  },
+  {
+    number: "03",
+    title: "Build in parallel",
+    text: "Develop the frontend and backend simultaneously using shared types, components, and design rules.",
+  },
+  {
+    number: "04",
+    title: "Integrate and test",
+    text: "Connect the routes, verify the complete booking journey, resolve issues, and protect the deadline.",
+  },
+];
+
+const teamResponsibilities = [
+  {
+    number: "01",
+    area: "Authentication",
+    scope: "Staff login, protected dashboard routes, logout, and deployment.",
+  },
+  {
+    number: "02",
+    area: "Backend",
+    scope: "PostgreSQL schema, shared types, validation, and server actions.",
+  },
+  {
+    number: "03",
+    area: "Public experience",
+    scope:
+      "Homepage, services, navigation, footer, design tokens, and shared UI.",
+    mine: true,
+  },
+  {
+    number: "04",
+    area: "Booking flow",
+    scope: "Multi-step customer booking and confirmation experience.",
+  },
+  {
+    number: "05",
+    area: "Dashboard",
+    scope: "Booking table, search, filters, and summary information.",
+  },
+  {
+    number: "06",
+    area: "Booking management",
+    scope:
+      "Booking details, editing, deletion, confirmation, and status updates.",
+  },
+];
+
+
+
+
+
+const responsibilities = [
+  {
+    title: "Plan",
+    text: "Defined the workflow, divided the project into manageable areas, assigned ownership, and created daily milestones for the four-day schedule.",
+  },
+  {
+    title: "Track",
+    text: "Checked progress across the team, identified unfinished or blocked work, and adjusted priorities before integration.",
+  },
+  {
+    title: "Coordinate",
+    text: "Helped six new teammates stay aligned through shared routes, UI components, types, and clear handoff expectations.",
+  },
+  {
+    title: "Validate",
+    text: "Reviewed responsive behavior and checked whether customer and staff tasks were understandable and usable from end to end.",
+  },
+];
+
+const challenges = [
+  {
+    challenge: "Coordinating six new teammates within a four-day deadline",
+    response: "Assigned daily tasks and milestones so progress and dependencies stayed visible.",
+  },
+  {
+    challenge: "Some assigned tasks were not completed as planned",
+    response: "Adjusted the plan, redistributed the remaining work, and supported integration where needed.",
+  },
+  {
+    challenge: "Some planned features required more development time",
+    response: "Reduced non-essential scope and protected the complete core booking experience.",
+  },
+];
+
+const qualityChecks = [
+  {
+    title: "Customer journey",
+    items: [
+      "Service selection and booking entry points",
+      "Required-field and email validation",
+      "Available dates and times",
+      "Review and confirmation states",
+    ],
+  },
+  {
+    title: "Staff workflow",
+    items: [
+      "Authentication and protected routes",
+      "Search and filter behavior",
+      "Viewing and editing booking details",
+      "Status updates and deletion confirmation",
+    ],
+  },
+  {
+    title: "System safeguards",
+    items: [
+      "Server-side input validation",
+      "Parameterized database queries",
+      "Safe component defaults",
+      "Responsive checks across key routes",
+    ],
+  },
+];
+---
+
+<ProjectDetailLayout title="Pawfect Day Case Study — Joy" active="projects">
+  <main class="w-full">
+    <div class="py-5 sm:py-7">
+      <Breadcrumb
+        items={[
+          { label: "Projects", href: "/projects/" },
+          { label: "Pawfect Day", href: "/projects/powfect-day/" },
+        ]}
+      />
+    </div>
+
+    <ProjectDetailHero
+      eyebrow="Product delivery case study"
+      title="Pawfect Day"
+      description="A responsive full-stack booking platform that helps pet owners request grooming appointments online and gives staff one place to manage daily bookings."
+      imageSrc={HeroImage.src}
+      imageAlt="Pawfect Day pet-grooming booking experience across desktop screens"
+      categories={["Web Development", "Project Management"]}
+      role="Project Coordinator · Frontend Developer · Usability Reviewer"
+      websiteLink="https://pawfect-day-seven.vercel.app"
+    />
+
+    <div id="overview" class="scroll-mt-8">
+      <ProjectOverview
+        duration="4 days · 6-person team"
+        role="Project Coordinator · Frontend Developer · Usability Reviewer"
+        responsibilities={[
+          "Project planning, task allocation, milestones, and progress tracking",
+          "Website usability, responsive review, and final quality checks",
+          "Shared UI system, homepage, services page, and frontend integration",
+        ]}
+        challenges={[
+          "Coordinate six new teammates under a four-day deadline",
+          "Connect customer, staff, and database workflows into one product",
+          "Protect quality when tasks or features exceeded the available time",
+        ]}
+        solutions={[
+          "Clear route ownership and daily delivery milestones",
+          "Shared architecture, types, components, and design tokens",
+          "Frequent progress checks, scope decisions, integration, and testing",
+        ]}
+      />
+    </div>
+
+    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[220px_1fr] lg:gap-16">
+      <aside class="hidden lg:block">
+        <div class="sticky top-28">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
+            Project delivery
+          </p>
+          <nav aria-label="Pawfect Day case-study sections" class="mt-5">
+            <ol class="border-t border-brown-dark/15">
+              {navItems.map((item, index) => (
+                <li>
+                  <a
+                    href={item.href}
+                    data-pawfect-nav
+                    data-section={item.href.slice(1)}
+                    aria-current={index === 0 ? "location" : undefined}
+                    class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
+                  >
+                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">
+                      {item.number}
+                    </span>
+                    <span>{item.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="min-w-0 space-y-20 sm:space-y-28">
+        <!-- PROJECT BRIEF -->
+        <section id="brief" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              01 · Project brief
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Moving appointments from phone calls to one connected platform
+            </h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+              The brief was to help a small grooming business accept bookings
+              online. We expanded the idea into two connected experiences: a
+              simple customer booking journey and a protected staff dashboard
+              for managing appointments.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 md:grid-cols-2">
+            <article class="bg-ivory p-6 sm:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pink">Customer</p>
+              <h3 class="mt-3 text-3xl">Book without calling</h3>
+              <ul class="mt-6 space-y-3 text-sm leading-relaxed">
+                {customerFeatures.map((item) => (
+                  <li class="flex gap-3">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+            <article class="bg-cream p-6 sm:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">Staff</p>
+              <h3 class="mt-3 text-3xl">Manage the day clearly</h3>
+              <ul class="mt-6 space-y-3 text-sm leading-relaxed">
+                {staffFeatures.map((item) => (
+                  <li class="flex gap-3">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pink"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- PLANNING -->
+        <section id="planning" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <div class="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                02 · Planning
+              </p>
+              <h2 class="mt-4 text-4xl sm:text-6xl">A four-day plan built around dependencies</h2>
+            </div>
+            <p class="text-lg leading-relaxed">
+              I organized the work so the team could build in parallel without
+              losing sight of integration. Frontend and backend work began only
+              after the product structure and route ownership were clear.
+            </p>
+          </div>
+
+          <figure class="mt-10 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+            <img
+              src={WorkflowImage.src}
+              alt="Pawfect Day workflow from mockup and planning through frontend, backend, integration, and testing"
+              class="h-auto w-full"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="mt-4 text-sm text-brown-dark/70">
+              The team moved from mockup and planning to parallel development, integration, and final testing.
+            </figcaption>
+          </figure>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            {milestones.map((item) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                <span class="text-sm font-semibold text-pink">{item.number}</span>
+                <h3 class="mt-4 text-2xl">{item.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">{item.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <figure class="mt-8 grid overflow-hidden border border-brown-dark/15 bg-cream md:grid-cols-[0.42fr_0.58fr]">
+            <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
+                Shared architecture
+              </p>
+              <h3 class="mt-3 text-3xl">One map for two user journeys</h3>
+              <p class="mt-4 leading-relaxed text-brown-dark/75">
+                The information architecture clarified how customer routes,
+                protected staff routes, and shared booking data fit together
+                before development started.
+              </p>
+            </div>
+            <img
+              src={ArchitectureImage.src}
+              alt="Information architecture connecting Pawfect Day customer pages and staff dashboard routes"
+              class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </section>
+
+        <!-- TEAM DELIVERY -->
+        <section id="delivery" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              03 · Team delivery
+            </p>
+            <h2 class="mt-4 text-4xl sm:text-6xl">Clear ownership, frequent progress checks</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+              Each teammate owned a focused product area. I planned the split,
+              tracked delivery against daily milestones, and coordinated changes
+              when unfinished work or technical dependencies affected the plan.
+            </p>
+          </header>
+
+          <!-- <figure class="mt-10 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
+            <img
+              src={TeamRolesImage.src}
+              alt="Pawfect Day team roles across customer experience, staff dashboard, and shared backend"
+              class="h-auto w-full"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="mt-4 text-sm text-brown-dark/70">
+              My development ownership was the shared UI system, homepage, and services page; my coordination work supported the full team.
+            </figcaption>
+          </figure> -->
+          
+
+             <div class="mt-8 grid gap-4 md:grid-cols-3">
+              <span class="md:col-span-3 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                Team responsibilities
+              </span>
+              {teamResponsibilities.map((responsibility) => (
+                <article
+                  class:list={[
+                    "relative flex min-h-[190px] flex-col border p-6 sm:p-8",
+                    responsibility.mine
+                      ? "border-green-dark bg-green-light/35"
+                      : "border-brown-dark/15 bg-ivory",
+                  ]}
+                >
+                  <div class="flex items-start justify-between gap-4">
+                    <span
+                      class:list={[
+                        "text-sm font-semibold",
+                        responsibility.mine ? "text-green-dark" : "text-pink",
+                      ]}
+                    >
+                      {responsibility.number}
+                    </span>
+
+                    {responsibility.mine && (
+                      <span class="rounded-full bg-green-dark px-3 py-1 text-xs font-semibold text-white">
+                        My contribution
+                      </span>
+                    )}
+                  </div>
+
+                  <h4 class="mt-5 text-2xl text-brown-dark">
+                    {responsibility.area}
+                  </h4>
+                  <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">
+                    {responsibility.scope}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+
+          <div class="mt-8 grid gap-4 md:grid-cols-2">
+            <span class="md:col-span-2 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              My responsibilities
+            </span>
+            {responsibilities.map((item, index) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                <div class="flex items-center justify-between gap-4">
+                  <span class="text-sm font-semibold text-pink">0{index + 1}</span>
+                  <span class="rounded-full bg-green-light/60 px-3 py-1 text-xs font-semibold text-green-dark">
+                    My responsibility
+                  </span>
+                </div>
+                <h3 class="mt-4 text-2xl">{item.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">{item.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="mt-8 space-y-3">
+            {challenges.map((item, index) => (
+              <article class="grid overflow-hidden border border-brown-dark/15 bg-ivory md:grid-cols-2">
+                <div class="p-6 sm:p-8">
+                  <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pink">
+                    Challenge 0{index + 1}
+                  </p>
+                  <h3 class="mt-3 text-xl">{item.challenge}</h3>
+                </div>
+                <div class="border-t border-brown-dark/15 bg-green-light/25 p-6 sm:p-8 md:border-l md:border-t-0">
+                  <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Response</p>
+                  <p class="mt-3 leading-relaxed text-brown-dark/75">{item.response}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <!-- DESIGN & BUILD -->
+        <section id="design-build" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                04 · Design & build
+              </p>
+              <h2 class="mt-4 text-4xl sm:text-6xl">A shared visual system for the public experience</h2>
+            </div>
+            <p class="text-lg leading-relaxed">
+              I owned the homepage, services page, design tokens, and reusable
+              public UI components. These foundations helped independently
+              developed routes feel like one product.
+            </p>
+          </div>
+
+         <!-- FINAL DESIGN -->
+<section
+  id="final-design"
+  class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+>
+  <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+    <div>
+      <p
+        class="
+          text-sm
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-dark
+        "
+      >
+        05 · Final product
+      </p>
+
+      <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+        A responsive booking experience
+      </h2>
+    </div>
+
+    <p class="text-lg leading-relaxed text-brown-dark/75">
+      The final website provides a clear path from discovering grooming
+      services to booking an appointment. The responsive interface keeps the
+      experience consistent across desktop and mobile devices.
+    </p>
+  </div>
+<div
+  class="
+    mt-10
+    grid
+    gap-10
+    lg:grid-cols-[minmax(0,1.7fr)_minmax(260px,0.7fr)]
+    lg:items-start
+  "
+>
+  <!-- LEFT: Desktop pages -->
+  <section>
+    <div class="flex items-end justify-between gap-6">
+      <div>
+        <p
+          class="
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-green-dark
+          "
+        >
+          Desktop
+        </p>
+
+        <h3 class="mt-2 text-2xl text-brown-dark">
+          Public website
+        </h3>
+      </div>
+
+      <p class="hidden text-sm text-brown-dark/60 sm:block">
+        Homepage and services
+      </p>
+    </div>
+
+    <div class="mt-5 grid gap-5 sm:grid-cols-2">
+      <figure class="min-w-0">
+        <div
+          class="
+            aspect-[1100/2048]
+            overflow-hidden
+            border
+            border-brown-dark/15
+            bg-ivory
+          "
+        >
+          <img
+            src={HomeDesktopImage.src}
+            alt="Full Pawfect Day desktop homepage"
+            class="h-full w-full object-contain object-top"
+            loading="lazy"
+            width="1100"
+            height="2048"
+          />
+        </div>
+
+        <figcaption
+          class="
+            border-x
+            border-b
+            border-brown-dark/15
+            bg-ivory
+            px-4
+            py-3
+            text-sm
+            font-semibold
+            text-brown-dark
+          "
+        >
+          Homepage
+        </figcaption>
+      </figure>
+
+      <figure class="min-w-0">
+        <div
+          class="
+            aspect-[1100/2048]
+            overflow-hidden
+            border
+            border-brown-dark/15
+            bg-ivory
+          "
+        >
+          <img
+            src={ServicesDesktopImage.src}
+            alt="Full Pawfect Day desktop services page"
+            class="h-full w-full object-contain object-top"
+            loading="lazy"
+            width="1100"
+            height="2048"
+          />
+        </div>
+
+        <figcaption
+          class="
+            border-x
+            border-b
+            border-brown-dark/15
+            bg-ivory
+            px-4
+            py-3
+            text-sm
+            font-semibold
+            text-brown-dark
+          "
+        >
+          Services page
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- RIGHT: Mobile pages -->
+  <section
+    class="
+      border-t
+      border-brown-dark/15
+      pt-8
+      lg:border-l
+      lg:border-t-0
+      lg:pl-8
+      lg:pt-0
+    "
+  >
+    <div>
+      <p
+        class="
+          text-xs
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+          text-green-dark
+        "
+      >
+        Mobile
+      </p>
+
+      <h3 class="mt-2 text-2xl text-brown-dark">
+        Responsive experience
+      </h3>
+    </div>
+
+    <div class="mt-5 grid grid-cols-2 gap-4">
+      <figure class="min-w-0">
+        <div
+          class="
+            aspect-[255/2048]
+            overflow-hidden
+            border
+            border-brown-dark/15
+            bg-ivory
+          "
+        >
+          <img
+            src={HomeMobileImage.src}
+            alt="Full Pawfect Day mobile homepage"
+            class="h-full w-full object-contain object-top"
+            loading="lazy"
+            width="255"
+            height="2048"
+          />
+        </div>
+
+        <figcaption
+          class="
+            border-x
+            border-b
+            border-brown-dark/15
+            bg-ivory
+            px-2
+            py-3
+            text-center
+            text-xs
+            font-semibold
+            text-brown-dark
+          "
+        >
+          Homepage
+        </figcaption>
+      </figure>
+
+      <figure class="min-w-0">
+        <div
+          class="
+            aspect-[255/2048]
+            overflow-hidden
+            border
+            border-brown-dark/15
+            bg-ivory
+          "
+        >
+          <img
+            src={ServicesMobileImage.src}
+            alt="Full Pawfect Day mobile services page"
+            class="h-full w-full object-contain object-top"
+            loading="lazy"
+            width="255"
+            height="2048"
+          />
+        </div>
+
+        <figcaption
+          class="
+            border-x
+            border-b
+            border-brown-dark/15
+            bg-ivory
+            px-2
+            py-3
+            text-center
+            text-xs
+            font-semibold
+            text-brown-dark
+          "
+        >
+          Services
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+</section>
+
+          <div class="mt-8 grid gap-4 md:grid-cols-3">
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+              <span class="text-sm font-semibold text-pink">01</span>
+              <h3 class="mt-4 text-2xl">AI-assisted concept</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">
+                Used Figma AI to generate an initial full-site direction, then
+                reviewed and refined the hierarchy, content, components, and
+                responsive behavior for the final product.
+              </p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+              <span class="text-sm font-semibold text-pink">02</span>
+              <h3 class="mt-4 text-2xl">Reusable interface</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">
+                Created shared buttons, links, navigation, service cards,
+                inputs, and dropdown patterns to reduce inconsistent styling.
+              </p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+              <span class="text-sm font-semibold text-pink">03</span>
+              <h3 class="mt-4 text-2xl">Responsive implementation</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">
+                Adapted navigation, content hierarchy, service cards, spacing,
+                and touch targets for mobile, tablet, and desktop screens.
+              </p>
+            </article>
+          </div>
+
+         <!-- STAFF DASHBOARD DEMO -->
+<aside
+  class="
+    mt-8
+    grid
+    overflow-hidden
+    border
+    border-brown-dark/15
+    bg-ivory
+    md:grid-cols-[1fr_auto]
+    md:items-center
+  "
+  aria-labelledby="staff-demo-title"
+>
+  <!-- Information -->
+  <div class="p-6 sm:p-8">
+    <p
+      class="
+        text-xs
+        font-semibold
+        uppercase
+        tracking-[0.18em]
+        text-green-dark
+      "
+    >
+      Demo access
+    </p>
+
+    <h3
+      id="staff-demo-title"
+      class="mt-3 text-2xl text-brown-dark sm:text-3xl"
+    >
+      Explore the staff dashboard
+    </h3>
+
+    <p class="mt-3 max-w-2xl leading-relaxed text-brown-dark/70">
+      Select <strong class="text-brown-dark">Staff Login</strong> in the
+      website footer, then use the demo credentials to explore appointment
+      management and dashboard features.
+    </p>
+
+    <p class="mt-4 text-xs leading-relaxed text-red-500">
+      Demo environment only. Please do not enter personal information or modify
+      existing sample bookings.
+    </p>
+  </div>
+
+  <!-- Credentials -->
+  <dl
+    class="
+      grid
+      gap-px
+      border-t
+      border-brown-dark/15
+      bg-brown-dark/15
+      sm:grid-cols-2
+      md:h-full
+      md:w-[420px]
+      md:grid-cols-1
+      md:border-l
+      md:border-t-0
+    "
+  >
+    <div class="flex flex-col justify-center bg-cream px-6 py-5">
+      <dt
+        class="
+          text-xs
+          font-semibold
+          uppercase
+          tracking-[0.14em]
+          text-green-dark
+        "
+      >
+        Email
+      </dt>
+
+      <dd class="mt-2 break-all font-mono text-sm text-brown-dark">
+        staff@pawfectday.com
+      </dd>
+    </div>
+
+    <div class="flex flex-col justify-center bg-cream px-6 py-5">
+      <dt
+        class="
+          text-xs
+          font-semibold
+          uppercase
+          tracking-[0.14em]
+          text-green-dark
+        "
+      >
+        Password
+      </dt>
+
+      <dd class="mt-2 font-mono text-sm text-brown-dark">
+        password123
+      </dd>
+    </div>
+  </dl>
+</aside>
+
+          <div class="mt-8 border border-brown-dark/15 bg-cream p-6 sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">Technology</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {["Figma AI", "Next.js", "React", "TypeScript", "Tailwind CSS", "Neon PostgreSQL", "Vercel"].map((item) => (
+                <span class="rounded-full border border-brown-dark/20 bg-ivory px-4 py-2 text-sm font-semibold text-brown-dark">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+        </section>
+
+        <!-- QUALITY ASSURANCE -->
+        <section id="quality" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              05 · Quality assurance
+            </p>
+            <h2 class="mt-4 text-4xl sm:text-6xl">Checking usability across the complete system</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed">
+              I reviewed the website as one experience rather than a collection
+              of separate routes. The focus was whether users could understand
+              the next action, complete important tasks, and recover safely from
+              mistakes.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-3">
+            {qualityChecks.map((group, index) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                <span class="text-sm font-semibold text-pink">0{index + 1}</span>
+                <h3 class="mt-4 text-2xl">{group.title}</h3>
+                <ul class="mt-5 space-y-3 text-sm leading-relaxed">
+                  {group.items.map((item) => (
+                    <li class="flex gap-3">
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div class="mt-8 border-l-4 border-green-dark bg-green-light/25 p-6 sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">Scope decision</p>
+            <h3 class="mt-3 text-2xl">Complete the core journey before expanding features</h3>
+            <p class="mt-3 max-w-3xl leading-relaxed text-brown-dark/75">
+              When planned features exceeded the schedule, I prioritized a
+              reliable booking and management flow. Future improvements include
+              linking testimonials to verified review platforms and improving
+              URL-based service selection in the booking form.
+            </p>
+          </div>
+        </section>
+
+        <!-- OUTCOME -->
+        <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · Outcome</p>
+              <h2 class="mt-4 text-4xl sm:text-6xl">A working product delivered through coordination</h2>
+            </div>
+            <p class="text-lg leading-relaxed">
+              The team delivered a responsive full-stack application connecting
+              customer bookings with staff management. My contribution combined
+              product planning, delivery tracking, usability review, and direct
+              ownership of the public interface.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3">
+            <article class="bg-ivory p-6 sm:p-8">
+              <strong class="text-5xl text-brown-dark">6</strong>
+              <p class="mt-2 text-sm">team members coordinated</p>
+            </article>
+            <article class="bg-ivory p-6 sm:p-8">
+              <strong class="text-5xl text-brown-dark">4</strong>
+              <p class="mt-2 text-sm">days from plan to delivery</p>
+            </article>
+            <article class="bg-ivory p-6 sm:p-8">
+              <strong class="text-5xl text-brown-dark">2</strong>
+              <p class="mt-2 text-sm">connected user experiences</p>
+            </article>
+          </div>
+
+          <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Key learning</p>
+              <h3 class="mt-3 text-3xl !text-white">Leadership includes protecting clarity and scope</h3>
+              <p class="mt-3 max-w-2xl text-white/70">
+                Pawfect Day strengthened my ability to translate a product idea
+                into an actionable plan, coordinate people and dependencies,
+                make deadline-aware decisions, and verify the final user experience.
+              </p>
+            </div>
+            <Button href="https://pawfect-day-seven.vercel.app" target="_blank" variant="secondary">
+              View live website
+            </Button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</ProjectDetailLayout>
+
+<script>
+  const setupPawfectNavigation = () => {
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-pawfect-nav]"));
+    if (!links.length) return;
+
+    const updateCurrent = (sectionId: string) => {
+      links.forEach((link) => {
+        if (link.dataset.section === sectionId) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    links.forEach((link) => {
+      if (link.dataset.ready === "true") return;
+      link.dataset.ready = "true";
+      link.addEventListener("click", () => {
+        if (link.dataset.section) updateCurrent(link.dataset.section);
+      });
+    });
+
+    const sections = links
+      .map((link) => document.getElementById(link.dataset.section ?? ""))
+      .filter((section): section is HTMLElement => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target.id) updateCurrent(visible.target.id);
+      },
+      { rootMargin: "-20% 0px -60% 0px", threshold: [0.05, 0.2, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  };
+
+  setupPawfectNavigation();
+  document.addEventListener("astro:page-load", setupPawfectNavigation);
+</script>
