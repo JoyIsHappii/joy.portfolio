@@ -33,21 +33,18 @@ const {
 } = Astro.props as ProjectDetailHeroProps;
 ---
 
-<section
+<div
   class:list={[
     `
       grid
       w-full
       grid-cols-1
       gap-8
-      border-b
-      border-brown-dark/15
-      py-10
+      
       md:grid-cols-12
-      md:items-center
-      md:gap-12
-      md:py-14
-      lg:gap-16
+      pb-8
+      
+   
     `,
     className,
   ]}
@@ -202,4 +199,4 @@ const {
       "
     />
   </div>
-</section>
+</div>
