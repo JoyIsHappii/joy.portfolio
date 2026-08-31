@@ -3,6 +3,7 @@ import Tag, {
   type ProjectCategory,
 } from "./Tag.astro";
 import Button from "./Button.astro";
+import GitHubLink from "./GitHubLink.astro";
 
 interface ProjectDetailHeroProps {
   title: string;
@@ -15,6 +16,7 @@ interface ProjectDetailHeroProps {
   mobileLink?: string;
   prototypeLink?: string;
   websiteLink?: string;
+  githubLink?: string;
   class?: string;
   role?: string;
 }
@@ -30,6 +32,7 @@ const {
   mobileLink,
   prototypeLink,
   websiteLink,
+  githubLink,
   role,
   class: className = "",
 } = Astro.props as ProjectDetailHeroProps;
@@ -177,7 +180,15 @@ const {
         </Button>
       )
       }
-      </div>
+      {githubLink && (
+        <GitHubLink
+          href={githubLink}
+           variant="secondary"
+          size="md"
+          class="mt-7"
+        />
+      )}
+    </div>
   </div>
 
   <!-- Project image -->

@@ -1,0 +1,35 @@
+---
+import Button from "./Button.astro";
+import GitHubIcon from "../assets/skills/github.svg";
+
+interface Props {
+  href: string;
+  label?: string;
+  variant?: "primary" | "secondary";
+  size?: "md" | "lg";
+  class?: string;
+}
+
+const {
+  href,
+  label = "View on GitHub",
+  variant = "secondary",
+  size = "md",
+  class: className = "",
+} = Astro.props as Props;
+---
+
+<Button
+  href={href}
+  target="_blank"
+  variant={variant}
+  size={size}
+  class={`shrink-0 whitespace-nowrap ${className}`}
+>
+  <GitHubIcon
+    aria-hidden="true"
+    class="h-5 w-5 shrink-0 fill-current"
+  />
+
+  <span>{label}</span>
+</Button>
