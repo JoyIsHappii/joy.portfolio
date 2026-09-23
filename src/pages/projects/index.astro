@@ -10,6 +10,9 @@ import ImageBunny from "../../assets/hero/bunny-cover.svg";
 import ImageIcu from "../../assets/hero/icu-cover.svg";
 import ImagePawfectDay from "../../assets/hero/pawfect-cover.svg";
 import ImageCiccc from "../../assets/hero/ciccc-cover.webp";
+import ImageWeather from "../../assets/hero/weather-cover.svg";
+import ImageMatch from "../../assets/hero/match-cover.webp";
+// import ImageCarlaBeauty from "../../assets/hero/carla-cover.webp";
 
 import AwardSection from "../../sections/AwardSection.astro";
 
@@ -29,6 +32,7 @@ interface Project {
   categories: ProjectCategory[];
   projectLink?: string;
   modalId?: string;
+  tech?: string[];
 }
 
 const { title = "Joy's Projects" } = Astro.props;
@@ -37,57 +41,117 @@ const projects: Project[] = [
   {
     title: "Ippon",
     description:
-      "A social media application for karate practitioners, containing content and a community focused on karate.",
+      "A social media app for karate practitioners to share content and connect with the community.",
     imageSrc: ImageIppon.src,
     imageAlt: "Ippon App",
     categories: ["UX/UI Design"],
+    tech: ["Figma"],
     projectLink: "/projects/ippon",
   },
   {
     title: "CICCC LMS",
-    description:
-      "Redesigned the Learning Management System for the tech campus at Cornerstone International Community College of Canada (CICCC).",
+    description: "A learning management system (LMS) for CICCC's tech campus.",
     imageSrc: ImageCiccc.src,
     imageAlt: "CICCC LMS",
     categories: ["UX/UI Design"],
+    tech: ["Figma"],
     projectLink: "/projects/ciccc-lms",
   },
   {
     title: "Bunny World",
     description:
-      "Created an educational tool for children with learning disabilities.",
+      "An accessible learning tool for children with learning disabilities.",
     imageSrc: ImageBunny.src,
     imageAlt: "Bunny World App",
     categories: ["UX/UI Design"],
+    tech: ["Figma"],
     projectLink: "/projects/bunny-world",
+  },
+  {
+    title: "Weather ForeCAT",
+    description:
+      "A cat-themed weather dashboard with forecasts, favorites, and air-quality data.",
+    imageSrc: ImageWeather.src,
+    imageAlt: "Weather ForeCAT weather dashboard",
+    categories: ["UX/UI Design", "Web Development"],
+    tech: [
+      "Figma",
+      "Astro",
+      "TypeScript",
+      "Tailwind CSS",
+      "jQuery",
+      "Open-Meteo API",
+      "PlaceKit API",
+      "Netlify",
+    ],
+    projectLink: "https://weather-fore-cat.netlify.app",
+  },
+  {
+    title: "FIFA Performance Stats",
+    description:
+      "A full-stack app for exploring player performances, matches, and tournament rankings.",
+    imageSrc: ImageMatch.src,
+    imageAlt: "FIFA Performance Stats",
+    categories: ["Web Development"],
+    tech: [
+      "Astro",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "REST API",
+      "Render",
+    ],
+    projectLink: "https://fifa-player-stats.onrender.com/",
+  },
+  {
+    title: "Pawfect Day",
+    description:
+      "A full-stack pet grooming app with online booking and staff management.",
+    imageSrc: ImagePawfectDay.src,
+    imageAlt: "Pawfect Day pet grooming platform",
+    categories: ["Web Development", "Project Management"],
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "Vercel",
+    ],
+    projectLink: "https://pawfect-57whxjx6v-joyishappii.vercel.app",
   },
   {
     title: "Grounds Cafe",
     description:
-      "A responsive Unsplash landing page replica built with Next.js, featuring reusable components, smooth navigation, and email subscription.",
+      "A responsive cafe ordering app with menu browsing, favorites, cart, and checkout.",
     imageSrc: ImageGrounds.src,
     imageAlt: "Grounds Cafe App",
     categories: ["Web Development"],
+    tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Netlify"],
     projectLink: "/projects/grounds-cafe",
   },
-{
-  title: "Pawfect Day",
-  description:
-    "A responsive full-stack pet grooming application that connects online customer bookings with a staff management dashboard.",
-  imageSrc: ImagePawfectDay.src,
-  imageAlt: "Pawfect Day pet grooming booking application",
-  categories: [ "Web Development", "Project Management"],
-  projectLink: "/projects/pawfect-day",
-},
-{
-  title: "Negative Pressure Monitor",
-  description:
-    "Designed a negative-pressure room monitoring system to improve COVID-19 safety.",
-  imageSrc: ImageIcu.src,
-  imageAlt: "Negative Pressure Monitor",
-  categories: ["Project Management"],
-  modalId: "contact-project-modal",
-},
+  {
+    title: "COVID-19 ICU Monitoring",
+    description:
+      "A monitoring system designed to improve safety in negative-pressure ICU rooms.",
+    imageSrc: ImageIcu.src,
+    imageAlt: "Negative Pressure Monitor",
+    categories: ["Project Management"],
+    modalId: "contact-project-modal",
+  },
+  // {
+  //   title: "Carla Beauty",
+  //   description:
+  //     "A website for a Vancouver-based makeup and hairstyle studio with a Brazilian twist.",
+  //   imageSrc: ImageCarlaBeauty.src,
+  //   imageAlt: "Carla Beauty website",
+  //   categories: ["Web Development"],
+  //   tech: ["HTML", "CSS", "SCSS", "JavaScript","Netlify"],
+
+  //   projectLink: "https://springprojectjpp.netlify.app/index.html",
+  // },
 ];
 ---
 
@@ -98,11 +162,11 @@ const projects: Project[] = [
       flex-col
       items-start
       justify-start
-      gap-8
+      gap-4
       py-8
       md:py-12
       lg:flex-row
-      lg:gap-12"
+      lg:gap-4"
   >
     <!-- Left side: heading and filter -->
     <aside
@@ -165,6 +229,7 @@ const projects: Project[] = [
             imageAlt="7VAN Brazilian Jiu-Jitsu academy website"
             categories={["UX/UI Design"]}
             projectLink="/projects/7van"
+            tech={["Figma"]}
           />
         </div>
 
@@ -178,6 +243,7 @@ const projects: Project[] = [
               categories={project.categories}
               projectLink={project.projectLink}
               modalId={project.modalId}
+              tech={project.tech}
             />
           ))
         }
@@ -189,9 +255,7 @@ const projects: Project[] = [
    justify-center gap-4 py-12 px-4 md:px-0"
       >
         <!-- Left -->
-        <div class="flex flex-col items-center justify-center gap-4">
-         
-        </div>
+        <div class="flex flex-col items-center justify-center gap-4"></div>
         <!-- Right -->
         <div class="flex flex-col items-center justify-center gap-4">
           <img
@@ -204,8 +268,6 @@ const projects: Project[] = [
           >
         </div>
       </section>
-
-
     </div>
   </main>
 

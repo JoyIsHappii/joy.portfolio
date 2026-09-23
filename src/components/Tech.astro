@@ -1,0 +1,18 @@
+---
+
+interface TechProps {
+  tech: string;
+}
+
+const { tech } = Astro.props as TechProps;
+---
+
+<span
+  class="flex flex-wrap gap-2"
+>
+  <div
+    class="flex items-center gap-2 rounded-lg bg-brown-light/10 px-2 py-1 text-xs font-normal text-brown-dark"
+  >
+    #{tech}
+  </div>
+</span>
