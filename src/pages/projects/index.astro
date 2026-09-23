@@ -20,6 +20,7 @@ import Button from "../../components/Button.astro";
 import PortraitImage from "../../assets/room-elements/portrait.svg";
 
 import Modal from "../../components/Modal.astro";
+import ModalWD from "../../components/ModalWD.astro";
 
 type ProjectCategory =
   "UX/UI Design" | "Web Development" | "Project Management";
@@ -120,7 +121,7 @@ const projects: Project[] = [
       "PostgreSQL",
       "Vercel",
     ],
-    projectLink: "https://pawfect-57whxjx6v-joyishappii.vercel.app",
+    projectLink: "/projects/pawfect-day",
   },
   {
     title: "Grounds Cafe",
@@ -149,8 +150,7 @@ const projects: Project[] = [
   //   imageAlt: "Carla Beauty website",
   //   categories: ["Web Development"],
   //   tech: ["HTML", "CSS", "SCSS", "JavaScript","Netlify"],
-
-  //   projectLink: "https://springprojectjpp.netlify.app/index.html",
+  //   modalId: "carla",
   // },
 ];
 ---
@@ -278,4 +278,13 @@ const projects: Project[] = [
     description="Some project details cannot be shared publicly. Email me and I’ll be happy to discuss my role, process, and outcomes."
     contactEmail="chayaninkosol@gmail.com"
   />
+
+  <!-- <ModalWD
+  id="carla"
+  duration="5 days"
+  role="Web Developer"
+  responsibilities="Working on every pages, except the homepage, using HTML, CSS, SCSS, JavaScript"
+  projectLink="https://springprojectjpp.netlify.app/"
+  /> -->
+
 </ContentLayout>

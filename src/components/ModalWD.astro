@@ -1,0 +1,199 @@
+---
+interface ModalProps {
+  id: string;
+  duration: string;
+  role: string;
+  responsibilities: string | string[];
+  projectLink?: string;
+}
+
+const { id, duration, role, responsibilities, projectLink } =
+  Astro.props as ModalProps;
+
+const responsibilityList = Array.isArray(responsibilities)
+  ? responsibilities
+  : [responsibilities];
+---
+
+<dialog
+  id={id}
+  data-modal
+  aria-labelledby={`${id}-title`}
+  class="m-auto max-h-[90vh] w-[min(92vw,760px)] overflow-y-auto rounded-3xl border border-brown-dark/10 bg-ivory p-0 text-brown-dark shadow-[0_20px_60px_rgba(61,47,38,0.25)] backdrop:bg-brown-dark/50 backdrop:backdrop-blur-sm"
+>
+  <div class="relative overflow-hidden">
+    
+    <!-- Decorative background -->
+    <div
+      class="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-green-light/30 blur-3xl"
+    ></div>
+
+    <div
+      class="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-brown-medium/20 blur-3xl"
+    ></div>
+
+    <div class="relative p-6 sm:p-10">
+
+      <!-- Close button -->
+      <button
+        type="button"
+        data-modal-close
+        aria-label="Close modal"
+        class="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full border border-brown-dark/10 bg-white/60 text-xl text-brown-dark transition-all duration-200 hover:rotate-90 hover:bg-brown-medium/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown-dark"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+
+      <!-- Header -->
+      <div class="pr-12">
+        <p class="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-green-dark">
+          Project Details
+        </p>
+
+        <h2
+          id={`${id}-title`}
+          class="font-serif text-3xl font-medium leading-tight text-brown-dark sm:text-4xl"
+        >
+          Project Overview
+        </h2>
+      </div>
+
+      <!-- Divider -->
+      <div class="my-7 h-px bg-brown-dark/10"></div>
+
+      <!-- Project information -->
+      <dl class="grid gap-6 sm:grid-cols-3">
+
+        <!-- Duration -->
+        <div>
+          <dt class="mb-2 text-xs font-bold uppercase tracking-wider text-green-dark">
+            Duration
+          </dt>
+
+          <dd class="text-sm leading-relaxed text-brown-dark/80">
+            {duration}
+          </dd>
+        </div>
+
+        <!-- Role -->
+        <div>
+          <dt class="mb-2 text-xs font-bold uppercase tracking-wider text-green-dark">
+            My Role
+          </dt>
+
+          <dd class="text-sm leading-relaxed text-brown-dark/80">
+            {role}
+          </dd>
+        </div>
+
+        <!-- Responsibilities -->
+        <div class="sm:col-span-1">
+          <dt class="mb-2 text-xs font-bold uppercase tracking-wider text-green-dark">
+            Responsibilities
+          </dt>
+
+          <dd>
+            <ul class="space-y-2 text-sm leading-relaxed text-brown-dark/80">
+              {
+                responsibilityList.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span>
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </dd>
+        </div>
+
+      </dl>
+
+      <!-- Actions -->
+      <div class="mt-9 flex flex-col gap-3 border-t border-brown-dark/10 pt-7 sm:flex-row sm:items-center">
+
+        {
+          projectLink && (
+            <a
+              href={projectLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center justify-center gap-2 rounded-full bg-green-dark px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-medium hover:shadow-lg"
+            >
+              View Project
+
+              <span
+                aria-hidden="true"
+                class="transition-transform duration-200 group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+          )
+        }
+
+        <button
+          type="button"
+          data-modal-close
+          class="inline-flex items-center justify-center rounded-full border border-brown-dark/15 bg-transparent px-6 py-3 text-sm font-semibold text-brown-dark transition-all duration-200 hover:bg-brown-medium/10"
+        >
+          Close
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const initializeModals = () => {
+    document
+      .querySelectorAll<HTMLElement>("[data-modal-open]")
+      .forEach((trigger) => {
+        if (trigger.dataset.modalReady === "true") return;
+
+        trigger.dataset.modalReady = "true";
+
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+
+          const modalId = trigger.dataset.modalOpen;
+          const modal = modalId
+            ? document.getElementById(modalId)
+            : null;
+
+          if (
+            modal instanceof HTMLDialogElement &&
+            !modal.open
+          ) {
+            modal.showModal();
+          }
+        });
+      });
+
+    document
+      .querySelectorAll<HTMLDialogElement>("dialog[data-modal]")
+      .forEach((modal) => {
+        if (modal.dataset.modalReady === "true") return;
+
+        modal.dataset.modalReady = "true";
+
+        modal
+          .querySelectorAll<HTMLElement>("[data-modal-close]")
+          .forEach((button) => {
+            button.addEventListener("click", () => {
+              modal.close();
+            });
+          });
+
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) {
+            modal.close();
+          }
+        });
+      });
+  };
+
+  initializeModals();
+  document.addEventListener("astro:page-load", initializeModals);
+</script>
