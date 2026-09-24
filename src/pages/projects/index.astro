@@ -13,11 +13,12 @@ import ImageCiccc from "../../assets/hero/ciccc-cover.webp";
 import ImageWeather from "../../assets/hero/weather-cover.svg";
 import ImageMatch from "../../assets/hero/match-cover.webp";
 // import ImageCarlaBeauty from "../../assets/hero/carla-cover.webp";
+import ImageResume from "../../assets/resume.webp";
 
 import AwardSection from "../../sections/AwardSection.astro";
 
 import Button from "../../components/Button.astro";
-import PortraitImage from "../../assets/room-elements/portrait.svg";
+import PortraitImage from "../../assets/joy.png";
 
 import Modal from "../../components/Modal.astro";
 import ModalWD from "../../components/ModalWD.astro";
@@ -70,7 +71,7 @@ const projects: Project[] = [
     projectLink: "/projects/bunny-world",
   },
   {
-    title: "Weather ForeCAT",
+    title: "Weather Fore-CAT",
     description:
       "A cat-themed weather dashboard with forecasts, favorites, and air-quality data.",
     imageSrc: ImageWeather.src,
@@ -251,35 +252,139 @@ const projects: Project[] = [
           ))
         }
       </div>
-
-      <section
-        class="brown-bg w-full
-   flex flex-row items-center
-   justify-center gap-4 py-12 px-4 md:px-0"
-      >
-        <!-- Left -->
-        <div class="flex flex-col items-center justify-center gap-4"></div>
-        <!-- Right -->
-        <div class="flex flex-col items-center justify-center gap-4">
-          <img
-            src={PortraitImage.src}
-            alt="Portrait"
-            class="w-full max-w-[120px] h-auto object-contain"
-          />
-          <Button href="/about" variant="primary" size="md" class="mt-4"
-            >About Me →</Button
-          >
-        </div>
-      </section>
     </div>
   </main>
+ <section
+  id="about-me"
+  class="w-full border-y border-brown-dark/10 bg-brown-light/10 px-4 py-14 sm:py-16 md:px-8 md:py-20"
+>
+  <div
+    class="mx-auto flex max-w-6xl flex-col items-center gap-10
+           md:flex-row md:items-center md:gap-14 lg:gap-20"
+  >
+    <!-- Resume Preview -->
+    <div class="w-full md:w-[55%]">
+      <div class="mx-auto w-full max-w-[560px] overflow-hidden rounded-xl">
+        <img
+          src={ImageResume.src}
+          alt="Preview of Joy's interactive resume"
+          class="block h-auto w-full"
+        />
+      </div>
+    </div>
 
+    <!-- Content -->
+    <div
+      class="flex w-full max-w-md flex-col items-center text-center
+             md:w-[45%] md:items-start md:text-left"
+    >
+      <!-- Label -->
+      <div class="flex items-center gap-3">
+        <img
+          src={PortraitImage.src}
+          alt="Portrait of Joy"
+          class="h-11 w-11 rounded-full object-cover"
+        />
+
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.18em]
+                 text-dark-brown sm:text-base"
+        >
+          About Me
+        </p>
+      </div>
+
+      <!-- Heading -->
+      <h2
+        class="mt-5 text-3xl leading-tight text-dark-brown
+               sm:text-4xl md:text-[2.6rem]"
+      >
+        More than a resume
+      </h2>
+
+      <!-- Description -->
+      <p
+        class="mt-4 max-w-sm text-sm leading-7 text-brown-dark/75
+               sm:text-base"
+      >
+        I started in architecture, moved into UX/UI design, and am now
+        exploring the world of web development. Take a look at my
+        interactive resume to see the journey.
+      </p>
+
+      <!-- CTA -->
+      <Button
+        href="https://interactive-resume-joy.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="primary"
+        size="md"
+        class="mt-7"
+      >
+        Explore My Story →
+      </Button>
+    </div>
+  </div>
+</section>
+
+<footer class="w-full border-t border-brown-dark/10 px-4 py-10 md:px-8">
+  <div
+    class="mx-auto flex max-w-6xl flex-col items-center gap-6
+           md:flex-row md:justify-between"
+  >
+    <div class="text-center md:text-left">
+      <p class="text-lg font-medium text-dark-brown">
+        Thanks for stopping by ♡
+      </p>
+      <p class="mt-1 text-sm text-brown-dark/60">
+        Let's make something thoughtful together.
+      </p>
+    </div>
+
+    <nav class="flex items-center gap-6 text-sm text-brown-dark/70">
+      <a href="mailto:joy.is.happii@gmail.com" class="transition-opacity hover:opacity-60">
+        Email
+      </a>
+      <a
+        href="https://www.linkedin.com/in/joykosol/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-opacity hover:opacity-60"
+      >
+        LinkedIn
+      </a>
+      <a
+        href="https://github.com/JoyIsHappii"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-opacity hover:opacity-60"
+      >
+        GitHub
+      </a>
+    </nav>
+  </div>
+
+  <div
+    class="mx-auto mt-8 flex max-w-6xl flex-col items-center
+           gap-2 border-t border-brown-dark/10 pt-5
+           text-xs text-brown-dark/50 sm:flex-row sm:justify-between"
+  >
+    <p>© 2026 Joy Kosol</p>
+
+    <button
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      class="transition-opacity hover:opacity-60"
+    >
+      Back to top ↑
+    </button>
+  </div>
+</footer>
   <Modal
     id="contact-project-modal"
     eyebrow="Private project"
     title="Please contact me for more information"
     description="Some project details cannot be shared publicly. Email me and I’ll be happy to discuss my role, process, and outcomes."
-    contactEmail="chayaninkosol@gmail.com"
+    contactEmail="joy.is.happii@gmail.com"
   />
 
   <!-- <ModalWD
@@ -289,5 +394,4 @@ const projects: Project[] = [
   responsibilities="Working on every pages, except the homepage, using HTML, CSS, SCSS, JavaScript"
   projectLink="https://springprojectjpp.netlify.app/"
   /> -->
-
 </ContentLayout>

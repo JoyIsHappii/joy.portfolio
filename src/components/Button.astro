@@ -10,6 +10,7 @@ interface Props {
   class?: string;
   disabled?: boolean;
   target?: string;
+  rel?: string;
   warmupLink?: string;
 }
 
@@ -22,6 +23,7 @@ const {
   class: className = "",
   disabled = false,
   target,
+  rel,
   warmupLink,
 } = Astro.props as Props;
 

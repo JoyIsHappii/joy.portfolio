@@ -12,7 +12,7 @@ const { active } = Astro.props as Props;
 const navItems = [
   { name: "Home", href: "/", key: "home" },
   { name: "Projects", href: "/projects", key: "projects" },
-  { name: "About Me", href: "/about", key: "about" },
+  { name: "About Me", href: "https://interactive-resume-joy.vercel.app", key: "about" },
 ];
 ---
 
@@ -42,6 +42,8 @@ const navItems = [
         <li>
           <a
             href={item.href}
+            target={item.key === "about" ? "_blank" : undefined}
+            rel={item.key === "about" ? "noopener noreferrer" : undefined}
             class:list={[
               `
                 border-b-2
@@ -66,7 +68,7 @@ const navItems = [
 
   <div class="ml-auto flex flex-row items-center gap-2">
     <a
-      href="mailto:chayaninkosol@gmail.com"
+      href="mailto:joy.is.happii@gmail.com"
       class="
         flex
         flex-row

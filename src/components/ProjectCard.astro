@@ -96,6 +96,8 @@ const opensModal = Boolean(modalId);
         href={projectLink}
         class="block overflow-hidden"
         aria-label={`View ${title} project`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <img
           src={imageSrc}
@@ -207,6 +209,7 @@ const opensModal = Boolean(modalId);
           size="md"
           class="mt-4"
           warmupLink={warmupLink}
+          target="_blank"
         >
           View Project
         </Button>
