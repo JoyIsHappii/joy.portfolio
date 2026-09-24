@@ -32,6 +32,7 @@ interface Project {
   imageAlt: string;
   categories: ProjectCategory[];
   projectLink?: string;
+  warmupLink?: string;
   modalId?: string;
   tech?: string[];
 }
@@ -104,6 +105,7 @@ const projects: Project[] = [
       "Render",
     ],
     projectLink: "https://fifa-player-stats.onrender.com/",
+    warmupLink: "https://player-stats-2uxq.onrender.com",
   },
   {
     title: "Pawfect Day",
@@ -163,8 +165,8 @@ const projects: Project[] = [
       items-start
       justify-start
       gap-4
-      py-8
-      md:py-12
+      py-4
+      md:py-6
       lg:flex-row
       lg:gap-4"
   >
@@ -181,7 +183,7 @@ const projects: Project[] = [
         lg:top-[calc(50px+4rem)]
         lg:w-64
         lg:shrink-0
-        mt-20
+        mt-0
         lg:mt-0"
     >
       <h2
@@ -242,6 +244,7 @@ const projects: Project[] = [
               imageAlt={project.imageAlt}
               categories={project.categories}
               projectLink={project.projectLink}
+              warmupLink={project.warmupLink}
               modalId={project.modalId}
               tech={project.tech}
             />

@@ -1,8 +1,8 @@
 ---
-
+const { class: className = "" } = Astro.props;
 ---
 
-<div class="spotify-player max-w-[400px] w-full mx-auto mt-8">
+<div class:list={["spotify-player max-w-[400px] w-full mx-auto mt-8", className]}>
   <iframe
     data-testid="embed-iframe"
     style="border-radius:12px"

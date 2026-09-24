@@ -10,6 +10,7 @@ interface Props {
   class?: string;
   disabled?: boolean;
   target?: string;
+  warmupLink?: string;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   class: className = "",
   disabled = false,
   target,
+  warmupLink,
 } = Astro.props as Props;
 
 const sizes: Record<string, string> = {
@@ -60,7 +62,13 @@ const classes = `
 
 {
   href ? (
-    <a id={id} href={disabled ? undefined : href} class={classes} target={target}>
+    <a
+      id={id}
+      href={disabled ? undefined : href}
+      class={classes}
+      target={target}
+      data-warmup-link={warmupLink}
+    >
       <slot />
     </a>
   ) : (

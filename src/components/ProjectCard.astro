@@ -15,6 +15,7 @@ interface ProjectCardProps {
   imageAlt: string;
   categories?: ProjectCategory[];
   projectLink?: string;
+  warmupLink?: string;
   modalId?: string;
   tech?: string[];
 }
@@ -26,6 +27,7 @@ const {
   imageAlt,
   categories = [],
   projectLink,
+  warmupLink,
   modalId,
   tech = [],
 } = Astro.props as ProjectCardProps;
@@ -204,6 +206,7 @@ const opensModal = Boolean(modalId);
           variant="primary"
           size="md"
           class="mt-4"
+          warmupLink={warmupLink}
         >
           View Project
         </Button>
@@ -211,3 +214,20 @@ const opensModal = Boolean(modalId);
     }
   </div>
 </article>
+
+<script>
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const link = target.closest<HTMLAnchorElement>("[data-warmup-link]");
+    const warmupLink = link?.dataset.warmupLink;
+
+    if (warmupLink) {
+      void fetch(warmupLink, { mode: "no-cors", keepalive: true }).catch(() => {});
+    }
+  });
+</script>

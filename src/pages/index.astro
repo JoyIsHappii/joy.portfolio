@@ -37,19 +37,20 @@ import Layout from "../layouts/MainLayout.astro";
 
 
   <!-- YOUR ROOM -->
-  <div class="relative w-[1280px] h-[721px]">
-    <Radio class="absolute left-[0px] top-[0px] w-[1280px] z-0" />
+  <div class="room-frame">
+    <div class="room-stage">
+    <Radio class="mobile-grid-item mobile-radio absolute left-[0px] top-[0px] w-[1280px] z-0" />
 
     <!-- Table -->
     <Table
-      class="absolute left-[116px] top-[570px] w-[1100px] z-0"
+      class="mobile-decorative absolute left-[116px] top-[570px] w-[1100px] z-0"
     />
 
 
     <!-- Plane -->
     <a
       href="https://www.linkedin.com/in/joykosol/" target="_blank" rel="noopener noreferrer"
-      class=" absolute left-[100px] top-[100px] w-[200px] z-20 desk-item"
+      class="mobile-grid-item mobile-plane absolute left-[100px] top-[100px] w-[200px] z-20 desk-item"
     >
       <Plane class="w-full" />
       
@@ -59,7 +60,7 @@ import Layout from "../layouts/MainLayout.astro";
     <!-- BACKPACK → PROJECTS -->
     <a
       href="/projects"
-      class=" absolute left-[146px] top-[210px] w-[334px] z-20 desk-item"
+      class="mobile-grid-item mobile-backpack absolute left-[146px] top-[210px] w-[334px] z-20 desk-item"
     >
       <Backpack class="w-full hover-label" />
     </a>
@@ -68,7 +69,7 @@ import Layout from "../layouts/MainLayout.astro";
     <!-- MONITOR → PROJECTS -->
 <!-- MONITOR / WORKSPACE GUIDE -->
 <div
-  class="absolute left-[397px] top-[190px] w-[485px] z-20"
+  class="mobile-grid-item mobile-monitor absolute left-[397px] top-[190px] w-[485px] z-20"
 >
   <Monitor class="w-full" />
 
@@ -144,14 +145,12 @@ import Layout from "../layouts/MainLayout.astro";
         ← Go back
       </button>
     </div>
+    </div>
   </div>
-</div>
-
-
     <!-- Camera -->
     <a
       href="https://www.instagram.com/joy.is.happii/"
-      class="absolute left-[800px] top-[510px] w-[161px] z-30 desk-item"
+  class="mobile-grid-item mobile-camera absolute left-[800px] top-[510px] w-[161px] z-30 desk-item"
     >
       <Camera class="w-full" />
     </a>
@@ -160,7 +159,7 @@ import Layout from "../layouts/MainLayout.astro";
     <!-- Trophy -->
     <a
       href="/projects/7van"
-      class="absolute left-[908px] top-[295px] w-[197px] z-10 desk-item"
+      class="mobile-grid-item mobile-trophy absolute left-[908px] top-[295px] w-[197px] z-10 desk-item"
       id="trophy-link"
     >
       <Trophy class="w-full" />
@@ -170,11 +169,12 @@ import Layout from "../layouts/MainLayout.astro";
     <!-- Portrait -->
     <a
       href="/about"
-      class="absolute left-[901px] top-[67px] w-[196px] z-30 desk-item"
+      class="mobile-grid-item mobile-portrait absolute left-[901px] top-[67px] w-[196px] z-30 desk-item"
     >
       <Portrait class="w-full" />
     </a>
 
+  </div>
   </div>
 
 </Layout>
@@ -236,10 +236,33 @@ import Layout from "../layouts/MainLayout.astro";
 
   setupMonitorHelp();
 
+  function setupRoomStage() {
+    const frame = document.querySelector<HTMLElement>('.room-frame');
+    const stage = document.querySelector<HTMLElement>('.room-stage');
+
+    if (!frame || !stage || stage.dataset.initialized === 'true') {
+      return;
+    }
+
+    stage.dataset.initialized = 'true';
+
+    const resizeObserver = new ResizeObserver(() => {
+      const scale = Math.min(1, frame.clientWidth / 1280);
+      stage.style.transform = `scale(${scale})`;
+    });
+
+    resizeObserver.observe(frame);
+  }
+
+  setupRoomStage();
+
   // Required when using Astro ClientRouter/view transitions.
   document.addEventListener(
     "astro:page-load",
-    setupMonitorHelp
+    () => {
+      setupMonitorHelp();
+      setupRoomStage();
+    }
   );
 </script>
 
