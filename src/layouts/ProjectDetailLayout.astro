@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
+import SpotifyPlayer from "../components/SpotifyPlayer.astro";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -31,10 +32,11 @@ const { title = "Project — Joy", active = "projects" } = Astro.props as Props;
     <div
       class="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col px-4 sm:px-6 lg:px-10 xl:px-16"
     >
-      <NavBar active={active} />
+      <NavBar active={active} surface="ivory" music />
       <div class="w-full flex-1 pb-20">
         <slot />
       </div>
     </div>
+    <SpotifyPlayer />
   </body>
 </html>

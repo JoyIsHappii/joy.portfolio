@@ -1,0 +1,32 @@
+---
+import RadioArtwork from "../assets/room-elements/radio.svg";
+
+// Nav bar trigger for the site-wide Spotify player (SpotifyPlayer.astro).
+---
+
+<div class="flex flex-row items-center gap-2 sm:gap-3">
+    <button
+    type="button"
+    class="flex flex-row items-center gap-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown-dark"
+    aria-label="Show Spotify player"
+    aria-expanded="false"
+    aria-controls="spotify-player"
+    data-music-toggle
+    data-music-trigger
+    data-music-placement="below"
+  >
+  <span
+    class="text-sm tracking-wide text-brown-dark sm:text-base"
+    aria-live="polite"
+  >
+    Music: <span class="font-medium bg-brown-light/10 px-2 py-1 rounded-2xl" data-music-status>OFF</span>
+  </span>
+
+
+    <img
+      src={RadioArtwork.src}
+      alt=""
+      class="music-artwork -my-3 h-14 w-auto sm:h-[72px]"
+    />
+  </button>
+</div>

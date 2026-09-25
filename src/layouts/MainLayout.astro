@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import SpotifyPlayer from "../components/SpotifyPlayer.astro";
 import "aos/dist/aos.css";
 
 const { title = "Joy's Portfolio" } = Astro.props;
@@ -37,6 +38,7 @@ const { title = "Joy's Portfolio" } = Astro.props;
     <main class="room-background min-h-screen flex flex-col items-center justify-start overflow-x-hidden">
       <slot />
     </main>
+    <SpotifyPlayer />
   </body>
 </html>
 

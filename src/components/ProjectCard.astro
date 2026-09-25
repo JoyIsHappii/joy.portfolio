@@ -33,6 +33,8 @@ const {
 } = Astro.props as ProjectCardProps;
 
 const opensModal = Boolean(modalId);
+// Internal case studies stay in the same tab so the site-wide music keeps playing
+const isExternal = /^https?:\/\//.test(projectLink ?? "");
 ---
 
 <article
@@ -94,10 +96,11 @@ const opensModal = Boolean(modalId);
     ) : (
       <a
         href={projectLink}
+        warmupLink={warmupLink}
         class="block overflow-hidden"
         aria-label={`View ${title} project`}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
       >
         <img
           src={imageSrc}
@@ -209,7 +212,7 @@ const opensModal = Boolean(modalId);
           size="md"
           class="mt-4"
           warmupLink={warmupLink}
-          target="_blank"
+          target={isExternal ? "_blank" : undefined}
         >
           View Project
         </Button>

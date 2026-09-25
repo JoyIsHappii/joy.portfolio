@@ -2,12 +2,16 @@
 import "../styles/global.css";
 import Plane from "../assets/room-elements/plane.svg";
 import Joy from "../assets/joy.png";
+import MusicPlayer from "./MusicPlayer.astro";
 
 interface Props {
   active?: "home" | "projects" | "about";
+  surface?: "white" | "ivory";
+  // Show the music player in place of the contact button and avatar
+  music?: boolean;
 }
 
-const { active } = Astro.props as Props;
+const { active, surface = "white", music = false } = Astro.props as Props;
 
 const navItems = [
   { name: "Home", href: "/", key: "home" },
@@ -17,7 +21,8 @@ const navItems = [
 ---
 
 <nav
-  class="
+  class:list={[
+    `
     sticky
     top-0
     z-50
@@ -29,12 +34,11 @@ const navItems = [
     justify-between
     border-b
     border-brown-dark/10
-    bg-white
-
     py-5
-    backdrop-blur-md
     md:py-6
-  "
+    `,
+    surface === "ivory" ? "bg-ivory" : "bg-white",
+  ]}
 >
   <ul class="flex flex-wrap gap-4 sm:gap-8 md:gap-10">
     {
@@ -66,6 +70,11 @@ const navItems = [
     }
   </ul>
 
+  {music ? (
+    <div class="ml-auto">
+      <MusicPlayer />
+    </div>
+  ) : (
   <div class="ml-auto flex flex-row items-center gap-2">
     <a
       href="mailto:joy.is.happii@gmail.com"
@@ -103,4 +112,5 @@ const navItems = [
       "
     />
   </div>
+  )}
 </nav>

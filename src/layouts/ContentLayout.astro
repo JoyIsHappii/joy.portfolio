@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import NavBar from "../components/NavBar.astro";
+import SpotifyPlayer from "../components/SpotifyPlayer.astro";
 import "aos/dist/aos.css";
 
 
@@ -32,14 +33,15 @@ const { title = "Joy's Portfolio", active } = Astro.props as Props;
 
     <title>{title}</title>
   </head>
-  <body class="bg-white min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 lg:px-20">
+  <body class="bg-white min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-10 xl:px-16">
     <div class="w-full min-h-screen flex flex-col items-stretch">
      
-      <NavBar active={active} />
+      <NavBar active={active} surface="white" music />
       <div class="w-full flex-1">
         <slot />
       </div>
     </div>
+    <SpotifyPlayer />
   </body>
 </html>
 

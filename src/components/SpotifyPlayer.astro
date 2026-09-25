@@ -1,0 +1,218 @@
+---
+// One Spotify embed for the whole site. It persists across page transitions so
+// music keeps playing until paused. Any element with [data-music-toggle] opens it:
+//   data-music-placement="over"  → centered over the trigger (homepage radio)
+//   data-music-placement="below" → right-aligned under the trigger (nav radio)
+// [data-music-status] elements show ON/OFF, and [data-music-trigger] elements get
+// .is-playing while music plays.
+const PLAYLIST_URI = "spotify:playlist:61TCXTX5aJKgw6jOcwyv9w";
+---
+
+<!-- Hidden with opacity + inert (not display/visibility) so the embed renders and keeps playing while closed -->
+<div
+  id="spotify-player"
+  class="spotify-panel pointer-events-none fixed left-0 top-0 z-[70] w-[min(400px,calc(100vw-2rem))] overflow-hidden rounded-xl opacity-0 shadow-lg transition-opacity duration-200"
+  data-spotify-player
+  data-playlist-uri={PLAYLIST_URI}
+  transition:persist="spotify-player"
+  inert
+>
+  <div data-spotify-embed></div>
+</div>
+
+<style is:global>
+  .spotify-panel.is-open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  [data-music-trigger].is-playing .music-artwork {
+    animation: radio-bop 0.8s ease-in-out infinite alternate;
+    transform-origin: bottom center;
+  }
+
+  @keyframes radio-bop {
+    from {
+      transform: rotate(-3deg);
+    }
+    to {
+      transform: rotate(3deg) translateY(-1px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-music-trigger].is-playing .music-artwork {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  type SpotifyController = {
+    addListener: (
+      event: "playback_update",
+      callback: (event: { data: { isPaused: boolean } }) => void,
+    ) => void;
+  };
+
+  type SpotifyIFrameAPI = {
+    createController: (
+      element: HTMLElement,
+      options: { uri: string; width: string; height: number },
+      callback: (controller: SpotifyController) => void,
+    ) => void;
+  };
+
+  declare global {
+    interface Window {
+      onSpotifyIframeApiReady?: (api: SpotifyIFrameAPI) => void;
+      spotifyIFrameAPI?: Promise<SpotifyIFrameAPI>;
+      spotifyPlayerBound?: boolean;
+    }
+  }
+
+  const GAP = 12;
+  const EDGE = 16;
+
+  let playing = false;
+  let activeToggle: HTMLElement | null = null;
+
+  function getPanel() {
+    return document.querySelector<HTMLElement>("[data-spotify-player]");
+  }
+
+  function loadSpotifyAPI() {
+    window.spotifyIFrameAPI ??= new Promise((resolve) => {
+      window.onSpotifyIframeApiReady = resolve;
+      const script = document.createElement("script");
+      script.src = "https://open.spotify.com/embed/iframe-api/v1";
+      script.async = true;
+      document.body.appendChild(script);
+    });
+    return window.spotifyIFrameAPI;
+  }
+
+  // Status labels and triggers are re-rendered on every page, so re-apply state.
+  function syncMusicUI() {
+    document
+      .querySelectorAll<HTMLElement>("[data-music-status]")
+      .forEach((status) => {
+        status.textContent = playing ? "ON" : "OFF";
+      });
+
+    document
+      .querySelectorAll<HTMLElement>("[data-music-trigger]")
+      .forEach((trigger) => trigger.classList.toggle("is-playing", playing));
+  }
+
+  function positionPanel(panel: HTMLElement, toggle: HTMLElement) {
+    const rect = toggle.getBoundingClientRect();
+    const width = panel.offsetWidth;
+    const placement = toggle.dataset.musicPlacement ?? "below";
+
+    let left: number;
+    let top: number;
+
+    if (placement === "over") {
+      left = rect.left + rect.width / 2 - width / 2;
+      top = rect.top + rect.height * 0.08;
+    } else {
+      left = rect.right - width;
+      top = rect.bottom + GAP;
+    }
+
+    const maxLeft = window.innerWidth - width - EDGE;
+    panel.style.left = `${Math.max(EDGE, Math.min(left, maxLeft))}px`;
+    panel.style.top = `${Math.max(EDGE, top)}px`;
+  }
+
+  function setOpen(open: boolean, toggle: HTMLElement | null = activeToggle) {
+    const panel = getPanel();
+    if (!panel) return;
+
+    if (open && toggle) positionPanel(panel, toggle);
+
+    panel.classList.toggle("is-open", open);
+    panel.inert = !open;
+
+    document
+      .querySelectorAll<HTMLElement>("[data-music-toggle]")
+      .forEach((button) => {
+        const expanded = open && button === toggle;
+        button.setAttribute("aria-expanded", String(expanded));
+        button.setAttribute(
+          "aria-label",
+          expanded ? "Hide Spotify player" : "Show Spotify player",
+        );
+      });
+
+    activeToggle = open ? toggle : null;
+  }
+
+  function setupSpotifyPlayer() {
+    const panel = getPanel();
+    const embed = panel?.querySelector<HTMLElement>("[data-spotify-embed]");
+    if (!panel || !embed || panel.dataset.initialized === "true") return;
+    panel.dataset.initialized = "true";
+
+    loadSpotifyAPI().then((api) => {
+      api.createController(
+        embed,
+        { uri: panel.dataset.playlistUri!, width: "100%", height: 152 },
+        (controller) => {
+          // Embed is lazy by default; load it now so it's ready before it opens
+          panel.querySelector("iframe")?.setAttribute("loading", "eager");
+
+          controller.addListener("playback_update", (event) => {
+            playing = !event.data.isPaused;
+            syncMusicUI();
+          });
+        },
+      );
+    });
+  }
+
+  function bindGlobalListeners() {
+    document.addEventListener("click", (event) => {
+      const target = event.target as Element;
+      const toggle = target.closest<HTMLElement>("[data-music-toggle]");
+
+      if (toggle) {
+        setOpen(activeToggle !== toggle, toggle);
+      } else if (activeToggle && !getPanel()?.contains(target)) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && activeToggle) {
+        const toggle = activeToggle;
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    const reposition = () => {
+      const panel = getPanel();
+      if (panel && activeToggle) positionPanel(panel, activeToggle);
+    };
+    // Wait a frame so layout that reacts to resize (e.g. the scaled homepage room) settles first
+    window.addEventListener("resize", () => requestAnimationFrame(reposition));
+    window.addEventListener("scroll", reposition, { passive: true });
+
+    // The trigger that opened the panel is gone after navigating; keep playing, just close it.
+    document.addEventListener("astro:before-swap", () => setOpen(false));
+
+    document.addEventListener("astro:page-load", () => {
+      setupSpotifyPlayer();
+      syncMusicUI();
+    });
+  }
+
+  // Guard against double-binding (e.g. the module re-running during dev hot reloads),
+  // which would open and immediately close the panel on one click.
+  if (!window.spotifyPlayerBound) {
+    window.spotifyPlayerBound = true;
+    bindGlobalListeners();
+  }
+</script>

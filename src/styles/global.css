@@ -19,9 +19,19 @@
   transform-origin: top left;
 }
 
-.mobile-radio {
-  left: 50%;
-  transform: translateX(-50%);
+@media (min-width: 768px) {
+  /* Radio's shelf (bottom of radio.svg) rests on top of the monitor */
+  .mobile-radio {
+    position: absolute;
+    margin: 0;
+    left: 417px;
+    top: 36px;
+    width: 223px;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 259 / 284;
+    overflow: visible;
+  }
 }
 
 @media (max-width: 767px) {
