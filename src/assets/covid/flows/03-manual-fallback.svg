@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120">
+<rect width="1800" height="1120" fill="#F7F5EF"/>
+<text x="90" y="78" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#6F8062" letter-spacing="4">03 / MANUAL FALLBACK</text>
+<text x="90" y="132" font-family="Arial,sans-serif" font-size="42" font-weight="700" fill="#403C32">A documented emergency sequence when automatic control is unavailable</text>
+<rect x="110" y="180" width="1000" height="150" rx="18" fill="#FFFDF8" stroke="#D9D6CA" stroke-width="2"/>
+<rect x="110" y="180" width="9" height="150" rx="4" fill="#B87968"/>
+<text x="138" y="216" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#B87968" letter-spacing="2">TRIGGER</text>
+<text x="138" y="256" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#403C32">Monitoring computer or DDC issue</text>
+<text x="138" y="291" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">Manual mode is documented when the</text>
+<text x="138" y="316" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">monitoring/control path is unavailable.</text>
+<path d="M610 330 V358" stroke="#6F8062" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M598 346 L610 360 L622 346" stroke="#6F8062" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="110" y="360" width="1000" height="150" rx="18" fill="#E7EBDD" stroke="#D9D6CA" stroke-width="2"/>
+<rect x="110" y="360" width="9" height="150" rx="4" fill="#6F8062"/>
+<text x="138" y="396" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#6F8062" letter-spacing="2">01 / SELECT</text>
+<text x="138" y="436" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#403C32">Turn selector to MANUAL</text>
+<text x="138" y="471" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">Use only for emergency operation,</text>
+<text x="138" y="496" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">as described in the manual.</text>
+<path d="M610 510 V538" stroke="#6F8062" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M598 526 L610 540 L622 526" stroke="#6F8062" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="110" y="540" width="1000" height="150" rx="18" fill="#E6EFF0" stroke="#D9D6CA" stroke-width="2"/>
+<rect x="110" y="540" width="9" height="150" rx="4" fill="#6F8B91"/>
+<text x="138" y="576" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#6F8B91" letter-spacing="2">02 / AHU-01</text>
+<text x="138" y="616" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#403C32">Switch OFF → ON</text>
+<text x="138" y="651" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">Wait approximately 30 seconds for</text>
+<text x="138" y="676" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">the inverter to start.</text>
+<path d="M610 690 V718" stroke="#6F8062" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M598 706 L610 720 L622 706" stroke="#6F8062" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="110" y="720" width="1000" height="150" rx="18" fill="#F2EBDD" stroke="#D9D6CA" stroke-width="2"/>
+<rect x="110" y="720" width="9" height="150" rx="4" fill="#A88454"/>
+<text x="138" y="756" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#A88454" letter-spacing="2">03 / CDU-01</text>
+<text x="138" y="796" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#403C32">Switch OFF → ON</text>
+<text x="138" y="831" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">Set the CDU selector switch</text>
+<text x="138" y="856" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">from OFF to ON.</text>
+<path d="M610 870 V898" stroke="#6F8062" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M598 886 L610 900 L622 886" stroke="#6F8062" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="110" y="900" width="1000" height="150" rx="18" fill="#FFFDF8" stroke="#D9D6CA" stroke-width="2"/>
+<rect x="110" y="900" width="9" height="150" rx="4" fill="#6F8062"/>
+<text x="138" y="936" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#6F8062" letter-spacing="2">04 / EF-01</text>
+<text x="138" y="976" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#403C32">Follow the same switch sequence</text>
+<text x="138" y="1011" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">The manual notes the EF-01 step</text>
+<text x="138" y="1036" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">follows the AHU-01 procedure.</text>
+<rect x="1200" y="205" width="490" height="490" rx="20" fill="#F4E8E2" stroke="#E5CFC7" stroke-width="2"/>
+<text x="1240" y="260" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#B87968" letter-spacing="2">IMPORTANT LIMITATION</text>
+<text x="1240" y="320" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#403C32">Manual mode is not</text>
+<text x="1240" y="355" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#403C32">equivalent to AUTO</text>
+<text x="1240" y="420" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">The manual states that when the DDC</text>
+<text x="1240" y="458" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">controller is faulty, room pressure</text>
+<text x="1240" y="496" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">cannot be controlled. Heater control</text>
+<text x="1240" y="534" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">may also be unavailable, affecting</text>
+<text x="1240" y="572" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#777365">temperature and humidity control.</text>
+<text x="1240" y="640" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#B87968">Refer to approved hospital procedures.</text>
+<text x="110" y="1090" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#777365">Sequence summarized from the supplied operation manual (pp. 7–8). This portfolio diagram is explanatory, not an operating instruction.</text>
+</svg>

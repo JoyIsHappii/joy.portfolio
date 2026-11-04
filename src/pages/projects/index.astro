@@ -14,8 +14,10 @@ import ImageWeather from "../../assets/hero/weather-cover.svg";
 import ImageMatch from "../../assets/hero/match-cover.webp";
 // import ImageCarlaBeauty from "../../assets/hero/carla-cover.webp";
 import ImageResume from "../../assets/resume.webp";
+import ResumeScreen from "../../assets/resume.png";
 
 import AwardSection from "../../sections/AwardSection.astro";
+import ResumeSection from "../../sections/ResumeSection.astro";
 
 import Button from "../../components/Button.astro";
 import PortraitImage from "../../assets/joy.png";
@@ -48,7 +50,15 @@ const projects: Project[] = [
     imageSrc: ImageIppon.src,
     imageAlt: "Ippon App",
     categories: ["UX/UI Design"],
-    tech: ["Figma"],
+    tech: [
+      "Figma",
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Usability Testing",
+      "User Flows",
+      "Information Architecture",
+    ],
     projectLink: "/projects/ippon",
   },
   {
@@ -57,7 +67,15 @@ const projects: Project[] = [
     imageSrc: ImageCiccc.src,
     imageAlt: "CICCC LMS",
     categories: ["UX/UI Design"],
-    tech: ["Figma"],
+    tech: [
+      "Figma",
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Usability Testing",
+      "User Flows",
+      "Information Architecture",
+    ],
     projectLink: "/projects/ciccc-lms",
   },
   {
@@ -67,7 +85,14 @@ const projects: Project[] = [
     imageSrc: ImageBunny.src,
     imageAlt: "Bunny World App",
     categories: ["UX/UI Design"],
-    tech: ["Figma"],
+    tech: [
+      "Figma",
+      "Design Sprint",
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Usability Testing",
+    ],
     projectLink: "/projects/bunny-world",
   },
   {
@@ -89,25 +114,25 @@ const projects: Project[] = [
     ],
     projectLink: "https://weather-fore-cat.netlify.app",
   },
-  {
-    title: "FIFA Performance Stats",
-    description:
-      "A full-stack app for exploring player performances, matches, and tournament rankings.",
-    imageSrc: ImageMatch.src,
-    imageAlt: "FIFA Performance Stats",
-    categories: ["Web Development"],
-    tech: [
-      "Astro",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "REST API",
-      "Render",
-    ],
-    projectLink: "https://fifa-player-stats.onrender.com/",
-    warmupLink: "https://player-stats-2uxq.onrender.com",
-  },
+  // {
+  //   title: "FIFA Performance Stats",
+  //   description:
+  //     "A full-stack app for exploring player performances, matches, and tournament rankings.",
+  //   imageSrc: ImageMatch.src,
+  //   imageAlt: "FIFA Performance Stats",
+  //   categories: ["Web Development"],
+  //   tech: [
+  //     "Astro",
+  //     "Tailwind CSS",
+  //     "Node.js",
+  //     "Express",
+  //     "PostgreSQL",
+  //     "REST API",
+  //     "Render",
+  //   ],
+  //   projectLink: "https://fifa-player-stats.onrender.com/",
+  //   warmupLink: "https://player-stats-2uxq.onrender.com",
+  // },
   {
     title: "Pawfect Day",
     description:
@@ -126,16 +151,16 @@ const projects: Project[] = [
     ],
     projectLink: "/projects/pawfect-day",
   },
-  {
-    title: "Grounds Cafe",
-    description:
-      "A responsive cafe ordering app with menu browsing, favorites, cart, and checkout.",
-    imageSrc: ImageGrounds.src,
-    imageAlt: "Grounds Cafe App",
-    categories: ["Web Development"],
-    tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Netlify"],
-    projectLink: "/projects/grounds-cafe",
-  },
+  // {
+  //   title: "Grounds Cafe",
+  //   description:
+  //     "A responsive cafe ordering app with menu browsing, favorites, cart, and checkout.",
+  //   imageSrc: ImageGrounds.src,
+  //   imageAlt: "Grounds Cafe App",
+  //   categories: ["Web Development"],
+  //   tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Netlify"],
+  //   projectLink: "/projects/grounds-cafe",
+  // },
   {
     title: "COVID-19 ICU Monitoring",
     description:
@@ -198,17 +223,24 @@ const projects: Project[] = [
       </h2>
 
       <Filter />
+      
     </aside>
 
     <!-- Right side: project content -->
-    <div class="flex w-full min-w-0 flex-col gap-4 px-4 md:px-0">
+    <div class="flex flex-col w-full min-w-0 gap-4 px-4 md:px-0">
       <!-- Only visible when All is selected -->
       <div
         id="award-section"
         data-award-section
-        class="flex w-full justify-center"
+        class="flex flex-col w-full justify-center gap-4"
       >
-        <AwardSection />
+      <AwardSection />
+      <!-- <ResumeSection /> -->
+      <!-- <iframe
+        src="https://interactive-resume-joy.vercel.app"
+        title="Joy's Interactive Resume"
+        class="h-[min(700px,calc(100dvh-8rem))] w-full border border-brown-dark/10 shadow-lg transition-all duration-300 ease-in-out"
+      ></iframe> -->
       </div>
 
       <div
@@ -232,7 +264,15 @@ const projects: Project[] = [
             imageAlt="7VAN Brazilian Jiu-Jitsu academy website"
             categories={["UX/UI Design"]}
             projectLink="/projects/7van"
-            tech={["Figma"]}
+            tech={[
+              "Figma",
+              "User Research",
+              "Wireframing",
+              "Prototyping",
+              "Usability Testing",
+              "User Flows",
+              "Information Architecture",
+            ]}
           />
         </div>
 
@@ -254,131 +294,136 @@ const projects: Project[] = [
       </div>
     </div>
   </main>
- <section
-  id="about-me"
-  class="w-full border-y border-brown-dark/10 bg-brown-light/10 px-4 py-14 sm:py-16 md:px-8 md:py-20"
->
-  <div
-    class="mx-auto flex max-w-6xl flex-col items-center gap-10
-           md:flex-row md:items-center md:gap-14 lg:gap-20"
-  >
-    <!-- Resume Preview -->
-    <div class="w-full md:w-[55%]">
-      <div class="mx-auto w-full max-w-[560px] overflow-hidden rounded-xl">
-        <img
-          src={ImageResume.src}
-          alt="Preview of Joy's interactive resume"
-          class="block h-auto w-full"
-        />
-      </div>
-    </div>
 
-    <!-- Content -->
+        <!-- <ResumeSection /> -->
+      <iframe
+        src="https://interactive-resume-joy.vercel.app"
+        title="Joy's Interactive Resume"
+        class="h-[min(700px,calc(100dvh-8rem))] w-full "
+      ></iframe>
+
+  <!-- <section
+    id="about-me"
+    class="w-full border-y border-brown-dark/10 bg-brown-light/10 px-4 py-14 sm:py-16 md:px-8 md:py-20"
+  >
     <div
-      class="flex w-full max-w-md flex-col items-center text-center
-             md:w-[45%] md:items-start md:text-left"
+      class="mx-auto flex max-w-6xl flex-col items-center gap-10
+           md:flex-row md:items-center md:gap-14 lg:gap-20"
     >
-      <!-- Label -->
-      <div class="flex items-center gap-3">
-        <img
-          src={PortraitImage.src}
-          alt="Portrait of Joy"
-          class="h-11 w-11 rounded-full object-cover"
-        />
+      <div class="w-full md:w-[55%]">
+        <div class="mx-auto w-full max-w-[560px] overflow-hidden rounded-xl">
+          <img
+            src={ImageResume.src}
+            alt="Preview of Joy's interactive resume"
+            class="block h-auto w-full"
+          />
+        </div>
+      </div>
+
+      <div
+        class="flex w-full max-w-md flex-col items-center text-center
+             md:w-[45%] md:items-start md:text-left"
+      >
+        <div class="flex items-center gap-3">
+          <img
+            src={PortraitImage.src}
+            alt="Portrait of Joy"
+            class="h-11 w-11 rounded-full object-cover"
+          />
+
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em]
+                 text-dark-brown sm:text-base"
+          >
+            About Me
+          </p>
+        </div>
+
+        <h2
+          class="mt-5 text-3xl leading-tight text-dark-brown
+               sm:text-4xl md:text-[2.6rem]"
+        >
+          More than a resume
+        </h2>
 
         <p
-          class="text-sm font-semibold uppercase tracking-[0.18em]
-                 text-dark-brown sm:text-base"
+          class="mt-4 max-w-sm text-sm leading-7 text-brown-dark/75
+               sm:text-base"
         >
-          About Me
+          I started in architecture, moved into UX/UI design, and am now
+          exploring the world of web development. Take a look at my interactive
+          resume to see the journey.
+        </p>
+
+        <Button
+          href="https://interactive-resume-joy.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="md"
+          class="mt-7"
+        >
+          Explore My Story →
+        </Button>
+      </div>
+    </div>
+  </section> -->
+
+  <footer class="w-full border-t border-brown-dark/10 px-4 py-10 md:px-8">
+    <div
+      class="mx-auto flex max-w-6xl flex-col items-center gap-6
+           md:flex-row md:justify-between"
+    >
+      <div class="text-center md:text-left">
+        <p class="text-lg font-medium text-dark-brown">
+          Thanks for stopping by ♡
+        </p>
+        <p class="mt-1 text-sm text-brown-dark/60">
+          Let's make something thoughtful together.
         </p>
       </div>
 
-      <!-- Heading -->
-      <h2
-        class="mt-5 text-3xl leading-tight text-dark-brown
-               sm:text-4xl md:text-[2.6rem]"
-      >
-        More than a resume
-      </h2>
-
-      <!-- Description -->
-      <p
-        class="mt-4 max-w-sm text-sm leading-7 text-brown-dark/75
-               sm:text-base"
-      >
-        I started in architecture, moved into UX/UI design, and am now
-        exploring the world of web development. Take a look at my
-        interactive resume to see the journey.
-      </p>
-
-      <!-- CTA -->
-      <Button
-        href="https://interactive-resume-joy.vercel.app"
-        target="_blank"
-        rel="noopener noreferrer"
-        variant="primary"
-        size="md"
-        class="mt-7"
-      >
-        Explore My Story →
-      </Button>
-    </div>
-  </div>
-</section>
-
-<footer class="w-full border-t border-brown-dark/10 px-4 py-10 md:px-8">
-  <div
-    class="mx-auto flex max-w-6xl flex-col items-center gap-6
-           md:flex-row md:justify-between"
-  >
-    <div class="text-center md:text-left">
-      <p class="text-lg font-medium text-dark-brown">
-        Thanks for stopping by ♡
-      </p>
-      <p class="mt-1 text-sm text-brown-dark/60">
-        Let's make something thoughtful together.
-      </p>
+      <nav class="flex items-center gap-6 text-sm text-brown-dark/70">
+        <a
+          href="mailto:joy.is.happii@gmail.com"
+          class="transition-opacity hover:opacity-60"
+        >
+          Email
+        </a>
+        <a
+          href="https://www.linkedin.com/in/joykosol/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-opacity hover:opacity-60"
+        >
+          LinkedIn
+        </a>
+        <a
+          href="https://github.com/JoyIsHappii"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-opacity hover:opacity-60"
+        >
+          GitHub
+        </a>
+      </nav>
     </div>
 
-    <nav class="flex items-center gap-6 text-sm text-brown-dark/70">
-      <a href="mailto:joy.is.happii@gmail.com" class="transition-opacity hover:opacity-60">
-        Email
-      </a>
-      <a
-        href="https://www.linkedin.com/in/joykosol/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="transition-opacity hover:opacity-60"
-      >
-        LinkedIn
-      </a>
-      <a
-        href="https://github.com/JoyIsHappii"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="transition-opacity hover:opacity-60"
-      >
-        GitHub
-      </a>
-    </nav>
-  </div>
-
-  <div
-    class="mx-auto mt-8 flex max-w-6xl flex-col items-center
+    <div
+      class="mx-auto mt-8 flex max-w-6xl flex-col items-center
            gap-2 border-t border-brown-dark/10 pt-5
            text-xs text-brown-dark/50 sm:flex-row sm:justify-between"
-  >
-    <p>© 2026 Joy Kosol</p>
-
-    <button
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      class="transition-opacity hover:opacity-60"
     >
-      Back to top ↑
-    </button>
-  </div>
-</footer>
+      <p>© 2026 Joy Kosol</p>
+
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="transition-opacity hover:opacity-60"
+      >
+        Back to top ↑
+      </button>
+    </div>
+  </footer>
   <Modal
     id="contact-project-modal"
     eyebrow="Private project"
@@ -395,3 +440,16 @@ const projects: Project[] = [
   projectLink="https://springprojectjpp.netlify.app/"
   /> -->
 </ContentLayout>
+
+
+<script>
+  // Handle View Resume button click -> scroll to the About Me section
+  const resumeButton = document.getElementById("resume-button");
+  const aboutMeSection = document.getElementById("about-me");
+
+
+  resumeButton?.addEventListener("click", () => {
+    aboutMeSection?.scrollIntoView({ behavior: "smooth" });
+  });
+
+</script>

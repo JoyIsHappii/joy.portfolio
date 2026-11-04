@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500">
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="none" stroke="%23A9B3A2" stroke-width="1.8"/></marker></defs>
+<rect width="2400" height="1500" fill="#F7F5EF"/>
+<text x="120" y="105" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="5" fill="#6D8663">PROJECT DESIGN APPROACH</text>
+<text x="120" y="190" font-family="Arial,sans-serif" font-size="55" font-weight="600" fill="#39463D">From project brief to coordinated documentation</text>
+<rect x="130" y="390" width="470" height="510" rx="24" fill="#E8EBDD" stroke="#E1DED4" stroke-width="2"/>
+<text x="165" y="445" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#6D8663" text-anchor="start">01</text>
+<text x="165" y="505" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#687268" text-anchor="start">UNDERSTAND</text>
+<text x="165" y="580" font-family="Arial,sans-serif" font-size="40" font-weight="600" fill="#39463D" text-anchor="start">Project context</text>
+<rect x="160" y="635" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="180" y="668" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Room purpose</text>
+<rect x="160" y="705" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="180" y="738" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Stakeholder needs</text>
+<rect x="160" y="775" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="180" y="808" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">System scope</text>
+<path d="M600 650 L685 650" fill="none" stroke="#6D8663" stroke-width="6" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<rect x="700" y="510" width="470" height="510" rx="24" fill="#E7EEEE" stroke="#E1DED4" stroke-width="2"/>
+<text x="735" y="565" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#6D8663" text-anchor="start">02</text>
+<text x="735" y="625" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#687268" text-anchor="start">STRUCTURE</text>
+<text x="735" y="700" font-family="Arial,sans-serif" font-size="40" font-weight="600" fill="#39463D" text-anchor="start">Requirements</text>
+<rect x="730" y="755" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="750" y="788" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Functional needs</text>
+<rect x="730" y="825" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="750" y="858" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Operating conditions</text>
+<rect x="730" y="895" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="750" y="928" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">System constraints</text>
+<path d="M1170 770 L1255 770" fill="none" stroke="#6D8663" stroke-width="6" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<rect x="1270" y="390" width="470" height="510" rx="24" fill="#F5E8E3" stroke="#E1DED4" stroke-width="2"/>
+<text x="1305" y="445" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#6D8663" text-anchor="start">03</text>
+<text x="1305" y="505" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#687268" text-anchor="start">MAP</text>
+<text x="1305" y="580" font-family="Arial,sans-serif" font-size="40" font-weight="600" fill="#39463D" text-anchor="start">User workflows</text>
+<rect x="1300" y="635" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="1320" y="668" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Staff actions</text>
+<rect x="1300" y="705" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="1320" y="738" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">System responses</text>
+<rect x="1300" y="775" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="1320" y="808" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Mode changes</text>
+<path d="M1740 650 L1825 650" fill="none" stroke="#6D8663" stroke-width="6" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<rect x="1840" y="510" width="470" height="510" rx="24" fill="#F7F2EA" stroke="#E1DED4" stroke-width="2"/>
+<text x="1875" y="565" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#6D8663" text-anchor="start">04</text>
+<text x="1875" y="625" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#687268" text-anchor="start">COORDINATE</text>
+<text x="1875" y="700" font-family="Arial,sans-serif" font-size="40" font-weight="600" fill="#39463D" text-anchor="start">Design information</text>
+<rect x="1870" y="755" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="1890" y="788" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Technical inputs</text>
+<rect x="1870" y="825" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="1890" y="858" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Documentation</text>
+<rect x="1870" y="895" width="410" height="48" rx="12" fill="#FFFDF8" stroke="#E4E0D5" stroke-width="2"/>
+<text x="1890" y="928" font-family="Arial,sans-serif" font-size="25" font-weight="400" fill="#687268" text-anchor="start">Review and alignment</text>
+<rect x="320" y="1120" width="1760" height="130" rx="22" fill="#39463D" stroke="#39463D" stroke-width="1"/>
+<text x="1200" y="1200" font-family="Arial,sans-serif" font-size="28" font-weight="600" fill="#FFFFFF" text-anchor="middle">OUTPUT  /  A shared foundation for design decisions and day-to-day operation</text></svg>

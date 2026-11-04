@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import NavBar from "../components/NavBar.astro";
-import SpotifyPlayer from "../components/SpotifyPlayer.astro";
+import YouTubePlayer from "../components/YouTubePlayer.astro";
 import "aos/dist/aos.css";
 
 
@@ -41,7 +41,7 @@ const { title = "Joy's Portfolio", active } = Astro.props as Props;
         <slot />
       </div>
     </div>
-    <SpotifyPlayer />
+    <YouTubePlayer />
   </body>
 </html>
 

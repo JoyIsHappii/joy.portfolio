@@ -1,29 +1,62 @@
 ---
-// One Spotify embed for the whole site. It persists across page transitions so
+// One YouTube player for the whole site. It persists across page transitions so
 // music keeps playing until paused. Any element with [data-music-toggle] opens it:
 //   data-music-placement="over"  → centered over the trigger (homepage radio)
 //   data-music-placement="below" → right-aligned under the trigger (nav radio)
 // [data-music-status] elements show ON/OFF, and [data-music-trigger] elements get
 // .is-playing while music plays.
-const PLAYLIST_URI = "spotify:playlist:61TCXTX5aJKgw6jOcwyv9w";
+const VIDEO_ID = "HGl75kurxok";
 ---
 
-<!-- Hidden with opacity + inert (not display/visibility) so the embed renders and keeps playing while closed -->
+<!-- Hidden with opacity + inert (not display/visibility) so the video loads and keeps playing while closed -->
 <div
-  id="spotify-player"
-  class="spotify-panel pointer-events-none fixed left-0 top-0 z-[70] w-[min(400px,calc(100vw-2rem))] overflow-hidden rounded-xl opacity-0 shadow-lg transition-opacity duration-200"
-  data-spotify-player
-  data-playlist-uri={PLAYLIST_URI}
-  transition:persist="spotify-player"
+  id="music-player-panel"
+  class="music-panel pointer-events-none fixed left-0 top-0 z-[70] w-[min(400px,calc(100vw-2rem))] overflow-hidden rounded-xl bg-brown-dark opacity-0 shadow-lg transition-opacity duration-200"
+  data-music-panel
+  data-video-id={VIDEO_ID}
+  transition:persist="music-player-panel"
   inert
 >
-  <div data-spotify-embed></div>
+  <div class="aspect-video w-full">
+    <div data-youtube-embed></div>
+  </div>
+
+  <!-- The embed hides YouTube's controls, so provide play/pause here -->
+  <div class="flex items-center gap-3 px-4 py-3 text-white">
+    <button
+      type="button"
+      class="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white text-brown-dark transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      aria-label="Play music"
+      data-music-playpause
+    >
+      <svg class="music-icon-play h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14Z" />
+      </svg>
+      <svg class="music-icon-pause hidden h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M7 4h3.5v16H7zM13.5 4H17v16h-3.5z" />
+      </svg>
+    </button>
+    <p class="min-w-0 truncate text-sm" data-music-title>Loading…</p>
+  </div>
 </div>
 
 <style is:global>
-  .spotify-panel.is-open {
+  .music-panel.is-open {
     pointer-events: auto;
     opacity: 1;
+  }
+
+  .music-panel iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  .music-panel.is-playing .music-icon-play {
+    display: none;
+  }
+
+  .music-panel.is-playing .music-icon-pause {
+    display: block;
   }
 
   [data-music-trigger].is-playing .music-artwork {
@@ -48,26 +81,35 @@ const PLAYLIST_URI = "spotify:playlist:61TCXTX5aJKgw6jOcwyv9w";
 </style>
 
 <script>
-  type SpotifyController = {
-    addListener: (
-      event: "playback_update",
-      callback: (event: { data: { isPaused: boolean } }) => void,
-    ) => void;
+  type YouTubePlayer = {
+    playVideo: () => void;
+    pauseVideo: () => void;
+    getVideoData: () => { title?: string };
   };
 
-  type SpotifyIFrameAPI = {
-    createController: (
+  type YouTubeAPI = {
+    Player: new (
       element: HTMLElement,
-      options: { uri: string; width: string; height: number },
-      callback: (controller: SpotifyController) => void,
-    ) => void;
+      options: {
+        videoId: string;
+        width: string;
+        height: string;
+        playerVars: Record<string, string | number>;
+        events: {
+          onReady: (event: { target: YouTubePlayer }) => void;
+          onStateChange: (event: { data: number }) => void;
+        };
+      },
+    ) => YouTubePlayer;
+    PlayerState: { PLAYING: number; BUFFERING: number };
   };
 
   declare global {
     interface Window {
-      onSpotifyIframeApiReady?: (api: SpotifyIFrameAPI) => void;
-      spotifyIFrameAPI?: Promise<SpotifyIFrameAPI>;
-      spotifyPlayerBound?: boolean;
+      YT?: YouTubeAPI;
+      onYouTubeIframeAPIReady?: () => void;
+      youTubeAPI?: Promise<YouTubeAPI>;
+      musicPlayerBound?: boolean;
     }
   }
 
@@ -75,21 +117,22 @@ const PLAYLIST_URI = "spotify:playlist:61TCXTX5aJKgw6jOcwyv9w";
   const EDGE = 16;
 
   let playing = false;
+  let player: YouTubePlayer | null = null;
   let activeToggle: HTMLElement | null = null;
 
   function getPanel() {
-    return document.querySelector<HTMLElement>("[data-spotify-player]");
+    return document.querySelector<HTMLElement>("[data-music-panel]");
   }
 
-  function loadSpotifyAPI() {
-    window.spotifyIFrameAPI ??= new Promise((resolve) => {
-      window.onSpotifyIframeApiReady = resolve;
+  function loadYouTubeAPI() {
+    window.youTubeAPI ??= new Promise((resolve) => {
+      window.onYouTubeIframeAPIReady = () => resolve(window.YT!);
       const script = document.createElement("script");
-      script.src = "https://open.spotify.com/embed/iframe-api/v1";
+      script.src = "https://www.youtube.com/iframe_api";
       script.async = true;
       document.body.appendChild(script);
     });
-    return window.spotifyIFrameAPI;
+    return window.youTubeAPI;
   }
 
   // Status labels and triggers are re-rendered on every page, so re-apply state.
@@ -103,6 +146,12 @@ const PLAYLIST_URI = "spotify:playlist:61TCXTX5aJKgw6jOcwyv9w";
     document
       .querySelectorAll<HTMLElement>("[data-music-trigger]")
       .forEach((trigger) => trigger.classList.toggle("is-playing", playing));
+
+    const panel = getPanel();
+    panel?.classList.toggle("is-playing", playing);
+    panel
+      ?.querySelector("[data-music-playpause]")
+      ?.setAttribute("aria-label", playing ? "Pause music" : "Play music");
   }
 
   function positionPanel(panel: HTMLElement, toggle: HTMLElement) {
@@ -142,33 +191,48 @@ const PLAYLIST_URI = "spotify:playlist:61TCXTX5aJKgw6jOcwyv9w";
         button.setAttribute("aria-expanded", String(expanded));
         button.setAttribute(
           "aria-label",
-          expanded ? "Hide Spotify player" : "Show Spotify player",
+          expanded ? "Hide music player" : "Show music player",
         );
       });
 
     activeToggle = open ? toggle : null;
   }
 
-  function setupSpotifyPlayer() {
+  function setupMusicPlayer() {
     const panel = getPanel();
-    const embed = panel?.querySelector<HTMLElement>("[data-spotify-embed]");
+    const embed = panel?.querySelector<HTMLElement>("[data-youtube-embed]");
     if (!panel || !embed || panel.dataset.initialized === "true") return;
     panel.dataset.initialized = "true";
 
-    loadSpotifyAPI().then((api) => {
-      api.createController(
-        embed,
-        { uri: panel.dataset.playlistUri!, width: "100%", height: 152 },
-        (controller) => {
-          // Embed is lazy by default; load it now so it's ready before it opens
-          panel.querySelector("iframe")?.setAttribute("loading", "eager");
+    const videoId = panel.dataset.videoId!;
+    const title = panel.querySelector<HTMLElement>("[data-music-title]");
 
-          controller.addListener("playback_update", (event) => {
-            playing = !event.data.isPaused;
-            syncMusicUI();
-          });
+    loadYouTubeAPI().then((YT) => {
+      new YT.Player(embed, {
+        videoId,
+        width: "100%",
+        height: "100%",
+        playerVars: {
+          controls: 0,
+          // Loop the single video so the music doesn't stop at the end
+          loop: 1,
+          playlist: videoId,
+          playsinline: 1,
+          rel: 0,
         },
-      );
+        events: {
+          onReady: (event) => {
+            player = event.target;
+            if (title) title.textContent = player.getVideoData().title ?? "";
+          },
+          onStateChange: (event) => {
+            // Keep the current state while buffering so ON/OFF doesn't flicker
+            if (event.data === YT.PlayerState.BUFFERING) return;
+            playing = event.data === YT.PlayerState.PLAYING;
+            syncMusicUI();
+          },
+        },
+      });
     });
   }
 
@@ -177,7 +241,10 @@ const PLAYLIST_URI = "spotify:playlist:61TCXTX5aJKgw6jOcwyv9w";
       const target = event.target as Element;
       const toggle = target.closest<HTMLElement>("[data-music-toggle]");
 
-      if (toggle) {
+      if (target.closest("[data-music-playpause]")) {
+        if (playing) player?.pauseVideo();
+        else player?.playVideo();
+      } else if (toggle) {
         setOpen(activeToggle !== toggle, toggle);
       } else if (activeToggle && !getPanel()?.contains(target)) {
         setOpen(false);
@@ -204,15 +271,15 @@ const PLAYLIST_URI = "spotify:playlist:61TCXTX5aJKgw6jOcwyv9w";
     document.addEventListener("astro:before-swap", () => setOpen(false));
 
     document.addEventListener("astro:page-load", () => {
-      setupSpotifyPlayer();
+      setupMusicPlayer();
       syncMusicUI();
     });
   }
 
   // Guard against double-binding (e.g. the module re-running during dev hot reloads),
   // which would open and immediately close the panel on one click.
-  if (!window.spotifyPlayerBound) {
-    window.spotifyPlayerBound = true;
+  if (!window.musicPlayerBound) {
+    window.musicPlayerBound = true;
     bindGlobalListeners();
   }
 </script>

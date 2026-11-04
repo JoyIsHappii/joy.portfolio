@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500">
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="none" stroke="%23A9B3A2" stroke-width="1.8"/></marker></defs>
+<rect width="2400" height="1500" fill="#F7F5EF"/>
+<text x="120" y="105" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="5" fill="#6D8663">SYSTEM OVERVIEW / ROOM 208</text>
+<text x="120" y="190" font-family="Arial,sans-serif" font-size="55" font-weight="600" fill="#39463D">A controlled environment, understood as one connected system</text>
+<polygon points="350,1030 1060,1260 1900,930 1180,700" fill="#E9E6DA" stroke="#AEB6A8" stroke-width="5"/>
+<polygon points="350,1030 350,480 1180,180 1180,700" fill="#EEF1E8" stroke="#AEB6A8" stroke-width="5"/>
+<polygon points="1180,700 1180,180 1900,410 1900,930" fill="#E5ECE8" stroke="#AEB6A8" stroke-width="5"/>
+<polygon points="720,900 1130,1030 1530,875 1120,745" fill="#D8DCCF" stroke="#9EA99A" stroke-width="4"/>
+<polygon points="720,900 720,820 1120,665 1120,745" fill="#FDFCF7" stroke="#9EA99A" stroke-width="4"/>
+<polygon points="1120,745 1120,665 1530,795 1530,875" fill="#E9EBDD" stroke="#9EA99A" stroke-width="4"/>
+<polygon points="650,385 850,305 1035,365 835,445" fill="#FFFFFF" stroke="#7D8C7A" stroke-width="4"/>
+<path d="M690 380 L820 422" fill="none" stroke="#B7C5B2" stroke-width="3" stroke-linecap="round" />
+<path d="M715 370 L845 412" fill="none" stroke="#B7C5B2" stroke-width="3" stroke-linecap="round" />
+<path d="M740 360 L870 402" fill="none" stroke="#B7C5B2" stroke-width="3" stroke-linecap="round" />
+<path d="M765 350 L895 392" fill="none" stroke="#B7C5B2" stroke-width="3" stroke-linecap="round" />
+<path d="M790 340 L920 382" fill="none" stroke="#B7C5B2" stroke-width="3" stroke-linecap="round" />
+<path d="M815 330 L945 372" fill="none" stroke="#B7C5B2" stroke-width="3" stroke-linecap="round" />
+<polygon points="1510,515 1690,570 1690,680 1510,625" fill="#F8F7F0" stroke="#7D8C7A" stroke-width="4"/>
+<rect x="1580" y="710" width="125" height="90" rx="8" fill="#526A61" transform="skewY(18)"/><rect x="1593" y="722" width="98" height="62" rx="4" fill="#DCE9DD" transform="skewY(18)"/>
+<path d="M900 430 C970 510 1050 560 1120 650 C1200 735 1340 760 1500 820" fill="none" stroke="#6F9A79" stroke-width="13" stroke-dasharray="22 16"/>
+<path d="M1500 820 C1650 850 1710 760 1660 650 C1600 540 1510 500 1420 465" fill="none" stroke="#C47D62" stroke-width="12" stroke-dasharray="20 16"/>
+<rect x="120" y="300" width="470" height="245" rx="24" fill="#E8EBDD" stroke="#E1DED4" stroke-width="2"/>
+<text x="155" y="355" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#6D8663" text-anchor="start">01 / SUPPLY</text>
+<text x="155" y="412" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#39463D" text-anchor="start">Filtered air</text>
+<text x="155" y="464" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Air is delivered through</text>
+<text x="155" y="503" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">the supply path.</text>
+<rect x="1780" y="300" width="480" height="245" rx="24" fill="#F5E8E3" stroke="#E1DED4" stroke-width="2"/>
+<text x="1815" y="355" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#6D8663" text-anchor="start">02 / RETURN</text>
+<text x="1815" y="412" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#39463D" text-anchor="start">Exhaust / return</text>
+<text x="1815" y="464" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Air is drawn toward the</text>
+<text x="1815" y="503" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">return and exhaust path.</text>
+<rect x="120" y="1080" width="510" height="250" rx="24" fill="#F7F2EA" stroke="#E1DED4" stroke-width="2"/>
+<text x="155" y="1135" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#6D8663" text-anchor="start">03 / CONDITIONS</text>
+<text x="155" y="1192" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#39463D" text-anchor="start">Room environment</text>
+<text x="155" y="1244" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Temperature · Humidity</text>
+<text x="155" y="1283" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Pressure · Filter status</text>
+<rect x="1780" y="1080" width="480" height="250" rx="24" fill="#E7EEEE" stroke="#E1DED4" stroke-width="2"/>
+<text x="1815" y="1135" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#6D8663" text-anchor="start">04 / INTERFACE</text>
+<text x="1815" y="1192" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#39463D" text-anchor="start">Staff monitoring</text>
+<text x="1815" y="1244" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Readings and supported</text>
+<text x="1815" y="1283" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">controls are presented.</text>
+<path d="M590 420 L790 430" fill="none" stroke="#6D8663" stroke-width="4" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<path d="M1780 500 L1690 620" fill="none" stroke="#B97860" stroke-width="4" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<path d="M630 1140 L850 1050" fill="none" stroke="#6D8663" stroke-width="4" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<path d="M1780 1140 L1680 850" fill="none" stroke="#6D8D91" stroke-width="4" stroke-linecap="round" marker-end="url(%23arrow)"/></svg>

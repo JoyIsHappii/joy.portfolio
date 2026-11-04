@@ -5,7 +5,7 @@ import Joy from "../assets/joy.png";
 import MusicPlayer from "./MusicPlayer.astro";
 
 interface Props {
-  active?: "home" | "projects" | "about";
+  active?: "home" | "projects" | "about" | "resume";
   surface?: "white" | "ivory";
   // Show the music player in place of the contact button and avatar
   music?: boolean;
@@ -16,7 +16,8 @@ const { active, surface = "white", music = false } = Astro.props as Props;
 const navItems = [
   { name: "Home", href: "/", key: "home" },
   { name: "Projects", href: "/projects", key: "projects" },
-  { name: "About Me", href: "https://interactive-resume-joy.vercel.app", key: "about" },
+  { name: "About Me", href: "https://interactive-resume-joy.vercel.app", key: "about", target: "_blank", rel: "noopener noreferrer" },
+  // { name: "Resume", href: "https://1drv.ms/b/c/bc6fb2b45e307ae3/IQBVp7ss7KHWT7aYn43V475LAXSVTU2UBHL-Oz9fIZm0gUg?e=eWlDIA", key: "resume", target: "_blank", rel: "noopener noreferrer" },
 ];
 ---
 
@@ -34,8 +35,14 @@ const navItems = [
     justify-between
     border-b
     border-brown-dark/10
-    py-5
-    md:py-6
+   py-4
+    px-4
+    sm:px-6
+    md:px-12
+    lg:px-16
+    transition-all
+    duration-300
+    ease-in-out
     `,
     surface === "ivory" ? "bg-ivory" : "bg-white",
   ]}
@@ -70,47 +77,9 @@ const navItems = [
     }
   </ul>
 
-  {music ? (
+
     <div class="ml-auto">
       <MusicPlayer />
     </div>
-  ) : (
-  <div class="ml-auto flex flex-row items-center gap-2">
-    <a
-      href="mailto:joy.is.happii@gmail.com"
-      class="
-        flex
-        flex-row
-        items-center
-        gap-2
-        rounded-full
-        bg-brown-dark
-        px-4
-        py-2
-        text-sm
-        font-semibold
-        tracking-wide
-        text-white
-        transition-all
-        ease-in-out
-        hover:bg-black
-      "
-    >
-      Say hi
 
-      <Plane class="h-6 w-6 sm:h-8 sm:w-8" />
-    </a>
-
-    <img
-      src={Joy.src}
-      alt="Joy"
-      class="
-        h-12
-        w-12
-        rounded-full
-        object-cover
-      "
-    />
-  </div>
-  )}
 </nav>

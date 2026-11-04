@@ -160,6 +160,11 @@
     padding: 0.75rem;
   }
 
+  #second-message {
+    position: relative;
+    top: -1.25rem;
+  }
+
   #first-message p,
   #second-message p,
   #second-message li {

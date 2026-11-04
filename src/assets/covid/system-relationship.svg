@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500">
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="none" stroke="%23A9B3A2" stroke-width="1.8"/></marker></defs>
+<rect width="2400" height="1500" fill="#F7F5EF"/>
+<text x="120" y="105" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="5" fill="#6D8663">SYSTEM RELATIONSHIP / HIGH-LEVEL VIEW</text>
+<text x="120" y="190" font-family="Arial,sans-serif" font-size="55" font-weight="600" fill="#39463D">How people, controls, equipment, and room conditions connect</text>
+<rect x="130" y="390" width="440" height="340" rx="24" fill="#E8EBDD" stroke="#E1DED4" stroke-width="2"/>
+<text x="165" y="445" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#6D8663" text-anchor="start">01 / PEOPLE</text>
+<text x="165" y="502" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#39463D" text-anchor="start">Hospital staff</text>
+<text x="165" y="554" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Review room status</text>
+<text x="165" y="593" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Use supported controls</text>
+<rect x="710" y="390" width="440" height="340" rx="24" fill="#E7EEEE" stroke="#E1DED4" stroke-width="2"/>
+<text x="745" y="445" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#6D8663" text-anchor="start">02 / INTERFACE</text>
+<text x="745" y="502" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#39463D" text-anchor="start">Monitoring display</text>
+<text x="745" y="554" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Readings and indicators</text>
+<text x="745" y="593" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Mode and system status</text>
+<rect x="1290" y="390" width="440" height="340" rx="24" fill="#F7F2EA" stroke="#E1DED4" stroke-width="2"/>
+<text x="1325" y="445" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#6D8663" text-anchor="start">03 / CONTROL</text>
+<text x="1325" y="502" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#39463D" text-anchor="start">DDC controller</text>
+<text x="1325" y="554" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Runs programmed logic</text>
+<text x="1325" y="593" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Automatic control</text>
+<rect x="1870" y="390" width="440" height="340" rx="24" fill="#F5E8E3" stroke="#E1DED4" stroke-width="2"/>
+<text x="1905" y="445" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#6D8663" text-anchor="start">04 / EQUIPMENT</text>
+<text x="1905" y="502" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#39463D" text-anchor="start">Room systems</text>
+<text x="1905" y="554" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Air handling and fans</text>
+<text x="1905" y="593" font-family="Arial,sans-serif" font-size="27" font-weight="400" fill="#687268" text-anchor="start">Filters and sensors</text>
+<path d="M570 560 L690 560" fill="none" stroke="#6D8663" stroke-width="7" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<path d="M1150 560 L1270 560" fill="none" stroke="#6D8663" stroke-width="7" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<path d="M1730 560 L1850 560" fill="none" stroke="#6D8663" stroke-width="7" stroke-linecap="round" marker-end="url(%23arrow)"/>
+<rect x="360" y="930" width="1680" height="250" rx="24" fill="#FFFDF8" stroke="#DCDDD2" stroke-width="2"/>
+<text x="1200" y="1000" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#6D8663" text-anchor="middle">ROOM ENVIRONMENT / MONITORED CONDITIONS</text>
+<text x="1200" y="1075" font-family="Arial,sans-serif" font-size="31" font-weight="500" fill="#39463D" text-anchor="middle">Temperature  ·  Humidity  ·  Pressure  ·  Filter differential pressure</text>
+<text x="1200" y="1130" font-family="Arial,sans-serif" font-size="22" font-weight="400" fill="#687268" text-anchor="middle">A simplified relationship diagram — not an electrical or control schematic</text>
+<path d="M350 730 L987.5 930" fill="none" stroke="#A9B3A2" stroke-width="3" stroke-linecap="round" />
+<path d="M930 730 L1132.5 930" fill="none" stroke="#A9B3A2" stroke-width="3" stroke-linecap="round" />
+<path d="M1510 730 L1277.5 930" fill="none" stroke="#A9B3A2" stroke-width="3" stroke-linecap="round" />
+<path d="M2090 730 L1422.5 930" fill="none" stroke="#A9B3A2" stroke-width="3" stroke-linecap="round" /></svg>
