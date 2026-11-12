@@ -4,77 +4,117 @@ import Breadcrumb from "../../components/Breadcrumb.astro";
 import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
 
-import HeroImage from "../../assets/hero/icu-cover.svg";
-
-import RoomOverview from "../../assets/covid/room-system-overview.svg";
-import RequirementsMap from "../../assets/covid/requirements-framework.svg";
-import DesignProcess from "../../assets/covid/project-design-process.svg";
-import SystemRelationship from "../../assets/covid/system-relationship.svg";
-import ContributionGraphic from "../../assets/covid/project-contribution.svg";
-import MonitoringScreenshot from "../../assets/covid/source-monitoring-screen.jpg";
-import ControlPanelPhoto from "../../assets/covid/source-control-panel.jpg";
-import ModeFlow from "../../assets/covid/flows/01-mode-selection.svg";
-import AutoFlow from "../../assets/covid/flows/02-auto-operation.svg";
-import ManualFlow from "../../assets/covid/flows/03-manual-fallback.svg";
+import IcuCover from "../../assets/hero/icu-cover.svg";
+import ContextImage from "../../assets/covid/context-overview.svg";
+import ContributionImage from "../../assets/covid/contribution.svg";
+import RequirementsImage from "../../assets/covid/requirements.svg";
+import SystemImage from "../../assets/covid/system-relationship.svg";
+import ModeImage from "../../assets/covid/mode-workflow.svg";
+import AutoImage from "../../assets/covid/auto-cycle.svg";
+import ManualImage from "../../assets/covid/manual-fallback.svg";
+import ProcessImage from "../../assets/covid/design-journey.svg";
+import OutcomeImage from "../../assets/covid/outcome-interface.svg";
 
 const navItems = [
-  { number: "01", label: "Project brief", href: "#brief" },
+  { number: "01", label: "Project context", href: "#context" },
   { number: "02", label: "My contribution", href: "#contribution" },
-  { number: "03", label: "Requirements", href: "#requirements" },
-  { number: "04", label: "System overview", href: "#system" },
-  { number: "05", label: "User workflows", href: "#workflows" },
-  { number: "06", label: "Design process", href: "#process" },
+  { number: "03", label: "Understanding needs", href: "#needs" },
+  { number: "04", label: "Making sense of the system", href: "#system" },
+  { number: "05", label: "How it works", href: "#workflows" },
+  { number: "06", label: "My approach", href: "#approach" },
   { number: "07", label: "Challenges", href: "#challenges" },
   { number: "08", label: "Outcome", href: "#outcome" },
 ];
 
-const requirements = [
-  { number: "01", title: "Environmental conditions", text: "Organize the room-condition requirements around temperature, humidity, and pressure monitoring.", tag: "Room conditions", tone: "sage" },
-  { number: "02", title: "Air quality & filtration", text: "Account for ventilation equipment and filter condition, including pre-filter and HEPA-filter pressure readings.", tag: "Air quality", tone: "blue" },
-  { number: "03", title: "Staff monitoring & control", text: "Make the available system status, operating mode, and supported controls understandable to staff.", tag: "Staff operation", tone: "cream" },
-  { number: "04", title: "Operational continuity", text: "Include the documented manual operating option and make its limitations visible in the workflow.", tag: "Fallback", tone: "rose" },
+const challengeCards = [
+  {
+    number: "01",
+    title: "Connecting information across the project",
+    detail:
+      "The room, environmental conditions, equipment, and staff operation could easily become separate lists. I grouped them into a requirements framework first, then showed how they connect in the system overview.",
+  },
+  {
+    number: "02",
+    title: "Explaining different operating states",
+    detail:
+      "AUTO, OFF, and MANUAL have different meanings. I used a mode-selection view to show the three outcomes, followed by separate workflows for normal operation and the documented manual path.",
+  },
+  {
+    number: "03",
+    title: "Keeping the staff perspective visible",
+    detail:
+      "Rather than presenting the system only as equipment, I organized the diagrams around what staff need to review and monitor, and how the operating information relates to the room.",
+  },
 ];
 
-const challenges = [
-  { title: "Many connected technical components", response: "I organized the brief into requirement groups so environmental conditions, filtration, controls, and monitoring could be considered together." },
-  { title: "Different modes, different user actions", response: "I separated AUTO, STANDBY, and MANUAL operation into distinct workflows to make each mode's purpose and limitations easier to understand." },
-  { title: "A technical system with a human operating layer", response: "I focused the documentation on what staff need to see, decide, and monitor, helping connect technical information with day-to-day use." },
-];
 ---
 
 <ProjectDetailLayout title="COVID-19 Isolation Room — Joy" active="projects">
   <main class="w-full">
     <div class="py-5 sm:py-7">
-      <Breadcrumb items={[{ label: "Projects", href: "/projects/" }, { label: "COVID-19 Isolation Room", href: "/projects/covid-project/" }]} />
+      <Breadcrumb
+        items={[
+          { label: "Projects", href: "/projects/" },
+          { label: "COVID-19 Isolation Room", href: "/projects/covid-project/" },
+        ]}
+      />
     </div>
 
     <ProjectDetailHero
       eyebrow="Project design case study"
       title="COVID-19 Isolation Room"
-      description="An environmental control and monitoring system for a hospital isolation room. My role centered on translating project needs into structured requirements and clear user workflows."
-      imageSrc={HeroImage.src}
-      imageAlt="COVID-19 isolation room monitoring system cover"
+      description="A project-design case study for an isolation patient room at King Chulalongkorn Memorial Hospital. My focus was to understand the project requirements, map how staff interact with the environmental control system, and organize the information into clear workflows and project documentation."
+      imageSrc={IcuCover.src}
+      imageScale="scale-100"
+      imageAlt="Illustrated cutaway of an isolation room with a monitoring interface and environmental system elements"
       categories={["Project Management"]}
-      role="Project Designer"
+      role="Project Design Manager"
     />
 
     <div id="overview" class="scroll-mt-8">
       <ProjectOverview
-        role="Project Designer"
-        responsibilities={["Requirements gathering and organization", "User and system workflow definition", "Project design documentation and coordination"]}
-        challenges={["Bring multiple environmental and mechanical requirements into one project view", "Clarify staff interaction with monitoring and operating modes", "Account for normal operation and documented fallback conditions"]}
-        solutions={["Structured requirements into clear functional groups", "Mapped staff actions and system responses across operating modes", "Created workflow documentation to support technical coordination"]}
+        durationLabel="Project"
+        duration="75 days (including construction)"
+        role="Project Design Manager"
+        responsibilities={[
+          "Structuring room and system requirements",
+          "Mapping staff-facing and system workflows",
+          "Preparing diagrams and project documentation for coordination",
+        ]}
+        challenges={[
+          "Connect the room, equipment, monitoring, and staff needs in one clear project view",
+          "Explain the different operating states without combining unlike workflows",
+          "Keep the documentation understandable without losing important distinctions",
+        ]}
+        solutions={[
+          "Grouped the brief into four reviewable requirement themes",
+          "Mapped the relationship between staff, monitoring, equipment, and room conditions",
+          "Created separate explanatory views for mode selection, AUTO, and MANUAL",
+        ]}
       />
     </div>
 
-    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[220px_1fr] lg:gap-16">
+    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16">
       <aside class="hidden lg:block">
         <div class="sticky top-28">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">Project design process</p>
-          <nav aria-label="COVID-19 project case-study sections" class="mt-5">
-            <ol class="border-t border-brown-dark/15">
+          <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+            Project design process
+          </h3>
+          <nav aria-label="COVID-19 project case study sections">
+            <ol class="border-y border-brown-dark/15">
               {navItems.map((item, index) => (
-                <li><a href={item.href} data-covid-nav data-section={item.href.slice(1)} aria-current={index === 0 ? "location" : undefined} class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"><span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">{item.number}</span><span>{item.label}</span></a></li>
+                <li>
+                  <a
+                    href={item.href}
+                    data-covid-nav
+                    data-section={item.href.slice(1)}
+                    aria-current={index === 0 ? "location" : undefined}
+                    class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
+                  >
+                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">{item.number}</span>
+                    <span>{item.label}</span>
+                  </a>
+                </li>
               ))}
             </ol>
           </nav>
@@ -82,137 +122,309 @@ const challenges = [
       </aside>
 
       <div class="min-w-0 space-y-20 sm:space-y-28">
-        <!-- 01 PROJECT BRIEF -->
-        <section id="brief" class="scroll-mt-8">
+        <!-- 01 / CONTEXT -->
+        <section id="context" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · Project brief</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Designing the operational framework behind a controlled room environment</h2>
-            <p class="mt-6 max-w-3xl text-lg leading-relaxed">The project concerned the environmental control system for Isolation Patient Room 208 at Chongkolnee Wattana Wong Building, Chulalongkorn Memorial Hospital. The room relied on a connected set of air-conditioning, ventilation, filtration, pressure-monitoring, and control components. The project-design task was to make the requirements and operating logic clear enough to guide planning and everyday operation.</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · Project context</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A room is more than the space around it</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The project brought together the physical room, environmental conditions, supporting equipment, and the information staff needed to monitor. Before focusing on individual components, I looked at how these parts related to one another. This gave the project a clear starting point for organizing requirements and explaining the system from the staff perspective.
+            </p>
           </header>
 
           <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
-            <img src={RoomOverview.src} alt="Conceptual isometric cutaway showing the isolation room, air handling equipment, filtered supply air, exhaust path, and monitoring interface" class="h-auto w-full" loading="lazy" />
-            <figcaption class="flex flex-col gap-1 border-t border-brown-dark/10 px-5 py-4 text-sm text-brown-dark/60 sm:flex-row sm:items-center sm:justify-between"><span>System context · isolation room environmental control</span><span>Conceptual illustration, not an engineering drawing</span></figcaption>
+            <img src={ContextImage.src} alt="Conceptual room plan and project design considerations" class="h-auto w-full" loading="lazy" />
+            <figcaption class="flex flex-col gap-1 border-t border-brown-dark/10 px-5 py-4 text-sm text-brown-dark/60 sm:flex-row sm:items-center sm:justify-between">
+              <span>Project context · the room as a connected environment</span>
+              <span>Conceptual illustration created for this case study</span>
+            </figcaption>
           </figure>
 
           <div class="mt-8 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3">
-            <article class="bg-ivory p-6"><p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Project setting</p><h3 class="mt-3 text-xl">Hospital facility</h3><p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Chulalongkorn Memorial Hospital</p></article>
-            <article class="bg-cream p-6"><p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Project area</p><h3 class="mt-3 text-xl">Isolation Room 208</h3><p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Chongkolnee Wattana Wong Building</p></article>
-            <article class="bg-ivory p-6"><p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">System scope</p><h3 class="mt-3 text-xl">Environmental control</h3><p class="mt-2 text-sm leading-relaxed text-brown-dark/65">HVAC · ventilation · filtration · monitoring</p></article>
+            <article class="bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Project setting</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Hospital facility</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">King Chulalongkorn Memorial Hospital (KCMH), Bangkok, Thailand</p>
+            </article>
+            <article class="bg-cream p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Project area</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Room 208</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Chongkolnee Wattanawong Building</p>
+            </article>
+            <article class="bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">My focus</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Project design</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Requirements · workflows · coordination</p>
+            </article>
           </div>
         </section>
 
-        <!-- 02 CONTRIBUTION -->
+        <!-- 02 / CONTRIBUTION -->
         <section id="contribution" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div><p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · My contribution</p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Connecting project requirements with real operational needs</h2></div>
-            <p class="max-w-xl text-lg leading-relaxed text-brown-dark/75">As a Project Designer, I focused on understanding what the project needed to achieve, organizing those requirements, and mapping how staff would interact with the system during routine operation and mode changes.</p>
-          </div>
-          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory"><img src={ContributionGraphic.src} alt="Three-part project designer contribution diagram covering requirements, user workflows, and coordination" class="h-auto w-full" loading="lazy"/><figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">My project-design contribution · requirements → workflows → coordination</figcaption></figure>
+          <header class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · My contribution</p>
+              <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">My role was to connect the brief, the people, and the project team</h2>
+            </div>
+            <p class="max-w-xl text-lg leading-relaxed text-brown-dark/75">
+              My contribution sat between the project brief and the technical work that followed. I organized the requirements, mapped the main user and system workflows, and prepared design documentation to make the project easier to understand, review, and coordinate.
+            </p>
+          </header>
+
+          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
+            <img src={ContributionImage.src} alt="Three-part diagram showing my contribution across requirements, workflows, and coordination" class="h-auto w-full" loading="lazy" />
+            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">My contribution · requirements  workflows  coordination</figcaption>
+          </figure>
+
           <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <article class="border border-brown-dark/15 bg-ivory p-6"><span class="text-sm font-semibold text-green-dark">01 / Understand</span><h3 class="mt-4 text-2xl">Gather requirements</h3><p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Identify the room's environmental needs, system functions, operating conditions, and constraints.</p></article>
-            <article class="border border-brown-dark/15 bg-ivory p-6"><span class="text-sm font-semibold text-brown-light">02 / Structure</span><h3 class="mt-4 text-2xl">Define workflows</h3><p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Organize staff actions, system responses, and the differences between operating modes.</p></article>
-            <article class="border border-brown-dark/15 bg-ivory p-6"><span class="text-sm font-semibold text-pink">03 / Coordinate</span><h3 class="mt-4 text-2xl">Support alignment</h3><p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Document requirements and workflows so project information can be reviewed across design and technical workstreams.</p></article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <span class="text-sm font-semibold text-green-dark">01 / Understand</span>
+              <h3 class="mt-4 text-2xl text-brown-dark">Gather the needs</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Review the project brief and bring the room, environmental, and operational needs into one structured view.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <span class="text-sm font-semibold text-brown-light">02 / Translate</span>
+              <h3 class="mt-4 text-2xl text-brown-dark">Map the experience</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Translate the documented operating modes into clear paths, with the staff interaction and system response shown separately.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <span class="text-sm font-semibold text-pink">03 / Align</span>
+              <h3 class="mt-4 text-2xl text-brown-dark">Support coordination</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Prepare diagrams and structured documentation that give the project team a shared reference for discussion and coordination.</p>
+            </article>
           </div>
         </section>
 
-        <!-- 03 REQUIREMENTS -->
-        <section id="requirements" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · Requirements</p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Breaking a complex brief into clear requirement groups</h2><p class="mt-6 max-w-3xl text-lg leading-relaxed">Rather than treating the room as a single piece of equipment, I framed the brief around four connected areas: room conditions, air quality, staff operation, and continuity.</p></header>
-          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory"><img src={RequirementsMap.src} alt="Requirements map connecting room conditions, air quality, staff operation, and continuity to the isolation room control system" class="h-auto w-full" loading="lazy"/><figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Requirement framework · a planning and communication view</figcaption></figure>
+        <!-- 03 / NEEDS -->
+        <section id="needs" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · Understanding the needs</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Four themes helped me make sense of the brief</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The brief covered several connected areas, so presenting every item as one long checklist would make the overall picture difficult to scan. I grouped the requirements into four themes: room conditions, supporting air and filtration systems, staff operation, and operational continuity. This structure made each area easier to review while keeping the wider purpose of the system in view.
+            </p>
+          </header>
+
+          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
+            <img src={RequirementsImage.src} alt="Four-part requirements framework for room conditions, air quality and filtration, staff operation, and operational continuity" class="h-auto w-full" loading="lazy" />
+            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Requirements framework · grouped around the needs of the project</figcaption>
+          </figure>
+
           <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            {requirements.map((item) => (
-              <article class:list={["border border-brown-dark/15 p-6 sm:p-8", item.tone === "sage" ? "bg-green-light/60" : item.tone === "blue" ? "bg-accent-blue/10" : item.tone === "rose" ? "bg-pink/10" : "bg-cream/60"]}>
-                <div class="flex items-center justify-between gap-4"><span class="text-sm font-semibold text-green-dark">{item.number}</span><span class="rounded-full bg-white/65 px-3 py-1 text-xs text-brown-dark">{item.tag}</span></div>
-                <h3 class="mt-6 text-2xl">{item.title}</h3><p class="mt-3 leading-relaxed text-brown-dark/75">{item.text}</p>
+            <article class="border border-brown-dark/15 bg-green-light/40 p-6 sm:p-8">
+              <span class="text-sm font-semibold text-green-dark">01 / Environment</span>
+              <h3 class="mt-5 text-2xl text-brown-dark">Room conditions</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/75">Understand the environmental conditions that need to be monitored, including temperature, humidity, and pressure.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-accent-blue/10 p-6 sm:p-8">
+              <span class="text-sm font-semibold text-brown-light">02 / Support systems</span>
+              <h3 class="mt-5 text-2xl text-brown-dark">Air quality and filtration</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/75">Consider the ventilation and filtration equipment that supports the room environment.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-pink/10 p-6 sm:p-8">
+              <span class="text-sm font-semibold text-pink">03 / People</span>
+              <h3 class="mt-5 text-2xl text-brown-dark">Staff operation</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/75">Make system status, operating modes, and the available controls understandable to the people using them.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-cream/70 p-6 sm:p-8">
+              <span class="text-sm font-semibold text-green-dark">04 / Continuity</span>
+              <h3 class="mt-5 text-2xl text-brown-dark">Operational continuity</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/75">Account for the documented manual operating option and communicate that it is not identical to normal automatic operation.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- 04 / SYSTEM -->
+        <section id="system" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Making sense of the system</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">I started with the people, not just the equipment</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              I wanted the system view to explain the relationships before introducing component-level detail. I organized it around a simple reading order: the staff who need the information, the monitoring and control layer, the connected equipment, and the room conditions being monitored. This helped shift the diagram from a list of equipment to a view of how the parts fit together.
+            </p>
+          </header>
+
+          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
+            <img src={SystemImage.src} alt="High-level relationship map connecting hospital staff, monitoring, control layer, equipment, and room conditions" class="h-auto w-full" loading="lazy" />
+            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">System relationship · a simplified view for project communication</figcaption>
+          </figure>
+
+          <div class="mt-8 grid gap-4 md:grid-cols-3">
+            <article class="bg-green-light/50 p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-green-dark">People</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">Hospital staff</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">The people who need to understand the room status and use the documented controls.</p>
+            </article>
+            <article class="bg-accent-blue/10 p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-brown-light">Information and control</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">Monitoring and control layer</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">The interface presents system information while the controller manages programmed operation.</p>
+            </article>
+            <article class="bg-pink/10 p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-pink">Environment</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">Connected equipment</h3>
+              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Ventilation, filtration, and related equipment support the monitored room environment.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- 05 / WORKFLOWS -->
+        <section id="workflows" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · How it works</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Making the operating modes easier to follow</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The operating modes were not interchangeable, so I avoided combining them into one generic flow. I first showed the selector and its three possible states, then gave AUTO and MANUAL their own explanations. This makes the normal operating cycle easier to follow while keeping the documented fallback path distinct. The diagrams summarize the project documentation; they are not instructions for operating hospital equipment.
+            </p>
+          </header>
+
+          <div class="mt-10 space-y-12">
+            <article>
+              <div class="mb-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 01 · Mode selection</p>
+                <h3 class="mt-2 text-2xl text-brown-dark">One selector, three different outcomes</h3>
+                <p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">I showed AUTO, OFF, and MANUAL as three separate outcomes from the selector. This makes the state change clear at the point where someone needs to understand which operating path is selected.</p>
+              </div>
+              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
+                <img src={ModeImage.src} alt="Mode selection diagram branching into AUTO, OFF, and MANUAL" class="h-auto w-full" loading="lazy" />
+                <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Mode selection · based on the operating modes described in the project manual</figcaption>
+              </figure>
+            </article>
+
+            <article>
+              <div class="mb-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 02 · Normal operation</p>
+                <h3 class="mt-2 text-2xl text-brown-dark">AUTO: a cycle of operation and monitoring</h3>
+                <p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">I presented AUTO as a repeating sequence rather than a one-way checklist: select the mode, review the status, allow the programmed operation to run, and continue monitoring. The return path communicates that monitoring is ongoing, not a final step.</p>
+              </div>
+              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
+                <img src={AutoImage.src} alt="AUTO mode cycle showing mode selection, status review, programmed system operation, monitoring, and continued operation" class="h-auto w-full" loading="lazy" />
+                <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">AUTO operation · a simplified explanatory workflow</figcaption>
+              </figure>
+            </article>
+
+            <article>
+              <div class="mb-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 03 · Fallback operation</p>
+                <h3 class="mt-2 text-2xl text-brown-dark">MANUAL: a separate path with clear limitations</h3>
+                <p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">The project documentation describes a local manual option for situations when automatic control is unavailable. I kept this path separate and highlighted its limitations so the visual explanation would not imply that MANUAL provides the same functions as AUTO.</p>
+              </div>
+              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
+                <img src={ManualImage.src} alt="MANUAL fallback flow with local selector, documented switches, room observation, and a note about limitations" class="h-auto w-full" loading="lazy" />
+                <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">MANUAL fallback · simplified from the supplied operating documentation</figcaption>
+              </figure>
+            </article>
+          </div>
+
+          <p class="mt-8 border-l-2 border-pink bg-pink/10 p-5 text-sm leading-relaxed text-brown-dark/70">
+            These portfolio diagrams are explanatory summaries, not approved hospital operating instructions. Staff must follow the hospital's current procedures and direction from the responsible technical team.
+          </p>
+        </section>
+
+        <!-- 06 / APPROACH -->
+        <section id="approach" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · My approach</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A structured process, with clarity at every step</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              I worked from the broad context toward the details: first understanding the room and its purpose, then grouping the requirements, mapping the staff and system workflows, and organizing the information into documentation. This sequence helped me move from a complex brief to a set of clear, connected views.
+            </p>
+          </header>
+
+          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
+            <img src={ProcessImage.src} alt="Four-step project design process: understand, structure, map, and coordinate" class="h-auto w-full" loading="lazy" />
+            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">My project design approach · from understanding to coordination</figcaption>
+          </figure>
+
+          <div class="mt-8 grid gap-4 md:grid-cols-3">
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <span class="text-sm font-semibold text-green-dark">Design decision 01</span>
+              <h3 class="mt-3 text-xl text-brown-dark">Use hierarchy before detail</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">I started with the room and system context, moved into requirement groups, and then explained individual workflows. The sequence gives readers the overall picture before introducing detail.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <span class="text-sm font-semibold text-green-dark">Design decision 02</span>
+              <h3 class="mt-3 text-xl text-brown-dark">Separate different states</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">I showed AUTO, OFF, and MANUAL as distinct states, then gave the normal and fallback paths their own explanations. This avoids suggesting that the modes work in the same way.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <span class="text-sm font-semibold text-green-dark">Design decision 03</span>
+              <h3 class="mt-3 text-xl text-brown-dark">Keep language consistent</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">I used concise labels and consistent terms across the diagrams. I also separated actions, system states, and supporting explanations to make each workflow easier to scan.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- 07 / CHALLENGES -->
+        <section id="challenges" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">07 · Challenges and decisions</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Clarity was the design challenge</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The main design challenge was making a connected, technical system understandable without flattening it into an oversimplified diagram. I needed to preserve the important relationships while giving each part enough space to be understood on its own.
+            </p>
+          </header>
+
+          <div class="mt-10 space-y-4">
+            {challengeCards.map((item) => (
+              <article class="grid gap-4 border border-brown-dark/15 bg-ivory p-6 sm:grid-cols-[56px_0.85fr_1.15fr] sm:gap-6 sm:p-8">
+                <span class="text-sm font-semibold text-green-dark">{item.number}</span>
+                <h3 class="text-xl text-brown-dark">{item.title}</h3>
+                <p class="leading-relaxed text-brown-dark/70">{item.detail}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <!-- 04 SYSTEM -->
-        <section id="system" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · System overview</p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Making the relationship between people and equipment visible</h2><p class="mt-6 max-w-3xl text-lg leading-relaxed">The monitoring interface sits between staff and the control system. The controller coordinates connected equipment, while sensors and equipment indicators provide information about room and system conditions.</p></header>
-          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory"><img src={SystemRelationship.src} alt="System relationship diagram from hospital staff to monitoring interface, DDC controller, equipment, and room environment" class="h-auto w-full" loading="lazy"/><figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">High-level system relationship · simplified for communication</figcaption></figure>
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <article class="bg-green-light/60 p-6"><p class="text-xs font-semibold uppercase tracking-wider text-green-dark">People layer</p><h3 class="mt-3 text-2xl">Hospital staff</h3><p class="mt-3 text-sm leading-relaxed">Review available readings, check system status, and use supported controls.</p></article>
-            <article class="bg-accent-blue/10 p-6"><p class="text-xs font-semibold uppercase tracking-wider text-brown-light">Control layer</p><h3 class="mt-3 text-2xl">Monitoring + DDC</h3><p class="mt-3 text-sm leading-relaxed">The interface presents system information; the DDC controller runs programmed automatic control logic.</p></article>
-            <article class="bg-pink/10 p-6"><p class="text-xs font-semibold uppercase tracking-wider text-pink">Equipment layer</p><h3 class="mt-3 text-2xl">Room systems</h3><p class="mt-3 text-sm leading-relaxed">Air handling, filtration, fans, and sensors contribute to the room environment.</p></article>
-          </div>
-        </section>
-
-        <!-- 05 WORKFLOWS -->
-        <section id="workflows" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · User workflows</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Following the operating logic from mode selection to action</h2>
-            <p class="mt-6 max-w-3xl text-lg leading-relaxed">Rather than treating each screen or action as a separate task, I mapped the documented operating sequence as connected flows. The diagrams distinguish normal AUTO operation from the emergency MANUAL fallback and show where the system's limitations need to remain visible.</p>
-          </header>
-          <div class="mt-10 space-y-12">
-            <article>
-              <div class="mb-4"><p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 01 · Overview</p><h3 class="mt-2 text-2xl">Choose the operating mode</h3><p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">One selector branches into the three modes described in the manual: AUTO, OFF, and MANUAL.</p></div>
-              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory"><img src={ModeFlow.src} alt="Connected decision flow showing AUTO, OFF, and MANUAL operating modes" class="h-auto w-full" loading="lazy"/><figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Mode selection · source manual, selector-switch description (page 6)</figcaption></figure>
-            </article>
-            <article>
-              <div class="mb-4"><p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 02 · Normal operation</p><h3 class="mt-2 text-2xl">AUTO mode: operate and monitor</h3><p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">The normal cycle starts at the monitoring interface, continues through the DDC controller's programmed logic, and returns to ongoing status checks.</p></div>
-              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory"><img src={AutoFlow.src} alt="Continuous AUTO mode workflow connecting monitoring, review, supported controls, DDC operation, and ongoing monitoring" class="h-auto w-full" loading="lazy"/><figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">AUTO operation · source manual, pages 6 and 10</figcaption></figure>
-            </article>
-            <article>
-              <div class="mb-4"><p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 03 · Emergency fallback</p><h3 class="mt-2 text-2xl">MANUAL mode: local control sequence</h3><p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">The manual documents a local switch sequence for use when the monitoring computer or DDC controller cannot be used. It also clearly states what control functions may be lost.</p></div>
-              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory"><img src={ManualFlow.src} alt="Connected manual fallback sequence with AHU, CDU and EF selector actions and documented system limitations" class="h-auto w-full" loading="lazy"/><figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">MANUAL fallback · source manual, pages 7–8</figcaption></figure>
-            </article>
-          </div>
-          <p class="mt-8 border-l-2 border-pink bg-pink/10 p-5 text-sm leading-relaxed text-brown-dark/70">These are portfolio-level explanatory diagrams based on the supplied operation manual. They are not approved hospital operating instructions. Staff should follow the hospital's current procedures and the responsible technical team's direction.</p>
-        </section>
-
-        <!-- 06 PROCESS -->
-        <section id="process" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · Design process</p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A structured path from understanding to coordination</h2><p class="mt-6 max-w-3xl text-lg leading-relaxed">The project-design work moved from understanding the room and its requirements to structuring those needs, mapping staff workflows, and organizing information for coordination.</p></header>
-          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory"><img src={DesignProcess.src} alt="Four-stage project design process: understand, structure, map, coordinate" class="h-auto w-full" loading="lazy"/><figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Project design process · from brief to shared documentation</figcaption></figure>
-        </section>
-
-        <!-- 07 CHALLENGES -->
-        <section id="challenges" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">07 · Challenges & approach</p><h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Balancing technical complexity with practical operation</h2></header>
-          <div class="mt-10 space-y-4">
-            {challenges.map((item, index) => (
-              <article class="grid gap-4 border border-brown-dark/15 bg-ivory p-6 sm:grid-cols-[56px_0.85fr_1.15fr] sm:gap-6 sm:p-8"><span class="text-sm font-semibold text-green-dark">0{index + 1}</span><h3 class="text-xl">{item.title}</h3><p class="leading-relaxed text-brown-dark/70">{item.response}</p></article>
-            ))}
-          </div>
-        </section>
-
-        <!-- 08 OUTCOME -->
+        <!-- 08 / OUTCOME -->
         <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+          <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-end">
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">08 · Outcome</p>
-              <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A clearer picture of how the room is operated</h2>
+              <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A shared picture of how the project fits together</h2>
             </div>
-            <p class="text-lg leading-relaxed text-brown-dark/75">The operation manual brings the room's control modes, equipment switches, and monitoring interface into one reference. Reviewing these together reveals the key project conclusion: the room depends not only on mechanical equipment, but also on a clear relationship between staff actions, automated control, and the environmental conditions being monitored.</p>
+            <p class="text-lg leading-relaxed text-brown-dark/75">
+              The project-design deliverables brought the brief into a more structured form. The requirements were grouped into reviewable themes, the relationship between staff, monitoring, equipment, and room conditions was mapped, and the operating modes were documented as separate workflows. Together, these materials created a clearer reference for project discussions and coordination. They represent my contribution at the project-design stage, rather than the completed engineering or clinical outcome.
+            </p>
           </div>
 
-          <div class="mt-10 grid gap-5 md:grid-cols-2">
-            <figure class="border border-brown-dark/15 bg-ivory">
-              <img src={MonitoringScreenshot.src} alt="Original monitoring interface from the supplied isolation room operation manual, showing room conditions and equipment status" class="h-auto w-full" loading="lazy" />
-              <figcaption class="border-t border-brown-dark/10 px-5 py-4"><p class="text-sm font-semibold text-brown-dark">One view of room conditions and system status</p><p class="mt-1 text-sm leading-relaxed text-brown-dark/60">The monitoring screen brings room readings and equipment indicators into a shared operational view. Source: supplied operation manual, page 10.</p></figcaption>
-            </figure>
-            <figure class="border border-brown-dark/15 bg-ivory">
-              <img src={ControlPanelPhoto.src} alt="Original physical control cabinet from the supplied isolation room operation manual" class="h-auto w-full" loading="lazy" />
-              <figcaption class="border-t border-brown-dark/10 px-5 py-4"><p class="text-sm font-semibold text-brown-dark">A physical control layer for mode selection</p><p class="mt-1 text-sm leading-relaxed text-brown-dark/60">The control cabinet provides the MANUAL, OFF, and AUTO selector used in the documented operating modes. Source: supplied operation manual, page 6.</p></figcaption>
-            </figure>
+          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
+            <img src={OutcomeImage.src} alt="Illustrative monitoring interface concept showing room overview, status summary, ventilation, filtration, and operating mode labels" class="h-auto w-full" loading="lazy" />
+            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">
+              Illustrative interface reconstruction · created to communicate the information hierarchy, not an original product screenshot
+            </figcaption>
+          </figure>
+
+          <div class="mt-8 grid gap-4 md:grid-cols-3">
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What became clearer</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Project requirements</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">The project needs were organized into four related themes, making the brief easier to review without losing sight of how the requirements connect.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What became clearer</p>
+              <h3 class="mt-3 text-xl text-brown-dark">System relationships</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">The system map made the relationship between staff, monitoring, control, equipment, and room conditions easier to communicate.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What became clearer</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Operating workflows</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">The mode diagrams made the difference between normal automatic operation, the OFF state, and the documented manual option easier to distinguish.</p>
+            </article>
           </div>
 
           <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
             <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Project conclusion</p>
-              <h3 class="mt-3 text-3xl !text-white">From separate controls to one operational reference</h3>
-              <p class="mt-3 max-w-2xl text-white/75">The documentation connects three parts of the operating picture: AUTO as the normal programmed mode, the monitoring interface for room and equipment status, and MANUAL as an emergency fallback with important limitations. My contribution was organizing these relationships into requirements and connected workflows that could be reviewed across project and technical teams.</p>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Project takeaway</p>
+              <h3 class="mt-3 text-3xl !text-white">Good project design makes complexity easier to act on.</h3>
+              <p class="mt-3 max-w-2xl text-white/75">
+                My contribution was to make a complex project easier to understand and discuss: structure the requirements, connect the system view to the staff perspective, and communicate the operating modes through clear workflows.
+              </p>
             </div>
-            <a href="/projects" class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white">Explore more projects →</a>
+            <a href="/projects/" class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white">Explore more projects </a>
           </div>
         </section>
 
-        <div class="border-t border-brown-dark/15 pt-8"><p class="text-sm leading-relaxed text-brown-dark/60">Project documentation reference: Air-conditioning control system operation manual, Isolation Patient Room 208, Chongkolnee Wattana Wong Building, Chulalongkorn Memorial Hospital.</p></div>
       </div>
     </section>
   </main>
@@ -227,9 +439,11 @@ const challenges = [
 
     const updateCurrent = (sectionId: string) => {
       links.forEach((link) => {
-        if (link.dataset.section === sectionId)
+        if (link.dataset.section === sectionId) {
           link.setAttribute("aria-current", "location");
-        else link.removeAttribute("aria-current");
+        } else {
+          link.removeAttribute("aria-current");
+        }
       });
     };
 
@@ -244,6 +458,8 @@ const challenges = [
     const sections = links
       .map((link) => document.getElementById(link.dataset.section ?? ""))
       .filter((section): section is HTMLElement => section !== null);
+
+    if (!("IntersectionObserver" in window)) return;
 
     const observer = new IntersectionObserver(
       (entries) => {

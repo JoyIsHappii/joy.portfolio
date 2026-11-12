@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820"><rect width="1440" height="820" fill="#F8F6F0"/><defs>
+<style>
+.k{font-family:Arial,sans-serif}.serif{font-family:Georgia,serif}
+.eyebrow{font-size:17px;font-weight:700;letter-spacing:3px;fill:#71834B}
+.head{font-family:Georgia,serif;font-size:48px;fill:#3E352F}
+.sub{font-family:Arial,sans-serif;font-size:21px;fill:#77736B}
+.label{font-family:Arial,sans-serif;font-size:17px;font-weight:700;letter-spacing:1px;fill:#71834B}
+.title{font-family:Arial,sans-serif;font-size:27px;font-weight:700;fill:#40372F}
+.body{font-family:Arial,sans-serif;font-size:20px;fill:#716D65}
+.small{font-family:Arial,sans-serif;font-size:16px;fill:#89847A}
+.line{stroke:#D2CEC2;stroke-width:2;fill:none}
+</style>
+</defs>
+<text x="88" y="86" class="eyebrow">01 / REQUIREMENTS</text>
+<text x="88" y="154" class="head">Four themes shaped the brief.</text>
+<text x="88" y="198" class="sub">I grouped the information by the needs the project had to address.</text>
+<g>
+<line x1="88" y1="270" x2="1352" y2="270" class="line"/>
+<text x="100" y="330" class="label">01</text><text x="190" y="333" class="title">Room conditions</text><text x="590" y="333" class="body">Temperature, humidity, pressure</text><circle cx="1310" cy="322" r="8" fill="#879B62"/>
+<line x1="88" y1="380" x2="1352" y2="380" class="line"/>
+<text x="100" y="440" class="label" fill="#78938F">02</text><text x="190" y="443" class="title">Air quality and filtration</text><text x="590" y="443" class="body">Ventilation and filter status</text><circle cx="1310" cy="432" r="8" fill="#8CA9A5"/>
+<line x1="88" y1="490" x2="1352" y2="490" class="line"/>
+<text x="100" y="550" class="label" fill="#C8896D">03</text><text x="190" y="553" class="title">Staff operation</text><text x="590" y="553" class="body">System status and operating modes</text><circle cx="1310" cy="542" r="8" fill="#C8896D"/>
+<line x1="88" y1="600" x2="1352" y2="600" class="line"/>
+<text x="100" y="660" class="label">04</text><text x="190" y="663" class="title">Operational continuity</text><text x="590" y="663" class="body">Documented fallback and limitations</text><circle cx="1310" cy="652" r="8" fill="#A4A18F"/>
+<line x1="88" y1="710" x2="1352" y2="710" class="line"/>
+</g>
+<text x="88" y="770" class="small">A simple structure made a broad brief easier to review and discuss.</text>
+</svg>

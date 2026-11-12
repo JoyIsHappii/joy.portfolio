@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820"><rect width="1440" height="820" fill="#F8F6F0"/><defs>
+<style>
+.k{font-family:Arial,sans-serif}.serif{font-family:Georgia,serif}
+.eyebrow{font-size:17px;font-weight:700;letter-spacing:3px;fill:#71834B}
+.head{font-family:Georgia,serif;font-size:48px;fill:#3E352F}
+.sub{font-family:Arial,sans-serif;font-size:21px;fill:#77736B}
+.label{font-family:Arial,sans-serif;font-size:17px;font-weight:700;letter-spacing:1px;fill:#71834B}
+.title{font-family:Arial,sans-serif;font-size:27px;font-weight:700;fill:#40372F}
+.body{font-family:Arial,sans-serif;font-size:20px;fill:#716D65}
+.small{font-family:Arial,sans-serif;font-size:16px;fill:#89847A}
+.line{stroke:#D2CEC2;stroke-width:2;fill:none}
+</style>
+</defs>
+<text x="88" y="86" class="eyebrow">MY CONTRIBUTION</text>
+<text x="88" y="154" class="head">Turning a complex brief into a shared project picture.</text>
+<text x="88" y="198" class="sub">My work connected the project needs, the operating experience, and team coordination.</text>
+<g>
+<rect x="88" y="290" width="390" height="300" fill="#E9EDE2"/>
+<text x="128" y="350" class="label">01 / UNDERSTAND</text>
+<text x="128" y="430" class="serif" font-size="42" fill="#40372F">Requirements</text>
+<line x1="128" y1="465" x2="438" y2="465" stroke="#C8D1BA" stroke-width="2"/>
+<text x="128" y="515" class="body">What does the project</text><text x="128" y="545" class="body">need to address?</text>
+
+<rect x="525" y="290" width="390" height="300" fill="#E5EFED"/>
+<text x="565" y="350" class="label">02 / TRANSLATE</text>
+<text x="565" y="430" class="serif" font-size="42" fill="#40372F">Workflows</text>
+<line x1="565" y1="465" x2="875" y2="465" stroke="#C8D8D3" stroke-width="2"/>
+<text x="565" y="515" class="body">How will people interact</text><text x="565" y="545" class="body">with the system?</text>
+
+<rect x="962" y="290" width="390" height="300" fill="#F2E6DF"/>
+<text x="1002" y="350" class="label" fill="#B8785C">03 / ALIGN</text>
+<text x="1002" y="430" class="serif" font-size="42" fill="#40372F">Coordination</text>
+<line x1="1002" y1="465" x2="1312" y2="465" stroke="#D8B9A9" stroke-width="2"/>
+<text x="1002" y="515" class="body">How can teams stay</text><text x="1002" y="545" class="body">aligned?</text>
+</g>
+<text x="88" y="680" class="small">Project-design contribution · requirements, workflows, and coordination.</text>
+</svg>

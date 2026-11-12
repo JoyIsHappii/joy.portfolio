@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+<rect width="1440" height="820" fill="#F8F6F0"/>
+<style>
+.eyebrow{font:700 17px Arial,sans-serif;letter-spacing:3px;fill:#71834B}
+.head{font:48px Georgia,serif;fill:#3E352F}
+.sub{font:21px Arial,sans-serif;fill:#77736B}
+.label{font:700 16px Arial,sans-serif;letter-spacing:1.5px;fill:#71834B}
+.roomlabel{font:700 18px Arial,sans-serif;letter-spacing:1px;fill:#5D604F}
+.small{font:17px Arial,sans-serif;fill:#77736B}
+</style>
+<text x="88" y="86" class="eyebrow">PROJECT CONTEXT</text>
+<text x="88" y="154" class="head">A five-bed isolation room environment.</text>
+<text x="88" y="198" class="sub">The room plan connects the isolation area with the adjacent ante room and doffing room.</text>
+
+<!-- room plan frame -->
+<g transform="translate(88 235) scale(0.78)">
+  <!-- adjoining spaces -->
+  <rect x="0" y="350" width="205" height="190" fill="#F0E8D7" stroke="#BDB7A8" stroke-width="2"/>
+  <rect x="205" y="0" width="730" height="550" fill="#E9EDE5" stroke="#9EA995" stroke-width="3"/>
+  <rect x="935" y="350" width="205" height="190" fill="#F2E7E0" stroke="#C9A998" stroke-width="2"/>
+  <!-- access openings: door leaves and swing arcs are shown opening OUT into the adjacent rooms -->
+  <path d="M205 400V490M935 400V490" stroke="#F8F6F0" stroke-width="10"/>
+  <!-- ante-room door: opening at the lower-left corner, swinging into the ante room -->
+  <path d="M205 400L115 400" stroke="#8F9486" stroke-width="5" stroke-linecap="round"/>
+  <path d="M115 400A90 90 0 0 1 205 490" fill="none" stroke="#BDB7A8" stroke-width="2" stroke-dasharray="5 5"/>
+  <!-- doffing-room door: opening at the lower-right corner, swinging into the doffing room -->
+  <path d="M935 490L1025 490" stroke="#8F9486" stroke-width="5" stroke-linecap="round"/>
+  <path d="M1025 490A90 90 0 0 1 935 400" fill="none" stroke="#BDB7A8" stroke-width="2" stroke-dasharray="5 5"/>
+  <!-- five beds: three along upper wall, one on each side -->
+  <g fill="#FCFBF7" stroke="#89968A" stroke-width="2">
+    <rect x="340" y="65" width="82" height="142" rx="7"/>
+    <rect x="528" y="65" width="82" height="142" rx="7"/>
+    <rect x="716" y="65" width="82" height="142" rx="7"/>
+    <rect x="245" y="278" width="155" height="78" rx="7"/>
+    <rect x="740" y="278" width="155" height="78" rx="7"/>
+  </g>
+  <g fill="#E7ECE6" stroke="#B6C0B4" stroke-width="1.5">
+    <rect x="351" y="77" width="60" height="27" rx="5"/>
+    <rect x="539" y="77" width="60" height="27" rx="5"/>
+    <rect x="727" y="77" width="60" height="27" rx="5"/>
+    <rect x="257" y="287" width="27" height="60" rx="5"/>
+    <rect x="752" y="287" width="27" height="60" rx="5"/>
+  </g>
+  <!-- small bed markers -->
+  <g fill="#71834B" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    <text x="381" y="155">01</text><text x="569" y="155">02</text><text x="757" y="155">03</text>
+    <text x="335" y="329">04</text><text x="830" y="329">05</text>
+  </g>
+  <!-- labels -->
+  <text x="102" y="440" text-anchor="middle" class="roomlabel">ANTE</text>
+  <text x="102" y="465" text-anchor="middle" class="roomlabel">ROOM</text>
+  <text x="570" y="465" text-anchor="middle" class="roomlabel">ISOLATION ROOM</text>
+  <!-- nurse monitoring table below the shared room -->
+  <rect x="455" y="570" width="230" height="48" rx="5" fill="#E5EFED" stroke="#8FA69B" stroke-width="2"/>
+  <rect x="475" y="580" width="48" height="27" rx="3" fill="#FCFBF7" stroke="#8FA69B" stroke-width="1.5"/>
+  <rect x="535" y="580" width="48" height="27" rx="3" fill="#FCFBF7" stroke="#8FA69B" stroke-width="1.5"/>
+  <rect x="595" y="580" width="48" height="27" rx="3" fill="#FCFBF7" stroke="#8FA69B" stroke-width="1.5"/>
+  <text x="570" y="650" text-anchor="middle" class="roomlabel">NURSE MONITORING TABLE</text>
+  <text x="1037" y="440" text-anchor="middle" class="roomlabel">DOFFING</text>
+  <text x="1037" y="465" text-anchor="middle" class="roomlabel">ROOM</text>
+</g>
+
+<!-- right-side context notes -->
+<g transform="translate(1280 285)">
+  <text x="0" y="0" class="label">ROOM PLAN</text>
+  <text x="0" y="52" font-family="Georgia,serif" font-size="44" fill="#3E352F">05</text>
+  <text x="0" y="82" class="small">patient beds</text>
+  <line x1="0" y1="112" x2="100" y2="112" stroke="#D2CEC2" stroke-width="2"/>
+  <text x="0" y="155" class="label">ADJACENT</text>
+  <text x="0" y="185" class="small">Ante room</text>
+  <text x="0" y="214" class="small">Doffing room</text>
+</g>
+<text x="88" y="770" class="small">Simplified plan based on the supplied room-plan reference · not a construction drawing</text>
+</svg>

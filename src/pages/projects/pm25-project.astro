@@ -1,0 +1,430 @@
+---
+import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
+import ProjectOverview from "../../components/ProjectOverview.astro";
+
+import Pm25HeroDetail from "../../assets/hero/pm25-cover.webp";
+import Pm25Statistics from "../../assets/25pm/pm25-statistics.webp";
+import Pm25Impacts from "../../assets/25pm/pm25-impacts.webp";
+import Pm25Causes from "../../assets/25pm/pm25-causes.webp";
+
+const projectUrl = "https://air-pollution-thailand.framer.website/";
+
+const navItems = [
+  { number: "01", label: "Project brief", href: "#brief" },
+  { number: "02", label: "Design process", href: "#process" },
+  { number: "03", label: "Content & visuals", href: "#content" },
+  { number: "04", label: "Interaction design", href: "#interaction" },
+  { number: "05", label: "Responsive & Framer", href: "#framer" },
+  { number: "06", label: "Outcome", href: "#outcome" },
+];
+
+const processSteps = [
+  { number: "01", title: "Research PM2.5", text: "Learn about the causes, health effects and scale of PM2.5 pollution in Thailand." },
+  { number: "02", title: "Storyboard the impacts", text: "Sketch how the story should unfold, from the problem to what people can do." },
+  { number: "03", title: "Choose the content", text: "Identify the topics and key information worth including on the website." },
+  { number: "04", title: "Outline the design", text: "Organize the topics into a design outline before shaping each section." },
+];
+
+const sections = [
+  {
+    number: "01",
+    title: "Hero",
+    text: "A full-screen, bird’s-eye view of a city covered in dust and smoke. The dark tone introduces the seriousness of air pollution and the feeling of being overwhelmed by it.",
+  },
+  {
+    number: "02",
+    title: "Statistics",
+    text: "Key figures are presented visually, so visitors can understand the scale of the problem without reading dense paragraphs.",
+  },
+  {
+    number: "03",
+    title: "Impacts",
+    text: "Images introduce the most significant impacts. Interactive cards let visitors discover the details instead of seeing all the text at once.",
+  },
+  {
+    number: "04",
+    title: "Causes",
+    text: "A moving ticker gives an overview of the causes, then visitors can click or scroll to explore each one.",
+  },
+  {
+    number: "05",
+    title: "Solutions",
+    text: "The visual direction shifts towards a safer, more hopeful feeling, and the content is revealed topic by topic to encourage action.",
+  },
+];
+
+const interactions = [
+  {
+    title: "Hover to discover",
+    text: "The impact section holds a lot of information, so cards reveal their details on hover. The section stays visual while curious visitors can dig deeper.",
+  },
+  {
+    title: "Movement to introduce",
+    text: "A moving ticker in the causes section gives a quick overview and invites visitors to click or scroll for more detail.",
+  },
+  {
+    title: "Reveal step by step",
+    text: "The solutions section has the most text, so it is divided into topics and revealed one at a time to keep it easy to read.",
+  },
+];
+---
+
+<ProjectDetailLayout title="PM2.5 Pollution in Thailand — Joy" active="projects">
+  <main class="w-full">
+    <div class="py-5 sm:py-7">
+      <Breadcrumb
+        items={[
+          { label: "Projects", href: "/projects/" },
+          { label: "PM2.5 Pollution in Thailand", href: "/projects/pm25-project/" },
+        ]}
+      />
+    </div>
+
+    <ProjectDetailHero
+      eyebrow="UI & interaction design case study"
+      title="PM2.5 in Thailand"
+      description="An awareness website that shares information about PM2.5 pollution in Thailand and its impact on everyday life, using visual storytelling and interactive sections built in Framer."
+      imageSrc={Pm25HeroDetail.src}
+      imageAlt="PM2.5 website hero showing a smog-covered Bangkok skyline with oversized PM2.5 typography"
+      categories={["UX/UI Design", "Web Development"]}
+      role="UI Designer"
+      websiteLink={projectUrl}
+    />
+
+    <div id="overview" class="scroll-mt-8">
+      <ProjectOverview
+        duration="5 days"
+        role="UI Designer"
+        responsibilities={[
+          "Researched PM2.5 and planned the content and story",
+          "Designed the visual direction and each website section",
+          "Built the responsive website and its interactions in Framer",
+        ]}
+        challenges={[
+          "Present a serious topic with a lot of information without overwhelming visitors",
+          "Make statistics and health impacts easy to understand at a glance",
+          "Learn Framer while designing across four screen sizes",
+        ]}
+        solutions={[
+          "Gave each section one clear purpose, from the problem to the solutions",
+          "Used visual statistics, image cards and step-by-step reveals",
+          "Built reusable components and variables for consistent responsive layouts",
+        ]}
+      />
+    </div>
+
+    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16">
+      <aside class="hidden lg:block">
+        <div class="sticky top-28">
+          <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+            Case study
+          </h3>
+          <nav aria-label="PM2.5 case study sections">
+            <ol class="border-y border-brown-dark/15">
+              {navItems.map((item, index) => (
+                <li>
+                  <a
+                    href={item.href}
+                    data-pm25-nav
+                    data-section={item.href.slice(1)}
+                    aria-current={index === 0 ? "location" : undefined}
+                    class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
+                  >
+                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">{item.number}</span>
+                    <span>{item.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="min-w-0 space-y-20 sm:space-y-28">
+        <!-- 01 / BRIEF -->
+        <section id="brief" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · Project brief</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Making an invisible problem visible</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              PM2.5 is too small to see, yet it affects millions of people in Thailand every year. The goal was a website that helps visitors understand the issue, feel its seriousness, and leave with a sense of what can be done.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2">
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">The goal</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">Inform without overwhelming</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/70">Turn research and statistics into short, visual sections that visitors can take in quickly.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">The design direction</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">Dark, urgent, then hopeful</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/70">A black background with orange as the primary colour evokes darkness, danger and warning, before the ending shifts to a safer tone.</p>
+              <div class="mt-5 flex items-center gap-3" aria-label="Style guide colours: black and orange">
+                <span class="h-8 w-8 border border-brown-dark/15 bg-[#111111]" aria-hidden="true"></span>
+                <span class="h-8 w-8 border border-brown-dark/15 bg-[#f26a1b]" aria-hidden="true"></span>
+                <span class="text-sm text-brown-dark/60">Style guide · black & orange</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 02 / PROCESS -->
+        <section id="process" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · Design process</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Starting with the information</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              Before designing any screens, I researched the topic and planned the story, so every section would have a reason to be there.
+            </p>
+          </header>
+
+          <ol class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {processSteps.map((step) => (
+              <li class="border border-brown-dark/15 bg-white p-6">
+                <span class="text-sm font-semibold text-green-dark">{step.number}</span>
+                <h3 class="mt-3 text-xl text-brown-dark">{step.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <!-- 03 / CONTENT & VISUALS -->
+        <section id="content" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · Content & visual direction</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Giving each section a purpose</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The website moves visitors from the problem to the solutions in five steps. Each section was designed around one job.
+            </p>
+          </header>
+
+          <ol class="mt-10 divide-y divide-brown-dark/15 border-y border-brown-dark/15">
+            {sections.map((section) => (
+              <li class="grid gap-2 py-6 sm:grid-cols-[56px_160px_1fr] sm:gap-6">
+                <span class="text-sm font-semibold text-green-dark">{section.number}</span>
+                <h3 class="text-xl text-brown-dark">{section.title}</h3>
+                <p class="leading-relaxed text-brown-dark/70">{section.text}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-2">
+            <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
+              <img src={Pm25Statistics.src} alt="Statistics section with large figures over a city image" class="h-auto w-full" loading="lazy" />
+              <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Statistics · key figures made easier to grasp</figcaption>
+            </figure>
+            <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
+              <img src={Pm25Impacts.src} alt="Impact topics presented as large image-led cards" class="h-auto w-full" loading="lazy" />
+              <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Impacts · image-led topic cards</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 04 / INTERACTION -->
+        <section id="interaction" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Interaction design</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Making information engaging to explore</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              Interaction was used to control how much information appears at once, letting visitors choose how deep to go.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-3">
+            {interactions.map((item, index) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6">
+                <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-light font-semibold text-green-dark">0{index + 1}</span>
+                <h3 class="mt-5 text-xl text-brown-dark">{item.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">{item.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <figure class="mt-8 overflow-hidden border border-brown-dark/15 bg-ivory">
+            <img src={Pm25Causes.src} alt="Causes section with a large PM2.5 heading and a horizontal row of image cards" class="h-auto w-full" loading="lazy" />
+            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Causes · a moving ticker introduces each topic</figcaption>
+          </figure>
+        </section>
+
+        <!-- 05 / RESPONSIVE & FRAMER -->
+        <section id="framer" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · Responsive design & Framer</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Adapting the design across devices</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              I started from a Framer template and adapted its layout and visual elements to fit the content. The website was designed for desktop, laptop, tablet and mobile.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2">
+            <article class="border border-brown-dark/15 bg-white p-6">
+              <h3 class="text-xl text-brown-dark">Layouts per screen size</h3>
+              <p class="mt-2 leading-relaxed text-brown-dark/70">Some sections switch to a horizontal layout on mobile, while larger screens use a vertical layout.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-white p-6">
+              <h3 class="text-xl text-brown-dark">Components & variables</h3>
+              <p class="mt-2 leading-relaxed text-brown-dark/70">Small elements (atoms) were combined into reusable components, so the design stayed consistent without rebuilding it for every screen.</p>
+            </article>
+          </div>
+
+          <div class="mt-8 border-l-2 border-green-dark bg-green-light/35 px-5 py-4">
+            <h3 class="font-semibold text-brown-dark">Learning Framer</h3>
+            <p class="mt-2 leading-relaxed text-brown-dark/70">
+              I was more familiar with Webflow, so Framer was new to me. Learning the platform in a five-day project took time, but it was a valuable experience.
+            </p>
+          </div>
+        </section>
+
+        <!-- 06 / OUTCOME -->
+        <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · Outcome</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A live awareness website</h2>
+          </header>
+          <div class="mt-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+            <p class="max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              In five days, the research became a responsive website that guides visitors from the problem to the solutions. Explore it below, or open the full site in a new tab.
+            </p>
+            <a
+              href={projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-brown-dark/20 bg-[#FEF7F4]/70 px-5 py-2.5 font-medium text-brown-dark transition hover:border-black hover:bg-white"
+            >
+              View full site <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <!-- Live preview: rendered at desktop width and scaled to fit the column -->
+          <div class="mt-8 border border-brown-dark/15 bg-brown-medium/30 p-2 sm:p-3">
+            <div data-pm25-frame class="pm25-frame relative w-full overflow-hidden bg-[#111111]">
+              <iframe
+                src={projectUrl}
+                title="Live preview of the PM2.5 Pollution in Thailand website"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                class="pm25-frame__site absolute left-0 top-0 block border-0 bg-[#111111]"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Project takeaway</p>
+              <h3 class="mt-3 text-3xl !text-white">Serious information can still be inviting to explore.</h3>
+              <p class="mt-3 max-w-2xl text-white/75">
+                Giving each section one purpose, and letting interaction reveal details gradually, kept a heavy topic approachable.
+              </p>
+            </div>
+            <a
+              href={projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex shrink-0 items-center rounded-full bg-white px-6 py-3 font-medium text-brown-dark transition hover:bg-brown-medium"
+            >
+              Visit live website <span class="ml-2" aria-hidden="true"></span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</ProjectDetailLayout>
+
+<style is:global>
+  /* Desktop-sized preview, scaled down to the column width (scale set by script) */
+  .pm25-frame {
+    --pm25-scale: 1;
+    --pm25-base: 1440px;
+    aspect-ratio: 16 / 10;
+    max-height: calc(100dvh - 9rem);
+  }
+
+  @media (max-width: 639px) {
+    .pm25-frame {
+      aspect-ratio: 9 / 16;
+    }
+  }
+
+  .pm25-frame__site {
+    width: var(--pm25-base);
+    height: calc(100% / var(--pm25-scale));
+    transform: scale(var(--pm25-scale));
+    transform-origin: top left;
+  }
+
+</style>
+
+<script>
+  const setupPm25Navigation = () => {
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-pm25-nav]"));
+    if (!links.length) return;
+
+    const updateCurrent = (sectionId: string) => {
+      links.forEach((link) => {
+        if (link.dataset.section === sectionId) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    links.forEach((link) => {
+      if (link.dataset.ready === "true") return;
+      link.dataset.ready = "true";
+      link.addEventListener("click", () => {
+        if (link.dataset.section) updateCurrent(link.dataset.section);
+      });
+    });
+
+    const sections = links
+      .map((link) => document.getElementById(link.dataset.section ?? ""))
+      .filter((section): section is HTMLElement => section !== null);
+
+    // Highlight the last section whose top has passed 35% of the window
+    const onScroll = () => {
+      const line = window.innerHeight * 0.35;
+      let current = sections[0];
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= line) current = section;
+      });
+      // At the bottom of the page, the last section is current
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        current = sections[sections.length - 1];
+      }
+      if (current) updateCurrent(current.id);
+    };
+
+    // Replace the listener from a previous visit so it isn't added twice
+    const w = window as Window & { pm25NavScroll?: () => void };
+    if (w.pm25NavScroll) window.removeEventListener("scroll", w.pm25NavScroll);
+    w.pm25NavScroll = onScroll;
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  };
+
+  // Scale the 1440px-wide preview to fit its frame
+  const setupPm25Preview = () => {
+    const frame = document.querySelector<HTMLElement>("[data-pm25-frame]");
+    if (!frame || frame.dataset.scaled === "true") return;
+    frame.dataset.scaled = "true";
+    // Phones get the site's mobile layout (390px wide); larger screens get the desktop layout
+    const update = () => {
+      const base = frame.clientWidth < 640 ? 390 : 1440;
+      frame.style.setProperty("--pm25-base", `${base}px`);
+      frame.style.setProperty("--pm25-scale", String(frame.clientWidth / base));
+    };
+    update();
+    new ResizeObserver(update).observe(frame);
+  };
+
+  setupPm25Navigation();
+  setupPm25Preview();
+  document.addEventListener("astro:page-load", () => {
+    setupPm25Navigation();
+    setupPm25Preview();
+  });
+</script>

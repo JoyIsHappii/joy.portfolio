@@ -10,95 +10,60 @@ import CloudyCat from "../../assets/weather-fore-cat/cats/cloudy.png";
 import RainyCat from "../../assets/weather-fore-cat/cats/rainy.png";
 import SnowyCat from "../../assets/weather-fore-cat/cats/snowy.png";
 
+import DayBackground from "../../assets/weather-fore-cat/backgrounds/day-background.svg";
+import NightBackground from "../../assets/weather-fore-cat/backgrounds/night-background.svg";
+import SunnyBackground from "../../assets/weather-fore-cat/backgrounds/sunny-weather-background.webp";
+import CloudyBackground from "../../assets/weather-fore-cat/backgrounds/cloudy-weather-background.webp";
+import RainyBackground from "../../assets/weather-fore-cat/backgrounds/rainy-weather-background.webp";
+import SnowyBackground from "../../assets/weather-fore-cat/backgrounds/snowy-weather-background.webp";
+
+const liveUrl = "https://weather-fore-cat.netlify.app/";
+
 const navItems = [
   { number: "01", label: "Project brief", href: "#brief" },
   { number: "02", label: "Experience design", href: "#experience" },
   { number: "03", label: "Visual system", href: "#visual-system" },
-  { number: "04", label: "Development", href: "#development" },
-  { number: "05", label: "Responsive design", href: "#responsive" },
+  { number: "04", label: "Dynamic backgrounds", href: "#backgrounds" },
+  { number: "05", label: "Development", href: "#development" },
   { number: "06", label: "Outcome", href: "#outcome" },
 ];
 
-const coreFeatures = [
-  {
-    number: "01",
-    title: "City search",
-    text: "Find locations with autocomplete suggestions and view local weather information.",
-  },
-  {
-    number: "02",
-    title: "Current conditions",
-    text: "See the current temperature and weather conditions at a glance.",
-  },
-  {
-    number: "03",
-    title: "Forecasts",
-    text: "Explore a five-day forecast and a more detailed three-hour breakdown.",
-  },
-  {
-    number: "04",
-    title: "Favorite cities",
-    text: "Save frequently checked locations and return to them from the favorites menu.",
-  },
-  {
-    number: "05",
-    title: "Weather details",
-    text: "Check additional information such as humidity, wind, UV, sunrise, and sunset.",
-  },
-  {
-    number: "06",
-    title: "Dynamic cat mascots",
-    text: "Weather conditions are paired with playful cat illustrations and matching visual states.",
-  },
+const features = [
+  { number: "01", title: "City search", text: "Search for a city with autocomplete and view its local weather." },
+  { number: "02", title: "Current conditions", text: "See the current temperature and weather conditions at a glance." },
+  { number: "03", title: "Five-day forecast", text: "Explore the upcoming forecast and a detailed three-hour breakdown." },
+  { number: "04", title: "Favourite cities", text: "Save frequently checked locations and return to them from the favourites menu." },
+  { number: "05", title: "Weather details", text: "Check humidity, wind, UV, sunrise, and sunset information." },
+  { number: "06", title: "Dynamic cat mascots", text: "Weather conditions are paired with expressive cat illustrations." },
 ];
 
-const designPrinciples = [
-  {
-    title: "Make information scannable",
-    text: "Organize current conditions, daily forecasts, and hourly details into clear sections so users can find the information they need quickly.",
-  },
-  {
-    title: "Give the interface personality",
-    text: "Use friendly cat mascots, soft colours, and weather-based backgrounds to make a functional dashboard feel warm and memorable.",
-  },
-  {
-    title: "Keep the experience responsive",
-    text: "Adapt the dashboard layout for smaller screens, changing from a multi-column desktop view to a vertically stacked mobile experience.",
-  },
+const cats = [
+  { image: SunnyCat, name: "Sunny", text: "Clear skies" },
+  { image: CloudyCat, name: "Cloudy", text: "Overcast days" },
+  { image: RainyCat, name: "Rainy", text: "Rainy weather" },
+  { image: SnowyCat, name: "Snowy", text: "Snow conditions" },
+];
+
+const weatherBackgrounds = [
+  { image: SunnyBackground, name: "Sunny", text: "Bright conditions" },
+  { image: CloudyBackground, name: "Cloudy", text: "Overcast conditions" },
+  { image: RainyBackground, name: "Rainy", text: "Rain conditions" },
+  { image: SnowyBackground, name: "Snowy", text: "Snow conditions" },
+];
+
+const timeBackgrounds = [
+  { image: DayBackground, name: "Day", text: "Daytime atmosphere" },
+  { image: NightBackground, name: "Night", text: "Nighttime atmosphere" },
 ];
 
 const developmentSteps = [
-  {
-    number: "01",
-    title: "Fetch weather data",
-    text: "Connect to Open-Meteo to retrieve current conditions, daily forecasts, hourly forecasts, and supporting weather details.",
-  },
-  {
-    number: "02",
-    title: "Find locations",
-    text: "Use PlaceKit autocomplete to help users search for cities and retrieve the coordinates needed for weather requests.",
-  },
-  {
-    number: "03",
-    title: "Map the data",
-    text: "Convert API responses into structured weather data and map weather codes to the appropriate display and cat state.",
-  },
-  {
-    number: "04",
-    title: "Manage saved places",
-    text: "Use localStorage to keep favorite cities available between visits, alongside location and recent-search functionality.",
-  },
+  { number: "01", title: "Weather data · Open-Meteo", text: "Retrieves current conditions, daily forecasts, hourly forecasts, and supporting weather details." },
+  { number: "02", title: "City autocomplete · PlaceKit", text: "Provides city suggestions and coordinates used to request local weather." },
+  { number: "03", title: "Weather and mascot mapping", text: "Maps weather codes to descriptions and the matching visual weather state." },
+  { number: "04", title: "Favourite locations · localStorage", text: "Stores saved cities in the browser so they can be restored between visits." },
 ];
 
-const technologies = [
-  "Astro",
-  "TypeScript",
-  "Tailwind CSS",
-  "jQuery",
-  "Figma",
-  "Open-Meteo API",
-  "PlaceKit API",
-];
+const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Meteo API", "PlaceKit API", "Figma"];
 ---
 
 <ProjectDetailLayout title="Weather Fore-Cat Case Study — Joy" active="projects">
@@ -115,13 +80,12 @@ const technologies = [
     <ProjectDetailHero
       eyebrow="UX/UI design & web development case study"
       title="Weather Fore-Cat"
-      description="A cat-themed weather dashboard that helps users check current conditions, explore forecasts, and save favorite cities through a friendly, responsive interface."
+      description="Your purr-fect daily forecast companion. A playful weather dashboard that brings live conditions, useful forecasts, and expressive cat mascots together in one responsive experience."
       imageSrc={HeroImage.src}
-      imageAlt="Weather Fore-Cat case study cover showing a playful weather dashboard with cat mascots"
+      imageAlt="Weather Fore-Cat weather dashboard project cover"
       categories={["UX/UI Design", "Web Development"]}
-      duration="Team project · 5-person team"
       role="UX/UI Designer · Web Developer"
-      websiteLink="https://weather-forecats.netlify.app/"
+      websiteLink={liveUrl}
     />
 
     <div id="overview" class="scroll-mt-8">
@@ -129,38 +93,41 @@ const technologies = [
         duration="Team project · 5-person team"
         role="UX/UI Designer · Web Developer"
         responsibilities={[
-          "Contributed to the user experience and visual design of a weather dashboard",
-          "Worked on the frontend implementation using Astro, TypeScript, and Tailwind CSS",
-          "Connected interface components with weather data and location-search functionality",
+          "Contributed to the user experience and visual direction of the weather dashboard",
+          "Worked on frontend implementation using Astro, TypeScript, and Tailwind CSS",
+          "Collaborated on connecting interface components with weather data and location search",
         ]}
         challenges={[
-          "Present several types of weather information without overwhelming the user",
-          "Make city search, forecasts, and saved locations work together as one experience",
-          "Create a distinctive visual identity while keeping the interface practical and responsive",
+          "Present current conditions, forecasts, and detailed metrics without overwhelming users",
+          "Connect city search, weather data, and saved locations into one coherent experience",
+          "Create a distinctive visual identity that remains practical across screen sizes",
         ]}
         solutions={[
-          "Organized the dashboard into clear sections for current, daily, and hourly weather",
-          "Integrated Open-Meteo and PlaceKit to support weather data and city search",
-          "Used weather-responsive backgrounds and cat mascots to add personality to the interface",
+          "Organised current, daily, and hourly weather into clear sections",
+          "Integrated Open-Meteo and PlaceKit for weather data and city search",
+          "Used weather-responsive backgrounds and cat mascots to give the interface personality",
         ]}
       />
     </div>
 
-    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[220px_1fr] lg:gap-16">
+    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16">
       <aside class="hidden lg:block">
         <div class="sticky top-28">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+          <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             Case study
-          </p>
-          <nav aria-label="Weather Fore-Cat case-study sections" class="mt-5">
-            <ol class="border-y border-slate-300/70">
-              {navItems.map((item) => (
-                <li class="border-b border-slate-300/70 last:border-b-0">
+          </h3>
+          <nav aria-label="Weather Fore-Cat case study sections">
+            <ol class="border-y border-brown-dark/15">
+              {navItems.map((item, index) => (
+                <li>
                   <a
                     href={item.href}
-                    class="grid grid-cols-[32px_1fr] gap-3 py-3 text-sm text-slate-600 transition hover:text-sky-700"
+                    data-weather-nav
+                    data-section={item.href.slice(1)}
+                    aria-current={index === 0 ? "location" : undefined}
+                    class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
                   >
-                    <span class="font-semibold text-sky-700">{item.number}</span>
+                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">{item.number}</span>
                     <span>{item.label}</span>
                   </a>
                 </li>
@@ -170,233 +137,173 @@ const technologies = [
         </div>
       </aside>
 
-      <div class="min-w-0 space-y-20">
+      <div class="min-w-0 space-y-20 sm:space-y-28">
+        <!-- 01 / BRIEF -->
         <section id="brief" class="scroll-mt-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            01 · Project brief
-          </p>
-          <h2 class="mt-4 text-4xl text-slate-900 sm:text-6xl">
-            A forecast with a little more personality.
-          </h2>
-          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-            Weather Fore-Cat brings everyday weather information into a playful
-            dashboard. Instead of presenting data as a plain utility, the
-            experience pairs useful forecasts with cat characters that respond
-            to different weather conditions.
-          </p>
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · Project brief</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A forecast with a little more personality</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              Weather Fore-Cat explores a friendlier way to check the forecast. It combines practical weather information with a cast of cat characters that respond to changing conditions, making an everyday utility feel a little more personal.
+            </p>
+          </header>
 
           <div class="mt-10 grid gap-4 sm:grid-cols-2">
-            <div class="rounded-3xl bg-sky-50 p-6">
-              <p class="text-sm font-semibold uppercase tracking-wide text-sky-800">
-                The goal
-              </p>
-              <h3 class="mt-3 text-2xl font-semibold text-slate-900">
-                Useful at a glance
-              </h3>
-              <p class="mt-3 leading-relaxed text-slate-600">
-                Help users check the weather quickly, understand upcoming
-                conditions, and revisit the cities they care about.
-              </p>
-            </div>
-            <div class="rounded-3xl bg-orange-50 p-6">
-              <p class="text-sm font-semibold uppercase tracking-wide text-orange-800">
-                The design direction
-              </p>
-              <h3 class="mt-3 text-2xl font-semibold text-slate-900">
-                Functional, friendly, and fun
-              </h3>
-              <p class="mt-3 leading-relaxed text-slate-600">
-                Combine a clear information hierarchy with soft colours,
-                approachable illustrations, and weather-inspired visual states.
-              </p>
-            </div>
-          </div>
-
-          <h3 class="mt-12 text-2xl font-semibold text-slate-900">
-            Core experience
-          </h3>
-          <div class="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {coreFeatures.map((feature) => (
-              <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                <p class="text-sm font-semibold text-sky-700">{feature.number}</p>
-                <h4 class="mt-3 text-xl font-semibold text-slate-900">{feature.title}</h4>
-                <p class="mt-2 leading-relaxed text-slate-600">{feature.text}</p>
-              </article>
-            ))}
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">The challenge</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">Make weather information easy to scan</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/70">Bring together current conditions, a five-day outlook, three-hour forecasts, and extra details without overwhelming the user.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">The direction</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">Give a useful tool a little character</h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/70">Use cat mascots, changing backgrounds, and weather-inspired colours while keeping the forecast clear and readable.</p>
+            </article>
           </div>
         </section>
 
+        <!-- 02 / EXPERIENCE -->
         <section id="experience" class="scroll-mt-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            02 · Experience design
-          </p>
-          <h2 class="mt-4 text-4xl text-slate-900 sm:text-6xl">
-            Weather information, made easier to explore.
-          </h2>
-          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-            The dashboard brings the most immediate information forward, then
-            lets users explore more detail as needed. Search and favorites make
-            changing locations straightforward, while forecast cards connect
-            the daily and hourly views.
-          </p>
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · Experience design</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">The information you need, when you need it</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The dashboard prioritises current conditions, then gives users a clear path into daily and hourly forecasts. Search and favourites make it straightforward to move between locations.
+            </p>
+          </header>
 
-          <div class="mt-10 grid gap-5 md:grid-cols-3">
-            {designPrinciples.map((item, index) => (
-              <article class="rounded-3xl bg-slate-50 p-6">
-                <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-sky-100 font-semibold text-sky-800">
-                  0{index + 1}
-                </span>
-                <h3 class="mt-5 text-xl font-semibold text-slate-900">{item.title}</h3>
-                <p class="mt-3 leading-relaxed text-slate-600">{item.text}</p>
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {features.map((feature) => (
+              <article class="border border-brown-dark/15 bg-white p-6">
+                <span class="text-sm font-semibold text-green-dark">{feature.number}</span>
+                <h3 class="mt-3 text-xl text-brown-dark">{feature.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">{feature.text}</p>
               </article>
             ))}
           </div>
         </section>
 
+        <!-- 03 / VISUAL SYSTEM -->
         <section id="visual-system" class="scroll-mt-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            03 · Visual system
-          </p>
-          <h2 class="mt-4 text-4xl text-slate-900 sm:text-6xl">
-            Four cats. Four kinds of weather.
-          </h2>
-          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-            The cat mascots are part of the product experience, not just
-            decoration. Each character gives the dashboard a recognizable
-            weather state and helps make changing conditions feel more
-            expressive.
-          </p>
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · Visual system</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Four cats. Four kinds of weather</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The cat mascots are part of the product experience, not just decoration. Each character gives the dashboard a recognisable weather state and helps make changing conditions feel expressive.
+            </p>
+          </header>
 
           <div class="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            <figure class="rounded-3xl bg-amber-50 p-4 text-center">
-              <img src={SunnyCat.src} alt="Sunny cat mascot" class="mx-auto aspect-square w-full object-contain" loading="lazy" />
-              <figcaption class="mt-3 font-semibold text-slate-800">Sunny</figcaption>
-              <p class="mt-1 text-sm text-slate-600">Clear skies</p>
-            </figure>
-            <figure class="rounded-3xl bg-slate-100 p-4 text-center">
-              <img src={CloudyCat.src} alt="Cloudy cat mascot" class="mx-auto aspect-square w-full object-contain" loading="lazy" />
-              <figcaption class="mt-3 font-semibold text-slate-800">Cloudy</figcaption>
-              <p class="mt-1 text-sm text-slate-600">Overcast days</p>
-            </figure>
-            <figure class="rounded-3xl bg-blue-50 p-4 text-center">
-              <img src={RainyCat.src} alt="Rainy cat mascot" class="mx-auto aspect-square w-full object-contain" loading="lazy" />
-              <figcaption class="mt-3 font-semibold text-slate-800">Rainy</figcaption>
-              <p class="mt-1 text-sm text-slate-600">Rainy weather</p>
-            </figure>
-            <figure class="rounded-3xl bg-indigo-50 p-4 text-center">
-              <img src={SnowyCat.src} alt="Snowy cat mascot" class="mx-auto aspect-square w-full object-contain" loading="lazy" />
-              <figcaption class="mt-3 font-semibold text-slate-800">Snowy</figcaption>
-              <p class="mt-1 text-sm text-slate-600">Snow conditions</p>
-            </figure>
-          </div>
-
-          <div class="mt-8 rounded-3xl bg-sky-50 p-6 sm:p-8">
-            <h3 class="text-2xl font-semibold text-slate-900">
-              A visual language that changes with the forecast
-            </h3>
-            <p class="mt-3 max-w-3xl leading-relaxed text-slate-600">
-              Weather illustrations, background variations, and supporting
-              icons work together to make the current condition recognizable
-              while keeping the information cards readable.
-            </p>
+            {cats.map((cat) => (
+              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
+                <img src={cat.image.src} alt={`${cat.name} cat mascot`} class="aspect-square w-full object-contain p-4" loading="lazy" />
+                <figcaption class="border-t border-brown-dark/10 px-4 py-3">
+                  <span class="block text-lg text-brown-dark">{cat.name}</span>
+                  <span class="text-sm text-brown-dark/60">{cat.text}</span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </section>
 
-        <section id="development" class="scroll-mt-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            04 · Development
-          </p>
-          <h2 class="mt-4 text-4xl text-slate-900 sm:text-6xl">
-            Turning the interface into a working weather app.
-          </h2>
-          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-            The application uses Astro for its component structure, TypeScript
-            for typed data, and Tailwind CSS for styling. API and browser
-            functionality connect the interface to live weather information
-            and location search.
-          </p>
+        <!-- 04 / BACKGROUNDS -->
+        <section id="backgrounds" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Dynamic backgrounds</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">The sky sets the scene</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The background responds to both the weather and the time of day. Weather-specific scenes create a different atmosphere for sunny, cloudy, rainy, and snowy conditions, while the day and night artwork changes the overall mood.
+            </p>
+          </header>
 
-          <div class="mt-10 space-y-4">
-            {developmentSteps.map((step) => (
-              <article class="grid gap-3 rounded-2xl border border-slate-200 p-5 sm:grid-cols-[64px_1fr] sm:gap-6">
-                <span class="text-2xl font-semibold text-sky-700">{step.number}</span>
-                <div>
-                  <h3 class="text-xl font-semibold text-slate-900">{step.title}</h3>
-                  <p class="mt-2 leading-relaxed text-slate-600">{step.text}</p>
-                </div>
-              </article>
+          <h3 class="mt-12 text-2xl text-brown-dark">Different skies, different moods</h3>
+          <p class="mt-2 text-brown-dark/70">Mobile background variations for each weather condition.</p>
+          <div class="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {weatherBackgrounds.map((item) => (
+              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
+                <img src={item.image.src} alt={`${item.name} weather background design`} class="aspect-[440/672] w-full object-cover" loading="lazy" />
+                <figcaption class="border-t border-brown-dark/10 px-4 py-3 text-sm">
+                  <span class="block text-brown-dark">{item.name}</span>
+                  <span class="text-brown-dark/60">{item.text}</span>
+                </figcaption>
+              </figure>
             ))}
           </div>
 
-          <div class="mt-10 rounded-3xl bg-slate-900 p-6 text-white sm:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300">
-              Technology stack
+          <h3 class="mt-12 text-2xl text-brown-dark">Daylight to nighttime</h3>
+          <p class="mt-2 text-brown-dark/70">A separate visual layer changes the atmosphere based on the time.</p>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            {timeBackgrounds.map((item) => (
+              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
+                <img src={item.image.src} alt={`${item.name}time background artwork`} class="aspect-[19/10] w-full object-cover" loading="lazy" />
+                <figcaption class="flex flex-wrap items-baseline justify-between gap-2 border-t border-brown-dark/10 px-5 py-3 text-sm">
+                  <span class="text-brown-dark">{item.name}</span>
+                  <span class="text-brown-dark/60">{item.text}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p class="mt-4 text-sm text-brown-dark/60">
+            These are the original background artworks from the Weather Fore-Cat project, shown as designed.
+          </p>
+        </section>
+
+        <!-- 05 / DEVELOPMENT -->
+        <section id="development" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · Development</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Connecting the interface to live data</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              Astro provides the component structure, TypeScript supports the data model, and the APIs connect the interface to location and weather information.
             </p>
-            <div class="mt-5 flex flex-wrap gap-2">
-              {technologies.map((technology) => (
-                <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white">
-                  {technology}
-                </span>
+          </header>
+
+          <ol class="mt-10 divide-y divide-brown-dark/15 border-y border-brown-dark/15">
+            {developmentSteps.map((step) => (
+              <li class="grid gap-2 py-6 sm:grid-cols-[56px_1fr] sm:gap-6">
+                <span class="text-sm font-semibold text-green-dark">{step.number}</span>
+                <div>
+                  <h3 class="text-xl text-brown-dark">{step.title}</h3>
+                  <p class="mt-2 leading-relaxed text-brown-dark/70">{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <div class="mt-8 border border-brown-dark/15 bg-ivory p-6">
+            <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Technology stack</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {technologies.map((item) => (
+                <span class="rounded-lg bg-brown-light/10 px-3 py-1.5 text-sm text-brown-dark">#{item}</span>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="responsive" class="scroll-mt-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            05 · Responsive design
-          </p>
-          <h2 class="mt-4 text-4xl text-slate-900 sm:text-6xl">
-            Designed to work across screen sizes.
-          </h2>
-          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-            The desktop dashboard uses a multi-column layout to keep several
-            weather modules visible together. On smaller screens, the content
-            shifts into a vertical flow, with forecast cards and hourly details
-            adapted to fit the available space.
-          </p>
-          <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            <div class="rounded-3xl border border-slate-200 p-6">
-              <h3 class="text-xl font-semibold text-slate-900">Desktop</h3>
-              <p class="mt-2 leading-relaxed text-slate-600">
-                A multi-column dashboard for viewing current conditions,
-                forecasts, saved cities, and hourly details together.
+        <!-- 06 / OUTCOME -->
+        <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · Outcome</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A friendly, working weather app</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              Weather Fore-Cat brings weather data, location search, saved cities, dynamic weather visuals, and cat mascots into one responsive experience.
+            </p>
+          </header>
+          <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Project takeaway</p>
+              <h3 class="mt-3 text-3xl !text-white">A weather dashboard that feels as friendly as it is useful.</h3>
+              <p class="mt-3 max-w-2xl text-white/75">
+                Combining UX/UI design with frontend development turned a playful visual concept into a working web app.
               </p>
             </div>
-            <div class="rounded-3xl border border-slate-200 p-6">
-              <h3 class="text-xl font-semibold text-slate-900">Mobile</h3>
-              <p class="mt-2 leading-relaxed text-slate-600">
-                A stacked layout with compact spacing and horizontally
-                scrollable forecast content for smaller screens.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="outcome" class="scroll-mt-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            06 · Outcome
-          </p>
-          <div class="overflow-hidden rounded-[2rem] bg-sky-700 p-7 text-white sm:p-12">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-100">
-              The result
-            </p>
-            <h2 class="mt-4 max-w-3xl text-4xl sm:text-5xl">
-              A weather dashboard that feels as friendly as it is useful.
-            </h2>
-            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-sky-50">
-              Weather Fore-Cat brings weather data, location search, saved
-              cities, and forecast details into one responsive experience.
-              Combining UX/UI design with frontend development helped turn the
-              visual concept into a functional web application.
-            </p>
             <a
-              href="https://weather-forecats.netlify.app/"
+              href={liveUrl}
               target="_blank"
-              rel="noreferrer"
-              class="mt-8 inline-flex items-center rounded-full bg-white px-6 py-3 font-semibold text-sky-800 transition hover:bg-sky-50"
+              rel="noopener noreferrer"
+              class="inline-flex shrink-0 items-center rounded-full bg-white px-6 py-3 font-medium text-brown-dark transition hover:bg-brown-medium"
             >
-              Visit live website <span class="ml-2" aria-hidden="true">↗</span>
+              Visit live website <span class="ml-2" aria-hidden="true"></span>
             </a>
           </div>
         </section>
@@ -404,3 +311,56 @@ const technologies = [
     </section>
   </main>
 </ProjectDetailLayout>
+
+<script>
+  const setupWeatherNavigation = () => {
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-weather-nav]"));
+    if (!links.length) return;
+
+    const updateCurrent = (sectionId: string) => {
+      links.forEach((link) => {
+        if (link.dataset.section === sectionId) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    links.forEach((link) => {
+      if (link.dataset.ready === "true") return;
+      link.dataset.ready = "true";
+      link.addEventListener("click", () => {
+        if (link.dataset.section) updateCurrent(link.dataset.section);
+      });
+    });
+
+    const sections = links
+      .map((link) => document.getElementById(link.dataset.section ?? ""))
+      .filter((section): section is HTMLElement => section !== null);
+
+    // Highlight the last section whose top has passed 35% of the window
+    const onScroll = () => {
+      const line = window.innerHeight * 0.35;
+      let current = sections[0];
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= line) current = section;
+      });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        current = sections[sections.length - 1];
+      }
+      if (current) updateCurrent(current.id);
+    };
+
+    // Replace the listener from a previous visit so it isn't added twice
+    const w = window as Window & { weatherNavScroll?: () => void };
+    if (w.weatherNavScroll) window.removeEventListener("scroll", w.weatherNavScroll);
+    w.weatherNavScroll = onScroll;
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  };
+
+  const setupWeatherPage = () => {
+    setupWeatherNavigation();
+  };
+
+  setupWeatherPage();
+  document.addEventListener("astro:page-load", setupWeatherPage);
+</script>

@@ -16,7 +16,7 @@ const { active, surface = "white", music = false } = Astro.props as Props;
 const navItems = [
   { name: "Home", href: "/", key: "home" },
   { name: "Projects", href: "/projects", key: "projects" },
-  { name: "About Me", href: "https://interactive-resume-joy.vercel.app", key: "about", target: "_blank", rel: "noopener noreferrer" },
+  { name: "About Me", href: "/about", key: "about" },
   // { name: "Resume", href: "https://1drv.ms/b/c/bc6fb2b45e307ae3/IQBVp7ss7KHWT7aYn43V475LAXSVTU2UBHL-Oz9fIZm0gUg?e=eWlDIA", key: "resume", target: "_blank", rel: "noopener noreferrer" },
 ];
 ---
@@ -53,8 +53,6 @@ const navItems = [
         <li>
           <a
             href={item.href}
-            target={item.key === "about" ? "_blank" : undefined}
-            rel={item.key === "about" ? "noopener noreferrer" : undefined}
             class:list={[
               `
                 border-b-2

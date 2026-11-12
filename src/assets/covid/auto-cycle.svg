@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820"><rect width="1440" height="820" fill="#F8F6F0"/><defs>
+<style>
+.k{font-family:Arial,sans-serif}.serif{font-family:Georgia,serif}
+.eyebrow{font-size:17px;font-weight:700;letter-spacing:3px;fill:#71834B}
+.head{font-family:Georgia,serif;font-size:48px;fill:#3E352F}
+.sub{font-family:Arial,sans-serif;font-size:21px;fill:#77736B}
+.label{font-family:Arial,sans-serif;font-size:17px;font-weight:700;letter-spacing:1px;fill:#71834B}
+.title{font-family:Arial,sans-serif;font-size:27px;font-weight:700;fill:#40372F}
+.body{font-family:Arial,sans-serif;font-size:20px;fill:#716D65}
+.small{font-family:Arial,sans-serif;font-size:16px;fill:#89847A}
+.line{stroke:#D2CEC2;stroke-width:2;fill:none}
+</style>
+</defs>
+<text x="88" y="86" class="eyebrow">04 / AUTO MODE</text>
+<text x="88" y="154" class="head">A cycle of operation and monitoring.</text>
+<text x="88" y="198" class="sub">A simplified view of the normal operating experience.</text>
+<g>
+<line x1="170" y1="390" x2="1270" y2="390" stroke="#C8C3B7" stroke-width="2"/>
+<g transform="translate(170 390)"><circle r="42" fill="#E9EDE2"/><text y="9" text-anchor="middle" class="title">1</text><text y="112" text-anchor="middle" class="title">Select AUTO</text><text y="145" text-anchor="middle" class="small">Choose the mode</text></g>
+<g transform="translate(445 390)"><circle r="42" fill="#E5EFED"/><text y="9" text-anchor="middle" class="title">2</text><text y="112" text-anchor="middle" class="title">Review status</text><text y="145" text-anchor="middle" class="small">Use the interface</text></g>
+<g transform="translate(720 390)"><circle r="42" fill="#F2E6DF"/><text y="9" text-anchor="middle" class="title">3</text><text y="112" text-anchor="middle" class="title">System runs</text><text y="145" text-anchor="middle" class="small">Programmed logic</text></g>
+<g transform="translate(995 390)"><circle r="42" fill="#E9EDE2"/><text y="9" text-anchor="middle" class="title">4</text><text y="112" text-anchor="middle" class="title">Monitor</text><text y="145" text-anchor="middle" class="small">Check room status</text></g>
+<g transform="translate(1270 390)"><circle r="42" fill="#ECEBE5"/><text y="9" text-anchor="middle" class="title">5</text><text y="112" text-anchor="middle" class="title">Continue</text><text y="145" text-anchor="middle" class="small">Ongoing operation</text></g>
+<g fill="#87966B"><path d="M295 380l14 10-14 10zM570 380l14 10-14 10zM845 380l14 10-14 10zM1120 380l14 10-14 10z"/></g>
+<path d="M1270 565 C1270 670 170 670 170 565" fill="none" stroke="#87966B" stroke-width="3"/>
+<path d="M160 578L170 560L180 578" fill="none" stroke="#71834B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="720" y="730" text-anchor="middle" class="label">REVIEW · OPERATE · MONITOR · REPEAT</text>
+</svg>

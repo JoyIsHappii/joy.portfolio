@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820"><rect width="1440" height="820" fill="#F8F6F0"/><defs>
+<style>
+.k{font-family:Arial,sans-serif}.serif{font-family:Georgia,serif}
+.eyebrow{font-size:17px;font-weight:700;letter-spacing:3px;fill:#71834B}
+.head{font-family:Georgia,serif;font-size:48px;fill:#3E352F}
+.sub{font-family:Arial,sans-serif;font-size:21px;fill:#77736B}
+.label{font-family:Arial,sans-serif;font-size:17px;font-weight:700;letter-spacing:1px;fill:#71834B}
+.title{font-family:Arial,sans-serif;font-size:27px;font-weight:700;fill:#40372F}
+.body{font-family:Arial,sans-serif;font-size:20px;fill:#716D65}
+.small{font-family:Arial,sans-serif;font-size:16px;fill:#89847A}
+.line{stroke:#D2CEC2;stroke-width:2;fill:none}
+</style>
+</defs>
+<text x="88" y="86" class="eyebrow">05 / MANUAL MODE</text>
+<text x="88" y="154" class="head">A separate path when AUTO is unavailable.</text>
+<text x="88" y="198" class="sub">The documentation describes a local manual option with different capabilities.</text>
+<g>
+<line x1="150" y1="300" x2="150" y2="630" stroke="#D2CEC2" stroke-width="2"/>
+<circle cx="150" cy="330" r="22" fill="#E9EDE2"/><text x="150" y="337" text-anchor="middle" class="title">1</text>
+<text x="205" y="325" class="title">Select MANUAL</text><text x="205" y="359" class="body">Use the documented local control path.</text>
+<circle cx="150" cy="450" r="22" fill="#E5EFED"/><text x="150" y="457" text-anchor="middle" class="title">2</text>
+<text x="205" y="445" class="title">Refer to the local controls</text><text x="205" y="479" class="body">Follow the sequence described in the source manual.</text>
+<circle cx="150" cy="570" r="22" fill="#F2E6DF"/><text x="150" y="577" text-anchor="middle" class="title">3</text>
+<text x="205" y="565" class="title">Keep the room under observation</text><text x="205" y="599" class="body">Monitoring and control capabilities may differ.</text>
+<rect x="900" y="285" width="450" height="340" fill="#F2E6DF"/>
+<text x="945" y="345" class="label" fill="#B8785C">IMPORTANT DISTINCTION</text>
+<text x="945" y="415" class="serif" font-size="42" fill="#40372F">MANUAL is not</text>
+<text x="945" y="465" class="serif" font-size="42" fill="#40372F">the same as AUTO.</text>
+<line x1="945" y1="495" x2="1305" y2="495" stroke="#D8B9A9" stroke-width="2"/>
+<text x="945" y="540" class="body">Some automatic functions may</text>
+<text x="945" y="572" class="body">not be available in manual mode.</text>
+</g>
+<text x="88" y="730" class="small">Portfolio explanation only · not an approved operating procedure.</text>
+</svg>

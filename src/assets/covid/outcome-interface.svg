@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+<rect width="1440" height="820" fill="#F8F6F0"/>
+<style>
+.eyebrow{font:700 17px Arial,sans-serif;letter-spacing:3px;fill:#71834B}
+.head{font:48px Georgia,serif;fill:#3E352F}
+.sub{font:21px Arial,sans-serif;fill:#77736B}
+.label{font:700 16px Arial,sans-serif;letter-spacing:1.5px;fill:#71834B}
+.title{font:700 24px Arial,sans-serif;fill:#40372F}
+.body{font:20px Arial,sans-serif;fill:#716D65}
+.small{font:16px Arial,sans-serif;fill:#89847A}
+</style>
+<text x="88" y="86" class="eyebrow">PROJECT OUTCOME / VISUAL EXAMPLE</text>
+<text x="88" y="154" class="head">A clearer view of the information staff need.</text>
+<text x="88" y="198" class="sub">An illustrative interface concept to show the information hierarchy discussed in the project.</text>
+<rect x="88" y="270" width="900" height="440" fill="#FDFCF8" stroke="#D5D0C5" stroke-width="2"/>
+<rect x="88" y="270" width="900" height="68" fill="#E9EDE2"/>
+<text x="125" y="313" class="title">Isolation room · Monitoring overview</text>
+<g>
+<rect x="725" y="287" width="75" height="32" rx="16" fill="#71834B"/><text x="762" y="309" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#FFFFFF">AUTO</text>
+<rect x="812" y="287" width="65" height="32" rx="16" fill="#E5E2D9"/><text x="844" y="309" text-anchor="middle" class="small">OFF</text>
+<rect x="889" y="287" width="75" height="32" rx="16" fill="#F2E6DF"/><text x="926" y="309" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#A86F56">MANUAL</text>
+</g>
+<rect x="125" y="375" width="300" height="285" fill="#F1EFE7"/>
+<text x="155" y="420" class="label">ROOM OVERVIEW</text>
+<!-- miniature five-bed room plan -->
+<rect x="155" y="485" width="25" height="88" fill="#F0E8D7" stroke="#BDB7A8" stroke-width="1.5"/>
+<rect x="180" y="455" width="190" height="145" fill="#E5EBE2" stroke="#AEB6A5" stroke-width="2"/>
+<rect x="370" y="485" width="25" height="88" fill="#F2E7E0" stroke="#C9A998" stroke-width="1.5"/>
+<g fill="#FCFBF7" stroke="#89968A" stroke-width="1.2">
+ <rect x="205" y="466" width="24" height="42" rx="3"/><rect x="258" y="466" width="24" height="42" rx="3"/><rect x="311" y="466" width="24" height="42" rx="3"/>
+ <rect x="188" y="525" width="42" height="22" rx="3"/><rect x="320" y="525" width="42" height="22" rx="3"/>
+</g>
+<rect x="235" y="580" width="80" height="18" rx="3" fill="#E5EFED" stroke="#8FA69B" stroke-width="1.2"/>
+<text x="275" y="615" text-anchor="middle" class="small">Nurse monitoring table</text>
+<text x="167" y="475" text-anchor="middle" font-family="Arial" font-size="8" fill="#77736B">ANTE</text>
+<text x="382" y="475" text-anchor="middle" font-family="Arial" font-size="8" fill="#77736B">DOFF</text>
+<rect x="460" y="375" width="490" height="82" fill="#F8F6F0" stroke="#E0DCD1"/>
+<text x="495" y="410" class="small">ROOM CONDITIONS</text><text x="495" y="440" class="title">Status overview</text><circle cx="910" cy="416" r="8" fill="#879B62"/>
+<rect x="460" y="477" width="490" height="82" fill="#F8F6F0" stroke="#E0DCD1"/>
+<text x="495" y="512" class="small">VENTILATION</text><text x="495" y="542" class="title">Equipment status</text><circle cx="910" cy="518" r="8" fill="#879B62"/>
+<rect x="460" y="579" width="490" height="81" fill="#F8F6F0" stroke="#E0DCD1"/>
+<text x="495" y="614" class="small">FILTRATION</text><text x="495" y="644" class="title">Filter indicators</text><circle cx="910" cy="620" r="8" fill="#C8896D"/>
+<rect x="1030" y="270" width="322" height="440" fill="#ECEFE6"/>
+<text x="1070" y="335" class="label">DESIGN INTENT</text>
+<text x="1070" y="405" font-family="Georgia,serif" font-size="40" fill="#40372F">Make the</text><text x="1070" y="455" font-family="Georgia,serif" font-size="40" fill="#40372F">important</text><text x="1070" y="505" font-family="Georgia,serif" font-size="40" fill="#40372F">visible.</text>
+<line x1="1070" y1="535" x2="1310" y2="535" stroke="#C8CFC0" stroke-width="2"/>
+<text x="1070" y="585" class="body">Clear labels</text><text x="1070" y="620" class="body">Simple hierarchy</text><text x="1070" y="655" class="body">Related information</text>
+<text x="88" y="770" class="small">Illustrative portfolio reconstruction · not an original product screenshot</text>
+</svg>

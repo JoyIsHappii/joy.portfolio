@@ -299,6 +299,24 @@ const categoryClasses: Record<Category, string> = {
           !shouldShowSevenVan;
       }
 
+      // Hide a project section (and its heading) when none of its cards match
+      document
+        .querySelectorAll<HTMLElement>("[data-project-group]")
+        .forEach((group) => {
+          // Reset first so the section's own hidden state doesn't count against its cards
+          group.hidden = false;
+          const items = Array.from(
+            group.querySelectorAll<HTMLElement>("[data-project-item]"),
+          );
+          group.hidden =
+            items.length > 0 &&
+            items.every(
+              (item) =>
+                item.hidden ||
+                item.closest<HTMLElement>("[hidden]") !== null,
+            );
+        });
+
       filterRoot.dataset.selectedCategory =
         selectedCategory;
     }

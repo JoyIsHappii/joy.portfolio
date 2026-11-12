@@ -1,5 +1,6 @@
 ---
 import ContentLayout from "../../layouts/ContentLayout.astro";
+import Footer from "../../components/Footer.astro";
 import Filter from "../../components/Filter.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 
@@ -12,6 +13,9 @@ import ImagePawfectDay from "../../assets/hero/pawfect-cover.svg";
 import ImageCiccc from "../../assets/hero/ciccc-cover.webp";
 import ImageWeather from "../../assets/hero/weather-cover.svg";
 import ImageMatch from "../../assets/hero/match-cover.webp";
+import ImageConiq from "../../assets/hero/coniq-cover.svg";
+import ImageIterVox from "../../assets/hero/itervox-cover.svg";
+import ImagePm25 from "../../assets/hero/pm25-cover.webp";
 // import ImageCarlaBeauty from "../../assets/hero/carla-cover.webp";
 import ImageResume from "../../assets/resume.webp";
 import ResumeScreen from "../../assets/resume.png";
@@ -38,9 +42,46 @@ interface Project {
   warmupLink?: string;
   modalId?: string;
   tech?: string[];
+  blurTitle?: boolean;
 }
 
 const { title = "Joy's Projects" } = Astro.props;
+
+// Iter Innovandi internship projects are under NDA, so they open the
+// private-project contact modal instead of a case study.
+const professionalProjects: Project[] = [
+  {
+    title: "COVID-19 ICU Monitoring",
+    description:
+      "A monitoring system designed to improve safety in negative-pressure ICU rooms.",
+    imageSrc: ImageIcu.src,
+    imageAlt: "Negative Pressure Monitor",
+    categories: ["Project Management"],
+    projectLink: "/projects/covid-project",
+  },
+  {
+    title: "CONIQ",
+    description:
+      "An AI estimating platform that helps construction teams produce reliable bids faster.",
+    imageSrc: ImageConiq.src,
+    imageAlt: "Illustration of an estimating dashboard on a laptop",
+    categories: ["UX/UI Design"],
+    tech: ["Design System", "UI Design", "Prototyping", "Figma"],
+    modalId: "contact-project-modal",
+    blurTitle: true,
+  },
+  {
+    title: "Iter Vox",
+    description:
+      "AI chat and voice assistants that handle customer calls and messages 24/7.",
+    imageSrc: ImageIterVox.src,
+    imageAlt: "Illustration of chat and voice assistant screens on two phones",
+    categories: ["UX/UI Design"],
+    tech: ["Design System", "UI Design", "Wireframing", "Prototyping", "Figma"],
+    modalId: "contact-project-modal",
+    blurTitle: true,
+  },
+];
 
 const projects: Project[] = [
   {
@@ -112,7 +153,7 @@ const projects: Project[] = [
       "PlaceKit API",
       "Netlify",
     ],
-    projectLink: "https://weather-fore-cat.netlify.app",
+    projectLink: "/projects/weather-fore-cat",
   },
   // {
   //   title: "FIFA Performance Stats",
@@ -161,15 +202,6 @@ const projects: Project[] = [
   //   tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Netlify"],
   //   projectLink: "/projects/grounds-cafe",
   // },
-  {
-    title: "COVID-19 ICU Monitoring",
-    description:
-      "A monitoring system designed to improve safety in negative-pressure ICU rooms.",
-    imageSrc: ImageIcu.src,
-    imageAlt: "Negative Pressure Monitor",
-    categories: ["Project Management"],
-    modalId: "contact-project-modal",
-  },
   // {
   //   title: "Carla Beauty",
   //   description:
@@ -180,6 +212,16 @@ const projects: Project[] = [
   //   tech: ["HTML", "CSS", "SCSS", "JavaScript","Netlify"],
   //   modalId: "carla",
   // },
+{
+  title: "PM2.5 in Thailand",
+  description:
+    "A motion-driven awareness website exploring Thailand's PM2.5 crisis through visual storytelling, animated transitions, and interactive scrolling.",
+  imageSrc: ImagePm25.src,
+  imageAlt: "PM2.5 in Thailand awareness website",
+  categories: ["UX/UI Design", "Web Development"],
+  tech: ["Framer"],
+  projectLink: "/projects/pm25-project/",
+},
 ];
 ---
 
@@ -243,6 +285,81 @@ const projects: Project[] = [
       ></iframe> -->
       </div>
 
+      <!-- Professional projects -->
+      <section
+        class="flex w-full flex-col gap-4 pt-4"
+        data-project-group
+        aria-labelledby="professional-projects-heading"
+      >
+        <div class="flex flex-col gap-1">
+          <h2
+            id="professional-projects-heading"
+            class="text-2xl
+              font-normal
+              tracking-tight
+              text-brown-dark
+              md:text-4xl"
+          >
+            Professional Projects
+          </h2>
+          <p class="text-lg font-normal text-brown-dark/75">
+            Work from my roles at King Chulalongkorn Memorial Hospital and{" "}
+            <a
+              href="https://iterinov.com/Portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline decoration-brown-dark/30 underline-offset-4 transition-colors hover:decoration-brown-dark"
+            >Iter Innovandi</a>. Some projects are under NDA.
+          </p>
+        </div>
+
+        <div
+          class="grid
+            w-full
+            grid-cols-1
+            gap-4
+            md:grid-cols-2
+            lg:grid-cols-3"
+        >
+          {
+            professionalProjects.map((project) => (
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                imageSrc={project.imageSrc}
+                imageAlt={project.imageAlt}
+                categories={project.categories}
+                projectLink={project.projectLink}
+                modalId={project.modalId}
+                tech={project.tech}
+                blurTitle={project.blurTitle}
+              />
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Other projects -->
+      <section
+        class="flex w-full flex-col gap-4 pt-4 border-t border-brown-dark/10 mt-8"
+        data-project-group
+        aria-labelledby="more-projects-heading"
+      >
+        <h2
+          id="more-projects-heading"
+          class="text-2xl
+            font-normal
+            tracking-tight
+            text-brown-dark
+            md:text-4xl
+            "
+        >
+          More Projects
+        </h2>
+        <p class="text-lg font-normal text-brown-dark/75">
+          The projects that showcase my skills in UX/UI design, web development, and project management.
+        </p>
+
       <div
         id="projects"
         class="grid
@@ -292,17 +409,18 @@ const projects: Project[] = [
           ))
         }
       </div>
+      </section>
     </div>
   </main>
 
         <!-- <ResumeSection /> -->
-      <iframe
+      <!-- <iframe
         src="https://interactive-resume-joy.vercel.app"
         title="Joy's Interactive Resume"
         class="h-[min(700px,calc(100dvh-8rem))] w-full "
-      ></iframe>
+      ></iframe> -->
 
-  <!-- <section
+  <section
     id="about-me"
     class="w-full border-y border-brown-dark/10 bg-brown-light/10 px-4 py-14 sm:py-16 md:px-8 md:py-20"
   >
@@ -355,75 +473,32 @@ const projects: Project[] = [
           resume to see the journey.
         </p>
 
-        <Button
-          href="https://interactive-resume-joy.vercel.app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div class="flex flex-col gap-2 sm:flex-row sm:gap-4">
+           <Button
+          href="/about"
           variant="primary"
           size="md"
           class="mt-7"
         >
-          Explore My Story →
+          Explore My Story
+        </Button>
+
+        <Button
+          href="https://interactive-resume-joy.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="secondary"
+          size="md"
+          class="mt-7"
+        >
+          View Interactive Resume
         </Button>
       </div>
-    </div>
-  </section> -->
-
-  <footer class="w-full border-t border-brown-dark/10 px-4 py-10 md:px-8">
-    <div
-      class="mx-auto flex max-w-6xl flex-col items-center gap-6
-           md:flex-row md:justify-between"
-    >
-      <div class="text-center md:text-left">
-        <p class="text-lg font-medium text-dark-brown">
-          Thanks for stopping by ♡
-        </p>
-        <p class="mt-1 text-sm text-brown-dark/60">
-          Let's make something thoughtful together.
-        </p>
       </div>
-
-      <nav class="flex items-center gap-6 text-sm text-brown-dark/70">
-        <a
-          href="mailto:joy.is.happii@gmail.com"
-          class="transition-opacity hover:opacity-60"
-        >
-          Email
-        </a>
-        <a
-          href="https://www.linkedin.com/in/joykosol/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="transition-opacity hover:opacity-60"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/JoyIsHappii"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="transition-opacity hover:opacity-60"
-        >
-          GitHub
-        </a>
-      </nav>
     </div>
+  </section>
 
-    <div
-      class="mx-auto mt-8 flex max-w-6xl flex-col items-center
-           gap-2 border-t border-brown-dark/10 pt-5
-           text-xs text-brown-dark/50 sm:flex-row sm:justify-between"
-    >
-      <p>© 2026 Joy Kosol</p>
-
-      <button
-        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-        class="transition-opacity hover:opacity-60"
-      >
-        Back to top ↑
-      </button>
-    </div>
-  </footer>
+  <Footer />
   <Modal
     id="contact-project-modal"
     eyebrow="Private project"
