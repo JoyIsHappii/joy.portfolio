@@ -5,92 +5,163 @@ import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
 
 import IcuCover from "../../assets/hero/icu-cover.svg";
-import ContextImage from "../../assets/covid/context-overview.svg";
-import ContributionImage from "../../assets/covid/contribution.svg";
-import RequirementsImage from "../../assets/covid/requirements.svg";
-import SystemImage from "../../assets/covid/system-relationship.svg";
-import ModeImage from "../../assets/covid/mode-workflow.svg";
-import AutoImage from "../../assets/covid/auto-cycle.svg";
-import ManualImage from "../../assets/covid/manual-fallback.svg";
-import ProcessImage from "../../assets/covid/design-journey.svg";
-import OutcomeImage from "../../assets/covid/outcome-interface.svg";
+import ContextImage from "../../assets/covid/context-users.webp";
+import SystemImage from "../../assets/covid/system-relationship.webp";
+import ModeImage from "../../assets/covid/mode-selection.webp";
+import AutoImage from "../../assets/covid/auto-cycle.webp";
+import ManualImage from "../../assets/covid/manual-fallback.webp";
+import ProcessImage from "../../assets/covid/design-approach.webp";
 
 const navItems = [
-  { number: "01", label: "The story behind it", href: "#story" },
-  { number: "02", label: "Project context", href: "#context" },
+  { number: "01", label: "Project context", href: "#context" },
+  { number: "02", label: "The challenge", href: "#challenge" },
   { number: "03", label: "My contribution", href: "#contribution" },
-  { number: "04", label: "Understanding needs", href: "#needs" },
-  { number: "05", label: "Making sense of the system", href: "#system" },
-  { number: "06", label: "How it works", href: "#workflows" },
-  { number: "07", label: "My approach", href: "#approach" },
-  { number: "08", label: "Challenges", href: "#challenges" },
-  { number: "09", label: "Outcome", href: "#outcome" },
+  { number: "04", label: "Design approach", href: "#approach" },
+  { number: "05", label: "Key decisions", href: "#decisions" },
+  { number: "06", label: "Project outcome", href: "#outcome" },
+  { number: "07", label: "Reflection", href: "#reflection" },
 ];
 
-const challengeCards = [
+const userNeeds = [
+  {
+    title: "Understand room conditions",
+    description:
+      "See key environmental readings, including temperature, humidity, and room pressure, in a way that is easier to interpret.",
+  },
+  {
+    title: "Monitor from outside the room",
+    description:
+      "Review the room and equipment status without needing to enter the isolation area just to check the monitoring information.",
+  },
+  {
+    title: "Understand the operating state",
+    description:
+      "Recognize whether the system is in AUTO, OFF, or MANUAL mode and understand that each mode has a different purpose.",
+  },
+];
+
+const contributionAreas = [
   {
     number: "01",
-    title: "Connecting information across the project",
-    detail:
-      "The room, environmental conditions, equipment, and staff operation could easily become separate lists. I grouped them into a requirements framework first, then showed how they connect in the system overview.",
+    title: "Project design",
+    subtitle: "Turn the brief into a coordinated system concept",
+    points: [
+      "Connected the room layout, staff activities, and environmental-system requirements.",
+      "Organized information from clinical and technical stakeholders into a shared project view.",
+      "Helped translate project requirements into design references and clear documentation.",
+    ],
   },
   {
     number: "02",
-    title: "Explaining different operating states",
-    detail:
-      "AUTO, OFF, and MANUAL have different meanings. I used a mode-selection view to show the three outcomes, followed by separate workflows for normal operation and the documented manual path.",
+    title: "UX and information design",
+    subtitle: "Make complex information easier to understand",
+    points: [
+      "Considered the monitoring experience from the nursing team's point of view.",
+      "Worked with nurses and the project team to understand what staff needed to review, including room conditions and equipment status.",
+      "Organized the team's requirements into a clear relationship between staff, monitoring information, controls, equipment, and the room.",
+    ],
   },
   {
     number: "03",
-    title: "Keeping the staff perspective visible",
-    detail:
-      "Rather than presenting the system only as equipment, I organized the diagrams around what staff need to review and monitor, and how the operating information relates to the room.",
+    title: "Project management",
+    subtitle: "Keep people, decisions, and delivery aligned",
+    points: [
+      "Worked across clinical and technical disciplines to clarify requirements.",
+      "Used workflows and visual documentation to communicate decisions.",
+      "Coordinated design-related work through the construction and commissioning period.",
+    ],
   },
 ];
 
+const designDecisions = [
+  {
+    number: "01",
+    title: "Start with the staff experience",
+    description:
+      "Rather than explaining the system only through its equipment, I organized the relationship around what staff needed to observe and understand: the monitoring view, the control state, the supporting equipment, and the room environment.",
+    image: SystemImage,
+    imageAlt:
+      "Staff-centred relationship diagram connecting staff observation, the monitoring interface, system controls, equipment, and the isolation room.",
+    caption: "A staff-centred view of the system relationship",
+    // Trims the empty space above and below the artwork
+    imageClass: "aspect-[1774/560] object-cover object-center",
+  },
+  {
+    number: "02",
+    title: "Make each operating mode distinct",
+    description:
+      "AUTO, OFF, and MANUAL represent different operating states. I kept them visually separate in the workflow documentation so the team could discuss each state without treating them as interchangeable.",
+    image: ModeImage,
+    imageAlt:
+      "Three distinct operating states: AUTO, OFF, and MANUAL.",
+    caption: "Three operating states, clearly distinguished",
+  },
+  {
+    number: "03",
+    title: "Show the normal operating cycle",
+    description:
+      "I represented AUTO as an ongoing cycle of selecting the mode, reviewing status, system operation, and continued monitoring. This gave the team a shared high-level view of the normal operating experience.",
+    image: AutoImage,
+    imageAlt:
+      "Simplified AUTO operating cycle showing selection, status review, system operation, monitoring, and continuation.",
+    caption: "A simplified view of the AUTO operating cycle",
+  },
+  {
+    number: "04",
+    title: "Make the fallback limitations clear",
+    description:
+      "MANUAL was documented as a separate fallback path with different capabilities from AUTO. Making that distinction visible helped avoid presenting the two modes as equivalent.",
+    image: ManualImage,
+    imageAlt:
+      "MANUAL fallback workflow with a note that its functions differ from AUTO.",
+    caption: "A separate MANUAL path, with its limitation made visible",
+  },
+];
+
+
 ---
 
-<ProjectDetailLayout title="COVID-19 ICU Monitoring — Joy" active="projects">
+<ProjectDetailLayout title="COVID-19 Isolation Room — Joy" active="projects">
   <main class="w-full">
     <div class="py-5 sm:py-7">
       <Breadcrumb
         items={[
           { label: "Projects", href: "/projects/" },
-          { label: "COVID-19 ICU Monitoring", href: "/projects/covid-project/" },
+          { label: "COVID-19 Isolation Room", href: "/projects/covid-project/" },
         ]}
       />
     </div>
 
     <ProjectDetailHero
-      eyebrow="Project design case study"
-      title="COVID-19 ICU Monitoring"
-      description="A project-design case study for an isolation room at King Chulalongkorn Memorial Hospital: turning project requirements into clear workflows and documentation for the staff who use the room."
+      eyebrow="Healthcare · Project design case study"
+      title="COVID-19 Isolation Room"
+      description="A new negative-pressure isolation-room project at King Chulalongkorn Memorial Hospital. I connected clinical needs, technical requirements, staff workflows, and project coordination to help turn a complex brief into a clear, shared design direction."
       imageSrc={IcuCover.src}
       imageScale="scale-100"
-      imageAlt="Illustrated cutaway of an isolation room with a monitoring interface and environmental system elements"
-      categories={["Project Management"]}
+      imageAlt="Illustrated cutaway of a hospital isolation room with a monitoring interface and environmental system elements"
+      categories={["UX/UI Design", "Project Management"]}
       role="Project Design Manager"
     />
 
     <div id="overview" class="scroll-mt-8">
       <ProjectOverview
-        durationLabel="Project"
-        duration="75 days (including construction)"
+        durationLabel="Project timeline"
+        duration="75 days · construction to commissioning"
         role="Project Design Manager"
         responsibilities={[
-          "Structuring room and system requirements",
-          "Mapping staff-facing and system workflows",
-          "Preparing diagrams and project documentation for coordination",
+          "Translated clinical and technical needs into project requirements",
+          "Structured room, system, and staff workflows",
+          "Coordinated design information and communication across teams",
         ]}
         challenges={[
-          "Connect the room, equipment, monitoring, and staff needs in one clear project view",
-          "Explain the different operating states without combining unlike workflows",
-          "Keep the documentation understandable without losing important distinctions",
+          "Delivering a new isolation-room environment within an urgent timeline",
+          "Connecting clinical needs with specialist technical requirements",
+          "Making complex system information understandable to non-technical users",
         ]}
         solutions={[
-          "Grouped the brief into four reviewable requirement themes",
-          "Mapped the relationship between staff, monitoring, equipment, and room conditions",
-          "Created separate explanatory views for mode selection, AUTO, and MANUAL",
+          "A staff-centred view of the room and monitoring system",
+          "Clear documentation of AUTO, OFF, and MANUAL operating states",
+          "Shared workflows and visual references to support team coordination",
         ]}
       />
     </div>
@@ -99,9 +170,9 @@ const challengeCards = [
       <aside class="hidden lg:block">
         <div class="sticky top-28">
           <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
-            Project design process
+            Case study
           </h3>
-          <nav aria-label="COVID-19 project case study sections">
+          <nav aria-label="COVID-19 isolation room case study sections">
             <ol class="border-y border-brown-dark/15">
               {navItems.map((item, index) => (
                 <li>
@@ -123,345 +194,258 @@ const challengeCards = [
       </aside>
 
       <div class="min-w-0 space-y-20 sm:space-y-28">
-        <!-- 01 / STORY -->
-        <section id="story" class="scroll-mt-8">
-          <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · The story behind the project</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Where my move into digital design began</h2>
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-brown-dark/75">
-              During COVID-19, I helped prepare hospital spaces for patients and improve workflows for doctors and nurses. It showed me how much thoughtful design affects people, and this project inspired my move into digital design.
-            </p>
-          </header>
-
-          <div class="mt-10 grid gap-4 md:grid-cols-3">
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">The context</p>
-              <h3 class="mt-3 text-xl text-brown-dark">A hospital adapting to a pandemic</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Spaces prepared for patients, and better workflows for doctors and nurses.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What I brought</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Architecture and project design</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Thinking in space, requirements and the needs of the people using the room.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What it changed</p>
-              <h3 class="mt-3 text-xl text-brown-dark">From physical spaces to digital experiences</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Design could improve digital experiences, not only physical spaces.</p>
-            </article>
-          </div>
-
-          <div class="mt-8 border-l-2 border-green-dark bg-green-light/35 px-5 py-4">
-            <h3 class="font-semibold text-brown-dark">My role in this project</h3>
-            <p class="mt-2 leading-relaxed text-brown-dark/70">
-              My part was project design: requirements, workflows and documentation. The system itself was delivered with engineers and the wider project team.
-            </p>
-          </div>
-        </section>
-
-        <!-- 02 / CONTEXT -->
+        <!-- 01 / PROJECT CONTEXT -->
         <section id="context" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · Project context</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A room is more than the space around it</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · Project context</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Designing beyond the room itself</h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The project brought together the physical room, environmental conditions, supporting equipment, and the information staff needed to monitor. Before focusing on individual components, I looked at how these parts related to one another. This gave the project a clear starting point for organizing requirements and explaining the system from the staff perspective.
+              During the COVID-19 response, King Chulalongkorn Memorial Hospital needed a new negative-pressure isolation-room environment. The project involved more than the physical space: staff routines, environmental conditions, monitoring information, equipment, and operating procedures all had to work together.
+            </p>
+            <p class="mt-4 max-w-3xl leading-relaxed text-brown-dark/70">
+              My role sat between the people using the space and the teams responsible for designing and delivering it. I helped organize those different perspectives into a shared understanding of the project.
             </p>
           </header>
 
           <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
-            <img src={ContextImage.src} alt="Conceptual room plan and project design considerations" class="h-auto w-full" loading="lazy" />
+            <img
+              src={ContextImage.src}
+              alt="Illustration of the isolation suite, with an ante room, a five-bed isolation room, a doffing room, and a monitoring station outside the room"
+              class="h-auto w-full"
+              loading="lazy"
+            />
             <figcaption class="flex flex-col gap-1 border-t border-brown-dark/10 px-5 py-4 text-sm text-brown-dark/60 sm:flex-row sm:items-center sm:justify-between">
-              <span>Project context · the room as a connected environment</span>
+              <span>Project context · how the spaces relate to staff activities</span>
               <span>Conceptual illustration created for this case study</span>
             </figcaption>
           </figure>
+        </section>
 
-          <div class="mt-8 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3">
-            <article class="bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Project setting</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Hospital facility</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">King Chulalongkorn Memorial Hospital (KCMH), Bangkok, Thailand</p>
-            </article>
-            <article class="bg-cream p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Project area</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Room 208</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Chongkolnee Wattanawong Building</p>
-            </article>
-            <article class="bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">My focus</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Project design</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/65">Requirements · workflows · coordination</p>
-            </article>
+        <!-- 02 / CHALLENGE -->
+        <section id="challenge" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · The challenge</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Complex systems. Clear decisions for staff.</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The project brought together clinical workflows and specialist building systems. Nurses needed to understand the room's condition and the system's operating state, while technical teams needed accurate requirements and coordinated information to deliver the environment.
+            </p>
+          </header>
+
+          <h3 class="mt-10 text-2xl text-brown-dark">The staff perspective</h3>
+          <div class="mt-5 grid gap-4 md:grid-cols-3">
+            {userNeeds.map((need, index) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-7">
+                <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Need 0{index + 1}</p>
+                <h4 class="mt-3 text-xl leading-snug text-brown-dark">{need.title}</h4>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">{need.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="mt-8 border-l-4 border-green-dark bg-green-light/30 p-6 sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Design challenge</p>
+            <p class="mt-3 text-xl leading-relaxed text-brown-dark sm:text-2xl">
+              How might we connect technical requirements and room operations into information and workflows that staff can understand, while keeping the project team aligned?
+            </p>
           </div>
         </section>
 
         <!-- 03 / CONTRIBUTION -->
         <section id="contribution" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · My contribution</p>
-              <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">My role was to connect the brief, the people, and the project team</h2>
-            </div>
-            <p class="max-w-xl text-lg leading-relaxed text-brown-dark/75">
-              My contribution sat between the project brief and the technical work that followed. I organized the requirements, mapped the main user and system workflows, and prepared design documentation to make the project easier to understand, review, and coordinate.
-            </p>
-          </header>
-
-          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
-            <img src={ContributionImage.src} alt="Three-part diagram showing my contribution across requirements, workflows, and coordination" class="h-auto w-full" loading="lazy" />
-            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">My contribution · requirements  workflows  coordination</figcaption>
-          </figure>
-
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <span class="text-sm font-semibold text-green-dark">01 / Understand</span>
-              <h3 class="mt-4 text-2xl text-brown-dark">Gather the needs</h3>
-              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Review the project brief and bring the room, environmental, and operational needs into one structured view.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <span class="text-sm font-semibold text-brown-light">02 / Translate</span>
-              <h3 class="mt-4 text-2xl text-brown-dark">Map the experience</h3>
-              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Translate the documented operating modes into clear paths, with the staff interaction and system response shown separately.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <span class="text-sm font-semibold text-pink">03 / Align</span>
-              <h3 class="mt-4 text-2xl text-brown-dark">Support coordination</h3>
-              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Prepare diagrams and structured documentation that give the project team a shared reference for discussion and coordination.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- 04 / NEEDS -->
-        <section id="needs" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Understanding the needs</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Four themes helped me make sense of the brief</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · My contribution</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Three disciplines, one connected project</h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The brief covered several connected areas, so presenting every item as one long checklist would make the overall picture difficult to scan. I grouped the requirements into four themes: room conditions, supporting air and filtration systems, staff operation, and operational continuity. This structure made each area easier to review while keeping the wider purpose of the system in view.
+              As Project Design Manager, I worked across project design, user-centred information planning, and coordination. My contribution was to clarify what the project needed, make the relationships easier to understand, and help the different teams work from consistent information.
             </p>
           </header>
 
-          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
-            <img src={RequirementsImage.src} alt="Four-part requirements framework for room conditions, air quality and filtration, staff operation, and operational continuity" class="h-auto w-full" loading="lazy" />
-            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Requirements framework · grouped around the needs of the project</figcaption>
-          </figure>
-
-          <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            <article class="border border-brown-dark/15 bg-green-light/40 p-6 sm:p-8">
-              <span class="text-sm font-semibold text-green-dark">01 / Environment</span>
-              <h3 class="mt-5 text-2xl text-brown-dark">Room conditions</h3>
-              <p class="mt-3 leading-relaxed text-brown-dark/75">Understand the environmental conditions that need to be monitored, including temperature, humidity, and pressure.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-accent-blue/10 p-6 sm:p-8">
-              <span class="text-sm font-semibold text-brown-light">02 / Support systems</span>
-              <h3 class="mt-5 text-2xl text-brown-dark">Air quality and filtration</h3>
-              <p class="mt-3 leading-relaxed text-brown-dark/75">Consider the ventilation and filtration equipment that supports the room environment.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-pink/10 p-6 sm:p-8">
-              <span class="text-sm font-semibold text-pink">03 / People</span>
-              <h3 class="mt-5 text-2xl text-brown-dark">Staff operation</h3>
-              <p class="mt-3 leading-relaxed text-brown-dark/75">Make system status, operating modes, and the available controls understandable to the people using them.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-cream/70 p-6 sm:p-8">
-              <span class="text-sm font-semibold text-green-dark">04 / Continuity</span>
-              <h3 class="mt-5 text-2xl text-brown-dark">Operational continuity</h3>
-              <p class="mt-3 leading-relaxed text-brown-dark/75">Account for the documented manual operating option and communicate that it is not identical to normal automatic operation.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- 05 / SYSTEM -->
-        <section id="system" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · Making sense of the system</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">I started with the people, not just the equipment</h2>
-            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              I wanted the system view to explain the relationships before introducing component-level detail. I organized it around a simple reading order: the staff who need the information, the monitoring and control layer, the connected equipment, and the room conditions being monitored. This helped shift the diagram from a list of equipment to a view of how the parts fit together.
-            </p>
-          </header>
-
-          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
-            <img src={SystemImage.src} alt="High-level relationship map connecting hospital staff, monitoring, control layer, equipment, and room conditions" class="h-auto w-full" loading="lazy" />
-            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">System relationship · a simplified view for project communication</figcaption>
-          </figure>
-
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <article class="bg-green-light/50 p-6">
-              <p class="text-xs font-semibold uppercase tracking-wider text-green-dark">People</p>
-              <h3 class="mt-3 text-2xl text-brown-dark">Hospital staff</h3>
-              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">The people who need to understand the room status and use the documented controls.</p>
-            </article>
-            <article class="bg-accent-blue/10 p-6">
-              <p class="text-xs font-semibold uppercase tracking-wider text-brown-light">Information and control</p>
-              <h3 class="mt-3 text-2xl text-brown-dark">Monitoring and control layer</h3>
-              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">The interface presents system information while the controller manages programmed operation.</p>
-            </article>
-            <article class="bg-pink/10 p-6">
-              <p class="text-xs font-semibold uppercase tracking-wider text-pink">Environment</p>
-              <h3 class="mt-3 text-2xl text-brown-dark">Connected equipment</h3>
-              <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">Ventilation, filtration, and related equipment support the monitored room environment.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- 06 / WORKFLOWS -->
-        <section id="workflows" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · How it works</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Making the operating modes easier to follow</h2>
-            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The operating modes were not interchangeable, so I avoided combining them into one generic flow. I first showed the selector and its three possible states, then gave AUTO and MANUAL their own explanations. This makes the normal operating cycle easier to follow while keeping the documented fallback path distinct. The diagrams summarize the project documentation; they are not instructions for operating hospital equipment.
-            </p>
-          </header>
-
-          <div class="mt-10 space-y-12">
-            <article>
-              <div class="mb-4">
-                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 01 · Mode selection</p>
-                <h3 class="mt-2 text-2xl text-brown-dark">One selector, three different outcomes</h3>
-                <p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">I showed AUTO, OFF, and MANUAL as three separate outcomes from the selector. This makes the state change clear at the point where someone needs to understand which operating path is selected.</p>
-              </div>
-              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
-                <img src={ModeImage.src} alt="Mode selection diagram branching into AUTO, OFF, and MANUAL" class="h-auto w-full" loading="lazy" />
-                <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">Mode selection · based on the operating modes described in the project manual</figcaption>
-              </figure>
-            </article>
-
-            <article>
-              <div class="mb-4">
-                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 02 · Normal operation</p>
-                <h3 class="mt-2 text-2xl text-brown-dark">AUTO: a cycle of operation and monitoring</h3>
-                <p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">I presented AUTO as a repeating sequence rather than a one-way checklist: select the mode, review the status, allow the programmed operation to run, and continue monitoring. The return path communicates that monitoring is ongoing, not a final step.</p>
-              </div>
-              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
-                <img src={AutoImage.src} alt="AUTO mode cycle showing mode selection, status review, programmed system operation, monitoring, and continued operation" class="h-auto w-full" loading="lazy" />
-                <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">AUTO operation · a simplified explanatory workflow</figcaption>
-              </figure>
-            </article>
-
-            <article>
-              <div class="mb-4">
-                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Flow 03 · Fallback operation</p>
-                <h3 class="mt-2 text-2xl text-brown-dark">MANUAL: a separate path with clear limitations</h3>
-                <p class="mt-2 max-w-3xl text-sm leading-relaxed text-brown-dark/65">The project documentation describes a local manual option for situations when automatic control is unavailable. I kept this path separate and highlighted its limitations so the visual explanation would not imply that MANUAL provides the same functions as AUTO.</p>
-              </div>
-              <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
-                <img src={ManualImage.src} alt="MANUAL fallback flow with local selector, documented switches, room observation, and a note about limitations" class="h-auto w-full" loading="lazy" />
-                <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">MANUAL fallback · simplified from the supplied operating documentation</figcaption>
-              </figure>
-            </article>
-          </div>
-
-          <p class="mt-8 border-l-2 border-pink bg-pink/10 p-5 text-sm leading-relaxed text-brown-dark/70">
-            These portfolio diagrams are explanatory summaries, not approved hospital operating instructions. Staff must follow the hospital's current procedures and direction from the responsible technical team.
-          </p>
-        </section>
-
-        <!-- 07 / APPROACH -->
-        <section id="approach" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">07 · My approach</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A structured process, with clarity at every step</h2>
-            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              I worked from the broad context toward the details: first understanding the room and its purpose, then grouping the requirements, mapping the staff and system workflows, and organizing the information into documentation. This sequence helped me move from a complex brief to a set of clear, connected views.
-            </p>
-          </header>
-
-          <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
-            <img src={ProcessImage.src} alt="Four-step project design process: understand, structure, map, and coordinate" class="h-auto w-full" loading="lazy" />
-            <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">My project design approach · from understanding to coordination</figcaption>
-          </figure>
-
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <span class="text-sm font-semibold text-green-dark">Design decision 01</span>
-              <h3 class="mt-3 text-xl text-brown-dark">Use hierarchy before detail</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">I started with the room and system context, moved into requirement groups, and then explained individual workflows. The sequence gives readers the overall picture before introducing detail.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <span class="text-sm font-semibold text-green-dark">Design decision 02</span>
-              <h3 class="mt-3 text-xl text-brown-dark">Separate different states</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">I showed AUTO, OFF, and MANUAL as distinct states, then gave the normal and fallback paths their own explanations. This avoids suggesting that the modes work in the same way.</p>
-            </article>
-            <article class="border border-brown-dark/15 bg-ivory p-6">
-              <span class="text-sm font-semibold text-green-dark">Design decision 03</span>
-              <h3 class="mt-3 text-xl text-brown-dark">Keep language consistent</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">I used concise labels and consistent terms across the diagrams. I also separated actions, system states, and supporting explanations to make each workflow easier to scan.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- 08 / CHALLENGES -->
-        <section id="challenges" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">08 · Challenges and decisions</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Clarity was the design challenge</h2>
-            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The main design challenge was making a connected, technical system understandable without flattening it into an oversimplified diagram. I needed to preserve the important relationships while giving each part enough space to be understood on its own.
-            </p>
-          </header>
-
-          <div class="mt-10 space-y-4">
-            {challengeCards.map((item) => (
-              <article class="grid gap-4 border border-brown-dark/15 bg-ivory p-6 sm:grid-cols-[56px_0.85fr_1.15fr] sm:gap-6 sm:p-8">
-                <span class="text-sm font-semibold text-green-dark">{item.number}</span>
-                <h3 class="text-xl text-brown-dark">{item.title}</h3>
-                <p class="leading-relaxed text-brown-dark/70">{item.detail}</p>
+          <div class="mt-10 space-y-5">
+            {contributionAreas.map((area) => (
+              <article class="grid gap-6 border border-brown-dark/15 bg-ivory p-6 sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-10">
+                <div>
+                  <p class="text-sm font-semibold text-green-dark">{area.number} / {area.title}</p>
+                  <h3 class="mt-3 text-2xl leading-snug text-brown-dark">{area.subtitle}</h3>
+                </div>
+                <ul class="space-y-3 text-sm leading-relaxed text-brown-dark/75 sm:text-base">
+                  {area.points.map((point) => (
+                    <li class="flex gap-3">
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
+
+          <p class="mt-6 text-sm leading-relaxed text-brown-dark/60">
+            The engineering team was responsible for the technical design, system programming, and implementation. My role focused on project design, requirements, workflows, information structure, and coordination.
+          </p>
         </section>
 
-        <!-- 09 / OUTCOME -->
-        <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
-          <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-end">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">09 · Outcome</p>
-              <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A shared picture of how the project fits together</h2>
-            </div>
-            <p class="text-lg leading-relaxed text-brown-dark/75">
-              The project-design deliverables brought the brief into a more structured form. The requirements were grouped into reviewable themes, the relationship between staff, monitoring, equipment, and room conditions was mapped, and the operating modes were documented as separate workflows. Together, these materials created a clearer reference for project discussions and coordination. They represent my contribution at the project-design stage, rather than the completed engineering or clinical outcome.
+        <!-- 04 / APPROACH -->
+        <section id="approach" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Design approach</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">From understanding to coordination</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              I moved from the overall project context toward the details staff and technical teams needed to discuss. This helped connect the physical environment, operational workflows, and monitoring information instead of treating them as separate pieces.
             </p>
-          </div>
+          </header>
 
           <figure class="mt-10 overflow-hidden border border-brown-dark/15 bg-ivory">
-            <img src={OutcomeImage.src} alt="Illustrative monitoring interface concept showing room overview, status summary, ventilation, filtration, and operating mode labels" class="h-auto w-full" loading="lazy" />
+            <img
+              src={ProcessImage.src}
+              alt="Four-part project design approach: understand the context, structure requirements, map workflows, and coordinate with the team"
+              class="aspect-[1586/520] w-full object-cover object-center"
+              loading="lazy"
+            />
             <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">
-              Illustrative interface reconstruction · created to communicate the information hierarchy, not an original product screenshot
+              Understand → Structure → Map → Coordinate
             </figcaption>
           </figure>
 
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <article class="border-t-2 border-green-dark/50 pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Understand and structure</p>
+              <h3 class="mt-2 text-xl text-brown-dark">Bring different requirements together</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                Gather the project context and organize clinical, spatial, and technical information into clear themes.
+              </p>
+            </article>
+            <article class="border-t-2 border-green-dark/50 pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Map and coordinate</p>
+              <h3 class="mt-2 text-xl text-brown-dark">Make relationships visible</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                Use diagrams and workflow documentation to communicate how people, spaces, equipment, and system states relate.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- 05 / DECISIONS -->
+        <section id="decisions" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · Key design decisions</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Make the system easier to understand</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              I used a user-centred lens to organize the system information. These decisions shaped the way the project was explained and documented for discussion across the team.
+            </p>
+          </header>
+
+          <div class="mt-10 space-y-14">
+            {designDecisions.map((decision) => (
+              <article>
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Decision {decision.number}</p>
+                <h3 class="mt-2 text-2xl text-brown-dark sm:text-3xl">{decision.title}</h3>
+                <p class="mt-3 max-w-3xl leading-relaxed text-brown-dark/70">{decision.description}</p>
+                <figure class="mt-5 overflow-hidden border border-brown-dark/15 bg-ivory">
+                  <img
+                    src={decision.image.src}
+                    alt={decision.imageAlt}
+                    class:list={["w-full", decision.imageClass ?? "h-auto"]}
+                    loading="lazy"
+                  />
+                  <figcaption class="border-t border-brown-dark/10 px-5 py-3 text-sm text-brown-dark/60">
+                    {decision.caption}
+                  </figcaption>
+                </figure>
+              </article>
+            ))}
+          </div>
+
+          <p class="mt-8 text-sm leading-relaxed text-brown-dark/55">
+            These diagrams are portfolio-level explanations of the project. They are not intended to replace the hospital's technical documentation or operating procedures.
+          </p>
+        </section>
+
+        <!-- 06 / OUTCOME -->
+        <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · Project outcome</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A delivered environment, supported by clearer information</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              The project progressed from design and construction through commissioning. My contribution helped connect the room requirements, staff-facing monitoring needs, operating-mode documentation, and team coordination into a shared project reference.
+            </p>
+          </header>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-7">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Project delivery</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">75-day project timeline</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                The project moved from construction to commissioning within the documented project period.
+              </p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-7">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Operational reference</p>
+              <h3 class="mt-3 text-2xl text-brown-dark">A monitoring view for staff</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                The delivered interface brought room readings, room locations, equipment status, and system mode into one monitoring view.
+              </p>
+            </article>
+          </div>
+
+          <h3 class="mt-12 text-2xl text-brown-dark">Requirements brought together</h3>
+          <p class="mt-2 max-w-3xl leading-relaxed text-brown-dark/70">
+            Through discussions with nurses and the project team, the monitoring requirements covered several connected areas. My role was to help organize these needs and communicate them clearly across the project—not to design or program the final monitoring interface.
+          </p>
+
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What became clearer</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Project requirements</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">The project needs were organized into four related themes, making the brief easier to review without losing sight of how the requirements connect.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Room environment</p>
+              <h4 class="mt-2 text-xl text-brown-dark">Conditions and room locations</h4>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                Temperature, humidity, pressure, and the relationship between readings and the ante room, isolation room, and doffing room.
+              </p>
             </article>
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What became clearer</p>
-              <h3 class="mt-3 text-xl text-brown-dark">System relationships</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">The system map made the relationship between staff, monitoring, control, equipment, and room conditions easier to communicate.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">System information</p>
+              <h4 class="mt-2 text-xl text-brown-dark">Equipment and operating state</h4>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                Equipment status, air-change information, filter information, and whether the system was in AUTO, OFF, or MANUAL mode.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- 07 / REFLECTION -->
+        <section id="reflection" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">07 · Reflection</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Good design connects people, information, and delivery</h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
+              This project strengthened the way I approach design: start by understanding the people and context, make complex relationships visible, and keep decisions clear for everyone involved. It also shaped how I think about UX/UI design—not only as the design of screens, but as the design of information, workflows, and the experience around a system.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-3">
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">UX/UI design</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Design around user needs</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Prioritize what people need to know, do, and understand.</p>
             </article>
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What became clearer</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Operating workflows</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">The mode diagrams made the difference between normal automatic operation, the OFF state, and the documented manual option easier to distinguish.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Project design</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Connect the whole system</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Bring spaces, workflows, requirements, and technical elements into one view.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Project management</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Create shared understanding</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Use clear communication and documentation to help teams stay aligned.</p>
             </article>
           </div>
 
           <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Project takeaway</p>
-              <h3 class="mt-3 text-3xl !text-white">Good project design makes complexity easier to act on.</h3>
-              <p class="mt-3 max-w-2xl text-white/75">
-                My contribution was to make a complex project easier to understand and discuss: structure the requirements, connect the system view to the staff perspective, and communicate the operating modes through clear workflows.
-              </p>
+              <h3 class="mt-3 text-3xl !text-white">Make complexity clear—for the people who use it and the people who deliver it.</h3>
             </div>
-            <a href="/projects/" class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white">Explore more projects </a>
+            <a href="/projects/" class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white">Explore more projects</a>
           </div>
         </section>
-
       </div>
     </section>
   </main>
