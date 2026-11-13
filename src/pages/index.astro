@@ -70,7 +70,7 @@ import Layout from "../layouts/MainLayout.astro";
           <!-- First message -->
           <div
             id="first-message"
-            class="flex flex-col items-start justify-center pt-10 px-10 gap-4 text-start text-white"
+            class="flex flex-col items-start justify-center pt-8 px-10 gap-3 text-start text-white"
           >
             <p
               class="text-lg font-normal"
@@ -80,12 +80,12 @@ import Layout from "../layouts/MainLayout.astro";
               Hello 👋 Welcome to my workspace 🎄
             </p>
             <p
-              class="text-lg font-normal"
+              class="text-base leading-snug font-normal text-white/90"
               data-aos="fade-up"
               data-aos-duration="2000"
               data-aos-delay="1000"
             >
-              Everything here tells a story about me, my work, and my hobbies.
+              With a background in architecture and healthcare, I design human-centered digital experiences.
             </p>
             <p
               class="text-lg font-normal"
@@ -96,18 +96,28 @@ import Layout from "../layouts/MainLayout.astro";
               Click on the items to explore and learn more about me!
             </p>
 
-            <button
-              id="open-help"
-              type="button"
-              class="cursor-pointer mt-4 underline underline-offset-4 transition hover:text-[#E9DCC9]"
-              aria-controls="second-message"
-              aria-expanded="false"
+            <div
+              class="mt-1 flex flex-wrap items-center gap-x-6 gap-y-2"
               data-aos="zoom-in"
               data-aos-duration="2000"
               data-aos-delay="2500"
             >
-              Hint?
-            </button>
+              <button
+                id="open-help"
+                type="button"
+                class="cursor-pointer underline underline-offset-4 transition hover:text-[#E9DCC9]"
+                aria-controls="second-message"
+                aria-expanded="false"
+              >
+                Hint?
+              </button>
+              <a
+                href="/about"
+                class="underline underline-offset-4 transition hover:text-[#E9DCC9]"
+              >
+                More about me →
+              </a>
+            </div>
           </div>
 
           <!-- Help message -->

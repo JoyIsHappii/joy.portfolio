@@ -16,14 +16,15 @@ import ProcessImage from "../../assets/covid/design-journey.svg";
 import OutcomeImage from "../../assets/covid/outcome-interface.svg";
 
 const navItems = [
-  { number: "01", label: "Project context", href: "#context" },
-  { number: "02", label: "My contribution", href: "#contribution" },
-  { number: "03", label: "Understanding needs", href: "#needs" },
-  { number: "04", label: "Making sense of the system", href: "#system" },
-  { number: "05", label: "How it works", href: "#workflows" },
-  { number: "06", label: "My approach", href: "#approach" },
-  { number: "07", label: "Challenges", href: "#challenges" },
-  { number: "08", label: "Outcome", href: "#outcome" },
+  { number: "01", label: "The story behind it", href: "#story" },
+  { number: "02", label: "Project context", href: "#context" },
+  { number: "03", label: "My contribution", href: "#contribution" },
+  { number: "04", label: "Understanding needs", href: "#needs" },
+  { number: "05", label: "Making sense of the system", href: "#system" },
+  { number: "06", label: "How it works", href: "#workflows" },
+  { number: "07", label: "My approach", href: "#approach" },
+  { number: "08", label: "Challenges", href: "#challenges" },
+  { number: "09", label: "Outcome", href: "#outcome" },
 ];
 
 const challengeCards = [
@@ -49,21 +50,21 @@ const challengeCards = [
 
 ---
 
-<ProjectDetailLayout title="COVID-19 Isolation Room — Joy" active="projects">
+<ProjectDetailLayout title="COVID-19 ICU Monitoring — Joy" active="projects">
   <main class="w-full">
     <div class="py-5 sm:py-7">
       <Breadcrumb
         items={[
           { label: "Projects", href: "/projects/" },
-          { label: "COVID-19 Isolation Room", href: "/projects/covid-project/" },
+          { label: "COVID-19 ICU Monitoring", href: "/projects/covid-project/" },
         ]}
       />
     </div>
 
     <ProjectDetailHero
       eyebrow="Project design case study"
-      title="COVID-19 Isolation Room"
-      description="A project-design case study for an isolation patient room at King Chulalongkorn Memorial Hospital. My focus was to understand the project requirements, map how staff interact with the environmental control system, and organize the information into clear workflows and project documentation."
+      title="COVID-19 ICU Monitoring"
+      description="A project-design case study for an isolation room at King Chulalongkorn Memorial Hospital: turning project requirements into clear workflows and documentation for the staff who use the room."
       imageSrc={IcuCover.src}
       imageScale="scale-100"
       imageAlt="Illustrated cutaway of an isolation room with a monitoring interface and environmental system elements"
@@ -122,10 +123,46 @@ const challengeCards = [
       </aside>
 
       <div class="min-w-0 space-y-20 sm:space-y-28">
-        <!-- 01 / CONTEXT -->
+        <!-- 01 / STORY -->
+        <section id="story" class="scroll-mt-8">
+          <header class="max-w-4xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · The story behind the project</p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Where my move into digital design began</h2>
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-brown-dark/75">
+              During COVID-19, I helped prepare hospital spaces for patients and improve workflows for doctors and nurses. It showed me how much thoughtful design affects people, and this project inspired my move into digital design.
+            </p>
+          </header>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-3">
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">The context</p>
+              <h3 class="mt-3 text-xl text-brown-dark">A hospital adapting to a pandemic</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Spaces prepared for patients, and better workflows for doctors and nurses.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What I brought</p>
+              <h3 class="mt-3 text-xl text-brown-dark">Architecture and project design</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Thinking in space, requirements and the needs of the people using the room.</p>
+            </article>
+            <article class="border border-brown-dark/15 bg-ivory p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">What it changed</p>
+              <h3 class="mt-3 text-xl text-brown-dark">From physical spaces to digital experiences</h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Design could improve digital experiences, not only physical spaces.</p>
+            </article>
+          </div>
+
+          <div class="mt-8 border-l-2 border-green-dark bg-green-light/35 px-5 py-4">
+            <h3 class="font-semibold text-brown-dark">My role in this project</h3>
+            <p class="mt-2 leading-relaxed text-brown-dark/70">
+              My part was project design: requirements, workflows and documentation. The system itself was delivered with engineers and the wider project team.
+            </p>
+          </div>
+        </section>
+
+        <!-- 02 / CONTEXT -->
         <section id="context" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · Project context</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · Project context</p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A room is more than the space around it</h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
               The project brought together the physical room, environmental conditions, supporting equipment, and the information staff needed to monitor. Before focusing on individual components, I looked at how these parts related to one another. This gave the project a clear starting point for organizing requirements and explaining the system from the staff perspective.
@@ -159,11 +196,11 @@ const challengeCards = [
           </div>
         </section>
 
-        <!-- 02 / CONTRIBUTION -->
+        <!-- 03 / CONTRIBUTION -->
         <section id="contribution" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
           <header class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · My contribution</p>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · My contribution</p>
               <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">My role was to connect the brief, the people, and the project team</h2>
             </div>
             <p class="max-w-xl text-lg leading-relaxed text-brown-dark/75">
@@ -195,10 +232,10 @@ const challengeCards = [
           </div>
         </section>
 
-        <!-- 03 / NEEDS -->
+        <!-- 04 / NEEDS -->
         <section id="needs" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · Understanding the needs</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Understanding the needs</p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Four themes helped me make sense of the brief</h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
               The brief covered several connected areas, so presenting every item as one long checklist would make the overall picture difficult to scan. I grouped the requirements into four themes: room conditions, supporting air and filtration systems, staff operation, and operational continuity. This structure made each area easier to review while keeping the wider purpose of the system in view.
@@ -234,10 +271,10 @@ const challengeCards = [
           </div>
         </section>
 
-        <!-- 04 / SYSTEM -->
+        <!-- 05 / SYSTEM -->
         <section id="system" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Making sense of the system</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · Making sense of the system</p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">I started with the people, not just the equipment</h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
               I wanted the system view to explain the relationships before introducing component-level detail. I organized it around a simple reading order: the staff who need the information, the monitoring and control layer, the connected equipment, and the room conditions being monitored. This helped shift the diagram from a list of equipment to a view of how the parts fit together.
@@ -268,10 +305,10 @@ const challengeCards = [
           </div>
         </section>
 
-        <!-- 05 / WORKFLOWS -->
+        <!-- 06 / WORKFLOWS -->
         <section id="workflows" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · How it works</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · How it works</p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Making the operating modes easier to follow</h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
               The operating modes were not interchangeable, so I avoided combining them into one generic flow. I first showed the selector and its three possible states, then gave AUTO and MANUAL their own explanations. This makes the normal operating cycle easier to follow while keeping the documented fallback path distinct. The diagrams summarize the project documentation; they are not instructions for operating hospital equipment.
@@ -321,10 +358,10 @@ const challengeCards = [
           </p>
         </section>
 
-        <!-- 06 / APPROACH -->
+        <!-- 07 / APPROACH -->
         <section id="approach" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · My approach</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">07 · My approach</p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A structured process, with clarity at every step</h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
               I worked from the broad context toward the details: first understanding the room and its purpose, then grouping the requirements, mapping the staff and system workflows, and organizing the information into documentation. This sequence helped me move from a complex brief to a set of clear, connected views.
@@ -355,10 +392,10 @@ const challengeCards = [
           </div>
         </section>
 
-        <!-- 07 / CHALLENGES -->
+        <!-- 08 / CHALLENGES -->
         <section id="challenges" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">07 · Challenges and decisions</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">08 · Challenges and decisions</p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Clarity was the design challenge</h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
               The main design challenge was making a connected, technical system understandable without flattening it into an oversimplified diagram. I needed to preserve the important relationships while giving each part enough space to be understood on its own.
@@ -376,11 +413,11 @@ const challengeCards = [
           </div>
         </section>
 
-        <!-- 08 / OUTCOME -->
+        <!-- 09 / OUTCOME -->
         <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
           <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-end">
             <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">08 · Outcome</p>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">09 · Outcome</p>
               <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A shared picture of how the project fits together</h2>
             </div>
             <p class="text-lg leading-relaxed text-brown-dark/75">

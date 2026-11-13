@@ -1,12 +1,13 @@
 ---
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import Button from "../../components/Button.astro";
-import Tag from "../../components/Tag.astro";
 import Tech from "../../components/Tech.astro";
 
 import Footer from "../../components/Footer.astro";
 import Modal from "../../components/Modal.astro";
-import Portrait from "../../assets/joy.png";
+import JoyCharacter from "../../assets/Chibi Ice Cream Lick Loop.gif";
+// import JoyCharacter from "../../assets/joy.png";
+
 import CertificateImage from "../../assets/certificate.jpeg";
 
 import Ai from "../../assets/skills/ai.svg";
@@ -52,39 +53,55 @@ const dots = {
 
 type Category = "UX/UI Design" | "Web Development" | "Project Management";
 
-const journey: { period: string; title: string; place: string; detail: string; dot: string; category?: Category }[] = [
+// Oldest first, so the page reads as one story
+const journey: {
+  number: string;
+  period: string;
+  title: string;
+  place: string;
+  detail: string;
+  turningPoint?: { title: string; text: string; href: string };
+  badge: string;
+}[] = [
   {
-    period: "2026 – now",
-    title: "Web Development",
-    place: "CICCC, Vancouver",
-    detail: "Learning to bring my designs into code with JavaScript, React, Next.js and databases.",
-    dot: dots.web,
-    category: "Web Development",
-  },
-  {
-    period: "2023 – 2025",
-    title: "UI/UX Design",
-    place: "CICCC · Iter Innovandi",
-    detail: "Advanced Diploma in UI/UX Design, then a design internship creating UI kits, design systems and mock-ups.",
-    dot: dots.ux,
-    category: "UX/UI Design",
-  },
-  {
-    period: "2018 – 2023",
-    title: "Project Design Manager",
-    place: "King Chulalongkorn Memorial Hospital",
-    detail: "Managed multidisciplinary design projects with medical staff, engineers, suppliers and contractors.",
-    dot: dots.pm,
-    category: "Project Management",
-  },
-  {
-    period: "2012 – 2018",
+    number: "01",
+    period: "2012–2018",
     title: "Architecture",
     place: "Chulalongkorn University",
-    detail: "Bachelor's and Master's in Architecture, followed by freelance architecture and graphic design.",
-    dot: dots.arch,
+    detail: "Built a foundation in spatial design and human needs, with Second Class Honors and a Master’s in project management.",
+    badge: "bg-pink/15 text-pink",
+  },
+  {
+    number: "02",
+    period: "2018–2023",
+    title: "Healthcare Project Management",
+    place: "King Chulalongkorn Memorial Hospital",
+    detail: "Led hospital design projects across medical, designer, and construction teams, improving environments for patients and healthcare staff.",
+    turningPoint: {
+      title: "COVID-19 ICU Monitoring",
+      text: "A project that inspired my transition into digital design.",
+      href: "/projects/covid-project",
+    },
+    badge: "bg-purple-100 text-purple-800",
+  },
+  {
+    number: "03",
+    period: "2023–2025",
+    title: "UI/UX Design",
+    place: "CICCC & Iter Innovandi",
+    detail: "Learned user research and interaction design, and won the Best UI/UX Project Award for 7VAN.",
+    badge: "bg-blue-100 text-blue-800",
+  },
+  {
+    number: "04",
+    period: "2026–Present",
+    title: "Web Development",
+    place: "CICCC, Vancouver",
+    detail: "Learning to code so I can design things that are practical to build and work better with developers.",
+    badge: "bg-green-100 text-green-800",
   },
 ];
+
 
 // Tools without an icon show their initials until an icon is added:
 // put the SVG in src/assets/skills/, import it above, and set `icon`.
@@ -165,29 +182,73 @@ const toolGroups: { title: string; dot: string; tools: ToolItem[] }[] = [
 
 // "VS Code" -> "VC", "Next.js" -> "N"
 const initials = (name: string) =>
-  name.replace(/\.js$/, "").split(/[\s.]+/).filter(Boolean).slice(0, 2).map((word) => word[0]).join("").toUpperCase();
+  name
+    .replace(/\.js$/, "")
+    .split(/[\s.]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
 
 const practices: { title: string; category: Category; items: string[] }[] = [
-  { title: "UX Research", category: "UX/UI Design", items: ["User Research", "Journey Mapping", "User Flows", "Usability Testing"] },
-  { title: "UI & Systems", category: "UX/UI Design", items: ["Wireframing", "Prototyping", "Design Systems", "Responsive Design"] },
-  { title: "Web Development", category: "Web Development", items: ["Responsive Layouts", "REST APIs", "Accessibility", "Team Workflows"] },
-  { title: "Project Design", category: "Project Management", items: ["Requirements", "Stakeholders", "Schedules & Budgets", "Documentation"] },
+  {
+    title: "UX Research",
+    category: "UX/UI Design",
+    items: [
+      "User Research",
+      "Journey Mapping",
+      "User Flows",
+      "Usability Testing",
+    ],
+  },
+  {
+    title: "UI & Systems",
+    category: "UX/UI Design",
+    items: [
+      "Wireframing",
+      "Prototyping",
+      "Design Systems",
+      "Responsive Design",
+    ],
+  },
+  {
+    title: "Web Development",
+    category: "Web Development",
+    items: [
+      "Responsive Layouts",
+      "REST APIs",
+      "Accessibility",
+      "Team Workflows",
+    ],
+  },
+  {
+    title: "Project Design",
+    category: "Project Management",
+    items: [
+      "Requirements",
+      "Stakeholders",
+      "Schedules & Budgets",
+      "Documentation",
+    ],
+  },
 ];
 
 const approach = [
   {
     title: "Listen first",
-    detail: "From hospital staff to clients, I start by understanding the people who will use what I make.",
+    detail: "I start by understanding the people who will use what I make.",
     badge: "bg-blue-100 text-blue-800",
   },
   {
     title: "Make complex things clear",
-    detail: "I organize requirements and messy information into flows and interfaces anyone can follow.",
+    detail: "I turn messy information into flows anyone can follow.",
     badge: "bg-purple-100 text-purple-800",
   },
   {
     title: "Bridge design and build",
-    detail: "Years of coordinating engineers and contractors, and now code, help me design things that can be built.",
+    detail:
+      "Working with engineers, and now writing code, helps me design things that can be built.",
     badge: "bg-green-100 text-green-800",
   },
 ];
@@ -198,7 +259,12 @@ const issuerBadge: Record<string, string> = {
   "Architect Council of Thailand": "ACT",
 };
 
-const certifications: { name: string; by: string; date: string; url?: string }[] = [
+const certifications: {
+  name: string;
+  by: string;
+  date: string;
+  url?: string;
+}[] = [
   {
     name: "Human-Computer Interaction: The Foundations of UX Design",
     by: "Interaction Design Foundation",
@@ -223,7 +289,11 @@ const certifications: { name: string; by: string; date: string; url?: string }[]
     date: "2025",
     url: "https://ixdf.org/members/joy-kosol/certificate/course/95776efd-3134-4e78-a530-31816f45d3d1?certificateType=course",
   },
-  { name: "Licensed Associate Architect", by: "Architect Council of Thailand", date: "2018" },
+  {
+    name: "Licensed Associate Architect",
+    by: "Architect Council of Thailand",
+    date: "2018",
+  },
 ];
 
 const categoryDot: Record<Category, string> = {
@@ -233,74 +303,112 @@ const categoryDot: Record<Category, string> = {
 };
 
 // Type and colour taken from the Projects page
-const sectionHeading = "text-2xl font-normal tracking-tight text-brown-dark md:text-4xl";
+const sectionHeading =
+  "text-2xl font-normal tracking-tight text-brown-dark md:text-4xl";
 const sectionSubtitle = "mt-2 text-lg font-normal text-brown-dark/75";
-const mono = "font-mono text-[15px] leading-[1.3] tracking-[0.08em] text-brown-dark/75";
-const panel = "group border border-brown-dark/20 bg-brown-medium/30 transition-all duration-300 ease-in-out hover:bg-brown-medium/70";
+const mono =
+  "font-mono text-[15px] leading-[1.3] tracking-[0.08em] text-brown-dark/75";
+const panel =
+  "group border border-brown-dark/20 bg-brown-medium/30 transition-all duration-300 ease-in-out hover:bg-brown-medium/70";
 ---
 
 <ContentLayout title="About Me — Joy Kosol" active="about">
-  <main class="mx-auto flex w-full max-w-6xl flex-col px-4 pt-4 pb-20 text-brown-dark md:px-0 md:pt-6">
+  <main
+    class="mx-auto flex w-full max-w-6xl flex-col px-4 pt-4 pb-20 text-brown-dark md:px-0 md:pt-6"
+  >
     <!-- Intro -->
-    <section class="border-b border-brown-dark/20 pb-14 pt-6 md:pb-20" aria-labelledby="about-heading">
-      
-      <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(260px,0.75fr)] lg:gap-16">
-        <div class="order-2 flex flex-col gap-4 lg:order-1">
-          <h1 id="about-heading" class="text-4xl tracking-tight text-brown-dark md:text-5xl lg:text-6xl">
+    <section
+      class="border-b border-brown-dark/20 pb-14 pt-6 md:pb-20"
+      aria-labelledby="about-heading"
+    >
+      <div
+        class="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:gap-20"
+      >
+        <div class="order-2 flex flex-col lg:order-1">
+          <p class="!text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+            UX/UI &amp; Project Designer
+          </p>
+          <h1
+            id="about-heading"
+            class="mt-4 text-4xl tracking-tight text-brown-dark md:text-5xl lg:text-6xl"
+          >
             Hi, I'm Joy Kosol.
           </h1>
-          <div class="flex flex-wrap gap-2">
-            <Tag category="UX/UI Design" />
-            <Tag category="Web Development" />
-            <Tag category="Project Management" />
-          </div>
-          <p class="max-w-2xl text-lg font-normal text-brown-dark">
-            I'm a <b>UX/UI designer</b> with a background in <b>architecture</b> and
-            <b> project management</b>, now learning web development. I like
-            understanding what people need, organizing messy information, and
-            turning it into experiences that are simple to use.
+          <blockquote class="mt-6 max-w-xl border-l-4 border-green-dark/50 py-1 pl-5">
+            <p class="!text-2xl !leading-snug !font-normal text-brown-dark/85 sm:!text-[1.75rem]">
+              “From buildings to screens, good design starts with real human needs.”
+            </p>
+          </blockquote>
+          <p class="mt-5 max-w-xl !leading-[1.8] text-brown-dark">
+            I started in <b>architecture</b> and spent five years leading hospital design projects in Bangkok.
+            Today, I focus on <b>UX/UI and project design</b>, and I'm learning web development to understand how designs are built.
           </p>
-          <p class={mono}>Based in Vancouver, BC</p>
-          <div class="mt-2 flex flex-wrap items-center gap-4">
-            <Button href="/Joy-Kosol_Resume.pdf" variant="primary" target="_blank">Download Resume</Button>
-            <Button href="https://www.linkedin.com/in/joykosol/" variant="secondary" target="_blank">LinkedIn </Button>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <Button href="/Joy-Kosol_Resume.pdf" variant="primary" target="_blank">Resume</Button>
+            <Button href="https://www.linkedin.com/in/joykosol/" variant="secondary" target="_blank">LinkedIn</Button>
           </div>
         </div>
-        
 
-        <div class="order-1 mx-auto w-full max-w-[300px] lg:order-2 lg:max-w-[340px]">
-          <div class="relative bg-brown-medium/30 p-4 sm:p-5">
-            <span aria-hidden="true" class="absolute -right-3 -top-3 h-16 w-16 border-r border-t border-brown-dark/30"></span>
-            <span aria-hidden="true" class="absolute -bottom-3 -left-3 h-16 w-16 border-b border-l border-brown-dark/30"></span>
-            <img src={Portrait.src} alt="Illustrated portrait of Joy Kosol" class="aspect-[4/5] w-full object-cover" />
-            <div class="mt-4 flex items-center justify-between gap-3">
-              <span class="font-medium text-brown-dark">Joy Kosol</span>
-              <span class="text-xs text-brown-dark/60">Designer · Developer</span>
-            </div>
-          </div>
-        </div>
+
+
+
+<figure class="order-1 mx-auto w-full max-w-[300px] lg:order-2 lg:max-w-none">
+  <div class="bg-brown-medium/30 p-4 sm:p-5">
+
+    <!-- Pink portrait frame -->
+    <div class="relative aspect-square overflow-hidden rounded-xl bg-[#FAB8BC]">
+
+      <!-- Animated character -->
+      <div class="joy-character absolute inset-0 flex justify-center items-end">
+        <img
+          src={JoyCharacter.src}
+          alt="Illustrated portrait of Joy Kosol"
+          class="joy-character-image"
+        />
+      </div>
+
+    </div>
+
+    <figcaption class="mt-4 flex items-center justify-between gap-3">
+      <span class="font-medium text-brown-dark">Joy Kosol</span>
+      <span class="text-xs text-brown-dark/60">Vancouver, BC</span>
+    </figcaption>
+
+  </div>
+</figure>
+
+
       </div>
     </section>
 
     <!-- Interactive resume, playable right on the page -->
-    <section id="interactive-resume" class="scroll-mt-32 pt-12 lg:pt-16" aria-labelledby="resume-heading">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <section
+      id="interactive-resume"
+      class="scroll-mt-32 pt-12 lg:pt-16"
+      aria-labelledby="resume-heading"
+    >
+      <div
+        class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+      >
         <div>
           <h2 id="resume-heading" class={sectionHeading}>Interactive Resume</h2>
           <p class={sectionSubtitle}>
-            A pixel-art interactive version of my resume, playable right on the page.
+            A pixel-art interactive version of my resume, playable right on the
+            page.
           </p>
         </div>
-            <a
-              href="https://interactive-resume-joy.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-brown-dark/20 bg-[#FEF7F4]/70 px-5 py-2.5 font-medium text-brown-dark transition hover:border-black hover:bg-white"
-            >
-              View full site <span aria-hidden="true"></span>
-            </a>
+        <a
+          href="https://interactive-resume-joy.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-brown-dark/20 bg-[#FEF7F4]/70 px-5 py-2.5 font-medium text-brown-dark transition hover:border-black hover:bg-white"
+        >
+          View full site <span aria-hidden="true"></span>
+        </a>
       </div>
-      <div class="mt-6 border border-brown-dark/20 bg-brown-medium/30 p-2 sm:p-3">
+      <div
+        class="mt-6 border border-brown-dark/20 bg-brown-medium/30 p-2 sm:p-3"
+      >
         <iframe
           src="https://interactive-resume-joy.vercel.app"
           title="Joy's interactive pixel-art resume"
@@ -311,34 +419,60 @@ const panel = "group border border-brown-dark/20 bg-brown-medium/30 transition-a
       </div>
     </section>
 
-    <div class="grid gap-10 py-12 lg:grid-cols-[256px_minmax(0,1fr)] lg:gap-14 lg:py-16">
+    <div
+      class="grid gap-10 py-12 lg:grid-cols-[256px_minmax(0,1fr)] lg:gap-14 lg:py-16"
+    >
       <!-- Section menu, styled like the Projects filter -->
       <aside class="hidden lg:block">
         <div class="sticky top-[calc(50px+4rem)]">
-          <h2 class="mb-4 text-2xl font-normal tracking-tight text-brown-dark">On this page</h2>
-          <nav aria-label="About page sections" data-about-navigation class="flex flex-col">
-            {[
-              { id: "journey", label: "My Journey", dot: "before:bg-purple-500" },
-              { id: "approach", label: "How I Work", dot: "before:bg-gray-500" },
-              { id: "skills", label: "Skills & Tools", dot: "before:bg-blue-500" },
-              { id: "certifications", label: "Awards & Certifications", dot: "before:bg-pink" },
-            ].map((item, index) => (
-              <a
-                href={`#${item.id}`}
-                data-about-link
-                data-section-id={item.id}
-                aria-current={index === 0 ? "location" : undefined}
-                class:list={[
-                  "relative flex w-full items-center gap-3 border-b border-brown-dark/20 bg-transparent px-4 py-2 text-left text-brown-dark transition-all duration-200 ease-in-out last:border-b-0",
-                  "before:block before:h-2.5 before:w-2.5 before:shrink-0 before:rounded-full before:transition-colors before:duration-200 before:content-['']",
-                  "hover:bg-black hover:text-white hover:before:bg-white",
-                  "aria-[current=location]:bg-brown-light aria-[current=location]:font-semibold aria-[current=location]:text-white aria-[current=location]:before:bg-white",
-                  item.dot,
-                ]}
-              >
-                {item.label}
-              </a>
-            ))}
+          <h2 class="mb-4 text-2xl font-normal tracking-tight text-brown-dark">
+            About Me
+          </h2>
+          <nav
+            aria-label="About page sections"
+            data-about-navigation
+            class="flex flex-col"
+          >
+            {
+              [
+                {
+                  id: "journey",
+                  label: "My Journey",
+                  dot: "before:bg-purple-500",
+                },
+                {
+                  id: "approach",
+                  label: "How I Work",
+                  dot: "before:bg-gray-500",
+                },
+                {
+                  id: "skills",
+                  label: "Skills & Tools",
+                  dot: "before:bg-blue-500",
+                },
+                {
+                  id: "certifications",
+                  label: "Awards & Certifications",
+                  dot: "before:bg-pink",
+                },
+              ].map((item, index) => (
+                <a
+                  href={`#${item.id}`}
+                  data-about-link
+                  data-section-id={item.id}
+                  aria-current={index === 0 ? "location" : undefined}
+                  class:list={[
+                    "relative flex w-full items-center gap-3 border-b border-brown-dark/20 bg-transparent px-4 py-2 text-left text-brown-dark transition-all duration-200 ease-in-out last:border-b-0",
+                    "before:block before:h-2.5 before:w-2.5 before:shrink-0 before:rounded-full before:transition-colors before:duration-200 before:content-['']",
+                    "hover:bg-black hover:text-white hover:before:bg-white",
+                    "aria-[current=location]:bg-brown-light aria-[current=location]:font-semibold aria-[current=location]:text-white aria-[current=location]:before:bg-white",
+                    item.dot,
+                  ]}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
           </nav>
         </div>
       </aside>
@@ -346,144 +480,264 @@ const panel = "group border border-brown-dark/20 bg-brown-medium/30 transition-a
       <div class="min-w-0 space-y-16 lg:space-y-24">
         <!-- Journey -->
         <section id="journey" class="grid scroll-mt-32 gap-10 border border-brown-dark/20 p-6 sm:p-10 md:grid-cols-[0.8fr_1.4fr] md:gap-14 lg:p-12" aria-labelledby="journey-heading">
-          <div>
-            <h2 id="journey-heading" class={sectionHeading}>My Journey</h2>
-            <p class={sectionSubtitle}>One path, different disciplines.</p>
+          <div class="md:sticky md:top-32 md:self-start">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">My Journey</p>
+            <h2 id="journey-heading" class={`${sectionHeading} mt-3`}>From spaces to digital experiences.</h2>
+            <p class="mt-4 max-w-xs text-brown-dark/75">
+              Different disciplines, one passion: designing better experiences for people.
+            </p>
           </div>
 
-          <ol class="relative flex flex-col gap-8 before:absolute before:top-2 before:bottom-2 before:left-[6px] before:w-px before:bg-brown-dark/20">
+          <ol class="relative flex flex-col gap-10 before:absolute before:top-4 before:bottom-4 before:left-[17px] before:w-px before:bg-brown-dark/20">
             {journey.map((item) => (
-              <li class="relative pl-8">
-                <span class:list={["absolute top-1.5 left-0 h-[13px] w-[13px] rounded-full ring-4 ring-white", item.dot]} aria-hidden="true"></span>
-                <p class={`${mono} text-sm`}>{item.period}</p>
-                <h3 class="mt-1 text-2xl font-normal tracking-tight text-brown-dark">{item.title}</h3>
-                <p class="font-medium text-brown-light">{item.place}</p>
-                <p class={`${mono} mt-2 max-w-lg`}>{item.detail}</p>
+              <li class="relative grid grid-cols-[36px_1fr] gap-x-4">
+                <!-- Solid white base so the timeline line never shows through the tinted circle -->
+                <span class="relative z-10 h-9 w-9 overflow-hidden rounded-full bg-white ring-4 ring-white" aria-hidden="true">
+                  <span class:list={["flex h-full w-full items-center justify-center text-xs font-semibold", item.badge]}>
+                    {item.number}
+                  </span>
+                </span>
+                <div class="min-w-0">
+                  <h3 class="text-2xl font-normal tracking-tight text-brown-dark">{item.title}</h3>
+                  <p class="mt-1 text-sm text-brown-light">{item.period} · {item.place}</p>
+                  <p class="mt-3 max-w-md text-brown-dark/75">{item.detail}</p>
+
+                  {item.turningPoint && (
+                    <a
+                      href={item.turningPoint.href}
+                      class="group mt-5 block max-w-md border border-brown-dark/15 bg-brown-medium/20 p-5 transition-colors duration-300 hover:bg-brown-medium/40"
+                    >
+                      <span class="block text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Career turning point</span>
+                      <span class="mt-2 block text-xl text-brown-dark">{item.turningPoint.title}</span>
+                      <span class="mt-1 block text-sm text-brown-dark/70">{item.turningPoint.text}</span>
+                      <span class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brown-dark underline decoration-brown-dark/30 underline-offset-4 transition-colors group-hover:decoration-brown-dark">
+                        Explore project <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                      </span>
+                    </a>
+                  )}
+                </div>
               </li>
             ))}
           </ol>
         </section>
 
         <!-- How I work -->
-        <section id="approach" class="scroll-mt-32" aria-labelledby="approach-heading">
+        <section
+          id="approach"
+          class="scroll-mt-32"
+          aria-labelledby="approach-heading"
+        >
           <h2 id="approach-heading" class={sectionHeading}>How I Work</h2>
-          <p class={sectionSubtitle}>What I bring from buildings, hospitals and screens.</p>
+          <p class={sectionSubtitle}>
+            What I bring from buildings, hospitals and screens.
+          </p>
 
-          <ol class="mt-8 grid gap-8 border-t border-brown-dark/20 pt-8 md:grid-cols-3 md:gap-10">
-            {approach.map((item, index) => (
-              <li>
-                <span class:list={["inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold", item.badge]}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 class="mt-4 text-2xl font-normal tracking-tight text-brown-dark">{item.title}</h3>
-                <p class="mt-2 text-brown-dark/75">{item.detail}</p>
-              </li>
-            ))}
+          <ol
+            class="mt-8 grid gap-8 border-t border-brown-dark/20 pt-8 md:grid-cols-3 md:gap-10"
+          >
+            {
+              approach.map((item, index) => (
+                <li>
+                  <span
+                    class:list={[
+                      "inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold",
+                      item.badge,
+                    ]}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 class="mt-4 text-2xl font-normal tracking-tight text-brown-dark">
+                    {item.title}
+                  </h3>
+                  <p class="mt-2 text-brown-dark/75">{item.detail}</p>
+                </li>
+              ))
+            }
           </ol>
         </section>
 
         <!-- Skills -->
-        <section id="skills" class="scroll-mt-32" aria-labelledby="skills-heading">
+        <section
+          id="skills"
+          class="scroll-mt-32"
+          aria-labelledby="skills-heading"
+        >
           <h2 id="skills-heading" class={sectionHeading}>Skills & Tools</h2>
           <p class={sectionSubtitle}>A mix of design and code.</p>
 
-          <div class="mt-8 divide-y divide-brown-dark/15 border-y border-brown-dark/15">
-            {toolGroups.map((group) => (
-              <div class="grid gap-4 py-6 md:grid-cols-[180px_1fr] md:gap-8">
-                <h3 class="flex items-center gap-3 text-lg font-normal text-brown-dark md:h-16">
-                  <span class:list={["h-2.5 w-2.5 shrink-0 rounded-full", group.dot]} aria-hidden="true"></span>
-                  {group.title}
-                </h3>
-                <ul class="flex flex-wrap gap-x-3 gap-y-4">
-                  {group.tools.map(({ icon: Icon, name }) => (
-                    <li class="group flex w-[72px] flex-col items-center gap-2" title={name}>
-                      <span class="flex h-16 w-16 items-center justify-center rounded-xl bg-brown-medium/30 transition duration-200 group-hover:-translate-y-1 group-hover:bg-brown-medium/70">
-                        {Icon && typeof Icon === "function" ? (
-                          <Icon aria-hidden="true" class="h-9 w-9 overflow-hidden rounded-lg object-contain" />
-                        ) : Icon ? (
-                          <img src={Icon.src} alt="" aria-hidden="true" class="h-9 w-9 rounded-lg object-contain" loading="lazy" />
-                        ) : (
-                          <span aria-hidden="true" class="text-lg font-semibold text-brown-light/80">{initials(name)}</span>
-                        )}
-                      </span>
-                      <span class="text-center text-xs leading-tight font-medium text-brown-dark/75">{name}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div
+            class="mt-8 divide-y divide-brown-dark/15 border-y border-brown-dark/15"
+          >
+            {
+              toolGroups.map((group) => (
+                <div class="grid gap-4 py-6 md:grid-cols-[180px_1fr] md:gap-8">
+                  <h3 class="flex items-center gap-3 text-lg font-normal text-brown-dark md:h-16">
+                    <span
+                      class:list={[
+                        "h-2.5 w-2.5 shrink-0 rounded-full",
+                        group.dot,
+                      ]}
+                      aria-hidden="true"
+                    />
+                    {group.title}
+                  </h3>
+                  <ul class="flex flex-wrap gap-x-3 gap-y-4">
+                    {group.tools.map(({ icon: Icon, name }) => (
+                      <li
+                        class="group flex w-[72px] flex-col items-center gap-2"
+                        title={name}
+                      >
+                        <span class="flex h-16 w-16 items-center justify-center rounded-xl bg-brown-medium/30 transition duration-200 group-hover:-translate-y-1 group-hover:bg-brown-medium/70">
+                          {Icon && typeof Icon === "function" ? (
+                            <Icon
+                              aria-hidden="true"
+                              class="h-9 w-9 overflow-hidden rounded-lg object-contain"
+                            />
+                          ) : Icon ? (
+                            <img
+                              src={Icon.src}
+                              alt=""
+                              aria-hidden="true"
+                              class="h-9 w-9 rounded-lg object-contain"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span
+                              aria-hidden="true"
+                              class="text-lg font-semibold text-brown-light/80"
+                            >
+                              {initials(name)}
+                            </span>
+                          )}
+                        </span>
+                        <span class="text-center text-xs leading-tight font-medium text-brown-dark/75">
+                          {name}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
           </div>
 
-          <dl class="mt-12 grid gap-x-10 gap-y-6 border-t border-brown-dark/20 pt-8 sm:grid-cols-2">
-            {practices.map((practice) => (
-              <div>
-                <dt class="flex items-center gap-3 text-lg font-normal text-brown-dark">
-                  <span class:list={["h-2.5 w-2.5 shrink-0 rounded-full", categoryDot[practice.category]]} aria-hidden="true"></span>
-                  {practice.title}
-                </dt>
-                <dd class="mt-2 flex flex-wrap gap-2 pl-[22px]">
-                  {practice.items.map((item) => <Tech tech={item} />)}
-                </dd>
-              </div>
-            ))}
+          <dl
+            class="mt-12 grid gap-x-10 gap-y-6 border-t border-brown-dark/20 pt-8 sm:grid-cols-2"
+          >
+            {
+              practices.map((practice) => (
+                <div>
+                  <dt class="flex items-center gap-3 text-lg font-normal text-brown-dark">
+                    <span
+                      class:list={[
+                        "h-2.5 w-2.5 shrink-0 rounded-full",
+                        categoryDot[practice.category],
+                      ]}
+                      aria-hidden="true"
+                    />
+                    {practice.title}
+                  </dt>
+                  <dd class="mt-2 flex flex-wrap gap-2 pl-[22px]">
+                    {practice.items.map((item) => (
+                      <Tech tech={item} />
+                    ))}
+                  </dd>
+                </div>
+              ))
+            }
           </dl>
         </section>
 
         <!-- Awards & certifications -->
-        <section id="certifications" class="scroll-mt-32" aria-labelledby="cert-heading">
-          <h2 id="cert-heading" class={sectionHeading}>Awards & Certifications</h2>
-          <p class={sectionSubtitle}>Always learning! Recognition for my work and achievements.</p>
+        <section
+          id="certifications"
+          class="scroll-mt-32"
+          aria-labelledby="cert-heading"
+        >
+          <h2 id="cert-heading" class={sectionHeading}>
+            Awards & Certifications
+          </h2>
+          <p class={sectionSubtitle}>
+            Always learning! Recognition for my work and achievements.
+          </p>
 
           <!-- 7VAN award, featured -->
-          <div class="mt-8 grid grid-cols-2 gap-6 border border-brown-dark/20 bg-brown-medium/30 p-4 transition-all duration-300 ease-in-out group sm:flex-row sm:gap-8 sm:p-5 md:gap-10 md:p-6">
+          <div
+            class="mt-8 grid grid-cols-2 gap-6 border border-brown-dark/20 bg-brown-medium/30 p-4 transition-all duration-300 ease-in-out group sm:flex-row sm:gap-8 sm:p-5 md:gap-10 md:p-6"
+          >
             <span class="block overflow-hidden rounded-lg bg-white">
               <img
                 src={CertificateImage.src}
                 alt="Certificate for the 7VAN Best UI/UX Project Award"
                 loading="lazy"
                 decoding="async"
-                class=" col-span-1 object-cover"
+                class="col-span-1 object-cover"
               />
             </span>
             <span class="col-span-1 items-start gap-3">
               <div class="flex flex-col gap-1">
-              <span class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Award</span>
-              <span class="text-2xl font-normal tracking-tight text-brown-dark md:text-3xl">Best UI/UX Project Award</span>
-              <span class="text-base leading-[1.6] font-light text-brown-dark/75">
-                7VAN website · CICCC · Mar 2024. Selected by the client, "7VAN, a Brazilian Jujitsu academy" and industry professionals.
-              </span>
-              <!-- Button to view 7van project -->
-              <Button href="/projects/7van" variant="primary" class="mt-2 w-fit">
-                View Project
-              </Button>
+                <span
+                  class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark"
+                  >Award</span
+                >
+                <span
+                  class="text-2xl font-normal tracking-tight text-brown-dark md:text-3xl"
+                  >Best UI/UX Project Award</span
+                >
+                <span
+                  class="text-base leading-[1.6] font-light text-brown-dark/75"
+                >
+                  7VAN website · CICCC · Mar 2024. Selected by the client,
+                  "7VAN, a Brazilian Jujitsu academy" and industry
+                  professionals.
+                </span>
+                <!-- Button to view 7van project -->
+                <Button
+                  href="/projects/7van"
+                  variant="primary"
+                  class="mt-2 w-fit"
+                >
+                  View Project
+                </Button>
               </div>
             </span>
           </div>
 
           <!-- Certifications -->
-          <ul class="mt-8 divide-y divide-brown-dark/15 border-y border-brown-dark/15">
-            {certifications.map((cert) => (
-              <li class="grid grid-cols-[48px_1fr] items-center gap-x-4 gap-y-3 py-5 sm:grid-cols-[48px_1fr_auto]">
-                <span aria-hidden="true" class="flex h-12 w-12 items-center justify-center rounded-xl bg-brown-medium/30 text-xs font-semibold text-brown-light">
-                  {issuerBadge[cert.by] ?? cert.by.slice(0, 2)}
-                </span>
-                <div class="min-w-0">
-                  <h3 class="text-lg font-normal leading-snug text-brown-dark">{cert.name}</h3>
-                  <span class="mt-1 block text-sm font-light text-brown-dark/65">{cert.by} · {cert.date}</span>
-                </div>
-                {cert.url && (
-                  <a
-                    href={cert.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="col-start-2 inline-flex w-fit items-center gap-1 rounded-full border border-brown-dark/20 bg-[#FEF7F4]/70 px-4 py-2 text-sm font-medium text-brown-dark transition hover:border-black hover:bg-white sm:col-start-auto"
-                    aria-label={`View certificate: ${cert.name} (opens in a new tab)`}
+          <ul
+            class="mt-8 divide-y divide-brown-dark/15 border-y border-brown-dark/15"
+          >
+            {
+              certifications.map((cert) => (
+                <li class="grid grid-cols-[48px_1fr] items-center gap-x-4 gap-y-3 py-5 sm:grid-cols-[48px_1fr_auto]">
+                  <span
+                    aria-hidden="true"
+                    class="flex h-12 w-12 items-center justify-center rounded-xl bg-brown-medium/30 text-xs font-semibold text-brown-light"
                   >
-                    View <span aria-hidden="true"></span>
-                  </a>
-                )}
-              </li>
-            ))}
+                    {issuerBadge[cert.by] ?? cert.by.slice(0, 2)}
+                  </span>
+                  <div class="min-w-0">
+                    <h3 class="text-lg font-normal leading-snug text-brown-dark">
+                      {cert.name}
+                    </h3>
+                    <span class="mt-1 block text-sm font-light text-brown-dark/65">
+                      {cert.by} · {cert.date}
+                    </span>
+                  </div>
+                  {cert.url && (
+                    <a
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="col-start-2 inline-flex w-fit items-center gap-1 rounded-full border border-brown-dark/20 bg-[#FEF7F4]/70 px-4 py-2 text-sm font-medium text-brown-dark transition hover:border-black hover:bg-white sm:col-start-auto"
+                      aria-label={`View certificate: ${cert.name} (opens in a new tab)`}
+                    >
+                      View <span aria-hidden="true" />
+                    </a>
+                  )}
+                </li>
+              ))
+            }
           </ul>
         </section>
       </div>
@@ -501,47 +755,55 @@ const panel = "group border border-brown-dark/20 bg-brown-medium/30 transition-a
     imageAlt="Certificate for the 7VAN Best UI/UX Project Award"
   />
 
-
-
-
   <script>
     function setupAboutNavigation() {
-      const nav = document.querySelector<HTMLElement>("[data-about-navigation]");
+      const nav = document.querySelector<HTMLElement>(
+        "[data-about-navigation]",
+      );
       if (!nav || nav.dataset.ready === "true") return;
       nav.dataset.ready = "true";
 
-      const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>("[data-about-link]"));
+      const links = Array.from(
+        nav.querySelectorAll<HTMLAnchorElement>("[data-about-link]"),
+      );
       const sections = links
         .map((link) => document.getElementById(link.dataset.sectionId || ""))
-        .filter((section): section is HTMLElement => section instanceof HTMLElement);
+        .filter(
+          (section): section is HTMLElement => section instanceof HTMLElement,
+        );
 
       const activate = (id: string) => {
         links.forEach((link) => {
-          if (link.dataset.sectionId === id) link.setAttribute("aria-current", "location");
+          if (link.dataset.sectionId === id)
+            link.setAttribute("aria-current", "location");
           else link.removeAttribute("aria-current");
         });
       };
 
-      links.forEach((link) => link.addEventListener("click", () => {
-        if (link.dataset.sectionId) activate(link.dataset.sectionId);
-      }));
+      links.forEach((link) =>
+        link.addEventListener("click", () => {
+          if (link.dataset.sectionId) activate(link.dataset.sectionId);
+        }),
+      );
 
-      const observer = new IntersectionObserver((entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        const current = visible[0]?.target;
-        if (current instanceof HTMLElement) activate(current.id);
-      }, { rootMargin: "-18% 0px -65% 0px", threshold: [0, 0.1, 0.25, 0.5] });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+          const current = visible[0]?.target;
+          if (current instanceof HTMLElement) activate(current.id);
+        },
+        { rootMargin: "-18% 0px -65% 0px", threshold: [0, 0.1, 0.25, 0.5] },
+      );
 
       sections.forEach((section) => observer.observe(section));
       const hash = window.location.hash.slice(1);
-      if (hash && sections.some((section) => section.id === hash)) activate(hash);
+      if (hash && sections.some((section) => section.id === hash))
+        activate(hash);
     }
 
     setupAboutNavigation();
     document.addEventListener("astro:page-load", setupAboutNavigation);
-
   </script>
-
 </ContentLayout>
