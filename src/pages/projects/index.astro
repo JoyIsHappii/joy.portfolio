@@ -104,23 +104,6 @@ const projects: Project[] = [
     projectLink: "/projects/ippon",
   },
   {
-    title: "CICCC LMS",
-    description: "A learning management system (LMS) for CICCC's tech campus.",
-    imageSrc: ImageCiccc.src,
-    imageAlt: "CICCC LMS",
-    categories: ["UX/UI Design"],
-    tech: [
-      "Figma",
-      "User Research",
-      "Wireframing",
-      "Prototyping",
-      "Usability Testing",
-      "User Flows",
-      "Information Architecture",
-    ],
-    projectLink: "/projects/ciccc-lms",
-  },
-  {
     title: "Bunny World",
     description:
       "An accessible learning tool for children with learning disabilities.",
@@ -137,24 +120,22 @@ const projects: Project[] = [
     ],
     projectLink: "/projects/bunny-world",
   },
-  {
-    title: "Weather Fore-CAT",
-    description:
-      "A cat-themed weather dashboard with forecasts, favorites, and air-quality data.",
-    imageSrc: ImageWeather.src,
-    imageAlt: "Weather ForeCAT weather dashboard",
-    categories: ["UX/UI Design", "Web Development"],
+    {
+    title: "CICCC LMS",
+    description: "A learning management system (LMS) for CICCC's tech campus.",
+    imageSrc: ImageCiccc.src,
+    imageAlt: "CICCC LMS",
+    categories: ["UX/UI Design"],
     tech: [
       "Figma",
-      "Astro",
-      "TypeScript",
-      "Tailwind CSS",
-      "jQuery",
-      "Open-Meteo API",
-      "PlaceKit API",
-      "Netlify",
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Usability Testing",
+      "User Flows",
+      "Information Architecture",
     ],
-    projectLink: "/projects/weather-fore-cat",
+    projectLink: "/projects/ciccc-lms",
   },
   {
     title: "Pawfect Day",
@@ -173,16 +154,6 @@ const projects: Project[] = [
       "Vercel",
     ],
     projectLink: "/projects/pawfect-day",
-  },
-  {
-    title: "Merry Christmas, Mr. Lawrence",
-    description:
-      "An interactive musical experience blending storytelling, typography, and immersive animations.",
-    imageSrc: ImageRyuichi.src,
-    imageAlt: "Merry Christmas, Mr. Lawrence – Interactive Musical Experience",
-    categories: ["UX/UI Design", "Web Development"],
-    tech: ["GSAP", "Vite", "Tailwind CSS", "Netlify", "Claude"],
-    projectLink: "https://merry-christmasmr-lawrence.vercel.app",
   },
 
   // {
@@ -205,16 +176,6 @@ const projects: Project[] = [
   //   warmupLink: "https://player-stats-2uxq.onrender.com",
   // },
   // {
-  //   title: "Grounds Cafe",
-  //   description:
-  //     "A responsive cafe ordering app with menu browsing, favorites, cart, and checkout.",
-  //   imageSrc: ImageGrounds.src,
-  //   imageAlt: "Grounds Cafe App",
-  //   categories: ["Web Development"],
-  //   tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Netlify"],
-  //   projectLink: "/projects/grounds-cafe",
-  // },
-  // {
   //   title: "Carla Beauty",
   //   description:
   //     "A website for a Vancouver-based makeup and hairstyle studio with a Brazilian twist.",
@@ -224,15 +185,58 @@ const projects: Project[] = [
   //   tech: ["HTML", "CSS", "SCSS", "JavaScript","Netlify"],
   //   modalId: "carla",
   // },
+];
+
+// Creative side projects, shown in their own section below the UX work
+const playgroundProjects: Project[] = [
+  {
+    title: "Weather Fore-CAT",
+    description:
+      "A cat-themed weather dashboard with forecasts, favorites, and air-quality data.",
+    imageSrc: ImageWeather.src,
+    imageAlt: "Weather ForeCAT weather dashboard",
+    categories: ["UX/UI Design", "Web Development"],
+    tech: [
+      "Figma",
+      "Astro",
+      "TypeScript",
+      "Tailwind CSS",
+      "jQuery",
+      "Open-Meteo API",
+      "PlaceKit API",
+      "Netlify",
+    ],
+    projectLink: "/projects/weather-fore-cat",
+  },
+  {
+    title: "Merry Christmas, Mr. Lawrence",
+    description:
+      "An interactive musical experience blending storytelling, typography, and immersive animations.",
+    imageSrc: ImageRyuichi.src,
+    imageAlt: "Merry Christmas, Mr. Lawrence – Interactive Musical Experience",
+    categories: ["UX/UI Design", "Web Development"],
+    tech: ["GSAP", "Vite", "Tailwind CSS", "Netlify"],
+    projectLink: "https://merry-christmasmr-lawrence.vercel.app",
+  },
+    {
+    title: "PM2.5 in Thailand",
+    description:
+      "A motion-driven website raising awareness of Thailand’s PM2.5 crisis through visual storytelling and interactive animations.",
+    imageSrc: ImagePm25.src,
+    imageAlt: "PM2.5 in Thailand awareness website",
+    categories: ["UX/UI Design", "Web Development"],
+    tech: ["Framer"],
+    projectLink: "/projects/pm25-project/",
+  },
   // {
-  //   title: "PM2.5 in Thailand",
+  //   title: "Grounds Cafe",
   //   description:
-  //     "A motion-driven awareness website exploring Thailand's PM2.5 crisis through visual storytelling, animated transitions, and interactive scrolling.",
-  //   imageSrc: ImagePm25.src,
-  //   imageAlt: "PM2.5 in Thailand awareness website",
-  //   categories: ["UX/UI Design", "Web Development"],
-  //   tech: ["Framer"],
-  //   projectLink: "/projects/pm25-project/",
+  //     "A responsive cafe ordering app with menu browsing, favorites, cart, and checkout.",
+  //   imageSrc: ImageGrounds.src,
+  //   imageAlt: "Grounds Cafe App",
+  //   categories: ["Web Development"],
+  //   tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Netlify"],
+  //   projectLink: "/projects/grounds-cafe",
   // },
 ];
 ---
@@ -381,31 +385,71 @@ const projects: Project[] = [
           md:grid-cols-2
           lg:grid-cols-3"
         >
-          <!--
-          7VAN replaces the Award section when a category is selected.
-          It starts hidden because All is selected initially.
-        -->
-          <div data-sevenvan-card hidden>
-            <ProjectCard
-              title="7VAN"
-              description="Developed a responsive website for a Brazilian Jiu-Jitsu academy to encourage membership applications."
-              imageSrc={Image7Van.src}
-              imageAlt="7VAN Brazilian Jiu-Jitsu academy website"
-              categories={["UX/UI Design"]}
-              projectLink="/projects/7van"
-              tech={[
-                "Figma",
-                "User Research",
-                "Wireframing",
-                "Prototyping",
-                "Usability Testing",
-                "User Flows",
-                "Information Architecture",
-              ]}
-            />
-          </div>
+          <!-- 7VAN is also featured in the Award section above -->
+          <ProjectCard
+            title="7VAN"
+            description="Developed a responsive website for a Brazilian Jiu-Jitsu academy to encourage membership applications."
+            imageSrc={Image7Van.src}
+            imageAlt="7VAN Brazilian Jiu-Jitsu academy website"
+            categories={["UX/UI Design"]}
+            projectLink="/projects/7van"
+            tech={[
+              "Figma",
+              "User Research",
+              "Wireframing",
+              "Prototyping",
+              "Usability Testing",
+              "User Flows",
+              "Information Architecture",
+            ]}
+          />
 
           {projects.map((project) => (
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              imageSrc={project.imageSrc}
+              imageAlt={project.imageAlt}
+              categories={project.categories}
+              projectLink={project.projectLink}
+              warmupLink={project.warmupLink}
+              modalId={project.modalId}
+              tech={project.tech}
+            />
+          ))}
+        </div>
+      </section>
+
+      <!-- Creative side projects -->
+      <section
+        class="flex w-full flex-col gap-4 pt-4 border-t border-brown-dark/10 mt-8"
+        data-project-group
+        aria-labelledby="playground-heading"
+      >
+        <h2
+          id="playground-heading"
+          class="text-2xl
+            font-normal
+            tracking-tight
+            text-brown-dark
+            md:text-4xl"
+        >
+          Creative Playground
+        </h2>
+        <p class="text-lg font-normal text-brown-dark/75">
+          Side projects where I experiment with illustration, motion, and
+          interaction.
+        </p>
+
+        <div
+          class="grid
+            w-full
+            grid-cols-1
+            gap-4
+            md:grid-cols-2
+            lg:grid-cols-3"
+        >
+          {playgroundProjects.map((project) => (
             <ProjectCard
               title={project.title}
               description={project.description}
@@ -530,3 +574,4 @@ const projects: Project[] = [
     aboutMeSection?.scrollIntoView({ behavior: "smooth" });
   });
 </script>
+
