@@ -1,6 +1,9 @@
 ---
-// One YouTube player for the whole site. It persists across page transitions so
-// music keeps playing until paused. Any element with [data-music-toggle] opens it:
+// One YouTube player for the whole site. On first load it is moved out of <body>
+// to be a direct child of <html>. Astro's ClientRouter only swaps <body>, so the
+// player is never moved again and music keeps playing until paused. (Using
+// transition:persist instead reloads the iframe in Safari/Firefox, cutting the music.)
+// Any element with [data-music-toggle] opens it:
 //   data-music-placement="over"   centered over the trigger (homepage radio)
 //   data-music-placement="below"  right-aligned under the trigger (nav radio)
 // [data-music-status] elements show ON/OFF, and [data-music-trigger] elements get
@@ -14,7 +17,6 @@ const VIDEO_ID = "HGl75kurxok";
   class="music-panel pointer-events-none fixed left-0 top-0 z-[70] w-[min(400px,calc(100vw-2rem))] overflow-hidden rounded-xl bg-brown-dark opacity-0 shadow-lg transition-opacity duration-200"
   data-music-panel
   data-video-id={VIDEO_ID}
-  transition:persist="music-player-panel"
   inert
 >
   <div class="aspect-video w-full">
@@ -133,7 +135,23 @@ const VIDEO_ID = "HGl75kurxok";
   let activeToggle: HTMLElement | null = null;
 
   function getPanel() {
-    return document.querySelector<HTMLElement>("[data-music-panel]");
+    return document.querySelector<HTMLElement>(":root > [data-music-panel]");
+  }
+
+  // Lift the first rendered panel out of <body> (before its iframe exists) so page
+  // swaps never touch it, and drop any copy a later page rendered.
+  function mountPanel() {
+    const root = document.documentElement;
+    let panel = getPanel();
+    document
+      .querySelectorAll<HTMLElement>("body [data-music-panel]")
+      .forEach((copy) => {
+        if (panel) copy.remove();
+        else {
+          root.appendChild(copy);
+          panel = copy;
+        }
+      });
   }
 
   function loadYouTubeAPI() {
@@ -280,9 +298,14 @@ const VIDEO_ID = "HGl75kurxok";
     window.addEventListener("scroll", reposition, { passive: true });
 
     // The trigger that opened the panel is gone after navigating; keep playing, just close it.
-    document.addEventListener("astro:before-swap", () => setOpen(false));
+    document.addEventListener("astro:before-swap", (event) => {
+      setOpen(false);
+      // The incoming page renders its own panel; the mounted one is kept instead.
+      event.newDocument.querySelector("[data-music-panel]")?.remove();
+    });
 
     document.addEventListener("astro:page-load", () => {
+      mountPanel();
       setupMusicPlayer();
       syncMusicUI();
     });
