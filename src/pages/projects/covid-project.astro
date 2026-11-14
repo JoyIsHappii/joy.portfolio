@@ -92,8 +92,7 @@ const designDecisions = [
     description:
       "AUTO, OFF, and MANUAL represent different operating states. I kept them visually separate in the workflow documentation so the team could discuss each state without treating them as interchangeable.",
     image: ModeImage,
-    imageAlt:
-      "Three distinct operating states: AUTO, OFF, and MANUAL.",
+    imageAlt: "Three distinct operating states: AUTO, OFF, and MANUAL.",
     caption: "Three operating states, clearly distinguished",
   },
   {
@@ -117,8 +116,6 @@ const designDecisions = [
     caption: "A separate MANUAL path, with its limitation made visible",
   },
 ];
-
-
 ---
 
 <ProjectDetailLayout title="COVID-19 Isolation Room — Joy" active="projects">
@@ -127,7 +124,10 @@ const designDecisions = [
       <Breadcrumb
         items={[
           { label: "Projects", href: "/projects/" },
-          { label: "COVID-19 Isolation Room", href: "/projects/covid-project/" },
+          {
+            label: "COVID-19 Isolation Room",
+            href: "/projects/covid-project/",
+          },
         ]}
       />
     </div>
@@ -183,7 +183,9 @@ const designDecisions = [
                     aria-current={index === 0 ? "location" : undefined}
                     class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
                   >
-                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">{item.number}</span>
+                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">
+                      {item.number}
+                    </span>
                     <span>{item.label}</span>
                   </a>
                 </li>
@@ -197,13 +199,24 @@ const designDecisions = [
         <!-- 01 / PROJECT CONTEXT -->
         <section id="context" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · Project context</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Designing beyond the room itself</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              01 · Project context
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Designing beyond the room itself
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              During the COVID-19 response, King Chulalongkorn Memorial Hospital needed a new negative-pressure isolation-room environment. The project involved more than the physical space: staff routines, environmental conditions, monitoring information, equipment, and operating procedures all had to work together.
+              During the COVID-19 response, King Chulalongkorn Memorial Hospital
+              needed a new negative-pressure isolation-room environment. The
+              project involved more than the physical space: staff routines,
+              environmental conditions, monitoring information, equipment, and
+              operating procedures all had to work together.
             </p>
             <p class="mt-4 max-w-3xl leading-relaxed text-brown-dark/70">
-              My role sat between the people using the space and the teams responsible for designing and delivering it. I helped organize those different perspectives into a shared understanding of the project.
+              My role sat between the people using the space and the teams
+              responsible for designing and delivering it. I helped organize
+              those different perspectives into a shared understanding of the
+              project.
             </p>
           </header>
 
@@ -215,19 +228,32 @@ const designDecisions = [
               loading="lazy"
             />
             <figcaption class="flex flex-col gap-1 border-t border-brown-dark/10 px-5 py-4 text-sm text-brown-dark/60 sm:flex-row sm:items-center sm:justify-between">
-              <span>Project context · how the spaces relate to staff activities</span>
+              <span>
+                Project context · how the spaces relate to staff activities
+              </span>
               <span>Conceptual illustration created for this case study</span>
             </figcaption>
           </figure>
         </section>
 
         <!-- 02 / CHALLENGE -->
-        <section id="challenge" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="challenge"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · The challenge</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Complex systems. Clear decisions for staff.</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              02 · The challenge
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Complex systems. Clear decisions for staff.
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The project brought together clinical workflows and specialist building systems. Nurses needed to understand the room's condition and the system's operating state, while technical teams needed accurate requirements and coordinated information to deliver the environment.
+              The project brought together clinical workflows and specialist
+              building systems. Nurses needed to understand the room's condition
+              and the system's operating state, while technical teams needed
+              accurate requirements and coordinated information to deliver the
+              environment.
             </p>
           </header>
 
@@ -235,28 +261,49 @@ const designDecisions = [
           <div class="mt-5 grid gap-4 md:grid-cols-3">
             {userNeeds.map((need, index) => (
               <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-7">
-                <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Need 0{index + 1}</p>
-                <h4 class="mt-3 text-xl leading-snug text-brown-dark">{need.title}</h4>
-                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">{need.description}</p>
+                <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">
+                  Need 0{index + 1}
+                </p>
+                <h4 class="mt-3 text-xl leading-snug text-brown-dark">
+                  {need.title}
+                </h4>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">
+                  {need.description}
+                </p>
               </article>
             ))}
           </div>
 
           <div class="mt-8 border-l-4 border-green-dark bg-green-light/30 p-6 sm:p-8">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Design challenge</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+              Design challenge
+            </p>
             <p class="mt-3 text-xl leading-relaxed text-brown-dark sm:text-2xl">
-              How might we connect technical requirements and room operations into information and workflows that staff can understand, while keeping the project team aligned?
+              How might we connect technical requirements and room operations
+              into information and workflows that staff can understand, while
+              keeping the project team aligned?
             </p>
           </div>
         </section>
 
         <!-- 03 / CONTRIBUTION -->
-        <section id="contribution" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="contribution"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · My contribution</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Three disciplines, one connected project</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              03 · My contribution
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Three disciplines, one connected project
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              As Project Design Manager, I worked across project design, user-centred information planning, and coordination. My contribution was to clarify what the project needed, make the relationships easier to understand, and help the different teams work from consistent information.
+              As Project Design Manager, I worked across project design,
+              user-centred information planning, and coordination. My
+              contribution was to clarify what the project needed, make the
+              relationships easier to understand, and help the different teams
+              work from consistent information.
             </p>
           </header>
 
@@ -264,8 +311,12 @@ const designDecisions = [
             {contributionAreas.map((area) => (
               <article class="grid gap-6 border border-brown-dark/15 bg-ivory p-6 sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-10">
                 <div>
-                  <p class="text-sm font-semibold text-green-dark">{area.number} / {area.title}</p>
-                  <h3 class="mt-3 text-2xl leading-snug text-brown-dark">{area.subtitle}</h3>
+                  <p class="text-sm font-semibold text-green-dark">
+                    {area.number} / {area.title}
+                  </p>
+                  <h3 class="mt-3 text-2xl leading-snug text-brown-dark">
+                    {area.subtitle}
+                  </h3>
                 </div>
                 <ul class="space-y-3 text-sm leading-relaxed text-brown-dark/75 sm:text-base">
                   {area.points.map((point) => (
@@ -280,17 +331,30 @@ const designDecisions = [
           </div>
 
           <p class="mt-6 text-sm leading-relaxed text-brown-dark/60">
-            The engineering team was responsible for the technical design, system programming, and implementation. My role focused on project design, requirements, workflows, information structure, and coordination.
+            The engineering team was responsible for the technical design,
+            system programming, and implementation. My role focused on project
+            design, requirements, workflows, information structure, and
+            coordination.
           </p>
         </section>
 
         <!-- 04 / APPROACH -->
-        <section id="approach" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="approach"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Design approach</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">From understanding to coordination</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              04 · Design approach
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              From understanding to coordination
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              I moved from the overall project context toward the details staff and technical teams needed to discuss. This helped connect the physical environment, operational workflows, and monitoring information instead of treating them as separate pieces.
+              I moved from the overall project context toward the details staff
+              and technical teams needed to discuss. This helped connect the
+              physical environment, operational workflows, and monitoring
+              information instead of treating them as separate pieces.
             </p>
           </header>
 
@@ -308,38 +372,63 @@ const designDecisions = [
 
           <div class="mt-8 grid gap-4 sm:grid-cols-2">
             <article class="border-t-2 border-green-dark/50 pt-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Understand and structure</p>
-              <h3 class="mt-2 text-xl text-brown-dark">Bring different requirements together</h3>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                Understand and structure
+              </p>
+              <h3 class="mt-2 text-xl text-brown-dark">
+                Bring different requirements together
+              </h3>
               <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
-                Gather the project context and organize clinical, spatial, and technical information into clear themes.
+                Gather the project context and organize clinical, spatial, and
+                technical information into clear themes.
               </p>
             </article>
             <article class="border-t-2 border-green-dark/50 pt-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Map and coordinate</p>
-              <h3 class="mt-2 text-xl text-brown-dark">Make relationships visible</h3>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                Map and coordinate
+              </p>
+              <h3 class="mt-2 text-xl text-brown-dark">
+                Make relationships visible
+              </h3>
               <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
-                Use diagrams and workflow documentation to communicate how people, spaces, equipment, and system states relate.
+                Use diagrams and workflow documentation to communicate how
+                people, spaces, equipment, and system states relate.
               </p>
             </article>
           </div>
         </section>
 
         <!-- 05 / DECISIONS -->
-        <section id="decisions" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="decisions"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · Key design decisions</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Make the system easier to understand</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              05 · Key design decisions
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Make the system easier to understand
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              I used a user-centred lens to organize the system information. These decisions shaped the way the project was explained and documented for discussion across the team.
+              I used a user-centred lens to organize the system information.
+              These decisions shaped the way the project was explained and
+              documented for discussion across the team.
             </p>
           </header>
 
           <div class="mt-10 space-y-14">
             {designDecisions.map((decision) => (
               <article>
-                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Decision {decision.number}</p>
-                <h3 class="mt-2 text-2xl text-brown-dark sm:text-3xl">{decision.title}</h3>
-                <p class="mt-3 max-w-3xl leading-relaxed text-brown-dark/70">{decision.description}</p>
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                  Decision {decision.number}
+                </p>
+                <h3 class="mt-2 text-2xl text-brown-dark sm:text-3xl">
+                  {decision.title}
+                </h3>
+                <p class="mt-3 max-w-3xl leading-relaxed text-brown-dark/70">
+                  {decision.description}
+                </p>
                 <figure class="mt-5 overflow-hidden border border-brown-dark/15 bg-ivory">
                   <img
                     src={decision.image.src}
@@ -356,94 +445,174 @@ const designDecisions = [
           </div>
 
           <p class="mt-8 text-sm leading-relaxed text-brown-dark/55">
-            These diagrams are portfolio-level explanations of the project. They are not intended to replace the hospital's technical documentation or operating procedures.
+            These diagrams are portfolio-level explanations of the project. They
+            are not intended to replace the hospital's technical documentation
+            or operating procedures.
           </p>
         </section>
 
         <!-- 06 / OUTCOME -->
-        <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="outcome"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · Project outcome</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A delivered environment, supported by clearer information</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              06 · Project outcome
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              A delivered environment, supported by clearer information
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The project progressed from design and construction through commissioning. My contribution helped connect the room requirements, staff-facing monitoring needs, operating-mode documentation, and team coordination into a shared project reference.
+              The project progressed from design and construction through
+              commissioning. My contribution helped connect the room
+              requirements, staff-facing monitoring needs, operating-mode
+              documentation, and team coordination into a shared project
+              reference.
             </p>
           </header>
 
           <div class="mt-8 grid gap-4 sm:grid-cols-2">
             <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-7">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Project delivery</p>
-              <h3 class="mt-3 text-2xl text-brown-dark">75-day project timeline</h3>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                Project delivery
+              </p>
+              <h3 class="mt-3 text-2xl text-brown-dark">
+                75-day project timeline
+              </h3>
               <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
-                The project moved from construction to commissioning within the documented project period.
+                The project moved from construction to commissioning within the
+                documented project period.
               </p>
             </article>
             <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-7">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Operational reference</p>
-              <h3 class="mt-3 text-2xl text-brown-dark">A monitoring view for staff</h3>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                Operational reference
+              </p>
+              <h3 class="mt-3 text-2xl text-brown-dark">
+                A monitoring view for staff
+              </h3>
               <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
-                The delivered interface brought room readings, room locations, equipment status, and system mode into one monitoring view.
+                The delivered interface brought room readings, room locations,
+                equipment status, and system mode into one monitoring view.
               </p>
             </article>
           </div>
 
-          <h3 class="mt-12 text-2xl text-brown-dark">Requirements brought together</h3>
+          <h3 class="mt-12 text-2xl text-brown-dark">
+            Requirements brought together
+          </h3>
           <p class="mt-2 max-w-3xl leading-relaxed text-brown-dark/70">
-            Through discussions with nurses and the project team, the monitoring requirements covered several connected areas. My role was to help organize these needs and communicate them clearly across the project—not to design or program the final monitoring interface.
+            Through discussions with nurses and the project team, the monitoring
+            requirements covered several connected areas. My role was to help
+            organize these needs and communicate them clearly across the
+            project—not to design or program the final monitoring interface.
           </p>
 
           <div class="mt-6 grid gap-4 sm:grid-cols-2">
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Room environment</p>
-              <h4 class="mt-2 text-xl text-brown-dark">Conditions and room locations</h4>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                Room environment
+              </p>
+              <h4 class="mt-2 text-xl text-brown-dark">
+                Conditions and room locations
+              </h4>
               <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
-                Temperature, humidity, pressure, and the relationship between readings and the ante room, isolation room, and doffing room.
+                Temperature, humidity, pressure, and the relationship between
+                readings and the ante room, isolation room, and doffing room.
               </p>
             </article>
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">System information</p>
-              <h4 class="mt-2 text-xl text-brown-dark">Equipment and operating state</h4>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                System information
+              </p>
+              <h4 class="mt-2 text-xl text-brown-dark">
+                Equipment and operating state
+              </h4>
               <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
-                Equipment status, air-change information, filter information, and whether the system was in AUTO, OFF, or MANUAL mode.
+                Equipment status, air-change information, filter information,
+                and whether the system was in AUTO, OFF, or MANUAL mode.
               </p>
             </article>
           </div>
         </section>
 
         <!-- 07 / REFLECTION -->
-        <section id="reflection" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="reflection"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">07 · Reflection</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Good design connects people, information, and delivery</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              07 · Reflection
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Good design connects people, information, and delivery
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              This project strengthened the way I approach design: start by understanding the people and context, make complex relationships visible, and keep decisions clear for everyone involved. It also shaped how I think about UX/UI design—not only as the design of screens, but as the design of information, workflows, and the experience around a system.
+              This project strengthened the way I approach design: start by
+              understanding the people and context, make complex relationships
+              visible, and keep decisions clear for everyone involved. It also
+              shaped how I think about UX/UI design—not only as the design of
+              screens, but as the design of information, workflows, and the
+              experience around a system.
             </p>
           </header>
 
           <div class="mt-10 grid gap-4 md:grid-cols-3">
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">UX/UI design</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Design around user needs</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Prioritize what people need to know, do, and understand.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                UX/UI design
+              </p>
+              <h3 class="mt-3 text-xl text-brown-dark">
+                Design around user needs
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                Prioritize what people need to know, do, and understand.
+              </p>
             </article>
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Project design</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Connect the whole system</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Bring spaces, workflows, requirements, and technical elements into one view.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                Project design
+              </p>
+              <h3 class="mt-3 text-xl text-brown-dark">
+                Connect the whole system
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                Bring spaces, workflows, requirements, and technical elements
+                into one view.
+              </p>
             </article>
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">Project management</p>
-              <h3 class="mt-3 text-xl text-brown-dark">Create shared understanding</h3>
-              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">Use clear communication and documentation to help teams stay aligned.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
+                Project management
+              </p>
+              <h3 class="mt-3 text-xl text-brown-dark">
+                Create shared understanding
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                Use clear communication and documentation to help teams stay
+                aligned.
+              </p>
             </article>
           </div>
 
           <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
             <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Project takeaway</p>
-              <h3 class="mt-3 text-3xl !text-white">Make complexity clear—for the people who use it and the people who deliver it.</h3>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">
+                Project takeaway
+              </p>
+              <h3 class="mt-3 text-3xl !text-white">
+                Make complexity clear—for the people who use it and the people
+                who deliver it.
+              </h3>
             </div>
-            <a href="/projects/" class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white">Explore more projects</a>
+            <a
+              href="/projects/"
+              class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white"
+            >
+              Explore more projects
+            </a>
           </div>
         </section>
       </div>

@@ -6,7 +6,7 @@ import Tag from "../components/Tag.astro";
 import Modal from "../components/Modal.astro";
 
 type ProjectCategory =
-  "UX/UI Design" |  "Web Development" | "Project Management";
+  "UX/UI Design" | "Web Development" | "Project Management";
 
 const categories: ProjectCategory[] = ["UX/UI Design"];
 ---
@@ -93,7 +93,9 @@ const categories: ProjectCategory[] = ["UX/UI Design"];
 
     <!-- Categories -->
     <div class="flex flex-wrap gap-2">
-      {categories.map((category) => <Tag category={category} />)}
+      {categories.map((category) => (
+        <Tag category={category} />
+      ))}
     </div>
 
     <!-- Description -->
@@ -105,11 +107,9 @@ const categories: ProjectCategory[] = ["UX/UI Design"];
         duration-300
         ease-in-out"
     >
-      <b>7VAN</b> is a website created for the owner of a Brazilian Jiu-Jitsu academy
-      in Vancouver.
-
+      <b>7VAN</b> is a website created for the owner of a Brazilian Jiu-Jitsu
+      academy in Vancouver.
       <br />
-
       The project received the <b>Best UI/UX Project Award</b>, selected by the
       <b> client</b> and industry professionals.
     </p>

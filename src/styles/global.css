@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 @import "tailwindcss";
 
 .room-frame {
@@ -179,7 +179,6 @@
   }
 }
 
-
 @theme {
   --color-green-dark: #596044;
   --color-green-light: #e0e6c8;
@@ -188,7 +187,7 @@
   --color-ivory: #fff9f2;
 
   --color-pink: #c76573;
-  
+
   --color-brown-dark: #5c3932;
   --color-brown-medium: #e7d4bd;
   --color-brown-light: #765848;
@@ -204,12 +203,11 @@
 }
 
 body {
- font-family: "Quicksand", sans-serif;
- 
- font-weight: 300;
+  font-family: "Quicksand", sans-serif;
+
+  font-weight: 300;
   line-height: 1.5;
   color: var(--color-gray-medium);
-
 }
 
 h1,
@@ -218,7 +216,7 @@ h3,
 h4,
 h5,
 h6 {
- font-family: "Quicksand", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: 600;
   font-style: bold;
   line-height: 1.2;
@@ -309,10 +307,9 @@ h6 {
   font-style: italic;
 } */
 
-
 p {
   font-family: "Quicksand", sans-serif;
-   font-weight: 300;
+  font-weight: 300;
   font-size: 16px;
   line-height: 1.6;
 
@@ -320,9 +317,6 @@ p {
     font-weight: 500;
   }
 }
-
-
-
 
 .room-background {
   background-image: url("../assets/room-elements/background.svg");
@@ -448,7 +442,6 @@ p {
     transform: translateX(-50%);
   }
 }
-
 
 /* @view-transition {
   navigation: auto;

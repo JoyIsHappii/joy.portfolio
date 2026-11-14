@@ -11,48 +11,44 @@ const { items } = Astro.props as BreadcrumbProps;
 
 <nav aria-label="Breadcrumb" class="w-full">
   <ol class="flex flex-wrap items-center gap-2 text-sm">
-    {
-      items.map((item, index) => {
-        const isFirst = index === 0;
-        const isCurrent = index === items.length - 1;
+    {items.map((item, index) => {
+      const isFirst = index === 0;
+      const isCurrent = index === items.length - 1;
 
-        return (
-          <li class="flex items-center gap-2">
-            {index > 0 && (
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                fill="none"
-                class="h-4 w-4 shrink-0 text-brown-dark/35"
-              >
-                <path
-                  d="m7.5 5 5 5-5 5"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            )}
+      return (
+        <li class="flex items-center gap-2">
+          {index > 0 && (
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 20 20"
+              fill="none"
+              class="h-4 w-4 shrink-0 text-brown-dark/35"
+            >
+              <path
+                d="m7.5 5 5 5-5 5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          )}
 
-            {isCurrent || !item.href ? (
-              <span
-                aria-current={isCurrent ? "page" : undefined}
-                class="
-                  max-w-[220px]
+          {isCurrent || !item.href ? (
+            <span
+              aria-current={isCurrent ? "page" : undefined}
+              class="max-w-[220px]
                   truncate
                   font-semibold
                   text-brown-dark
-                  sm:max-w-none
-                "
-              >
-                {item.label}
-              </span>
-            ) : (
-              <a
-                href={item.href}
-                class="
-                  group
+                  sm:max-w-none"
+            >
+              {item.label}
+            </span>
+          ) : (
+            <a
+              href={item.href}
+              class="group
                   inline-flex
                   items-center
                   gap-1.5
@@ -68,44 +64,40 @@ const { items } = Astro.props as BreadcrumbProps;
                   focus-visible:outline
                   focus-visible:outline-2
                   focus-visible:outline-offset-2
-                  focus-visible:outline-brown-dark
-                "
-              >
-                {isFirst && (
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    class="
-                      h-4
+                  focus-visible:outline-brown-dark"
+            >
+              {isFirst && (
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="h-4
                       w-4
                       transition-transform
                       duration-200
-                      group-hover:-translate-x-0.5
-                    "
-                  >
-                    <path
-                      d="M8.25 4.5 2.75 10l5.5 5.5"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M3.25 10h14"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                )}
+                      group-hover:-translate-x-0.5"
+                >
+                  <path
+                    d="M8.25 4.5 2.75 10l5.5 5.5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3.25 10h14"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              )}
 
-                {item.label}
-              </a>
-            )}
-          </li>
-        );
-      })
-    }
+              {item.label}
+            </a>
+          )}
+        </li>
+      );
+    })}
   </ol>
 </nav>

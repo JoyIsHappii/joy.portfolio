@@ -29,12 +29,36 @@ const navItems = [
 ];
 
 const features = [
-  { number: "01", title: "City search", text: "Search for a city with autocomplete and view its local weather." },
-  { number: "02", title: "Current conditions", text: "See the current temperature and weather conditions at a glance." },
-  { number: "03", title: "Five-day forecast", text: "Explore the upcoming forecast and a detailed three-hour breakdown." },
-  { number: "04", title: "Favourite cities", text: "Save frequently checked locations and return to them from the favourites menu." },
-  { number: "05", title: "Weather details", text: "Check humidity, wind, UV, sunrise, and sunset information." },
-  { number: "06", title: "Dynamic cat mascots", text: "Weather conditions are paired with expressive cat illustrations." },
+  {
+    number: "01",
+    title: "City search",
+    text: "Search for a city with autocomplete and view its local weather.",
+  },
+  {
+    number: "02",
+    title: "Current conditions",
+    text: "See the current temperature and weather conditions at a glance.",
+  },
+  {
+    number: "03",
+    title: "Five-day forecast",
+    text: "Explore the upcoming forecast and a detailed three-hour breakdown.",
+  },
+  {
+    number: "04",
+    title: "Favourite cities",
+    text: "Save frequently checked locations and return to them from the favourites menu.",
+  },
+  {
+    number: "05",
+    title: "Weather details",
+    text: "Check humidity, wind, UV, sunrise, and sunset information.",
+  },
+  {
+    number: "06",
+    title: "Dynamic cat mascots",
+    text: "Weather conditions are paired with expressive cat illustrations.",
+  },
 ];
 
 const cats = [
@@ -57,16 +81,43 @@ const timeBackgrounds = [
 ];
 
 const developmentSteps = [
-  { number: "01", title: "Weather data · Open-Meteo", text: "Retrieves current conditions, daily forecasts, hourly forecasts, and supporting weather details." },
-  { number: "02", title: "City autocomplete · PlaceKit", text: "Provides city suggestions and coordinates used to request local weather." },
-  { number: "03", title: "Weather and mascot mapping", text: "Maps weather codes to descriptions and the matching visual weather state." },
-  { number: "04", title: "Favourite locations · localStorage", text: "Stores saved cities in the browser so they can be restored between visits." },
+  {
+    number: "01",
+    title: "Weather data · Open-Meteo",
+    text: "Retrieves current conditions, daily forecasts, hourly forecasts, and supporting weather details.",
+  },
+  {
+    number: "02",
+    title: "City autocomplete · PlaceKit",
+    text: "Provides city suggestions and coordinates used to request local weather.",
+  },
+  {
+    number: "03",
+    title: "Weather and mascot mapping",
+    text: "Maps weather codes to descriptions and the matching visual weather state.",
+  },
+  {
+    number: "04",
+    title: "Favourite locations · localStorage",
+    text: "Stores saved cities in the browser so they can be restored between visits.",
+  },
 ];
 
-const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Meteo API", "PlaceKit API", "Figma"];
+const technologies = [
+  "Astro",
+  "TypeScript",
+  "Tailwind CSS",
+  "jQuery",
+  "Open-Meteo API",
+  "PlaceKit API",
+  "Figma",
+];
 ---
 
-<ProjectDetailLayout title="Weather Fore-Cat Case Study — Joy" active="projects">
+<ProjectDetailLayout
+  title="Weather Fore-Cat Case Study — Joy"
+  active="projects"
+>
   <main class="w-full">
     <div class="py-5 sm:py-7">
       <Breadcrumb
@@ -127,7 +178,9 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
                     aria-current={index === 0 ? "location" : undefined}
                     class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
                   >
-                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">{item.number}</span>
+                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">
+                      {item.number}
+                    </span>
                     <span>{item.label}</span>
                   </a>
                 </li>
@@ -141,23 +194,45 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
         <!-- 01 / BRIEF -->
         <section id="brief" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">01 · Project brief</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A forecast with a little more personality</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              01 · Project brief
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              A forecast with a little more personality
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              Weather Fore-Cat explores a friendlier way to check the forecast. It combines practical weather information with a cast of cat characters that respond to changing conditions, making an everyday utility feel a little more personal.
+              Weather Fore-Cat explores a friendlier way to check the forecast.
+              It combines practical weather information with a cast of cat
+              characters that respond to changing conditions, making an everyday
+              utility feel a little more personal.
             </p>
           </header>
 
           <div class="mt-10 grid gap-4 sm:grid-cols-2">
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">The challenge</p>
-              <h3 class="mt-3 text-2xl text-brown-dark">Make weather information easy to scan</h3>
-              <p class="mt-3 leading-relaxed text-brown-dark/70">Bring together current conditions, a five-day outlook, three-hour forecasts, and extra details without overwhelming the user.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">
+                The challenge
+              </p>
+              <h3 class="mt-3 text-2xl text-brown-dark">
+                Make weather information easy to scan
+              </h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/70">
+                Bring together current conditions, a five-day outlook,
+                three-hour forecasts, and extra details without overwhelming the
+                user.
+              </p>
             </article>
             <article class="border border-brown-dark/15 bg-ivory p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">The direction</p>
-              <h3 class="mt-3 text-2xl text-brown-dark">Give a useful tool a little character</h3>
-              <p class="mt-3 leading-relaxed text-brown-dark/70">Use cat mascots, changing backgrounds, and weather-inspired colours while keeping the forecast clear and readable.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">
+                The direction
+              </p>
+              <h3 class="mt-3 text-2xl text-brown-dark">
+                Give a useful tool a little character
+              </h3>
+              <p class="mt-3 leading-relaxed text-brown-dark/70">
+                Use cat mascots, changing backgrounds, and weather-inspired
+                colours while keeping the forecast clear and readable.
+              </p>
             </article>
           </div>
         </section>
@@ -165,19 +240,29 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
         <!-- 02 / EXPERIENCE -->
         <section id="experience" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">02 · Experience design</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">The information you need, when you need it</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              02 · Experience design
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              The information you need, when you need it
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The dashboard prioritises current conditions, then gives users a clear path into daily and hourly forecasts. Search and favourites make it straightforward to move between locations.
+              The dashboard prioritises current conditions, then gives users a
+              clear path into daily and hourly forecasts. Search and favourites
+              make it straightforward to move between locations.
             </p>
           </header>
 
           <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {features.map((feature) => (
               <article class="border border-brown-dark/15 bg-white p-6">
-                <span class="text-sm font-semibold text-green-dark">{feature.number}</span>
+                <span class="text-sm font-semibold text-green-dark">
+                  {feature.number}
+                </span>
                 <h3 class="mt-3 text-xl text-brown-dark">{feature.title}</h3>
-                <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">{feature.text}</p>
+                <p class="mt-2 text-sm leading-relaxed text-brown-dark/70">
+                  {feature.text}
+                </p>
               </article>
             ))}
           </div>
@@ -186,17 +271,28 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
         <!-- 03 / VISUAL SYSTEM -->
         <section id="visual-system" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">03 · Visual system</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Four cats. Four kinds of weather</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              03 · Visual system
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Four cats. Four kinds of weather
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The cat mascots are part of the product experience, not just decoration. Each character gives the dashboard a recognisable weather state and helps make changing conditions feel expressive.
+              The cat mascots are part of the product experience, not just
+              decoration. Each character gives the dashboard a recognisable
+              weather state and helps make changing conditions feel expressive.
             </p>
           </header>
 
           <div class="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {cats.map((cat) => (
               <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
-                <img src={cat.image.src} alt={`${cat.name} cat mascot`} class="aspect-square w-full object-contain p-4" loading="lazy" />
+                <img
+                  src={cat.image.src}
+                  alt={`${cat.name} cat mascot`}
+                  class="aspect-square w-full object-contain p-4"
+                  loading="lazy"
+                />
                 <figcaption class="border-t border-brown-dark/10 px-4 py-3">
                   <span class="block text-lg text-brown-dark">{cat.name}</span>
                   <span class="text-sm text-brown-dark/60">{cat.text}</span>
@@ -209,19 +305,35 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
         <!-- 04 / BACKGROUNDS -->
         <section id="backgrounds" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">04 · Dynamic backgrounds</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">The sky sets the scene</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              04 · Dynamic backgrounds
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              The sky sets the scene
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              The background responds to both the weather and the time of day. Weather-specific scenes create a different atmosphere for sunny, cloudy, rainy, and snowy conditions, while the day and night artwork changes the overall mood.
+              The background responds to both the weather and the time of day.
+              Weather-specific scenes create a different atmosphere for sunny,
+              cloudy, rainy, and snowy conditions, while the day and night
+              artwork changes the overall mood.
             </p>
           </header>
 
-          <h3 class="mt-12 text-2xl text-brown-dark">Different skies, different moods</h3>
-          <p class="mt-2 text-brown-dark/70">Mobile background variations for each weather condition.</p>
+          <h3 class="mt-12 text-2xl text-brown-dark">
+            Different skies, different moods
+          </h3>
+          <p class="mt-2 text-brown-dark/70">
+            Mobile background variations for each weather condition.
+          </p>
           <div class="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {weatherBackgrounds.map((item) => (
               <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
-                <img src={item.image.src} alt={`${item.name} weather background design`} class="aspect-[440/672] w-full object-cover" loading="lazy" />
+                <img
+                  src={item.image.src}
+                  alt={`${item.name} weather background design`}
+                  class="aspect-[440/672] w-full object-cover"
+                  loading="lazy"
+                />
                 <figcaption class="border-t border-brown-dark/10 px-4 py-3 text-sm">
                   <span class="block text-brown-dark">{item.name}</span>
                   <span class="text-brown-dark/60">{item.text}</span>
@@ -231,11 +343,18 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
           </div>
 
           <h3 class="mt-12 text-2xl text-brown-dark">Daylight to nighttime</h3>
-          <p class="mt-2 text-brown-dark/70">A separate visual layer changes the atmosphere based on the time.</p>
+          <p class="mt-2 text-brown-dark/70">
+            A separate visual layer changes the atmosphere based on the time.
+          </p>
           <div class="mt-6 grid gap-4 sm:grid-cols-2">
             {timeBackgrounds.map((item) => (
               <figure class="overflow-hidden border border-brown-dark/15 bg-ivory">
-                <img src={item.image.src} alt={`${item.name}time background artwork`} class="aspect-[19/10] w-full object-cover" loading="lazy" />
+                <img
+                  src={item.image.src}
+                  alt={`${item.name}time background artwork`}
+                  class="aspect-[19/10] w-full object-cover"
+                  loading="lazy"
+                />
                 <figcaption class="flex flex-wrap items-baseline justify-between gap-2 border-t border-brown-dark/10 px-5 py-3 text-sm">
                   <span class="text-brown-dark">{item.name}</span>
                   <span class="text-brown-dark/60">{item.text}</span>
@@ -244,57 +363,86 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
             ))}
           </div>
           <p class="mt-4 text-sm text-brown-dark/60">
-            These are the original background artworks from the Weather Fore-Cat project, shown as designed.
+            These are the original background artworks from the Weather Fore-Cat
+            project, shown as designed.
           </p>
         </section>
 
         <!-- 05 / DEVELOPMENT -->
         <section id="development" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">05 · Development</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">Connecting the interface to live data</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              05 · Development
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              Connecting the interface to live data
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              Astro provides the component structure, TypeScript supports the data model, and the APIs connect the interface to location and weather information.
+              Astro provides the component structure, TypeScript supports the
+              data model, and the APIs connect the interface to location and
+              weather information.
             </p>
           </header>
 
           <ol class="mt-10 divide-y divide-brown-dark/15 border-y border-brown-dark/15">
             {developmentSteps.map((step) => (
               <li class="grid gap-2 py-6 sm:grid-cols-[56px_1fr] sm:gap-6">
-                <span class="text-sm font-semibold text-green-dark">{step.number}</span>
+                <span class="text-sm font-semibold text-green-dark">
+                  {step.number}
+                </span>
                 <div>
                   <h3 class="text-xl text-brown-dark">{step.title}</h3>
-                  <p class="mt-2 leading-relaxed text-brown-dark/70">{step.text}</p>
+                  <p class="mt-2 leading-relaxed text-brown-dark/70">
+                    {step.text}
+                  </p>
                 </div>
               </li>
             ))}
           </ol>
 
           <div class="mt-8 border border-brown-dark/15 bg-ivory p-6">
-            <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">Technology stack</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark">
+              Technology stack
+            </p>
             <div class="mt-4 flex flex-wrap gap-2">
               {technologies.map((item) => (
-                <span class="rounded-lg bg-brown-light/10 px-3 py-1.5 text-sm text-brown-dark">#{item}</span>
+                <span class="rounded-lg bg-brown-light/10 px-3 py-1.5 text-sm text-brown-dark">
+                  #{item}
+                </span>
               ))}
             </div>
           </div>
         </section>
 
         <!-- 06 / OUTCOME -->
-        <section id="outcome" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="outcome"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <header class="max-w-4xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">06 · Outcome</p>
-            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">A friendly, working weather app</h2>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+              06 · Outcome
+            </p>
+            <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
+              A friendly, working weather app
+            </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
-              Weather Fore-Cat brings weather data, location search, saved cities, dynamic weather visuals, and cat mascots into one responsive experience.
+              Weather Fore-Cat brings weather data, location search, saved
+              cities, dynamic weather visuals, and cat mascots into one
+              responsive experience.
             </p>
           </header>
           <div class="mt-10 flex flex-col items-start justify-between gap-7 bg-brown-dark px-6 py-10 text-white sm:px-10 md:flex-row md:items-center">
             <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">Project takeaway</p>
-              <h3 class="mt-3 text-3xl !text-white">A weather dashboard that feels as friendly as it is useful.</h3>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-light">
+                Project takeaway
+              </p>
+              <h3 class="mt-3 text-3xl !text-white">
+                A weather dashboard that feels as friendly as it is useful.
+              </h3>
               <p class="mt-3 max-w-2xl text-white/75">
-                Combining UX/UI design with frontend development turned a playful visual concept into a working web app.
+                Combining UX/UI design with frontend development turned a
+                playful visual concept into a working web app.
               </p>
             </div>
             <a
@@ -314,12 +462,15 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
 
 <script>
   const setupWeatherNavigation = () => {
-    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-weather-nav]"));
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("[data-weather-nav]"),
+    );
     if (!links.length) return;
 
     const updateCurrent = (sectionId: string) => {
       links.forEach((link) => {
-        if (link.dataset.section === sectionId) link.setAttribute("aria-current", "location");
+        if (link.dataset.section === sectionId)
+          link.setAttribute("aria-current", "location");
         else link.removeAttribute("aria-current");
       });
     };
@@ -343,7 +494,10 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
       sections.forEach((section) => {
         if (section.getBoundingClientRect().top <= line) current = section;
       });
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 4
+      ) {
         current = sections[sections.length - 1];
       }
       if (current) updateCurrent(current.id);
@@ -351,7 +505,8 @@ const technologies = ["Astro", "TypeScript", "Tailwind CSS", "jQuery", "Open-Met
 
     // Replace the listener from a previous visit so it isn't added twice
     const w = window as Window & { weatherNavScroll?: () => void };
-    if (w.weatherNavScroll) window.removeEventListener("scroll", w.weatherNavScroll);
+    if (w.weatherNavScroll)
+      window.removeEventListener("scroll", w.weatherNavScroll);
     w.weatherNavScroll = onScroll;
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();

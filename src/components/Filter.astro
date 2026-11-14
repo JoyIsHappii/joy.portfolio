@@ -1,17 +1,12 @@
 ---
 type Category =
-  | "all"
-  | "UX/UI Design"
-  | "Web Development"
-  | "Project Management";
+  "all" | "UX/UI Design" | "Web Development" | "Project Management";
 
 interface FilterProps {
   selectedCategory?: Category;
 }
 
-const {
-  selectedCategory = "all",
-} = Astro.props as FilterProps;
+const { selectedCategory = "all" } = Astro.props as FilterProps;
 
 const categories: {
   value: Category;
@@ -97,33 +92,26 @@ const categoryClasses: Record<Category, string> = {
 <div
   data-project-filter
   data-selected-category={selectedCategory}
-  class="
-    flex
+  class="flex
     w-full
     flex-col
     items-start
-    gap-2
-  "
+    gap-2"
 >
-  {
-    categories.map((category) => (
-      <button
-        type="button"
-        data-filter-category={category.value}
-        aria-pressed={category.value === selectedCategory}
-        class:list={[
-          baseClasses,
-          categoryClasses[category.value],
-        ]}
-      >
-        <span>{category.label}</span>
+  {categories.map((category) => (
+    <button
+      type="button"
+      data-filter-category={category.value}
+      aria-pressed={category.value === selectedCategory}
+      class:list={[baseClasses, categoryClasses[category.value]]}
+    >
+      <span>{category.label}</span>
 
-        <!-- Project count -->
-        <span
-          data-project-count
-          aria-label={`Number of ${category.label} projects`}
-          class="
-            ml-auto
+      <!-- Project count -->
+      <span
+        data-project-count
+        aria-label={`Number of ${category.label} projects`}
+        class="ml-auto
             inline-flex
             h-6
             min-w-6
@@ -138,14 +126,12 @@ const categoryClasses: Record<Category, string> = {
             transition-colors
             duration-200
             group-hover:bg-white/20
-            group-aria-[pressed=true]:bg-white/20
-          "
-        >
-          0
-        </span>
-      </button>
-    ))
-  }
+            group-aria-[pressed=true]:bg-white/20"
+      >
+        0
+      </span>
+    </button>
+  ))}
 </div>
 
 <script>
@@ -161,9 +147,7 @@ const categoryClasses: Record<Category, string> = {
     filterRoot.dataset.ready = "true";
 
     const buttons = Array.from(
-      filterRoot.querySelectorAll<HTMLButtonElement>(
-        "[data-filter-category]",
-      ),
+      filterRoot.querySelectorAll<HTMLButtonElement>("[data-filter-category]"),
     );
 
     /*
@@ -171,30 +155,21 @@ const categoryClasses: Record<Category, string> = {
      * Anything inside the Award section is excluded.
      */
     const projectItems = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        "[data-project-item]",
-      ),
-    ).filter(
-      (projectItem) =>
-        !projectItem.closest("[data-award-section]"),
+      document.querySelectorAll<HTMLElement>("[data-project-item]"),
+    ).filter((projectItem) => !projectItem.closest("[data-award-section]"));
+
+    const awardSection = document.querySelector<HTMLElement>(
+      "[data-award-section]",
     );
 
-    const awardSection =
-      document.querySelector<HTMLElement>(
-        "[data-award-section]",
-      );
-
-    const sevenVanContainer =
-      document.querySelector<HTMLElement>(
-        "[data-sevenvan-card]",
-      );
+    const sevenVanContainer = document.querySelector<HTMLElement>(
+      "[data-sevenvan-card]",
+    );
 
     /*
      * Return the categories assigned to a project.
      */
-    function getProjectCategories(
-      projectItem: HTMLElement,
-    ): string[] {
+    function getProjectCategories(projectItem: HTMLElement): string[] {
       return (projectItem.dataset.category ?? "")
         .split(",")
         .map((category) => category.trim())
@@ -208,26 +183,21 @@ const categoryClasses: Record<Category, string> = {
      */
     function updateProjectCounts() {
       buttons.forEach((button) => {
-        const category =
-          button.dataset.filterCategory ?? "all";
+        const category = button.dataset.filterCategory ?? "all";
 
         const projectCount =
           category === "all"
             ? projectItems.length
             : projectItems.filter((projectItem) =>
-                getProjectCategories(projectItem).includes(
-                  category,
-                ),
+                getProjectCategories(projectItem).includes(category),
               ).length;
 
-        const countElement =
-          button.querySelector<HTMLElement>(
-            "[data-project-count]",
-          );
+        const countElement = button.querySelector<HTMLElement>(
+          "[data-project-count]",
+        );
 
         if (countElement) {
-          countElement.textContent =
-            String(projectCount);
+          countElement.textContent = String(projectCount);
         }
       });
     }
@@ -235,34 +205,22 @@ const categoryClasses: Record<Category, string> = {
     /*
      * Select a category and filter the projects.
      */
-    function selectCategory(
-      selectedCategory: string,
-    ) {
-      const isAllSelected =
-        selectedCategory === "all";
+    function selectCategory(selectedCategory: string) {
+      const isAllSelected = selectedCategory === "all";
 
       // Update the selected filter button
       buttons.forEach((button) => {
-        const isSelected =
-          button.dataset.filterCategory ===
-          selectedCategory;
+        const isSelected = button.dataset.filterCategory === selectedCategory;
 
-        button.setAttribute(
-          "aria-pressed",
-          String(isSelected),
-        );
+        button.setAttribute("aria-pressed", String(isSelected));
       });
 
       // Filter all regular project cards
       projectItems.forEach((projectItem) => {
-        const projectCategories =
-          getProjectCategories(projectItem);
+        const projectCategories = getProjectCategories(projectItem);
 
         const shouldShow =
-          isAllSelected ||
-          projectCategories.includes(
-            selectedCategory,
-          );
+          isAllSelected || projectCategories.includes(selectedCategory);
 
         projectItem.hidden = !shouldShow;
       });
@@ -280,23 +238,18 @@ const categoryClasses: Record<Category, string> = {
        * Show it when UX Design or UI Design is selected.
        */
       if (sevenVanContainer) {
-        const sevenVanProject =
-          sevenVanContainer.querySelector<HTMLElement>(
-            "[data-project-item]",
-          );
+        const sevenVanProject = sevenVanContainer.querySelector<HTMLElement>(
+          "[data-project-item]",
+        );
 
         const sevenVanCategories = sevenVanProject
           ? getProjectCategories(sevenVanProject)
           : [];
 
         const shouldShowSevenVan =
-          !isAllSelected &&
-          sevenVanCategories.includes(
-            selectedCategory,
-          );
+          !isAllSelected && sevenVanCategories.includes(selectedCategory);
 
-        sevenVanContainer.hidden =
-          !shouldShowSevenVan;
+        sevenVanContainer.hidden = !shouldShowSevenVan;
       }
 
       // Hide a project section (and its heading) when none of its cards match
@@ -312,20 +265,17 @@ const categoryClasses: Record<Category, string> = {
             items.length > 0 &&
             items.every(
               (item) =>
-                item.hidden ||
-                item.closest<HTMLElement>("[hidden]") !== null,
+                item.hidden || item.closest<HTMLElement>("[hidden]") !== null,
             );
         });
 
-      filterRoot.dataset.selectedCategory =
-        selectedCategory;
+      filterRoot.dataset.selectedCategory = selectedCategory;
     }
 
     // Add filter button click events
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
-        const category =
-          button.dataset.filterCategory ?? "all";
+        const category = button.dataset.filterCategory ?? "all";
 
         selectCategory(category);
       });
@@ -335,15 +285,10 @@ const categoryClasses: Record<Category, string> = {
     updateProjectCounts();
 
     // Apply the initial selected category
-    selectCategory(
-      filterRoot.dataset.selectedCategory ?? "all",
-    );
+    selectCategory(filterRoot.dataset.selectedCategory ?? "all");
   }
 
   setupProjectFilter();
 
-  document.addEventListener(
-    "astro:page-load",
-    setupProjectFilter,
-  );
+  document.addEventListener("astro:page-load", setupProjectFilter);
 </script>

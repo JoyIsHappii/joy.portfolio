@@ -22,18 +22,12 @@ const responsibilityList = Array.isArray(responsibilities)
   class="m-auto max-h-[90vh] w-[min(92vw,760px)] overflow-y-auto rounded-3xl border border-brown-dark/10 bg-ivory p-0 text-brown-dark shadow-[0_20px_60px_rgba(61,47,38,0.25)] backdrop:bg-brown-dark/50 backdrop:backdrop-blur-sm"
 >
   <div class="relative overflow-hidden">
-    
     <!-- Decorative background -->
-    <div
-      class="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-green-light/30 blur-3xl"
-    ></div>
+    <div class="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-green-light/30 blur-3xl"></div>
 
-    <div
-      class="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-brown-medium/20 blur-3xl"
-    ></div>
+    <div class="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-brown-medium/20 blur-3xl"></div>
 
     <div class="relative p-6 sm:p-10">
-
       <!-- Close button -->
       <button
         type="button"
@@ -63,16 +57,13 @@ const responsibilityList = Array.isArray(responsibilities)
 
       <!-- Project information -->
       <dl class="grid gap-6 sm:grid-cols-3">
-
         <!-- Duration -->
         <div>
           <dt class="mb-2 text-xs font-bold uppercase tracking-wider text-green-dark">
             Duration
           </dt>
 
-          <dd class="text-sm leading-relaxed text-brown-dark/80">
-            {duration}
-          </dd>
+          <dd class="text-sm leading-relaxed text-brown-dark/80">{duration}</dd>
         </div>
 
         <!-- Role -->
@@ -81,9 +72,7 @@ const responsibilityList = Array.isArray(responsibilities)
             My Role
           </dt>
 
-          <dd class="text-sm leading-relaxed text-brown-dark/80">
-            {role}
-          </dd>
+          <dd class="text-sm leading-relaxed text-brown-dark/80">{role}</dd>
         </div>
 
         <!-- Responsibilities -->
@@ -94,42 +83,33 @@ const responsibilityList = Array.isArray(responsibilities)
 
           <dd>
             <ul class="space-y-2 text-sm leading-relaxed text-brown-dark/80">
-              {
-                responsibilityList.map((item) => (
-                  <li class="flex items-start gap-2">
-                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span>
-                    <span>{item}</span>
-                  </li>
-                ))
-              }
+              {responsibilityList.map((item) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </dd>
         </div>
-
       </dl>
 
       <!-- Actions -->
       <div class="mt-9 flex flex-col gap-3 border-t border-brown-dark/10 pt-7 sm:flex-row sm:items-center">
-
-        {
-          projectLink && (
-            <a
-              href={projectLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group inline-flex items-center justify-center gap-2 rounded-full bg-green-dark px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-medium hover:shadow-lg"
-            >
-              View Project
-
-              <span
-                aria-hidden="true"
-                class="transition-transform duration-200 group-hover:translate-x-1"
-              >
-                
-              </span>
-            </a>
-          )
-        }
+        {projectLink && (
+          <a
+            href={projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center justify-center gap-2 rounded-full bg-green-dark px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-medium hover:shadow-lg"
+          >
+            View Project
+            <span
+              aria-hidden="true"
+              class="transition-transform duration-200 group-hover:translate-x-1"
+            ></span>
+          </a>
+        )}
 
         <button
           type="button"
@@ -138,9 +118,7 @@ const responsibilityList = Array.isArray(responsibilities)
         >
           Close
         </button>
-
       </div>
-
     </div>
   </div>
 </dialog>
@@ -158,14 +136,9 @@ const responsibilityList = Array.isArray(responsibilities)
           event.preventDefault();
 
           const modalId = trigger.dataset.modalOpen;
-          const modal = modalId
-            ? document.getElementById(modalId)
-            : null;
+          const modal = modalId ? document.getElementById(modalId) : null;
 
-          if (
-            modal instanceof HTMLDialogElement &&
-            !modal.open
-          ) {
+          if (modal instanceof HTMLDialogElement && !modal.open) {
             modal.showModal();
           }
         });

@@ -48,13 +48,12 @@ const navItems = [
   ]}
 >
   <ul class="flex flex-wrap gap-4 sm:gap-8 md:gap-10">
-    {
-      navItems.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class:list={[
-              `
+    {navItems.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          class:list={[
+            `
                 border-b-2
                 pb-1
                 text-sm
@@ -63,21 +62,18 @@ const navItems = [
                 transition-colors
                 sm:text-base
               `,
-              active === item.key
-                ? "border-brown-dark font-semibold"
-                : "border-transparent hover:border-brown-dark/40",
-            ]}
-          >
-            {item.name}
-          </a>
-        </li>
-      ))
-    }
+            active === item.key
+              ? "border-brown-dark font-semibold"
+              : "border-transparent hover:border-brown-dark/40",
+          ]}
+        >
+          {item.name}
+        </a>
+      </li>
+    ))}
   </ul>
 
-
-    <div class="ml-auto">
-      <MusicPlayer />
-    </div>
-
+  <div class="ml-auto">
+    <MusicPlayer />
+  </div>
 </nav>

@@ -29,9 +29,7 @@ const { title = "Project — Joy", active = "projects" } = Astro.props as Props;
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-ivory">
-    <div
-      class="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col px-4 sm:px-6 lg:px-10 xl:px-16"
-    >
+    <div class="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col px-4 sm:px-6 lg:px-10 xl:px-16">
       <NavBar active={active} surface="ivory" music />
       <div class="w-full flex-1 pb-20">
         <slot />

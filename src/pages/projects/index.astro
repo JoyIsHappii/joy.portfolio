@@ -19,6 +19,7 @@ import ImagePm25 from "../../assets/hero/pm25-cover.webp";
 // import ImageCarlaBeauty from "../../assets/hero/carla-cover.webp";
 import ImageResume from "../../assets/resume.webp";
 import ResumeScreen from "../../assets/resume.png";
+import ImageRyuichi from "../../assets/hero/ryuichi-cover.svg";
 
 import AwardSection from "../../sections/AwardSection.astro";
 import ResumeSection from "../../sections/ResumeSection.astro";
@@ -155,6 +156,35 @@ const projects: Project[] = [
     ],
     projectLink: "/projects/weather-fore-cat",
   },
+  {
+    title: "Pawfect Day",
+    description:
+      "A full-stack pet grooming app with online booking and staff management.",
+    imageSrc: ImagePawfectDay.src,
+    imageAlt: "Pawfect Day pet grooming platform",
+    categories: ["Web Development", "Project Management"],
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "Vercel",
+    ],
+    projectLink: "/projects/pawfect-day",
+  },
+  {
+    title: "Merry Christmas, Mr. Lawrence",
+    description:
+      "An interactive musical experience blending storytelling, typography, and immersive animations.",
+    imageSrc: ImageRyuichi.src,
+    imageAlt: "Merry Christmas, Mr. Lawrence – Interactive Musical Experience",
+    categories: ["UX/UI Design", "Web Development"],
+    tech: ["GSAP", "Vite", "Tailwind CSS", "Netlify", "Claude"],
+    projectLink: "https://merry-christmasmr-lawrence.vercel.app",
+  },
+
   // {
   //   title: "FIFA Performance Stats",
   //   description:
@@ -174,24 +204,6 @@ const projects: Project[] = [
   //   projectLink: "https://fifa-player-stats.onrender.com/",
   //   warmupLink: "https://player-stats-2uxq.onrender.com",
   // },
-  {
-    title: "Pawfect Day",
-    description:
-      "A full-stack pet grooming app with online booking and staff management.",
-    imageSrc: ImagePawfectDay.src,
-    imageAlt: "Pawfect Day pet grooming platform",
-    categories: ["Web Development", "Project Management"],
-    tech: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL",
-      "Vercel",
-    ],
-    projectLink: "/projects/pawfect-day",
-  },
   // {
   //   title: "Grounds Cafe",
   //   description:
@@ -212,16 +224,16 @@ const projects: Project[] = [
   //   tech: ["HTML", "CSS", "SCSS", "JavaScript","Netlify"],
   //   modalId: "carla",
   // },
-{
-  title: "PM2.5 in Thailand",
-  description:
-    "A motion-driven awareness website exploring Thailand's PM2.5 crisis through visual storytelling, animated transitions, and interactive scrolling.",
-  imageSrc: ImagePm25.src,
-  imageAlt: "PM2.5 in Thailand awareness website",
-  categories: ["UX/UI Design", "Web Development"],
-  tech: ["Framer"],
-  projectLink: "/projects/pm25-project/",
-},
+  // {
+  //   title: "PM2.5 in Thailand",
+  //   description:
+  //     "A motion-driven awareness website exploring Thailand's PM2.5 crisis through visual storytelling, animated transitions, and interactive scrolling.",
+  //   imageSrc: ImagePm25.src,
+  //   imageAlt: "PM2.5 in Thailand awareness website",
+  //   categories: ["UX/UI Design", "Web Development"],
+  //   tech: ["Framer"],
+  //   projectLink: "/projects/pm25-project/",
+  // },
 ];
 ---
 
@@ -265,7 +277,6 @@ const projects: Project[] = [
       </h2>
 
       <Filter />
-      
     </aside>
 
     <!-- Right side: project content -->
@@ -276,9 +287,9 @@ const projects: Project[] = [
         data-award-section
         class="flex flex-col w-full justify-center gap-4"
       >
-      <AwardSection />
-      <!-- <ResumeSection /> -->
-      <!-- <iframe
+        <AwardSection />
+        <!-- <ResumeSection /> -->
+        <!-- <iframe
         src="https://interactive-resume-joy.vercel.app"
         title="Joy's Interactive Resume"
         class="h-[min(700px,calc(100dvh-8rem))] w-full border border-brown-dark/10 shadow-lg transition-all duration-300 ease-in-out"
@@ -309,7 +320,10 @@ const projects: Project[] = [
               target="_blank"
               rel="noopener noreferrer"
               class="underline decoration-brown-dark/30 underline-offset-4 transition-colors hover:decoration-brown-dark"
-            >Iter Innovandi</a>. Some projects are under NDA.
+            >
+              Iter Innovandi
+            </a>
+            . Some projects are under NDA.
           </p>
         </div>
 
@@ -321,21 +335,19 @@ const projects: Project[] = [
             md:grid-cols-2
             lg:grid-cols-3"
         >
-          {
-            professionalProjects.map((project) => (
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                imageSrc={project.imageSrc}
-                imageAlt={project.imageAlt}
-                categories={project.categories}
-                projectLink={project.projectLink}
-                modalId={project.modalId}
-                tech={project.tech}
-                blurTitle={project.blurTitle}
-              />
-            ))
-          }
+          {professionalProjects.map((project) => (
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              imageSrc={project.imageSrc}
+              imageAlt={project.imageAlt}
+              categories={project.categories}
+              projectLink={project.projectLink}
+              modalId={project.modalId}
+              tech={project.tech}
+              blurTitle={project.blurTitle}
+            />
+          ))}
         </div>
       </section>
 
@@ -351,50 +363,49 @@ const projects: Project[] = [
             font-normal
             tracking-tight
             text-brown-dark
-            md:text-4xl
-            "
+            md:text-4xl"
         >
           More Projects
         </h2>
         <p class="text-lg font-normal text-brown-dark/75">
-          The projects that showcase my skills in UX/UI design, web development, and project management.
+          The projects that showcase my skills in UX/UI design, web development,
+          and project management.
         </p>
 
-      <div
-        id="projects"
-        class="grid
+        <div
+          id="projects"
+          class="grid
           w-full
           grid-cols-1
           gap-4
           md:grid-cols-2
           lg:grid-cols-3"
-      >
-        <!--
+        >
+          <!--
           7VAN replaces the Award section when a category is selected.
           It starts hidden because All is selected initially.
         -->
-        <div data-sevenvan-card hidden>
-          <ProjectCard
-            title="7VAN"
-            description="Developed a responsive website for a Brazilian Jiu-Jitsu academy to encourage membership applications."
-            imageSrc={Image7Van.src}
-            imageAlt="7VAN Brazilian Jiu-Jitsu academy website"
-            categories={["UX/UI Design"]}
-            projectLink="/projects/7van"
-            tech={[
-              "Figma",
-              "User Research",
-              "Wireframing",
-              "Prototyping",
-              "Usability Testing",
-              "User Flows",
-              "Information Architecture",
-            ]}
-          />
-        </div>
+          <div data-sevenvan-card hidden>
+            <ProjectCard
+              title="7VAN"
+              description="Developed a responsive website for a Brazilian Jiu-Jitsu academy to encourage membership applications."
+              imageSrc={Image7Van.src}
+              imageAlt="7VAN Brazilian Jiu-Jitsu academy website"
+              categories={["UX/UI Design"]}
+              projectLink="/projects/7van"
+              tech={[
+                "Figma",
+                "User Research",
+                "Wireframing",
+                "Prototyping",
+                "Usability Testing",
+                "User Flows",
+                "Information Architecture",
+              ]}
+            />
+          </div>
 
-        {
-          projects.map((project) => (
+          {projects.map((project) => (
             <ProjectCard
               title={project.title}
               description={project.description}
@@ -406,15 +417,14 @@ const projects: Project[] = [
               modalId={project.modalId}
               tech={project.tech}
             />
-          ))
-        }
-      </div>
+          ))}
+        </div>
       </section>
     </div>
   </main>
 
-        <!-- <ResumeSection /> -->
-      <!-- <iframe
+  <!-- <ResumeSection /> -->
+  <!-- <iframe
         src="https://interactive-resume-joy.vercel.app"
         title="Joy's Interactive Resume"
         class="h-[min(700px,calc(100dvh-8rem))] w-full "
@@ -474,26 +484,21 @@ const projects: Project[] = [
         </p>
 
         <div class="flex flex-col gap-2 sm:flex-row sm:gap-4">
-           <Button
-          href="/about"
-          variant="primary"
-          size="md"
-          class="mt-7"
-        >
-          Explore My Story
-        </Button>
+          <Button href="/about" variant="primary" size="md" class="mt-7">
+            Explore My Story
+          </Button>
 
-        <Button
-          href="https://interactive-resume-joy.vercel.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="secondary"
-          size="md"
-          class="mt-7"
-        >
-          View Interactive Resume
-        </Button>
-      </div>
+          <Button
+            href="https://interactive-resume-joy.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="secondary"
+            size="md"
+            class="mt-7"
+          >
+            View Interactive Resume
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -516,15 +521,12 @@ const projects: Project[] = [
   /> -->
 </ContentLayout>
 
-
 <script>
   // Handle View Resume button click -> scroll to the About Me section
   const resumeButton = document.getElementById("resume-button");
   const aboutMeSection = document.getElementById("about-me");
 
-
   resumeButton?.addEventListener("click", () => {
     aboutMeSection?.scrollIntoView({ behavior: "smooth" });
   });
-
 </script>

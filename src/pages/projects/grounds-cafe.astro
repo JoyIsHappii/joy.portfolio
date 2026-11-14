@@ -149,36 +149,30 @@ const reusablePieces = [
       />
     </div>
 
-    <section
-      class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[220px_1fr] lg:gap-16"
-    >
+    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[220px_1fr] lg:gap-16">
       <aside class="hidden lg:block">
         <div class="sticky top-28">
-          <p
-            class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark"
-          >
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
             Development process
           </p>
           <nav aria-label="Grounds Café case-study sections" class="mt-5">
             <ol class="border-t border-brown-dark/15">
-              {
-                navItems.map((item, index) => (
-                  <li>
-                    <a
-                      href={item.href}
-                      data-grounds-nav
-                      data-section={item.href.slice(1)}
-                      aria-current={index === 0 ? "location" : undefined}
-                      class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
-                    >
-                      <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">
-                        {item.number}
-                      </span>
-                      <span>{item.label}</span>
-                    </a>
-                  </li>
-                ))
-              }
+              {navItems.map((item, index) => (
+                <li>
+                  <a
+                    href={item.href}
+                    data-grounds-nav
+                    data-section={item.href.slice(1)}
+                    aria-current={index === 0 ? "location" : undefined}
+                    class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
+                  >
+                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">
+                      {item.number}
+                    </span>
+                    <span>{item.label}</span>
+                  </a>
+                </li>
+              ))}
             </ol>
           </nav>
         </div>
@@ -188,17 +182,13 @@ const reusablePieces = [
         <!-- PROJECT BRIEF -->
         <section id="brief" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p
-              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-            >
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
               01 · Project brief
             </p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
               Building a complete ordering flow from static product data
             </h2>
-            <p
-              class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75"
-            >
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-brown-dark/75">
               The assignment was to create a frontend-only café application from
               a provided JSON file. The result needed to demonstrate core React
               skills through data loading, reusable components, routing, shared
@@ -206,9 +196,7 @@ const reusablePieces = [
             </p>
           </header>
 
-          <div
-            class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3"
-          >
+          <div class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3">
             <article class="bg-ivory p-6 sm:p-8">
               <strong class="text-5xl text-brown-dark">47</strong>
               <h3 class="mt-3 text-xl">Menu items</h3>
@@ -238,13 +226,9 @@ const reusablePieces = [
           id="architecture"
           class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <div
-            class="flex flex-col gap-8 md:flex-row md:items-center md:gap-12"
-          >
+          <div class="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
             <div class="md:max-w-[calc(50%-1rem)]">
-              <p
-                class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-              >
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
                 02 · Architecture
               </p>
               <h2 class="mt-4 text-4xl sm:text-6xl">
@@ -259,19 +243,17 @@ const reusablePieces = [
           </div>
 
           <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {
-              routes.map((route) => (
-                <article class="border border-brown-dark/15 bg-ivory p-5 sm:p-6">
-                  <code class="text-sm font-semibold text-green-dark">
-                    {route.path}
-                  </code>
-                  <h3 class="mt-3 text-2xl">{route.title}</h3>
-                  <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">
-                    {route.text}
-                  </p>
-                </article>
-              ))
-            }
+            {routes.map((route) => (
+              <article class="border border-brown-dark/15 bg-ivory p-5 sm:p-6">
+                <code class="text-sm font-semibold text-green-dark">
+                  {route.path}
+                </code>
+                <h3 class="mt-3 text-2xl">{route.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">
+                  {route.text}
+                </p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -280,14 +262,10 @@ const reusablePieces = [
           id="menu"
           class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <p
-            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-          >
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             03 · Menu system
           </p>
-          <div
-            class="flex flex-col gap-8 md:flex-row md:items-center md:gap-12"
-          >
+          <div class="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
             <h2 class="text-4xl sm:text-6xl">
               From JSON to a usable 47-item menu
             </h2>
@@ -298,22 +276,18 @@ const reusablePieces = [
             </p>
           </div>
 
-          <div
-            class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-2 xl:grid-cols-4"
-          >
-            {
-              menuSteps.map((step) => (
-                <article class="bg-ivory p-6">
-                  <span class="text-sm font-semibold text-green-dark">
-                    {step.number}
-                  </span>
-                  <h3 class="mt-4 text-2xl">{step.title}</h3>
-                  <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">
-                    {step.text}
-                  </p>
-                </article>
-              ))
-            }
+          <div class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-2 xl:grid-cols-4">
+            {menuSteps.map((step) => (
+              <article class="bg-ivory p-6">
+                <span class="text-sm font-semibold text-green-dark">
+                  {step.number}
+                </span>
+                <h3 class="mt-4 text-2xl">{step.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/70">
+                  {step.text}
+                </p>
+              </article>
+            ))}
           </div>
 
           <figure class="mt-8 border border-brown-dark/15 bg-ivory p-3 sm:p-5">
@@ -337,9 +311,7 @@ const reusablePieces = [
         >
           <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p
-                class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-              >
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
                 04 · Shared state
               </p>
               <h2 class="mt-4 text-4xl sm:text-6xl">
@@ -354,16 +326,14 @@ const reusablePieces = [
           </div>
 
           <div class="mt-10 grid gap-5 md:grid-cols-3">
-            {
-              sharedFeatures.map((feature) => (
-                <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
-                  <h3 class="text-2xl">{feature.title}</h3>
-                  <p class="mt-4 text-sm leading-relaxed text-brown-dark/70">
-                    {feature.text}
-                  </p>
-                </article>
-              ))
-            }
+            {sharedFeatures.map((feature) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                <h3 class="text-2xl">{feature.title}</h3>
+                <p class="mt-4 text-sm leading-relaxed text-brown-dark/70">
+                  {feature.text}
+                </p>
+              </article>
+            ))}
           </div>
 
           <div class="mt-8 grid gap-6 md:grid-cols-2">
@@ -399,9 +369,7 @@ const reusablePieces = [
         >
           <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
             <div>
-              <p
-                class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-              >
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
                 05 · Interface
               </p>
               <h2 class="mt-4 text-4xl sm:text-6xl">
@@ -415,22 +383,16 @@ const reusablePieces = [
             </p>
           </div>
 
-          <div
-            class="mt-10 grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start"
-          >
+          <div class="mt-10 grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             <div class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
               <h3 class="text-2xl">Component system</h3>
-              <ul
-                class="mt-6 space-y-4 text-sm leading-relaxed text-brown-dark/75"
-              >
-                {
-                  reusablePieces.map((item) => (
-                    <li class="flex gap-3">
-                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark" />
-                      <span>{item}</span>
-                    </li>
-                  ))
-                }
+              <ul class="mt-6 space-y-4 text-sm leading-relaxed text-brown-dark/75">
+                {reusablePieces.map((item) => (
+                  <li class="flex gap-3">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-dark" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
             <figure class="border border-brown-dark/15 bg-ivory p-3 sm:p-5">
@@ -455,9 +417,7 @@ const reusablePieces = [
         >
           <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
             <div>
-              <p
-                class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-              >
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
                 06 · Outcome
               </p>
               <h2 class="mt-4 text-4xl sm:text-6xl">
@@ -472,13 +432,9 @@ const reusablePieces = [
             </p>
           </div>
 
-          <div
-            class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3"
-          >
+          <div class="mt-10 grid gap-px border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-3">
             <article class="bg-ivory p-6 sm:p-8">
-              <p
-                class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark"
-              >
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
                 Data
               </p>
               <h3 class="mt-3 text-2xl">Dynamic product views</h3>
@@ -488,9 +444,7 @@ const reusablePieces = [
               </p>
             </article>
             <article class="bg-ivory p-6 sm:p-8">
-              <p
-                class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark"
-              >
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
                 State
               </p>
               <h3 class="mt-3 text-2xl">Connected interactions</h3>
@@ -500,9 +454,7 @@ const reusablePieces = [
               </p>
             </article>
             <article class="bg-ivory p-6 sm:p-8">
-              <p
-                class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark"
-              >
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-dark">
                 Delivery
               </p>
               <h3 class="mt-3 text-2xl">Public deployment</h3>

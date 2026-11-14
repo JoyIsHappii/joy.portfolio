@@ -154,7 +154,7 @@ const testFindings = [
 
 <ProjectDetailLayout title="Ippon Case Study — Joy" active="projects">
   <main class="w-full">
-    <div class="py-5 sm:py-7 ">
+    <div class="py-5 sm:py-7">
       <Breadcrumb
         items={[
           { label: "Projects", href: "/projects" },
@@ -196,10 +196,10 @@ const testFindings = [
       />
     </div>
 
-    <section
-      class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16"
-    >
-      <div class="hidden lg:block"><Sidebar /></div>
+    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16">
+      <div class="hidden lg:block">
+        <Sidebar />
+      </div>
 
       <div class="min-w-0 space-y-20 sm:space-y-28">
         <!-- EMPATHIZE -->
@@ -236,7 +236,9 @@ const testFindings = [
             </article>
 
             <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
-              <span class="text-sm font-semibold text-brown-dark">Language</span>
+              <span class="text-sm font-semibold text-brown-dark">
+                Language
+              </span>
               <h3 class="mt-4 text-2xl">Terms shaped the product</h3>
               <p class="mt-3">
                 “Ippon” is a winning point awarded for a well-executed
@@ -263,7 +265,9 @@ const testFindings = [
               <ul class="mt-6 grid gap-3 sm:grid-cols-2">
                 {researchGoals.map((goal, index) => (
                   <li class="flex gap-3 border border-brown-dark/15 bg-ivory p-4 text-sm">
-                    <span class="font-semibold text-green-dark">0{index + 1}</span>
+                    <span class="font-semibold text-green-dark">
+                      0{index + 1}
+                    </span>
                     <span>{goal}</span>
                   </li>
                 ))}
@@ -273,60 +277,104 @@ const testFindings = [
 
           <div class="mt-10 grid gap-4 md:grid-cols-2">
             <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
-              <img src={UserBehaviourChart.src} alt="Survey chart showing why practitioners use social media for karate" class="h-auto w-full" />
+              <img
+                src={UserBehaviourChart.src}
+                alt="Survey chart showing why practitioners use social media for karate"
+                class="h-auto w-full"
+              />
               <figcaption class="mt-4 text-sm">
-                Learning and improvement was the strongest motivation, followed by networking and community.
+                Learning and improvement was the strongest motivation, followed
+                by networking and community.
               </figcaption>
             </figure>
 
             <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
-              <img src={PainPointsChart.src} alt="Survey chart showing social platforms used for karate content" class="h-auto w-full" />
+              <img
+                src={PainPointsChart.src}
+                alt="Survey chart showing social platforms used for karate content"
+                class="h-auto w-full"
+              />
               <figcaption class="mt-4 text-sm">
-                YouTube and Facebook were common sources, but participants reported outdated, mixed, and irrelevant information.
+                YouTube and Facebook were common sources, but participants
+                reported outdated, mixed, and irrelevant information.
               </figcaption>
             </figure>
 
             <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
-              <img src={ContentPriorityTable.src} alt="Content priority scores from the Ippon survey" class="h-auto w-full" />
+              <img
+                src={ContentPriorityTable.src}
+                alt="Content priority scores from the Ippon survey"
+                class="h-auto w-full"
+              />
               <figcaption class="mt-4 text-sm">
-                Video ranked first, followed by community, events, and the news feed.
+                Video ranked first, followed by community, events, and the news
+                feed.
               </figcaption>
             </figure>
 
             <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
-              <img src={AffinityMapImage.src} alt="Affinity map grouping event, video, comment, news, and dojo needs" class="h-auto w-full" />
+              <img
+                src={AffinityMapImage.src}
+                alt="Affinity map grouping event, video, comment, news, and dojo needs"
+                class="h-auto w-full"
+              />
               <figcaption class="mt-4 text-sm">
-                Open responses revealed an additional need: discovering dojos, instructors, and training schedules.
+                Open responses revealed an additional need: discovering dojos,
+                instructors, and training schedules.
               </figcaption>
             </figure>
           </div>
 
           <div class="mt-14 grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
             <article class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-rose">User persona</p>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-rose">
+                User persona
+              </p>
               <h3 class="mt-3 text-3xl">Joseph Homma</h3>
               <p class="mt-4">
-                Joseph is a 34-year-old software engineer in Vancouver who has practised Shotokan karate for ten years. He uses social media to find updated information, learn through videos, follow communities, and continue improving after relocating.
+                Joseph is a 34-year-old software engineer in Vancouver who has
+                practised Shotokan karate for ten years. He uses social media to
+                find updated information, learn through videos, follow
+                communities, and continue improving after relocating.
               </p>
               <p class="mt-4 text-sm">
-                His main frustrations are unverified or outdated information, practising without confidence that his form is correct, and difficulty finding local events and communities.
+                His main frustrations are unverified or outdated information,
+                practising without confidence that his form is correct, and
+                difficulty finding local events and communities.
               </p>
-              <img src={PersonaImage.src} alt="Ippon persona for Joseph Homma" class="mt-6 h-auto w-full" />
+              <img
+                src={PersonaImage.src}
+                alt="Ippon persona for Joseph Homma"
+                class="mt-6 h-auto w-full"
+              />
             </article>
 
             <article class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">Competitors</p>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+                Competitors
+              </p>
               <h3 class="mt-3 text-3xl">Facebook and YouTube</h3>
               <p class="mt-4 text-sm">
-                Facebook supports communities and posting but can feel crowded and unfocused. YouTube makes video discovery and subscriptions easy but offers weaker relationships between practitioners. Ippon combines focused video discovery with a dedicated karate community.
+                Facebook supports communities and posting but can feel crowded
+                and unfocused. YouTube makes video discovery and subscriptions
+                easy but offers weaker relationships between practitioners.
+                Ippon combines focused video discovery with a dedicated karate
+                community.
               </p>
-              <img src={CompetitorMapImage.src} alt="Feature analysis comparing Facebook and YouTube" class="mt-6 h-auto w-full" />
+              <img
+                src={CompetitorMapImage.src}
+                alt="Feature analysis comparing Facebook and YouTube"
+                class="mt-6 h-auto w-full"
+              />
             </article>
           </div>
         </section>
 
         <!-- DEFINE -->
-        <section id="define" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="define"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             02 · Define
           </p>
@@ -348,7 +396,9 @@ const testFindings = [
               <div class="mt-5 grid gap-px overflow-hidden border border-brown-dark/15 bg-brown-dark/15 sm:grid-cols-2">
                 {insights.map((insight) => (
                   <article class="bg-ivory p-6">
-                    <span class="text-xs font-semibold text-rose">{insight.number}</span>
+                    <span class="text-xs font-semibold text-rose">
+                      {insight.number}
+                    </span>
                     <h4 class="mt-4 text-xl">{insight.title}</h4>
                     <p class="mt-3 text-sm">{insight.description}</p>
                   </article>
@@ -385,7 +435,10 @@ const testFindings = [
         </section>
 
         <!-- IDEATE -->
-        <section id="ideate" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="ideate"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <header class="max-w-4xl">
             <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
               03 · Ideate
@@ -394,8 +447,8 @@ const testFindings = [
               Designing around five meaningful practitioner journeys
             </h2>
             <p class="mt-6 max-w-3xl text-lg leading-relaxed">
-              Survey results made video the primary experience. Community,
-              dojo, events, publishing, and profile features support it in the
+              Survey results made video the primary experience. Community, dojo,
+              events, publishing, and profile features support it in the
               information architecture.
             </p>
           </header>
@@ -417,7 +470,9 @@ const testFindings = [
             <div class="mt-6 grid gap-4 md:grid-cols-2">
               {coreFlows.map((flow, index) => (
                 <article class="border border-brown-dark/15 bg-ivory p-6">
-                  <span class="text-sm font-semibold text-rose">{flow.number}</span>
+                  <span class="text-sm font-semibold text-rose">
+                    {flow.number}
+                  </span>
                   <h4 class="mt-4 text-2xl">{flow.title}</h4>
                   <p class="mt-4 text-sm">{flow.description}</p>
                   <img
@@ -432,7 +487,10 @@ const testFindings = [
         </section>
 
         <!-- PROTOTYPE -->
-        <section id="prototype" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="prototype"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             04 · Prototype
           </p>
@@ -451,9 +509,14 @@ const testFindings = [
 
           <div class="mt-10 w-full">
             <figure class="border border-brown-dark/15 bg-ivory p-4 sm:p-6">
-              <img src={UIKitImage.src} alt="Ippon Nunito typography and red, black, grey, and white colour system" class="h-auto w-full" />
+              <img
+                src={UIKitImage.src}
+                alt="Ippon Nunito typography and red, black, grey, and white colour system"
+                class="h-auto w-full"
+              />
               <figcaption class="mt-4 text-sm">
-                The style guide uses Nunito and a high-contrast palette inspired by karate federation identities.
+                The style guide uses Nunito and a high-contrast palette inspired
+                by karate federation identities.
               </figcaption>
             </figure>
 
@@ -464,13 +527,21 @@ const testFindings = [
               </figcaption>
             </figure> -->
           </div>
-          <Button variant="primary" size="lg" href="https://www.figma.com/proto/aKjQYawVfpIEmDu6Sz0a3d/Social-Media?node-id=1055-14985&p=f&viewport=422%2C446%2C0.08&t=dZ6SsNWBB7YY5l18-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1055%3A14985&page-id=1055%3A14965" class="mt-10 w-full">
+          <Button
+            variant="primary"
+            size="lg"
+            href="https://www.figma.com/proto/aKjQYawVfpIEmDu6Sz0a3d/Social-Media?node-id=1055-14985&p=f&viewport=422%2C446%2C0.08&t=dZ6SsNWBB7YY5l18-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1055%3A14985&page-id=1055%3A14965"
+            class="mt-10 w-full"
+          >
             View prototype
           </Button>
         </section>
 
         <!-- TEST -->
-        <section id="test" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="test"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             05 · Test
           </p>
@@ -481,7 +552,7 @@ const testFindings = [
               <h2 class="mt-3 text-4xl sm:text-5xl">
                 users tested the primary journeys
               </h2>
-            >
+              >
               <p class="mt-6">
                 Participants included karate practitioners and people who did
                 not practise karate, all familiar with social media. Everyone
@@ -501,8 +572,12 @@ const testFindings = [
                 revealed three moments of hesitation that informed the next
                 design iteration.
               </figcaption>
-              <Button variant="primary" size="md" 
-              href="https://https://www.figma.com/proto/aKjQYawVfpIEmDu6Sz0a3d/Social-Media?node-id=925-10779&p=f&viewport=396%2C212%2C0.03&t=Cx9YWaEviEhckcXg-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=925%3A10776&page-id=41%3A2741" class="mt-6 w-full">
+              <Button
+                variant="primary"
+                size="md"
+                href="https://https://www.figma.com/proto/aKjQYawVfpIEmDu6Sz0a3d/Social-Media?node-id=925-10779&p=f&viewport=396%2C212%2C0.03&t=Cx9YWaEviEhckcXg-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=925%3A10776&page-id=41%3A2741"
+                class="mt-6 w-full"
+              >
                 View Test Prototype
               </Button>
             </figure>
@@ -519,15 +594,23 @@ const testFindings = [
 
                   <div class="mt-6 space-y-5 text-sm leading-relaxed sm:text-base">
                     <div>
-                      <h4 class="font-semibold text-brown-dark">What happened</h4>
+                      <h4 class="font-semibold text-brown-dark">
+                        What happened
+                      </h4>
                       <p class="mt-1 text-brown-dark/75">{finding.problem}</p>
                     </div>
                     <div>
-                      <h4 class="font-semibold text-brown-dark">What we learned</h4>
-                      <p class="mt-1 text-brown-dark/75">{finding.observation}</p>
+                      <h4 class="font-semibold text-brown-dark">
+                        What we learned
+                      </h4>
+                      <p class="mt-1 text-brown-dark/75">
+                        {finding.observation}
+                      </p>
                     </div>
                     <div class="border-l-4 border-green-dark pl-4">
-                      <h4 class="font-semibold text-green-dark">Design change</h4>
+                      <h4 class="font-semibold text-green-dark">
+                        Design change
+                      </h4>
                       <p class="mt-1 text-brown-dark/75">{finding.solution}</p>
                     </div>
                   </div>
@@ -547,7 +630,10 @@ const testFindings = [
         </section>
 
         <!-- FINAL DESIGN -->
-        <section id="final-design" class="scroll-mt-8 border-t border-brown-dark/15 pt-12">
+        <section
+          id="final-design"
+          class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
+        >
           <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
@@ -566,7 +652,11 @@ const testFindings = [
 
           <div class="mt-10 grid w-full">
             <figure class="border border-brown-dark/15 bg-ivory p-4">
-              <img src={FinalVideoImage.src} alt="Final Ippon video feed, filters, playback, and comment screens" class="h-auto w-full" />
+              <img
+                src={FinalVideoImage.src}
+                alt="Final Ippon video feed, filters, playback, and comment screens"
+                class="h-auto w-full"
+              />
               <!-- <figcaption class="mt-4 text-sm font-semibold">Video discovery, playback, and comments</figcaption> -->
             </figure>
             <!-- <figure class="border border-brown-dark/15 bg-ivory p-4">
@@ -601,7 +691,7 @@ const testFindings = [
               href="/projects"
               class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white"
             >
-              Explore more projects 
+              Explore more projects
             </a>
           </div>
         </section>

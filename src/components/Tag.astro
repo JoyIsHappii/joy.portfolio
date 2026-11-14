@@ -1,19 +1,13 @@
 ---
 export type ProjectCategory =
-  | "UX Design"
-  | "UI Design"
-  | "Web Development"
-  | "Project Management";
+  "UX Design" | "UI Design" | "Web Development" | "Project Management";
 
 interface TagProps {
   category: ProjectCategory;
   class?: string;
 }
 
-const {
-  category,
-  class: className = "",
-} = Astro.props as TagProps;
+const { category, class: className = "" } = Astro.props as TagProps;
 
 const categoryColors: Record<ProjectCategory, string> = {
   "UX/UI Design": "bg-blue-100 text-blue-800",

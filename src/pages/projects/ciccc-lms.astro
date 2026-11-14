@@ -5,7 +5,6 @@ import Sidebar from "../../components/ProjectSideBar.astro";
 import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
 
-
 import CoverImage from "../../assets/ciccc-lms/evidence/cover.svg";
 import UserAccessImage from "../../assets/ciccc-lms/evidence/user-access.svg";
 import NavigationResearchImage from "../../assets/ciccc-lms/evidence/research-navigation.svg";
@@ -183,18 +182,16 @@ const feedback = [
       />
     </div>
 
-    <section
-      class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16"
-    >
-      <div class="hidden lg:block"><Sidebar /></div>
+    <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16">
+      <div class="hidden lg:block">
+        <Sidebar />
+      </div>
 
       <div class="min-w-0 space-y-20 sm:space-y-28">
         <!-- EMPATHIZE -->
         <section id="empathize" class="scroll-mt-8">
           <header class="max-w-4xl">
-            <p
-              class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-            >
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
               01 · Empathize
             </p>
             <h2 class="mt-4 text-4xl text-brown-dark sm:text-6xl">
@@ -210,21 +207,19 @@ const feedback = [
           </header>
 
           <div class="mt-10 grid gap-5 md:grid-cols-3">
-            {
-              userGroups.map((group, index) => (
-                <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
-                  <span class="text-sm font-semibold text-green-dark">
-                    0{index + 1}
-                  </span>
-                  <h3 class="mt-4 text-2xl">{group.title}</h3>
-                  <ul class="mt-4 space-y-2 text-sm text-brown-dark/75">
-                    {group.needs.map((need) => (
-                      <li>• {need}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))
-            }
+            {userGroups.map((group, index) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                <span class="text-sm font-semibold text-green-dark">
+                  0{index + 1}
+                </span>
+                <h3 class="mt-4 text-2xl">{group.title}</h3>
+                <ul class="mt-4 space-y-2 text-sm text-brown-dark/75">
+                  {group.needs.map((need) => (
+                    <li>• {need}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
 
           <figure class="mt-10 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
@@ -240,42 +235,38 @@ const feedback = [
           </figure>
 
           <div class="mt-12 space-y-6">
-            {
-              researchFindings.map((finding) => (
-                <article class="grid overflow-hidden border border-brown-dark/15 bg-ivory lg:grid-cols-[0.9fr_1.1fr]">
-                  <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
-                      Research finding {finding.number}
-                    </p>
-                    <h3 class="mt-3 text-2xl sm:text-3xl">{finding.title}</h3>
-                    <div class="mt-6 space-y-5 text-sm leading-relaxed sm:text-base">
-                      <div>
-                        <h4 class="font-semibold text-brown-dark">
-                          What users experienced
-                        </h4>
-                        <p class="mt-1 text-brown-dark/75">{finding.summary}</p>
-                      </div>
-                      <div class="border-l-4 border-green-dark pl-4">
-                        <h4 class="font-semibold text-green-dark">
-                          Research evidence
-                        </h4>
-                        <p class="mt-1 text-brown-dark/75">
-                          {finding.evidence}
-                        </p>
-                      </div>
+            {researchFindings.map((finding) => (
+              <article class="grid overflow-hidden border border-brown-dark/15 bg-ivory lg:grid-cols-[0.9fr_1.1fr]">
+                <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
+                    Research finding {finding.number}
+                  </p>
+                  <h3 class="mt-3 text-2xl sm:text-3xl">{finding.title}</h3>
+                  <div class="mt-6 space-y-5 text-sm leading-relaxed sm:text-base">
+                    <div>
+                      <h4 class="font-semibold text-brown-dark">
+                        What users experienced
+                      </h4>
+                      <p class="mt-1 text-brown-dark/75">{finding.summary}</p>
+                    </div>
+                    <div class="border-l-4 border-green-dark pl-4">
+                      <h4 class="font-semibold text-green-dark">
+                        Research evidence
+                      </h4>
+                      <p class="mt-1 text-brown-dark/75">{finding.evidence}</p>
                     </div>
                   </div>
-                  <figure class="flex items-center bg-cream p-4 sm:p-6">
-                    <img
-                      src={finding.image.src}
-                      alt={finding.imageAlt}
-                      class="h-auto w-full object-contain"
-                      loading="lazy"
-                    />
-                  </figure>
-                </article>
-              ))
-            }
+                </div>
+                <figure class="flex items-center bg-cream p-4 sm:p-6">
+                  <img
+                    src={finding.image.src}
+                    alt={finding.imageAlt}
+                    class="h-auto w-full object-contain"
+                    loading="lazy"
+                  />
+                </figure>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -284,9 +275,7 @@ const feedback = [
           id="define"
           class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <p
-            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-          >
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             02 · Define
           </p>
           <h2 class="mt-4 max-w-4xl text-4xl sm:text-6xl">
@@ -299,15 +288,9 @@ const feedback = [
             performance, instructor productivity, and administrative management.
           </p>
 
-          <div
-            class="mt-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-center"
-          >
-            <div
-              class="border-l-4 border-green-dark bg-green-light/40 p-6 sm:p-8"
-            >
-              <p
-                class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark"
-              >
+          <div class="mt-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+            <div class="border-l-4 border-green-dark bg-green-light/40 p-6 sm:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
                 Problem statement
               </p>
               <p class="mt-3 text-xl leading-relaxed sm:text-2xl">
@@ -332,9 +315,7 @@ const feedback = [
           id="ideate"
           class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <p
-            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-          >
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             03 · Ideate
           </p>
           <h2 class="mt-4 text-4xl sm:text-6xl">
@@ -348,19 +329,17 @@ const feedback = [
           </p>
 
           <div class="mt-10 grid gap-5 md:grid-cols-3">
-            {
-              solutionPillars.map((solution) => (
-                <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
-                  <span class="text-sm font-semibold text-green-dark">
-                    {solution.number}
-                  </span>
-                  <h3 class="mt-4 text-2xl">{solution.title}</h3>
-                  <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">
-                    {solution.value}
-                  </p>
-                </article>
-              ))
-            }
+            {solutionPillars.map((solution) => (
+              <article class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                <span class="text-sm font-semibold text-green-dark">
+                  {solution.number}
+                </span>
+                <h3 class="mt-4 text-2xl">{solution.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-brown-dark/75">
+                  {solution.value}
+                </p>
+              </article>
+            ))}
           </div>
 
           <figure class="mt-10 border border-brown-dark/15 bg-ivory p-4 sm:p-6">
@@ -378,9 +357,7 @@ const feedback = [
           id="prototype"
           class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <p
-            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-          >
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             04 · Prototype
           </p>
           <h2 class="mt-4 text-4xl sm:text-6xl">
@@ -388,44 +365,38 @@ const feedback = [
           </h2>
 
           <div class="mt-12 space-y-6">
-            {
-              solutionPillars.map((solution) => (
-                <article class="grid overflow-hidden border border-brown-dark/15 bg-ivory lg:grid-cols-[0.85fr_1.15fr]">
-                  <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
-                      Solution {solution.number}
-                    </p>
-                    <h3 class="mt-3 text-2xl sm:text-3xl">{solution.title}</h3>
-                    <div class="mt-6 space-y-5 text-sm leading-relaxed sm:text-base">
-                      <div>
-                        <h4 class="font-semibold text-brown-dark">
-                          Problem addressed
-                        </h4>
-                        <p class="mt-1 text-brown-dark/75">
-                          {solution.problem}
-                        </p>
-                      </div>
-                      <div class="border-l-4 border-green-dark pl-4">
-                        <h4 class="font-semibold text-green-dark">
-                          Design decision
-                        </h4>
-                        <p class="mt-1 text-brown-dark/75">
-                          {solution.decision}
-                        </p>
-                      </div>
+            {solutionPillars.map((solution) => (
+              <article class="grid overflow-hidden border border-brown-dark/15 bg-ivory lg:grid-cols-[0.85fr_1.15fr]">
+                <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
+                    Solution {solution.number}
+                  </p>
+                  <h3 class="mt-3 text-2xl sm:text-3xl">{solution.title}</h3>
+                  <div class="mt-6 space-y-5 text-sm leading-relaxed sm:text-base">
+                    <div>
+                      <h4 class="font-semibold text-brown-dark">
+                        Problem addressed
+                      </h4>
+                      <p class="mt-1 text-brown-dark/75">{solution.problem}</p>
+                    </div>
+                    <div class="border-l-4 border-green-dark pl-4">
+                      <h4 class="font-semibold text-green-dark">
+                        Design decision
+                      </h4>
+                      <p class="mt-1 text-brown-dark/75">{solution.decision}</p>
                     </div>
                   </div>
-                  <figure class="flex items-center bg-cream p-4 sm:p-6">
-                    <img
-                      src={solution.image.src}
-                      alt={solution.imageAlt}
-                      class="h-auto w-full object-contain"
-                      loading="lazy"
-                    />
-                  </figure>
-                </article>
-              ))
-            }
+                </div>
+                <figure class="flex items-center bg-cream p-4 sm:p-6">
+                  <img
+                    src={solution.image.src}
+                    alt={solution.imageAlt}
+                    class="h-auto w-full object-contain"
+                    loading="lazy"
+                  />
+                </figure>
+              </article>
+            ))}
           </div>
 
           <div class="mt-8 grid gap-5 md:grid-cols-2">
@@ -459,14 +430,10 @@ const feedback = [
           id="test"
           class="scroll-mt-8 border-t border-brown-dark/15 pt-12"
         >
-          <p
-            class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark"
-          >
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
             05 · Test
           </p>
-          <div
-            class="mt-5 grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-start"
-          >
+          <div class="mt-5 grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-start">
             <div>
               <strong class="text-8xl text-brown-dark">4</strong>
               <h2 class="mt-3 text-4xl sm:text-5xl">
@@ -489,31 +456,25 @@ const feedback = [
           </div>
 
           <div class="mt-10 grid gap-5 md:grid-cols-2">
-            {
-              feedback.map((item, index) => (
-                <blockquote class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
-                  <span class="text-sm font-semibold text-green-dark">
-                    0{index + 1}
-                  </span>
-                  <p class="mt-4 text-xl leading-relaxed">“{item.quote}”</p>
-                  <footer class="mt-5 text-sm text-brown-dark/65">
-                    <>
-                      <strong class="text-brown-dark">{item.person}</strong>
-                      <br />
-                    </>
-                    {item.context}
-                  </footer>
-                </blockquote>
-              ))
-            }
+            {feedback.map((item, index) => (
+              <blockquote class="border border-brown-dark/15 bg-ivory p-6 sm:p-8">
+                <span class="text-sm font-semibold text-green-dark">
+                  0{index + 1}
+                </span>
+                <p class="mt-4 text-xl leading-relaxed">“{item.quote}”</p>
+                <footer class="mt-5 text-sm text-brown-dark/65">
+                  <>
+                    <strong class="text-brown-dark">{item.person}</strong>
+                    <br />
+                  </>
+                  {item.context}
+                </footer>
+              </blockquote>
+            ))}
           </div>
 
-          <div
-            class="mt-10 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center"
-          >
-            <div
-              class="border-l-4 border-green-dark bg-green-light/30 p-6 sm:p-8"
-            >
+          <div class="mt-10 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+            <div class="border-l-4 border-green-dark bg-green-light/30 p-6 sm:p-8">
               <h3 class="text-2xl">What the feedback validated</h3>
               <p class="mt-3 leading-relaxed text-brown-dark/75">
                 Participants consistently described the redesign as simple,
@@ -633,7 +594,8 @@ const feedback = [
                     title="CICCC LMS student prototype"
                     class="absolute inset-0 h-full w-full border-0"
                     loading="lazy"
-                    allowfullscreen></iframe>
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </article>
 
@@ -678,7 +640,8 @@ const feedback = [
                     title="CICCC LMS instructor prototype"
                     class="absolute inset-0 h-full w-full border-0"
                     loading="lazy"
-                    allowfullscreen></iframe>
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </article>
 
@@ -723,7 +686,8 @@ const feedback = [
                     title="CICCC LMS program manager prototype"
                     class="absolute inset-0 h-full w-full border-0"
                     loading="lazy"
-                    allowfullscreen></iframe>
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </article>
             </div>
@@ -777,7 +741,7 @@ const feedback = [
         font-semibold
         text-white"
             >
-              Explore more projects 
+              Explore more projects
             </a>
           </div>
         </section>

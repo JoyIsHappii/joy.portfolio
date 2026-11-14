@@ -16,9 +16,7 @@ interface Props {
   class?: string;
 }
 
-const {
-  class: className = "",
-} = Astro.props as Props;
+const { class: className = "" } = Astro.props as Props;
 
 const icons = [
   { icon: Ai, name: "Adobe Illustrator" },
@@ -51,73 +49,57 @@ const icons = [
   <div class="slide-skills flex w-max">
     <!-- First set -->
     <div
-      class="
-        flex
+      class="flex
         shrink-0
         items-center
         gap-8
-        pr-8
-      "
+        pr-8"
     >
-      {
-        icons.map(({ icon: Icon, name }) => (
-          <div
-            class="
-              flex
+      {icons.map(({ icon: Icon, name }) => (
+        <div
+          class="flex
               h-14
               w-14
               shrink-0
               items-center
-              justify-center
-            "
-            title={name}
-          >
-            <Icon
-              aria-label={name}
-              class="
-                h-11
+              justify-center"
+          title={name}
+        >
+          <Icon
+            aria-label={name}
+            class="h-11
                 w-11
-                object-contain
-              "
-            />
-          </div>
-        ))
-      }
+                object-contain"
+          />
+        </div>
+      ))}
     </div>
 
     <!-- Duplicate set for the infinite loop -->
     <div
       aria-hidden="true"
-      class="
-        flex
+      class="flex
         shrink-0
         items-center
         gap-8
-        pr-8
-      "
+        pr-8"
     >
-      {
-        icons.map(({ icon: Icon }) => (
-          <div
-            class="
-              flex
+      {icons.map(({ icon: Icon }) => (
+        <div
+          class="flex
               h-14
               w-14
               shrink-0
               items-center
-              justify-center
-            "
-          >
-            <Icon
-              class="
-                h-11
+              justify-center"
+        >
+          <Icon
+            class="h-11
                 w-11
-                object-contain
-              "
-            />
-          </div>
-        ))
-      }
+                object-contain"
+          />
+        </div>
+      ))}
     </div>
   </div>
 </section>

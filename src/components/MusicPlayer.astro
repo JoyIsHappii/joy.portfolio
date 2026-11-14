@@ -5,7 +5,7 @@ import RadioArtwork from "../assets/room-elements/radio.svg";
 ---
 
 <div class="flex flex-row items-center gap-2 sm:gap-3">
-    <button
+  <button
     type="button"
     class="flex flex-row items-center gap-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown-dark"
     aria-label="Show music player"
@@ -15,13 +15,18 @@ import RadioArtwork from "../assets/room-elements/radio.svg";
     data-music-trigger
     data-music-placement="below"
   >
-  <span
-    class="text-sm tracking-wide text-brown-dark sm:text-base"
-    aria-live="polite"
-  >
-    Music: <span class="font-medium bg-brown-light/10 px-2 py-1 rounded-2xl" data-music-status>OFF</span>
-  </span>
-
+    <span
+      class="text-sm tracking-wide text-brown-dark sm:text-base"
+      aria-live="polite"
+    >
+      Music:{" "}
+      <span
+        class="font-medium bg-brown-light/10 px-2 py-1 rounded-2xl"
+        data-music-status
+      >
+        OFF
+      </span>
+    </span>
 
     <img
       src={RadioArtwork.src}

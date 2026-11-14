@@ -4,9 +4,7 @@ import Button from "../components/Button.astro";
 import Tech from "../components/Tech.astro";
 
 type ProjectCategory =
-  | "UX/UI Design"
-  | "Web Development"
-  | "Project Management";
+  "UX/UI Design" | "Web Development" | "Project Management";
 
 interface ProjectCardProps {
   title: string;
@@ -43,8 +41,7 @@ const isExternal = /^https?:\/\//.test(projectLink ?? "");
 <article
   data-project-item
   data-category={categories.join(",")}
-  class="
-    group
+  class="group
     flex
     h-full
     w-full
@@ -60,75 +57,67 @@ const isExternal = /^https?:\/\//.test(projectLink ?? "");
     ease-in-out
     hover:scale-[1.02]
     hover:border-brown-dark/20
-    hover:bg-brown-medium/50
-  "
+    hover:bg-brown-medium/50"
 >
   <!-- Project image -->
-  {
-    opensModal ? (
-      <button
-        type="button"
-        data-modal-open={modalId}
-        aria-haspopup="dialog"
-        aria-controls={modalId}
-        class="
-          block
+  {opensModal ? (
+    <button
+      type="button"
+      data-modal-open={modalId}
+      aria-haspopup="dialog"
+      aria-controls={modalId}
+      class="block
           w-full
           cursor-pointer
           overflow-hidden
-          text-left
-        "
-      >
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          loading="lazy"
-          decoding="async"
-          class="
-            aspect-[4/3]
+          text-left"
+    >
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        loading="lazy"
+        decoding="async"
+        class="aspect-[4/3]
             h-full
             w-full
             object-cover
             transition-transform
             duration-300
             ease-in-out
-            group-hover:scale-[1.05]
-          "
-        />
-      </button>
-    ) : (
-      <a
-        href={projectLink}
-        warmupLink={warmupLink}
-        class="block overflow-hidden"
-        aria-label={`View ${title} project`}
-        target={isExternal ? "_blank" : undefined}
-        rel={isExternal ? "noopener noreferrer" : undefined}
-      >
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          loading="lazy"
-          decoding="async"
-          class="
-            aspect-[4/3]
+            group-hover:scale-[1.05]"
+      />
+    </button>
+  ) : (
+    <a
+      href={projectLink}
+      warmupLink={warmupLink}
+      class="block overflow-hidden"
+      aria-label={`View ${title} project`}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+    >
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        loading="lazy"
+        decoding="async"
+        class="aspect-[4/3]
             h-full
             w-full
             object-cover
             transition-transform
             duration-300
             ease-in-out
-            group-hover:scale-[1.05]
-          "
-        />
-      </a>
-    )
-  }
+            group-hover:scale-[1.05]"
+      />
+    </a>
+  )}
 
   <!-- Project information -->
   <div class="flex flex-1 flex-col p-4 items-start justify-start gap-0">
     <h3
-      class:list={[`
+      class:list={[
+        `
         text-left
         text-[34px]
         font-normal
@@ -137,48 +126,41 @@ const isExternal = /^https?:\/\//.test(projectLink ?? "");
         text-brown-dark
         transition-colors
         duration-300
-      `, blurTitle && "select-none blur-[5px]"]}
+      `,
+        blurTitle && "select-none blur-[5px]",
+      ]}
     >
       {title}
     </h3>
 
     <div class="mt-2 flex flex-wrap gap-2">
-      {
-        categories.map((category) => (
-          <Tag category={category} />
-        ))
-      }
+      {categories.map((category) => (
+        <Tag category={category} />
+      ))}
     </div>
 
-
     <p
-      class="
-        mt-4
+      class="mt-4
         font-mono
         text-[15px]
         leading-[1.2]
         tracking-[0.08em]
         text-brown-dark/75
         transition-colors
-        duration-300
-      "
+        duration-300"
     >
       {description}
     </p>
-        <div class="mt-2 flex flex-wrap gap-2">
-      {
-        tech.map((tech) => (
-          <Tech tech={tech} />
-        ))
-      }
+    <div class="mt-2 flex flex-wrap gap-2">
+      {tech.map((tech) => (
+        <Tech tech={tech} />
+      ))}
     </div>
   </div>
-  
 
   <!-- Card action -->
   <div
-    class="
-      bg-black/10
+    class="bg-black/10
       p-4
       pt-0
       transition-colors
@@ -190,37 +172,31 @@ const isExternal = /^https?:\/\//.test(projectLink ?? "");
       items-center
       justify-start
       gap-2
-      md:justify-start
-    "
+      md:justify-start"
   >
-  
-    {
-      opensModal ? (
-        <button
-          type="button"
-          data-modal-open={modalId}
-          aria-haspopup="dialog"
-          aria-controls={modalId}
-          class="
-           mt-4 px-6 py-2.5 text-base inline-flex items-center justify-center gap-1 rounded-full font-medium tracking-wide transition-all duration-200
-          border border-white/20 bg-brown-dark text-white hover:border-brown-dark hover:bg-black
-            "
-        >
-          View Project
-        </button>
-      ) : (
-        <Button
-          href={projectLink}
-          variant="primary"
-          size="md"
-          class="mt-4"
-          warmupLink={warmupLink}
-          target={isExternal ? "_blank" : undefined}
-        >
-          View Project
-        </Button>
-      )
-    }
+    {opensModal ? (
+      <button
+        type="button"
+        data-modal-open={modalId}
+        aria-haspopup="dialog"
+        aria-controls={modalId}
+        class="mt-4 px-6 py-2.5 text-base inline-flex items-center justify-center gap-1 rounded-full font-medium tracking-wide transition-all duration-200
+          border border-white/20 bg-brown-dark text-white hover:border-brown-dark hover:bg-black"
+      >
+        View Project
+      </button>
+    ) : (
+      <Button
+        href={projectLink}
+        variant="primary"
+        size="md"
+        class="mt-4"
+        warmupLink={warmupLink}
+        target={isExternal ? "_blank" : undefined}
+      >
+        View Project
+      </Button>
+    )}
   </div>
 </article>
 
@@ -236,7 +212,9 @@ const isExternal = /^https?:\/\//.test(projectLink ?? "");
     const warmupLink = link?.dataset.warmupLink;
 
     if (warmupLink) {
-      void fetch(warmupLink, { mode: "no-cors", keepalive: true }).catch(() => {});
+      void fetch(warmupLink, { mode: "no-cors", keepalive: true }).catch(
+        () => {},
+      );
     }
   });
 </script>

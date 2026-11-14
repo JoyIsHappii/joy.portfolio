@@ -41,15 +41,19 @@ Rather than limiting the website to one idea, I use it as a playground to experi
 ## 🛠 Built With
 
 ### Astro
+
 Used to build reusable pages, layouts, and components while keeping the website lightweight.
 
 ### Tailwind CSS
+
 Used for styling, responsive layouts, typography, hover states, and animations.
 
 ### JavaScript / TypeScript
+
 Used for interactive elements, animations, and navigation behavior.
 
 ### Astro View Transitions
+
 Used to experiment with page transitions and make navigation feel like part of the experience.
 
 ---

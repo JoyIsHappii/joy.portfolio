@@ -62,21 +62,19 @@ const classes = `
 `;
 ---
 
-{
-  href ? (
-    <a
-      id={id}
-      href={disabled ? undefined : href}
-      class={classes}
-      target={target}
-      rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}
-      data-warmup-link={warmupLink}
-    >
-      <slot />
-    </a>
-  ) : (
-    <button id={id} type={type} class={classes} disabled={disabled}>
-      <slot />
-    </button>
-  )
-}
+{href ? (
+  <a
+    id={id}
+    href={disabled ? undefined : href}
+    class={classes}
+    target={target}
+    rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}
+    data-warmup-link={warmupLink}
+  >
+    <slot />
+  </a>
+) : (
+  <button id={id} type={type} class={classes} disabled={disabled}>
+    <slot />
+  </button>
+)}

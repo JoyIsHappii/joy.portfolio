@@ -1,6 +1,5 @@
 ---
 const navItems = [
-
   {
     name: "01 Empathize",
     href: "#empathize",
@@ -60,71 +59,56 @@ const linkClasses = `
 
 <aside
   data-case-study-navigation
-  class="
-    sticky
+  class="sticky
     top-30
     flex
     w-full
-    flex-col
-  "
+    flex-col"
 >
   <h3
-    class="
-      mb-4
+    class="mb-4
       text-lg
       font-semibold
       uppercase
       tracking-[0.18em]
-      text-green-dark
-    "
+      text-green-dark"
   >
     Design Process
-</h3>
+  </h3>
 
   <nav aria-label="Case study sections">
     <ul class="flex flex-col gap-0">
-      {
-        navItems.map((item, index) => (
-          <li>
+      {navItems.map((item, index) => (
+        <li>
           <a
-  href={item.href}
-  data-case-study-link
-  data-section-id={item.href.replace("#", "")}
-  aria-current={index === 0 ? "location" : undefined}
-  class={linkClasses}
->
-
-  <span class="text-left">
-    {item.name}
-  </span>
-</a>
-          </li>
-        ))
-      }
+            href={item.href}
+            data-case-study-link
+            data-section-id={item.href.replace("#", "")}
+            aria-current={index === 0 ? "location" : undefined}
+            class={linkClasses}
+          >
+            <span class="text-left">{item.name}</span>
+          </a>
+        </li>
+      ))}
     </ul>
   </nav>
 </aside>
 
 <script>
   function setupCaseStudyNavigation() {
-    const navigation =
-      document.querySelector<HTMLElement>(
-        "[data-case-study-navigation]",
-      );
+    const navigation = document.querySelector<HTMLElement>(
+      "[data-case-study-navigation]",
+    );
 
-    if (
-      !navigation ||
-      navigation.dataset.ready === "true"
-    ) {
+    if (!navigation || navigation.dataset.ready === "true") {
       return;
     }
 
     navigation.dataset.ready = "true";
 
     const links = Array.from(
-      navigation.querySelectorAll<HTMLAnchorElement>(
-        "[data-case-study-link]",
-      ),
+      navigation.querySelectorAll<HTMLAnchorElement>("[data-case-study-link]"),
     );
 
     const sections = links
@@ -137,21 +121,14 @@ const linkClasses = `
 
         return document.getElementById(sectionId);
       })
-      .filter(
-        (section): section is HTMLElement =>
-          section !== null,
-      );
+      .filter((section): section is HTMLElement => section !== null);
 
     function selectSection(sectionId: string) {
       links.forEach((link) => {
-        const isActive =
-          link.dataset.sectionId === sectionId;
+        const isActive = link.dataset.sectionId === sectionId;
 
         if (isActive) {
-          link.setAttribute(
-            "aria-current",
-            "location",
-          );
+          link.setAttribute("aria-current", "location");
         } else {
           link.removeAttribute("aria-current");
         }
@@ -176,12 +153,10 @@ const linkClasses = `
           .filter((entry) => entry.isIntersecting)
           .sort(
             (first, second) =>
-              second.intersectionRatio -
-              first.intersectionRatio,
+              second.intersectionRatio - first.intersectionRatio,
           );
 
-        const activeSection =
-          visibleSections[0]?.target;
+        const activeSection = visibleSections[0]?.target;
 
         if (activeSection instanceof HTMLElement) {
           selectSection(activeSection.id);
@@ -200,18 +175,12 @@ const linkClasses = `
     // Select the section from the URL when loading
     const hash = window.location.hash.replace("#", "");
 
-    if (
-      hash &&
-      sections.some((section) => section.id === hash)
-    ) {
+    if (hash && sections.some((section) => section.id === hash)) {
       selectSection(hash);
     }
   }
 
   setupCaseStudyNavigation();
 
-  document.addEventListener(
-    "astro:page-load",
-    setupCaseStudyNavigation,
-  );
+  document.addEventListener("astro:page-load", setupCaseStudyNavigation);
 </script>
