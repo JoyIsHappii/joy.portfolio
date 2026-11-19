@@ -17,18 +17,16 @@ import ImageConiq from "../../assets/hero/coniq-cover.svg";
 import ImageIterVox from "../../assets/hero/itervox-cover.svg";
 import ImagePm25 from "../../assets/hero/pm25-cover.webp";
 // import ImageCarlaBeauty from "../../assets/hero/carla-cover.webp";
-import ImageResume from "../../assets/resume.webp";
 import ResumeScreen from "../../assets/resume.png";
 import ImageRyuichi from "../../assets/hero/ryuichi-cover.svg";
-
-import AwardSection from "../../sections/AwardSection.astro";
 import ResumeSection from "../../sections/ResumeSection.astro";
 
 import Button from "../../components/Button.astro";
-import PortraitImage from "../../assets/joy.png";
+import PixelAvatar from "../../assets/avatar-pixel.png";
 
 import Modal from "../../components/Modal.astro";
 import ModalWD from "../../components/ModalWD.astro";
+import AwardSection from "../../sections/AwardSection.astro";
 
 type ProjectCategory =
   "UX/UI Design" | "Web Development" | "Project Management";
@@ -44,6 +42,7 @@ interface Project {
   modalId?: string;
   tech?: string[];
   blurTitle?: boolean;
+  eyebrow?: string;
 }
 
 const { title = "Joy's Projects" } = Astro.props;
@@ -52,22 +51,13 @@ const { title = "Joy's Projects" } = Astro.props;
 // private-project contact modal instead of a case study.
 const professionalProjects: Project[] = [
   {
-    title: "COVID-19 ICU Monitoring",
-    description:
-      "A monitoring system designed to improve safety in negative-pressure ICU rooms.",
-    imageSrc: ImageIcu.src,
-    imageAlt: "Negative Pressure Monitor",
-    categories: ["UX/UI Design", "Project Management"],
-    projectLink: "/projects/covid-project",
-  },
-  {
     title: "CONIQ",
     description:
       "An AI estimating platform that helps construction teams produce reliable bids faster.",
     imageSrc: ImageConiq.src,
     imageAlt: "Illustration of an estimating dashboard on a laptop",
     categories: ["UX/UI Design"],
-    tech: ["Design System", "UI Design", "Prototyping", "Figma"],
+    // tech: ["Design System", "UI Design", "Prototyping", "Figma"],
     modalId: "contact-project-modal",
     blurTitle: true,
   },
@@ -78,7 +68,7 @@ const professionalProjects: Project[] = [
     imageSrc: ImageIterVox.src,
     imageAlt: "Illustration of chat and voice assistant screens on two phones",
     categories: ["UX/UI Design"],
-    tech: ["Design System", "UI Design", "Wireframing", "Prototyping", "Figma"],
+    // tech: ["Design System", "UI Design", "Wireframing", "Prototyping", "Figma"],
     modalId: "contact-project-modal",
     blurTitle: true,
   },
@@ -86,38 +76,48 @@ const professionalProjects: Project[] = [
 
 const projects: Project[] = [
   {
+    title: "COVID-19 ICU Monitoring",
+    eyebrow: "Professional project",
+    description:
+      "A monitoring system designed to improve safety in negative-pressure ICU rooms.",
+    imageSrc: ImageIcu.src,
+    imageAlt: "Negative Pressure Monitor",
+    categories: ["Project Management"],
+    projectLink: "/projects/covid-project",
+  },
+  {
     title: "Ippon",
     description:
       "A social media app for karate practitioners to share content and connect with the community.",
     imageSrc: ImageIppon.src,
     imageAlt: "Ippon App",
     categories: ["UX/UI Design"],
-    tech: [
-      "Figma",
-      "User Research",
-      "Wireframing",
-      "Prototyping",
-      "Usability Testing",
-      "User Flows",
-      "Information Architecture",
-    ],
+    // tech: [
+    //   "Figma",
+    //   "User Research",
+    //   "Wireframing",
+    //   "Prototyping",
+    //   "Usability Testing",
+    //   "User Flows",
+    //   "Information Architecture",
+    // ],
     projectLink: "/projects/ippon",
   },
-      {
+  {
     title: "CICCC LMS",
     description: "A learning management system (LMS) for CICCC's tech campus.",
     imageSrc: ImageCiccc.src,
     imageAlt: "CICCC LMS",
     categories: ["UX/UI Design"],
-    tech: [
-      "Figma",
-      "User Research",
-      "Wireframing",
-      "Prototyping",
-      "Usability Testing",
-      "User Flows",
-      "Information Architecture",
-    ],
+    // tech: [
+    //   "Figma",
+    //   "User Research",
+    //   "Wireframing",
+    //   "Prototyping",
+    //   "Usability Testing",
+    //   "User Flows",
+    //   "Information Architecture",
+    // ],
     projectLink: "/projects/ciccc-lms",
   },
   {
@@ -127,14 +127,14 @@ const projects: Project[] = [
     imageSrc: ImageBunny.src,
     imageAlt: "Bunny World App",
     categories: ["UX/UI Design"],
-    tech: [
-      "Figma",
-      "Design Sprint",
-      "User Research",
-      "Wireframing",
-      "Prototyping",
-      "Usability Testing",
-    ],
+    // tech: [
+    //   "Figma",
+    //   "Design Sprint",
+    //   "User Research",
+    //   "Wireframing",
+    //   "Prototyping",
+    //   "Usability Testing",
+    // ],
     projectLink: "/projects/bunny-world",
   },
   {
@@ -144,18 +144,17 @@ const projects: Project[] = [
     imageSrc: ImagePawfectDay.src,
     imageAlt: "Pawfect Day pet grooming platform",
     categories: ["Web Development", "Project Management"],
-    tech: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL",
-      "Vercel",
-    ],
+    // tech: [
+    //   "Next.js",
+    //   "React",
+    //   "TypeScript",
+    //   "Tailwind CSS",
+    //   "Prisma",
+    //   "PostgreSQL",
+    //   "Vercel",
+    // ],
     projectLink: "/projects/pawfect-day",
   },
-
   // {
   //   title: "FIFA Performance Stats",
   //   description:
@@ -196,16 +195,16 @@ const playgroundProjects: Project[] = [
     imageSrc: ImageWeather.src,
     imageAlt: "Weather ForeCAT weather dashboard",
     categories: ["UX/UI Design", "Web Development"],
-    tech: [
-      "Figma",
-      "Astro",
-      "TypeScript",
-      "Tailwind CSS",
-      "jQuery",
-      "Open-Meteo API",
-      "PlaceKit API",
-      "Netlify",
-    ],
+    // tech: [
+    //   "Figma",
+    //   "Astro",
+    //   "TypeScript",
+    //   "Tailwind CSS",
+    //   "jQuery",
+    //   "Open-Meteo API",
+    //   "PlaceKit API",
+    //   "Netlify",
+    // ],
     projectLink: "/projects/weather-fore-cat",
   },
   {
@@ -215,17 +214,17 @@ const playgroundProjects: Project[] = [
     imageSrc: ImageRyuichi.src,
     imageAlt: "Merry Christmas, Mr. Lawrence – Interactive Musical Experience",
     categories: ["UX/UI Design", "Web Development"],
-    tech: ["React", "TypeScript", "GSAP", "Vite", "Tailwind CSS", "Vercel"],
+    // tech: ["React", "TypeScript", "GSAP", "Vite", "Tailwind CSS", "Vercel"],
     projectLink: "https://merry-christmasmr-lawrence.vercel.app",
   },
-    {
+  {
     title: "PM2.5 in Thailand",
     description:
       "A motion-driven website raising awareness of Thailand’s PM2.5 crisis through visual storytelling and interactive animations.",
     imageSrc: ImagePm25.src,
     imageAlt: "PM2.5 in Thailand awareness website",
     categories: ["UX/UI Design", "Web Development"],
-    tech: ["Framer"],
+    // tech: ["Framer"],
     projectLink: "/projects/pm25-project/",
   },
   // {
@@ -252,7 +251,7 @@ const playgroundProjects: Project[] = [
       py-4
       md:py-6
       lg:flex-row
-      lg:gap-4"
+      lg:gap-12"
   >
     <!-- Left side: heading and filter -->
     <aside
@@ -275,89 +274,73 @@ const playgroundProjects: Project[] = [
           tracking-tight
           text-brown-dark
           md:text-5xl
-          lg:text-6xl"
+          lg:text-6xl
+          lg:[@media(max-height:860px)]:text-5xl"
       >
         My Projects
       </h2>
 
       <Filter />
+
+      <!-- Interactive resume: stays in view with the sticky filter on large screens -->
+      <a
+        href="https://interactive-resume-joy.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group mt-4 hidden w-full flex-col border border-brown-dark/20 text-brown-dark transition-colors duration-200 hover:bg-brown-medium/50 lg:flex"
+      >
+        <!-- Pixel avatar scene: compact on short screens so the sticky column always fits -->
+        <span class="resume-scene relative flex items-end justify-center overflow-hidden bg-brown-medium/30 px-4 pb-4 pt-12 [@media(max-height:860px)]:pt-4">
+          <span class="resume-bubble absolute left-3 top-3 [@media(max-height:860px)]:hidden border border-brown-dark/25 bg-white px-2.5 py-1 text-xs font-medium text-brown-dark">
+            Psst… my story's this way!
+          </span>
+          <span class="resume-heart absolute text-pink" aria-hidden="true">
+            ♥
+          </span>
+          <img
+            src={PixelAvatar.src}
+            alt=""
+            width="500"
+            height="500"
+            class="resume-avatar relative z-10 h-36 w-36 [@media(max-height:860px)]:h-28 [@media(max-height:860px)]:w-28"
+          />
+          <span
+            class="resume-shadow absolute inset-x-0 bottom-5 mx-auto h-2 w-16 rounded-[50%] bg-brown-dark/20"
+            aria-hidden="true"
+          ></span>
+        </span>
+        <span class="flex flex-col gap-1 p-4">
+          <span class="text-xs font-semibold uppercase tracking-[0.16em] text-brown-dark/60">
+            Interactive Resume
+          </span>
+          <span class="text-lg leading-snug [@media(max-height:860px)]:hidden">
+            My journey, skills, and story in one place.
+          </span>
+          <span class="mt-2 text-sm font-semibold underline decoration-brown-dark/30 underline-offset-4 group-hover:decoration-brown-dark">
+            Explore it ↗
+          </span>
+        </span>
+      </a>
     </aside>
 
     <!-- Right side: project content -->
     <div class="flex flex-col w-full min-w-0 gap-4 px-4 md:px-0">
       <!-- Only visible when All is selected -->
-      <div
+      <!-- <div
         id="award-section"
         data-award-section
         class="flex flex-col w-full justify-center gap-4"
       >
         <AwardSection />
-        <!-- <ResumeSection /> -->
-        <!-- <iframe
-        src="https://interactive-resume-joy.vercel.app"
-        title="Joy's Interactive Resume"
-        class="h-[min(700px,calc(100dvh-8rem))] w-full border border-brown-dark/10 shadow-lg transition-all duration-300 ease-in-out"
-      ></iframe> -->
-      </div>
+   
+      </div> -->
 
-      <!-- Professional projects -->
+    
+      
+
+      <!-- Selected work -->
       <section
         class="flex w-full flex-col gap-4 pt-4"
-        data-project-group
-        aria-labelledby="professional-projects-heading"
-      >
-        <div class="flex flex-col gap-1">
-          <h2
-            id="professional-projects-heading"
-            class="text-2xl
-              font-normal
-              tracking-tight
-              text-brown-dark
-              md:text-4xl"
-          >
-            Professional Projects
-          </h2>
-          <p class="text-lg font-normal text-brown-dark/75">
-            Work from my roles at King Chulalongkorn Memorial Hospital and{" "}
-            <a
-              href="https://iterinov.com/Portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="underline decoration-brown-dark/30 underline-offset-4 transition-colors hover:decoration-brown-dark"
-            >
-              Iter Innovandi
-            </a>
-            . Some projects are under NDA.
-          </p>
-        </div>
-
-        <div
-          class="grid
-            w-full
-            grid-cols-1
-            gap-4
-            md:grid-cols-2
-            lg:grid-cols-3"
-        >
-          {professionalProjects.map((project) => (
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              imageSrc={project.imageSrc}
-              imageAlt={project.imageAlt}
-              categories={project.categories}
-              projectLink={project.projectLink}
-              modalId={project.modalId}
-              tech={project.tech}
-              blurTitle={project.blurTitle}
-            />
-          ))}
-        </div>
-      </section>
-
-      <!-- Other projects -->
-      <section
-        class="flex w-full flex-col gap-4 pt-4 border-t border-brown-dark/10 mt-8"
         data-project-group
         aria-labelledby="more-projects-heading"
       >
@@ -369,12 +352,14 @@ const playgroundProjects: Project[] = [
             text-brown-dark
             md:text-4xl"
         >
-          More Projects
+          Selected Work
         </h2>
         <p class="text-lg font-normal text-brown-dark/75">
-          The projects that showcase my skills in UX/UI design, web development,
-          and project management.
+          From a real hospital project to an award-winning client website, see
+          how I design from research to delivery.
         </p>
+
+        
 
         <div
           id="projects"
@@ -388,25 +373,20 @@ const playgroundProjects: Project[] = [
           <!-- 7VAN is also featured in the Award section above -->
           <ProjectCard
             title="7VAN"
+            eyebrow="🏆 Award-winning · Real client"
+            eyebrowAccent
             description="Developed a responsive website for a Brazilian Jiu-Jitsu academy to encourage membership applications."
             imageSrc={Image7Van.src}
             imageAlt="7VAN Brazilian Jiu-Jitsu academy website"
             categories={["UX/UI Design"]}
             projectLink="/projects/7van"
-            tech={[
-              "Figma",
-              "User Research",
-              "Wireframing",
-              "Prototyping",
-              "Usability Testing",
-              "User Flows",
-              "Information Architecture",
-            ]}
+            
           />
 
           {projects.map((project) => (
             <ProjectCard
               title={project.title}
+              eyebrow={project.eyebrow}
               description={project.description}
               imageSrc={project.imageSrc}
               imageAlt={project.imageAlt}
@@ -415,6 +395,64 @@ const playgroundProjects: Project[] = [
               warmupLink={project.warmupLink}
               modalId={project.modalId}
               tech={project.tech}
+            />
+          ))}
+        </div>
+      </section>
+
+      <!-- Industry work under NDA: heading sits in the first grid cell -->
+      <section
+        class="mt-8 w-full border-t border-brown-dark/10 pt-4"
+        data-project-group
+        aria-labelledby="professional-projects-heading"
+      >
+        <div
+          class="grid
+            w-full
+            grid-cols-1
+            gap-4
+            md:grid-cols-2
+            lg:grid-cols-3"
+        >
+          <div class="flex flex-col gap-4 md:col-span-2 lg:col-span-1 lg:pr-4">
+            <h2
+              id="professional-projects-heading"
+              class="text-2xl
+                font-normal
+                tracking-tight
+                text-brown-dark
+                md:text-4xl"
+            >
+              Industry Work
+              <span class="mt-2 block text-sm font-semibold uppercase tracking-[0.16em] text-brown-dark/55">
+                Under NDA
+              </span>
+            </h2>
+            <p class="text-lg font-normal text-brown-dark/75">
+              Product design for AI and construction-tech startups at{" "}
+              <a
+                href="https://iterinov.com/Portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline decoration-brown-dark/30 underline-offset-4 transition-colors hover:decoration-brown-dark"
+              >
+                Iter Innovandi
+              </a>
+              . Details available on request.
+            </p>
+          </div>
+
+          {professionalProjects.map((project) => (
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              imageSrc={project.imageSrc}
+              imageAlt={project.imageAlt}
+              categories={project.categories}
+              projectLink={project.projectLink}
+              modalId={project.modalId}
+              tech={project.tech}
+              blurTitle={project.blurTitle}
             />
           ))}
         </div>
@@ -467,86 +505,6 @@ const playgroundProjects: Project[] = [
     </div>
   </main>
 
-  <!-- <ResumeSection /> -->
-  <!-- <iframe
-        src="https://interactive-resume-joy.vercel.app"
-        title="Joy's Interactive Resume"
-        class="h-[min(700px,calc(100dvh-8rem))] w-full "
-      ></iframe> -->
-
-  <section
-    id="about-me"
-    class="w-full border-y border-brown-dark/10 bg-brown-light/10 px-4 py-14 sm:py-16 md:px-8 md:py-20"
-  >
-    <div
-      class="mx-auto flex max-w-6xl flex-col items-center gap-10
-           md:flex-row md:items-center md:gap-14 lg:gap-20"
-    >
-      <div class="w-full md:w-[55%]">
-        <div class="mx-auto w-full max-w-[560px] overflow-hidden rounded-xl">
-          <img
-            src={ImageResume.src}
-            alt="Preview of Joy's interactive resume"
-            class="block h-auto w-full"
-          />
-        </div>
-      </div>
-
-      <div
-        class="flex w-full max-w-md flex-col items-center text-center
-             md:w-[45%] md:items-start md:text-left"
-      >
-        <div class="flex items-center gap-3">
-          <img
-            src={PortraitImage.src}
-            alt="Portrait of Joy"
-            class="h-11 w-11 rounded-full object-cover"
-          />
-
-          <p
-            class="text-sm font-semibold uppercase tracking-[0.18em]
-                 text-dark-brown sm:text-base"
-          >
-            About Me
-          </p>
-        </div>
-
-        <h2
-          class="mt-5 text-3xl leading-tight text-dark-brown
-               sm:text-4xl md:text-[2.6rem]"
-        >
-          More than a resume
-        </h2>
-
-        <p
-          class="mt-4 max-w-sm text-sm leading-7 text-brown-dark/75
-               sm:text-base"
-        >
-          I started in architecture, moved into UX/UI design, and am now
-          exploring the world of web development. Take a look at my interactive
-          resume to see the journey.
-        </p>
-
-        <div class="flex flex-col gap-2 sm:flex-row sm:gap-4">
-          <Button href="/about" variant="primary" size="md" class="mt-7">
-            Explore My Story
-          </Button>
-
-          <Button
-            href="https://interactive-resume-joy.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="secondary"
-            size="md"
-            class="mt-7"
-          >
-            View Interactive Resume
-          </Button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <Footer />
   <Modal
     id="contact-project-modal"
@@ -565,13 +523,98 @@ const playgroundProjects: Project[] = [
   /> -->
 </ContentLayout>
 
-<script>
-  // Handle View Resume button click -> scroll to the About Me section
-  const resumeButton = document.getElementById("resume-button");
-  const aboutMeSection = document.getElementById("about-me");
+<style>
+  /* Pixel avatar on the Interactive Resume card. steps() keeps the motion choppy like a pixel game. */
+  .resume-avatar {
+    image-rendering: pixelated;
+    animation: avatar-bob 1s steps(1, end) infinite;
+  }
 
-  resumeButton?.addEventListener("click", () => {
-    aboutMeSection?.scrollIntoView({ behavior: "smooth" });
-  });
-</script>
+  .resume-shadow {
+    animation: shadow-bob 1s steps(1, end) infinite;
+  }
 
+  .resume-bubble {
+    animation: bubble-float 2s steps(2, jump-none) infinite alternate;
+  }
+
+  .resume-heart {
+    left: 58%;
+    top: 40%;
+    opacity: 0;
+  }
+
+  :global(.group:hover) .resume-avatar {
+    animation: avatar-hop 0.5s steps(1, end) infinite;
+  }
+
+  :global(.group:hover) .resume-heart {
+    animation: heart-rise 1s steps(5, end) infinite;
+  }
+
+  @keyframes avatar-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
+  @keyframes shadow-bob {
+    0%,
+    100% {
+      transform: scaleX(1);
+    }
+    50% {
+      transform: scaleX(0.85);
+    }
+  }
+
+  @keyframes avatar-hop {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-8px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+    75% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes bubble-float {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-3px);
+    }
+  }
+
+  @keyframes heart-rise {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-36px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .resume-avatar,
+    .resume-shadow,
+    .resume-bubble,
+    :global(.group:hover) .resume-avatar,
+    :global(.group:hover) .resume-heart {
+      animation: none;
+    }
+  }
+</style>

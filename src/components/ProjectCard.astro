@@ -18,6 +18,10 @@ interface ProjectCardProps {
   tech?: string[];
   // Blur the title for NDA projects (the name stays readable to screen readers)
   blurTitle?: boolean;
+  // Short context line above the title, e.g. "Professional project"
+  eyebrow?: string;
+  // Show the eyebrow in the accent colour (used for the award)
+  eyebrowAccent?: boolean;
 }
 
 const {
@@ -31,6 +35,8 @@ const {
   modalId,
   tech = [],
   blurTitle = false,
+  eyebrow,
+  eyebrowAccent = false,
 } = Astro.props as ProjectCardProps;
 
 const opensModal = Boolean(modalId);
@@ -115,6 +121,16 @@ const isExternal = /^https?:\/\//.test(projectLink ?? "");
 
   <!-- Project information -->
   <div class="flex flex-1 flex-col p-4 items-start justify-start gap-0">
+    {eyebrow && (
+      <span
+        class:list={[
+          "mb-2 text-xs font-semibold uppercase tracking-[0.16em]",
+          eyebrowAccent ? "text-pink" : "text-brown-dark/55",
+        ]}
+      >
+        {eyebrow}
+      </span>
+    )}
     <h3
       class:list={[
         `
