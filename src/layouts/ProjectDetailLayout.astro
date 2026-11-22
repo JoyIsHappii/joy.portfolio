@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
 import YouTubePlayer from "../components/YouTubePlayer.astro";
+import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -34,6 +35,8 @@ const { title = "Project — Joy", active = "projects" } = Astro.props as Props;
       <div class="w-full flex-1 pb-20">
         <slot />
       </div>
+      <!-- Same footer as the Projects and About pages -->
+      <Footer />
     </div>
     <YouTubePlayer />
   </body>

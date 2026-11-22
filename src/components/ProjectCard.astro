@@ -1,7 +1,5 @@
 ---
 import Tag from "../components/Tag.astro";
-import Button from "../components/Button.astro";
-import Tech from "../components/Tech.astro";
 
 type ProjectCategory =
   "UX/UI Design" | "Web Development" | "Project Management";
@@ -15,8 +13,10 @@ interface ProjectCardProps {
   projectLink?: string;
   warmupLink?: string;
   modalId?: string;
-  tech?: string[];
-  // Blur the title for NDA projects (the name stays readable to screen readers)
+  // NDA project: shows an "Under NDA" badge on the image and an "Ask me about it" link.
+  // Give it a descriptive title (e.g. "AI Estimating Platform") instead of the real name.
+  nda?: boolean;
+  // Older option: blur the real name. Prefer `nda` with a descriptive title.
   blurTitle?: boolean;
   // Short context line above the title, e.g. "Professional project"
   eyebrow?: string;
@@ -33,7 +33,7 @@ const {
   projectLink,
   warmupLink,
   modalId,
-  tech = [],
+  nda = false,
   blurTitle = false,
   eyebrow,
   eyebrowAccent = false,
@@ -42,85 +42,68 @@ const {
 const opensModal = Boolean(modalId);
 // Internal case studies stay in the same tab so the site-wide music keeps playing
 const isExternal = /^https?:\/\//.test(projectLink ?? "");
+const actionLabel = nda ? "Ask me about it" : "View project";
+const actionArrow = isExternal ? "➹" : "➹";
+
+// Shared classes for the image wrapper and the text link
+const mediaClass = "relative block w-full overflow-hidden bg-brown-medium/30 text-left";
+const actionClass =
+  "inline-flex items-center gap-1.5 text-base font-semibold text-brown-dark underline decoration-brown-dark/25 underline-offset-4 transition-colors duration-200 group-hover:decoration-brown-dark";
 ---
 
 <article
   data-project-item
   data-category={categories.join(",")}
-  class="group
-    flex
-    h-full
-    w-full
-    flex-col
-    justify-between
-    overflow-hidden
-    border
-    border-brown-dark/20
-    bg-transparent
-    backdrop-blur-[6px]
-    transition-all
-    duration-300
-    ease-in-out
-    hover:scale-[1.02]
-    hover:border-brown-dark/20
-    hover:bg-brown-medium/50"
+  class="group flex h-full w-full flex-col border border-brown-dark/15 bg-transparent transition-colors duration-300 hover:border-brown-dark/30 hover:bg-brown-medium/25"
 >
-  <!-- Project image -->
+  <!-- Image (opens the case study, or the contact modal for NDA projects) -->
   {opensModal ? (
     <button
       type="button"
       data-modal-open={modalId}
       aria-haspopup="dialog"
       aria-controls={modalId}
-      class="block
-          w-full
-          cursor-pointer
-          overflow-hidden
-          text-left"
+      aria-label={nda ? `${title}: under NDA, contact Joy for details` : `View ${title} project`}
+      class:list={[mediaClass, "cursor-pointer"]}
     >
       <img
         src={imageSrc}
         alt={imageAlt}
         loading="lazy"
         decoding="async"
-        class="aspect-[4/3]
-            h-full
-            w-full
-            object-cover
-            transition-transform
-            duration-300
-            ease-in-out
-            group-hover:scale-[1.05]"
+        class="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
       />
+      {nda && (
+        <span class="absolute left-3 top-3 inline-flex items-center gap-1.5 bg-white/90 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brown-dark">
+          <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+          </svg>
+          Under NDA
+        </span>
+      )}
     </button>
   ) : (
     <a
       href={projectLink}
-      warmupLink={warmupLink}
-      class="block overflow-hidden"
+      data-warmup-link={warmupLink}
       aria-label={`View ${title} project`}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
+      class={mediaClass}
     >
       <img
         src={imageSrc}
         alt={imageAlt}
         loading="lazy"
         decoding="async"
-        class="aspect-[4/3]
-            h-full
-            w-full
-            object-cover
-            transition-transform
-            duration-300
-            ease-in-out
-            group-hover:scale-[1.05]"
+        class="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
       />
     </a>
   )}
 
-  <!-- Project information -->
-  <div class="flex flex-1 flex-col p-4 items-start justify-start gap-0">
+  <!-- Details -->
+  <div class="flex flex-1 flex-col items-start p-5">
     {eyebrow && (
       <span
         class:list={[
@@ -131,101 +114,63 @@ const isExternal = /^https?:\/\//.test(projectLink ?? "");
         {eyebrow}
       </span>
     )}
+
     <h3
       class:list={[
-        `
-        text-left
-        text-[34px]
-        font-normal
-        leading-none
-        tracking-tight
-        text-brown-dark
-        transition-colors
-        duration-300
-      `,
+        "text-[28px] font-normal leading-tight tracking-tight text-brown-dark",
         blurTitle && "select-none blur-[5px]",
       ]}
     >
       {title}
     </h3>
 
-    <div class="mt-2 flex flex-wrap gap-2">
-      {categories.map((category) => (
-        <Tag category={category} />
-      ))}
-    </div>
-
-    <p
-      class="mt-4
-        font-mono
-        text-[15px]
-        leading-[1.2]
-        tracking-[0.08em]
-        text-brown-dark/75
-        transition-colors
-        duration-300"
-    >
-      {description}
-    </p>
-    <div class="mt-2 flex flex-wrap gap-2">
-      {tech.map((tech) => (
-        <Tech tech={tech} />
-      ))}
-    </div>
-  </div>
-
-  <!-- Card action -->
-  <div
-    class="bg-black/10
-      p-4
-      pt-0
-      transition-colors
-      duration-300
-      ease-in-out
-      group-hover:bg-transparent
-      flex
-      w-full
-      items-center
-      justify-start
-      gap-2
-      md:justify-start"
-  >
-    {opensModal ? (
-      <button
-        type="button"
-        data-modal-open={modalId}
-        aria-haspopup="dialog"
-        aria-controls={modalId}
-        class="mt-4 px-6 py-2.5 text-base inline-flex items-center justify-center gap-1 rounded-full font-medium tracking-wide transition-all duration-200
-          border border-white/20 bg-brown-dark text-white hover:border-brown-dark hover:bg-black"
-      >
-        View Project
-      </button>
-    ) : (
-      <Button
-        href={projectLink}
-        variant="primary"
-        size="md"
-        class="mt-4"
-        warmupLink={warmupLink}
-        target={isExternal ? "_blank" : undefined}
-      >
-        View Project
-      </Button>
+    {categories.length > 0 && (
+      <div class="mt-3 flex flex-wrap gap-2">
+        {categories.map((category) => (
+          <Tag category={category} />
+        ))}
+      </div>
     )}
+
+    <p class="mt-3 text-brown-dark/70">{description}</p>
+
+    <!-- Action: a quiet text link pinned to the bottom of the card -->
+    <div class="mt-auto pt-5">
+      {opensModal ? (
+        <button
+          type="button"
+          data-modal-open={modalId}
+          aria-haspopup="dialog"
+          aria-controls={modalId}
+          class:list={[actionClass, "cursor-pointer"]}
+        >
+          {actionLabel}
+          <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">➹</span>
+        </button>
+      ) : (
+        <a
+          href={projectLink}
+          data-warmup-link={warmupLink}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          class={actionClass}
+        >
+          {actionLabel}
+          <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">{actionArrow}</span>
+        </a>
+      )}
+    </div>
   </div>
 </article>
 
 <script>
+  // Wake up sleeping free-tier backends (e.g. Render) as soon as their card is clicked
   document.addEventListener("click", (event) => {
     const target = event.target;
+    if (!(target instanceof Element)) return;
 
-    if (!(target instanceof Element)) {
-      return;
-    }
-
-    const link = target.closest<HTMLAnchorElement>("[data-warmup-link]");
-    const warmupLink = link?.dataset.warmupLink;
+    const warmupLink = target.closest<HTMLElement>("[data-warmup-link]")?.dataset
+      .warmupLink;
 
     if (warmupLink) {
       void fetch(warmupLink, { mode: "no-cors", keepalive: true }).catch(

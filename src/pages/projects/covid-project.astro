@@ -1,5 +1,6 @@
 ---
 import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
+import Sidebar from "../../components/ProjectSideBar.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
@@ -168,31 +169,7 @@ const designDecisions = [
 
     <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16">
       <aside class="hidden lg:block">
-        <div class="sticky top-28">
-          <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
-            Case study
-          </h3>
-          <nav aria-label="COVID-19 isolation room case study sections">
-            <ol class="border-y border-brown-dark/15">
-              {navItems.map((item, index) => (
-                <li>
-                  <a
-                    href={item.href}
-                    data-covid-nav
-                    data-section={item.href.slice(1)}
-                    aria-current={index === 0 ? "location" : undefined}
-                    class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
-                  >
-                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">
-                      {item.number}
-                    </span>
-                    <span>{item.label}</span>
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        </div>
+        <Sidebar title="Case study" items={navItems} />
       </aside>
 
       <div class="min-w-0 space-y-20 sm:space-y-28">
@@ -611,7 +588,7 @@ const designDecisions = [
               href="/projects/"
               class="inline-flex shrink-0 border-b border-white pb-1 font-semibold text-white"
             >
-              Explore more projects
+              Explore more projects ➹
             </a>
           </div>
         </section>
@@ -620,50 +597,3 @@ const designDecisions = [
   </main>
 </ProjectDetailLayout>
 
-<script>
-  const setupCovidNavigation = () => {
-    const links = Array.from(
-      document.querySelectorAll<HTMLAnchorElement>("[data-covid-nav]"),
-    );
-    if (!links.length) return;
-
-    const updateCurrent = (sectionId: string) => {
-      links.forEach((link) => {
-        if (link.dataset.section === sectionId) {
-          link.setAttribute("aria-current", "location");
-        } else {
-          link.removeAttribute("aria-current");
-        }
-      });
-    };
-
-    links.forEach((link) => {
-      if (link.dataset.ready === "true") return;
-      link.dataset.ready = "true";
-      link.addEventListener("click", () => {
-        if (link.dataset.section) updateCurrent(link.dataset.section);
-      });
-    });
-
-    const sections = links
-      .map((link) => document.getElementById(link.dataset.section ?? ""))
-      .filter((section): section is HTMLElement => section !== null);
-
-    if (!("IntersectionObserver" in window)) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id) updateCurrent(visible.target.id);
-      },
-      { rootMargin: "-20% 0px -60% 0px", threshold: [0.05, 0.2, 0.5] },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-  };
-
-  setupCovidNavigation();
-  document.addEventListener("astro:page-load", setupCovidNavigation);
-</script>

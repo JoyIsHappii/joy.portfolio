@@ -1,5 +1,6 @@
 ---
 import ProjectDetailLayout from "../../layouts/ProjectDetailLayout.astro";
+import Sidebar from "../../components/ProjectSideBar.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import ProjectDetailHero from "../../components/ProjectDetailHero.astro";
 import ProjectOverview from "../../components/ProjectOverview.astro";
@@ -163,31 +164,7 @@ const technologies = [
 
     <section class="grid gap-10 py-14 sm:py-20 lg:grid-cols-[240px_1fr] lg:gap-16">
       <aside class="hidden lg:block">
-        <div class="sticky top-28">
-          <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
-            Case study
-          </h3>
-          <nav aria-label="Weather Fore-Cat case study sections">
-            <ol class="border-y border-brown-dark/15">
-              {navItems.map((item, index) => (
-                <li>
-                  <a
-                    href={item.href}
-                    data-weather-nav
-                    data-section={item.href.slice(1)}
-                    aria-current={index === 0 ? "location" : undefined}
-                    class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/65 transition hover:bg-brown-medium/45 hover:text-brown-dark aria-[current=location]:bg-brown-dark aria-[current=location]:font-semibold aria-[current=location]:text-white"
-                  >
-                    <span class="font-semibold text-green-dark group-aria-[current=location]:text-green-light">
-                      {item.number}
-                    </span>
-                    <span>{item.label}</span>
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        </div>
+        <Sidebar title="Case study" items={navItems} />
       </aside>
 
       <div class="min-w-0 space-y-20 sm:space-y-28">
@@ -460,62 +437,3 @@ const technologies = [
   </main>
 </ProjectDetailLayout>
 
-<script>
-  const setupWeatherNavigation = () => {
-    const links = Array.from(
-      document.querySelectorAll<HTMLAnchorElement>("[data-weather-nav]"),
-    );
-    if (!links.length) return;
-
-    const updateCurrent = (sectionId: string) => {
-      links.forEach((link) => {
-        if (link.dataset.section === sectionId)
-          link.setAttribute("aria-current", "location");
-        else link.removeAttribute("aria-current");
-      });
-    };
-
-    links.forEach((link) => {
-      if (link.dataset.ready === "true") return;
-      link.dataset.ready = "true";
-      link.addEventListener("click", () => {
-        if (link.dataset.section) updateCurrent(link.dataset.section);
-      });
-    });
-
-    const sections = links
-      .map((link) => document.getElementById(link.dataset.section ?? ""))
-      .filter((section): section is HTMLElement => section !== null);
-
-    // Highlight the last section whose top has passed 35% of the window
-    const onScroll = () => {
-      const line = window.innerHeight * 0.35;
-      let current = sections[0];
-      sections.forEach((section) => {
-        if (section.getBoundingClientRect().top <= line) current = section;
-      });
-      if (
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 4
-      ) {
-        current = sections[sections.length - 1];
-      }
-      if (current) updateCurrent(current.id);
-    };
-
-    // Replace the listener from a previous visit so it isn't added twice
-    const w = window as Window & { weatherNavScroll?: () => void };
-    if (w.weatherNavScroll)
-      window.removeEventListener("scroll", w.weatherNavScroll);
-    w.weatherNavScroll = onScroll;
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  };
-
-  const setupWeatherPage = () => {
-    setupWeatherNavigation();
-  };
-
-  setupWeatherPage();
-  document.addEventListener("astro:page-load", setupWeatherPage);
-</script>

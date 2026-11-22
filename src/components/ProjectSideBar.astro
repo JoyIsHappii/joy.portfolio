@@ -1,97 +1,53 @@
 ---
-const navItems = [
-  {
-    name: "01 Empathize",
-    href: "#empathize",
-  },
-  {
-    name: "02 Define",
-    href: "#define",
-  },
-  {
-    name: "03 Ideate",
-    href: "#ideate",
-  },
-  {
-    name: "04 Prototype",
-    href: "#prototype",
-  },
-  {
-    name: "05 Test",
-    href: "#test",
-  },
-  {
-    name: "06 Final design",
-    href: "#final-design",
-  },
+// Case-study sidebar used by every project detail page: one style, one scroll script.
+// Pass `items` for custom sections; by default it shows the six design-process steps.
+interface NavItem {
+  number: string;
+  label: string;
+  href: string; // "#section-id"
+}
+
+interface Props {
+  title?: string;
+  items?: NavItem[];
+}
+
+const designProcess: NavItem[] = [
+  { number: "01", label: "Empathize", href: "#empathize" },
+  { number: "02", label: "Define", href: "#define" },
+  { number: "03", label: "Ideate", href: "#ideate" },
+  { number: "04", label: "Prototype", href: "#prototype" },
+  { number: "05", label: "Test", href: "#test" },
+  { number: "06", label: "Final design", href: "#final-design" },
 ];
 
-const linkClasses = `
-  group
-  relative
-  flex
-  w-full
-  items-center
-  gap-3
-  border-b
-  border-brown-light/20
-  bg-transparent
-  px-4
-  py-4
-  text-left
-  text-brown-dark
-  transition-all
-  duration-200
-  ease-in-out
-
-  
-
-  hover:bg-black
-  hover:text-white
-
-  aria-[current=location]:border-2
-  aria-[current=location]:border-brown-light
-  aria-[current=location]:bg-brown-light
-  aria-[current=location]:font-semibold
-  aria-[current=location]:text-white
-`;
+const { title = "Design process", items = designProcess } = Astro.props as Props;
 ---
 
-<aside
-  data-case-study-navigation
-  class="sticky
-    top-30
-    flex
-    w-full
-    flex-col"
->
-  <h3
-    class="mb-4
-      text-lg
-      font-semibold
-      uppercase
-      tracking-[0.18em]
-      text-green-dark"
-  >
-    Design Process
+<aside data-case-study-navigation class="sticky top-28 flex w-full flex-col">
+  <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-green-dark">
+    {title}
   </h3>
 
   <nav aria-label="Case study sections">
-    <ul class="flex flex-col gap-0">
-      {navItems.map((item, index) => (
+    <ol class="border-y border-brown-dark/15">
+      {items.map((item, index) => (
         <li>
           <a
             href={item.href}
             data-case-study-link
             data-section-id={item.href.replace("#", "")}
             aria-current={index === 0 ? "location" : undefined}
-            class={linkClasses}
+            class="group grid grid-cols-[32px_1fr] gap-3 border-b border-brown-dark/15 px-3 py-4 text-sm text-brown-dark/70 transition-colors duration-300 ease-out last:border-b-0 hover:bg-black hover:text-white aria-[current=location]:bg-brown-light aria-[current=location]:font-semibold aria-[current=location]:text-white"
           >
-            <span class="text-left">{item.name}</span>
+            <span class="font-semibold text-green-dark transition-colors duration-300 ease-out group-hover:text-green-light group-aria-[current=location]:text-white">
+              {item.number}
+            </span>
+            <span>{item.label}</span>
           </a>
         </li>
       ))}
-    </ul>
+    </ol>
   </nav>
 </aside>
 
@@ -146,31 +102,31 @@ const linkClasses = `
       });
     });
 
-    // Update the active item while scrolling
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (first, second) =>
-              second.intersectionRatio - first.intersectionRatio,
-          );
+    // Update the active item while scrolling: the active section is the last
+    // one whose top has passed 30% of the screen height (never skips a step).
+    function updateFromScroll() {
+      const line = window.innerHeight * 0.3;
+      let active = sections[0];
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= line) active = section;
+      }
+      // At the very bottom, highlight the last step
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        active = sections[sections.length - 1];
+      }
+      if (active) selectSection(active.id);
+    }
 
-        const activeSection = visibleSections[0]?.target;
-
-        if (activeSection instanceof HTMLElement) {
-          selectSection(activeSection.id);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -65% 0px",
-        threshold: [0, 0.1, 0.25, 0.5],
-      },
+    // Cheap: only reads a few section positions, so it can run on every scroll
+    const onScroll = updateFromScroll;
+    window.addEventListener("scroll", onScroll, { passive: true });
+    // Stop listening when navigating to another page
+    document.addEventListener(
+      "astro:before-swap",
+      () => window.removeEventListener("scroll", onScroll),
+      { once: true },
     );
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+    updateFromScroll();
 
     // Select the section from the URL when loading
     const hash = window.location.hash.replace("#", "");

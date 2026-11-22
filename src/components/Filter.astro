@@ -57,13 +57,10 @@ const baseClasses = `
   before:transition-colors
   before:duration-200
 
-  hover:bg-black
-  hover:text-white
-  hover:before:bg-white
+  hover:bg-brown-medium/45
 
-  aria-pressed:border-2
-  aria-pressed:border-brown-light
-  aria-pressed:bg-brown-light
+  aria-pressed:border-brown-dark
+  aria-pressed:bg-brown-dark
   aria-pressed:font-semibold
   aria-pressed:text-white
   aria-pressed:before:bg-white
@@ -125,7 +122,6 @@ const categoryClasses: Record<Category, string> = {
             text-current
             transition-colors
             duration-200
-            group-hover:bg-white/20
             group-aria-[pressed=true]:bg-white/20"
       >
         0
