@@ -5,7 +5,7 @@ import GitHubLink from "./GitHubLink.astro";
 
 interface ProjectDetailHeroProps {
   title: string;
-  eyebrow?: string;
+  // eyebrow?: string;
   description: string;
   imageSrc: string;
   imageAlt: string;
@@ -21,7 +21,7 @@ interface ProjectDetailHeroProps {
 
 const {
   title,
-  eyebrow = "Selected Case Study",
+  // eyebrow = "Selected Case Study",
   description,
   imageSrc,
   imageAlt,
@@ -68,7 +68,7 @@ const {
         tracking-[0.18em]
         text-green-dark"
     >
-      {eyebrow}
+      {/* {eyebrow} */}
     </p>
     <div class="mt-6 flex flex-wrap gap-2">
       {categories.map((category) => (
